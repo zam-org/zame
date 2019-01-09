@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ui/ui_theme.tres" type="Theme" id=6]
 [ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=7]
 [ext_resource path="res://ui/buttons/grab/grab_active.png" type="Texture" id=8]
+[ext_resource path="res://audio/effects/click.wav" type="AudioStream" id=9]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -236,4 +237,14 @@ text = "X"
 autoplay = "logo_idle"
 anims/logo_idle = SubResource( 4 )
 
+[node name="click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = -8.723
+bus = "Effects"
+
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_GrabMe_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
+[connection signal="pressed" from="zn_button" to="." method="play_click"]
+[connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
+[connection signal="pressed" from="HBoxContainer/exit" to="." method="play_click"]

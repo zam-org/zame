@@ -31,3 +31,6 @@ func _input(event):
 func _on_GrabMe_pressed():
 	set_process_input(true)
 	Input.set_mouse_mode(2)
+
+func play_click() -> void:
+	$click.play()
