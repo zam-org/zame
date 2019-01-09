@@ -1,0 +1,8 @@
+[gd_resource type="GradientTexture" load_steps=2 format=2]
+
+[ext_resource path="res://assets/gradients/zeronet_gradient.tres" type="Gradient" id=1]
+
+[resource]
+
+gradient = ExtResource( 1 )
+
