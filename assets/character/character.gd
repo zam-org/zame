@@ -1,22 +1,33 @@
 extends KinematicBody2D
 
+#	vectors!
 var direction : Vector2
 var motion : Vector2
 var smooth_motion : Vector2
+
+#	fun stuff with numbers for character controller
 var speed : int = 12000
 var gravity = 9.8 * 20
-var landed : bool = false
 
+#	var used for sending the tilt amount to the player shape shader
+var smooth_tilt : Vector2
+
+var landed : bool = false
 var in_air : bool = true
 
+#	constants y'all!
 const JUMP_POWER = 10000
 
+#	did anyone say signals?
 signal coin
 
 func _process(delta):
 	var mat = $shape.material
-	mat.set_shader_param('disp', -motion / 10)
-	#	raycast to check for ground as _is_on_floor() was acting up
+	smooth_tilt = smooth_tilt.linear_interpolate(motion, 10 *delta)
+	smooth_tilt.x = smooth_tilt.x / 1.5
+	mat.set_shader_param('disp', smooth_tilt / 10)
+	
+	#	raycast to check for ground as "_is_on_floor()" was acting up
 	if $floor_check.is_colliding():
 		in_air = false
 	else:

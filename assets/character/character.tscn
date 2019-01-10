@@ -1,0 +1,104 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/character/character.gd" type="Script" id=1]
+[ext_resource path="res://audio/effects/coin.wav" type="AudioStream" id=2]
+
+[sub_resource type="Shader" id=2]
+
+code = "shader_type canvas_item;
+
+uniform vec2 disp = vec2(0,0);
+
+void vertex(){
+//	VERTEX += disp;
+	if(VERTEX.y < -30.0){
+		VERTEX.x += disp.x * 0.75;
+		VERTEX.y += disp.y * 0.5;
+	}
+	
+}
+"
+
+[sub_resource type="ShaderMaterial" id=3]
+
+shader = SubResource( 2 )
+shader_param/disp = Vector2( 0, 0 )
+
+[sub_resource type="Animation" id=4]
+
+length = 0.25
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("shape:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.723239, -0.25, 0, 0.0485723, 0, 1.00277, -0.131839, 0.00873578, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.247025 )
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("shape:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -2 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+
+length = 0.25
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("shape:scale:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 0.701575, -0.25, 0, 0.094369, 0, 1, -0.0969847, -0.003474, 0.0969847, 0.003474 ),
+"times": PoolRealArray( 0, 0.2 )
+}
+
+[node name="character" type="KinematicBody2D"]
+script = ExtResource( 1 )
+
+[node name="check" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="col2" type="CollisionPolygon2D" parent="check"]
+polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
+
+[node name="col" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -9.6172, 0.00886631, -9.56378, -39.5696, 9.71285, -39.5469, 9.72663, 0.0147314 )
+
+[node name="shape" type="Polygon2D" parent="."]
+material = SubResource( 3 )
+scale = Vector2( 1, 1.00277 )
+polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
+uv = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
+antialiased = true
+
+[node name="audio" type="Node" parent="."]
+
+[node name="coin" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource( 2 )
+volume_db = -10.0
+bus = "knob"
+
+[node name="animations" type="AnimationPlayer" parent="."]
+anims/jump = SubResource( 4 )
+anims/landing = SubResource( 5 )
+
+[node name="floor_check" type="RayCast2D" parent="."]
+position = Vector2( 0, -5.11208 )
+enabled = true
+cast_to = Vector2( 0, 6.24 )
+collision_mask = 15
+
+[connection signal="body_entered" from="check" to="." method="_on_check_body_entered"]

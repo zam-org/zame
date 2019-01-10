@@ -1,75 +1,15 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=1]
-[ext_resource path="res://assets/character/character.gd" type="Script" id=2]
-[ext_resource path="res://audio/effects/coin.wav" type="AudioStream" id=3]
-[ext_resource path="res://scripts/builder.gd" type="Script" id=4]
-[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=5]
-[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=6]
-[ext_resource path="res://scripts/bloom.gd" type="Script" id=7]
+[ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=2]
+[ext_resource path="res://scripts/builder.gd" type="Script" id=3]
+[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=5]
+[ext_resource path="res://scripts/bloom.gd" type="Script" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 extents = Vector2( 655.275, 10 )
-
-[sub_resource type="Shader" id=2]
-
-code = "shader_type canvas_item;
-
-uniform vec2 disp = vec2(0,0);
-
-void vertex(){
-//	VERTEX += disp;
-//	if(VERTEX.x = -10.0){
-//		VERTEX += disp;
-//	}
-}
-"
-
-[sub_resource type="ShaderMaterial" id=3]
-
-shader = SubResource( 2 )
-shader_param/disp = Vector2( 0, 0 )
-
-[sub_resource type="Animation" id=4]
-
-length = 0.25
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("shape:scale:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0.723239, -0.25, 0, 0.0485723, 0, 1.00277, -0.131839, 0.00873578, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.247025 )
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("shape:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 0, -2 ), Vector2( 0, 0 ) ]
-}
-
-[sub_resource type="Animation" id=5]
-
-length = 0.25
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("shape:scale:y")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"points": PoolRealArray( 0.701575, -0.25, 0, 0.094369, 0, 1, -0.0969847, -0.003474, 0.0969847, 0.003474 ),
-"times": PoolRealArray( 0, 0.2 )
-}
 
 [sub_resource type="CircleShape2D" id=6]
 
@@ -77,7 +17,7 @@ radius = 1.5546
 
 [sub_resource type="ShaderMaterial" id=7]
 
-shader = ExtResource( 6 )
+shader = ExtResource( 5 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
@@ -144,47 +84,11 @@ polygon = PoolVector2Array( 5.7215, -42.0082, 5.7215, 767.992, -14.2785, 767.992
 position = Vector2( 0, 0.853271 )
 current = true
 
-[node name="character" type="KinematicBody2D" parent="."]
-collision/safe_margin = 0.01
-script = ExtResource( 2 )
-
-[node name="check" type="Area2D" parent="character"]
-collision_layer = 0
-collision_mask = 4
-
-[node name="col2" type="CollisionPolygon2D" parent="character/check"]
-polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
-
-[node name="col" type="CollisionPolygon2D" parent="character"]
-polygon = PoolVector2Array( -9.6172, 0.00886631, -9.56378, -39.5696, 9.71285, -39.5469, 9.72663, 0.0147314 )
-
-[node name="shape" type="Polygon2D" parent="character"]
-material = SubResource( 3 )
-scale = Vector2( 1, 0.469113 )
-polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
-uv = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
-antialiased = true
-
-[node name="audio" type="Node" parent="character"]
-
-[node name="coin" type="AudioStreamPlayer" parent="character/audio"]
-stream = ExtResource( 3 )
-volume_db = -10.0
-bus = "knob"
-
-[node name="animations" type="AnimationPlayer" parent="character"]
-anims/jump = SubResource( 4 )
-anims/landing = SubResource( 5 )
-
-[node name="floor_check" type="RayCast2D" parent="character"]
-position = Vector2( 0, -5.11208 )
-enabled = true
-cast_to = Vector2( 0, 6.24 )
-collision_mask = 15
+[node name="character" parent="." instance=ExtResource( 2 )]
 
 [node name="level" type="Node2D" parent="."]
 position = Vector2( -711.742, 424.846 )
-script = ExtResource( 4 )
+script = ExtResource( 3 )
 
 [node name="delete" type="Area2D" parent="level"]
 position = Vector2( 60, 340 )
@@ -226,7 +130,7 @@ margin_left = 10.0
 margin_top = 4.0
 margin_right = 103.0
 margin_bottom = 26.0
-theme = ExtResource( 5 )
+theme = ExtResource( 4 )
 text = "EDIT MODE"
 
 [node name="Control2" type="Control" parent="guide/ColorRect/HBoxContainer"]
@@ -240,7 +144,7 @@ margin_left = 117.0
 margin_top = 4.0
 margin_right = 342.0
 margin_bottom = 26.0
-theme = ExtResource( 5 )
+theme = ExtResource( 4 )
 text = "| Press TAB to close edit mode"
 
 [node name="bloom" type="ColorRect" parent="."]
@@ -254,9 +158,8 @@ margin_top = -432.261
 margin_right = 729.099
 margin_bottom = 412.739
 rect_min_size = Vector2( 500, 500 )
-script = ExtResource( 7 )
+script = ExtResource( 6 )
 
 [node name="tween" type="Tween" parent="bloom"]
 
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
-[connection signal="body_entered" from="character/check" to="character" method="_on_check_body_entered"]
