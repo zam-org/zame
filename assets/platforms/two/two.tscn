@@ -1,8 +1,6 @@
 [gd_scene format=2]
 
-[node name="2x2" type="StaticBody2D" groups=[
-"delete",
-]]
+[node name="2x2" type="StaticBody2D"]
 editor/display_folded = true
 position = Vector2( 60, 0 )
 

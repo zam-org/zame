@@ -32,4 +32,6 @@ func _physics_process(delta):
 	
 	motion = move_and_slide(motion, Vector2(0,-1))
 	
-	print(is_on_floor())
+func _on_check_body_entered(body):
+	body.queue_free()
+	$audio/coin.play()

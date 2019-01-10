@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=1]
-[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=2]
-[ext_resource path="res://assets/character/character.gd" type="Script" id=3]
+[ext_resource path="res://assets/character/character.gd" type="Script" id=2]
+[ext_resource path="res://audio/effects/coin.wav" type="AudioStream" id=3]
 [ext_resource path="res://scripts/builder.gd" type="Script" id=4]
+[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -77,7 +78,48 @@ polygon = PoolVector2Array( 5.7215, -42.0082, 5.7215, 767.992, -14.2785, 767.992
 [node name="Camera" type="Camera2D" parent="."]
 current = true
 
+[node name="character" type="KinematicBody2D" parent="."]
+script = ExtResource( 2 )
+
+[node name="check" type="Area2D" parent="character"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="col2" type="CollisionPolygon2D" parent="character/check"]
+polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
+
+[node name="col" type="CollisionPolygon2D" parent="character"]
+polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
+
+[node name="shape" type="Polygon2D" parent="character"]
+polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
+antialiased = true
+
+[node name="audio" type="Node" parent="character"]
+
+[node name="coin" type="AudioStreamPlayer" parent="character/audio"]
+stream = ExtResource( 3 )
+volume_db = -10.0
+bus = "knob"
+
+[node name="level" type="Node2D" parent="."]
+position = Vector2( -711.742, 424.846 )
+script = ExtResource( 4 )
+
+[node name="delete" type="Area2D" parent="level"]
+position = Vector2( 60, 340 )
+collision_layer = 2
+collision_mask = 30
+
+[node name="col" type="CollisionShape2D" parent="level/delete"]
+shape = SubResource( 2 )
+
+[node name="shape" type="Polygon2D" parent="level/delete"]
+visible = false
+polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
+
 [node name="guide" type="Control" parent="."]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -633.399
@@ -104,7 +146,7 @@ margin_left = 10.0
 margin_top = 4.0
 margin_right = 103.0
 margin_bottom = 26.0
-theme = ExtResource( 2 )
+theme = ExtResource( 5 )
 text = "EDIT MODE"
 
 [node name="Control2" type="Control" parent="guide/ColorRect/HBoxContainer"]
@@ -118,32 +160,7 @@ margin_left = 117.0
 margin_top = 4.0
 margin_right = 342.0
 margin_bottom = 26.0
-theme = ExtResource( 2 )
+theme = ExtResource( 5 )
 text = "| Press TAB to close edit mode"
 
-[node name="character" type="KinematicBody2D" parent="."]
-script = ExtResource( 3 )
-
-[node name="col" type="CollisionPolygon2D" parent="character"]
-polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
-
-[node name="shape" type="Polygon2D" parent="character"]
-polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
-antialiased = true
-
-[node name="level" type="Node2D" parent="."]
-position = Vector2( -711.742, 424.846 )
-script = ExtResource( 4 )
-
-[node name="delete" type="Area2D" parent="level"]
-position = Vector2( 60, 340 )
-collision_layer = 2
-collision_mask = 2
-
-[node name="col" type="CollisionShape2D" parent="level/delete"]
-shape = SubResource( 2 )
-
-[node name="shape" type="Polygon2D" parent="level/delete"]
-visible = false
-polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
-
+[connection signal="body_entered" from="character/check" to="character" method="_on_check_body_entered"]
