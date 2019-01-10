@@ -109,7 +109,7 @@ script = ExtResource( 4 )
 [node name="delete" type="Area2D" parent="level"]
 position = Vector2( 60, 340 )
 collision_layer = 2
-collision_mask = 30
+collision_mask = 1054
 
 [node name="col" type="CollisionShape2D" parent="level/delete"]
 shape = SubResource( 2 )

@@ -10,9 +10,9 @@ const JUMP_POWER = 10000
 
 func _physics_process(delta):
 	direction = Vector2()
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		direction.x -= 1
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		direction.x += 1
 		
 	direction = direction.normalized()
@@ -27,7 +27,7 @@ func _physics_process(delta):
 		else:
 			motion.y += gravity * delta			
 	
-	if Input.is_action_pressed("ui_up") && is_on_floor():
+	if Input.is_action_pressed("up") && is_on_floor():
 		motion.y -= JUMP_POWER * delta
 	
 	motion = move_and_slide(motion, Vector2(0,-1))

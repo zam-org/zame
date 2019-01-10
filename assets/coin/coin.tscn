@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [sub_resource type="Animation" id=1]
 
@@ -18,10 +18,14 @@ tracks/0/keys = {
 "values": [ Vector2( 1, 1 ), Vector2( 0.279995, 1 ), Vector2( 1, 1 ) ]
 }
 
+[sub_resource type="RectangleShape2D" id=2]
+
+extents = Vector2( 9.20169, 9.06365 )
+
 [node name="coin" type="StaticBody2D" groups=[
 "coins",
 ]]
-position = Vector2( 761.742, -454.846 )
+position = Vector2( -0.080452, 0.0227318 )
 collision_layer = 0
 collision_mask = 0
 
@@ -38,4 +42,12 @@ offset = Vector2( 4.97735, 4.90313 )
 [node name="animation" type="AnimationPlayer" parent="."]
 autoplay = "idle"
 anims/idle = SubResource( 1 )
+
+[node name="build_check" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="build_check"]
+position = Vector2( 0, -0.0576267 )
+shape = SubResource( 2 )
 

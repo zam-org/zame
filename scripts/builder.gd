@@ -53,6 +53,7 @@ func _process(delta):
 			
 			if building_piece.is_in_group('coins'):
 				building_piece.set_collision_layer_bit(2,true)
+				building_piece.get_node("build_check").set_collision_layer_bit(10, true)
 			else:
 				building_piece.set_collision_layer_bit(1,true)
 			building_piece = null
