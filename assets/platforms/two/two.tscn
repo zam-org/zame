@@ -1,0 +1,14 @@
+[gd_scene format=2]
+
+[node name="2x2" type="StaticBody2D" groups=[
+"delete",
+]]
+editor/display_folded = true
+position = Vector2( 60, 0 )
+
+[node name="col" type="CollisionPolygon2D" parent="."]
+polygon = PoolVector2Array( -10, 10, -10, -10, 10, -10, 10, 10 )
+
+[node name="shape" type="Polygon2D" parent="."]
+polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
+

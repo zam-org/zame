@@ -267,6 +267,7 @@ volume_db = -10.0
 bus = "knob"
 
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_Play_pressed"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_GrabMe_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]

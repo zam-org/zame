@@ -71,3 +71,7 @@ func _on_MapList_item_selected(index):
 
 func _on_zn_button_pressed():
 	OS.shell_open("https://zeronet.io")
+
+
+func _on_Play_pressed():
+	get_tree().change_scene("res://maps/default.tscn")

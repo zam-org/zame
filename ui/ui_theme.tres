@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=15 format=2]
+[gd_resource type="Theme" load_steps=16 format=2]
 
 [ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=1]
 
@@ -52,6 +52,10 @@ content_margin_right = 5.0
 
 [sub_resource type="StyleBoxEmpty" id=12]
 
+
+[sub_resource type="StyleBoxFlat" id=14]
+
+bg_color = Color( 0.858824, 0.152941, 0.152941, 1 )
 
 [sub_resource type="DynamicFont" id=13]
 
@@ -209,9 +213,9 @@ ItemList/styles/cursor = SubResource( 6 )
 ItemList/styles/cursor_unfocused = SubResource( 6 )
 ItemList/styles/selected = SubResource( 6 )
 ItemList/styles/selected_focus = SubResource( 6 )
-Label/colors/font_color = Color( 0, 0, 0, 1 )
-Label/colors/font_color_shadow = Color( 0, 0, 0, 1 )
-Label/colors/font_outline_modulate = Color( 0, 0, 0, 1 )
+Label/colors/font_color = Color( 1, 1, 1, 0.309804 )
+Label/colors/font_color_shadow = Color( 0, 0, 0, 0.188235 )
+Label/colors/font_outline_modulate = Color( 1, 1, 1, 0.286275 )
 Label/constants/line_spacing = 3
 Label/constants/shadow_as_outline = 0
 Label/constants/shadow_offset_x = 1
@@ -446,8 +450,8 @@ VScrollBar/styles/grabber_highlight = SubResource( 9 )
 VScrollBar/styles/grabber_pressed = SubResource( 10 )
 VScrollBar/styles/scroll = SubResource( 11 )
 VScrollBar/styles/scroll_focus = SubResource( 12 )
-VSeparator/constants/separation = 4
-VSeparator/styles/separator = null
+VSeparator/constants/separation = 10
+VSeparator/styles/separator = SubResource( 14 )
 VSlider/icons/grabber = null
 VSlider/icons/grabber_disabled = null
 VSlider/icons/grabber_highlight = null
