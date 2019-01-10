@@ -2,6 +2,7 @@ extends Node2D
 
 onready var two : PackedScene = preload("res://assets/platforms/two/two.tscn") 
 onready var coin : PackedScene = preload("res://assets/coin/coin.tscn") 
+onready var jump_pad : PackedScene = preload("res://assets/jump_pad/jump_pad.tscn") 
 
 var toolkit : Array
 var selected_tool
@@ -12,18 +13,23 @@ var building_piece
 
 func _ready():
 	toolkit.append(two)
+	toolkit.append(coin)
 	toolkit.append(coin)	
+	toolkit.append(jump_pad)
 	selected_tool = 0
 	reload()
 
 func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 4:
-			selected_tool = 0
-			reload(true)
+			if selected_tool > 0:
+				selected_tool -= 1
+				reload(true)
 		elif event.button_index == 5:
-			selected_tool = 1
-			reload(true)
+			if selected_tool < toolkit.size() - 1 :
+				selected_tool += 1
+				reload(true)
+		print(selected_tool)
 
 func _process(delta):
 	var grid_pos = get_local_mouse_position()
@@ -51,7 +57,7 @@ func _process(delta):
 			#	2 - pickup, eg. coins
 			#	3 - traps
 			
-			if building_piece.is_in_group('coins'):
+			if building_piece.is_in_group('small'):
 				building_piece.set_collision_layer_bit(2,true)
 				building_piece.get_node("build_check").set_collision_layer_bit(10, true)
 			else:

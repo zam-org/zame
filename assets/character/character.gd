@@ -14,7 +14,7 @@ var smooth_tilt : Vector2
 
 var landed : bool = false
 var in_air : bool = true
-
+var jump_pad : bool = false
 #	constants y'all!
 const JUMP_POWER = 10000
 
@@ -23,8 +23,13 @@ signal coin
 
 func _process(delta):
 	var mat = $shape.material
-	smooth_tilt = smooth_tilt.linear_interpolate(motion, 10 *delta)
-	smooth_tilt.x = smooth_tilt.x / 1.5
+	
+#	tilt direction changes depending on whether we're falling or gaining altitude
+	if motion.y > 0.1:
+		smooth_tilt = smooth_tilt.linear_interpolate(-motion, 3 * delta)
+	else:
+		smooth_tilt = smooth_tilt.linear_interpolate(motion, 10 * delta)
+		
 	mat.set_shader_param('disp', smooth_tilt / 10)
 	
 	#	raycast to check for ground as "_is_on_floor()" was acting up
@@ -43,7 +48,9 @@ func _physics_process(delta):
 		
 	direction = direction.normalized()
 	
+#	seperate slerp because gravity
 	smooth_motion = smooth_motion.linear_interpolate(direction * speed * delta, 5 * delta) 
+	
 	motion.x = smooth_motion.x
 	
 	#	gravity is faster when falling
@@ -53,7 +60,6 @@ func _physics_process(delta):
 		else:
 			motion.y += gravity * delta			
 	else:
-		motion.y += 1
 		if !landed:
 			$animations.play("landing")
 			landed = true
@@ -62,9 +68,17 @@ func _physics_process(delta):
 		$animations.play("jump")
 		motion.y -= JUMP_POWER * delta
 	
+	if jump_pad:
+		motion.y -= JUMP_POWER * 2 * delta
+		jump_pad = false
+	
 	motion = move_and_slide(motion, Vector2(0,-1), false, 4, -0.1, true)
 	
 func _on_check_body_entered(body):
-	body.queue_free()
-	$audio/coin.play()
-	emit_signal("coin")
+	if body.is_in_group("coin"):
+		body.queue_free()
+		$audio/coin.play()
+		emit_signal("coin")
+	elif body.is_in_group("jump_pad"):
+		jump_pad = true
+		print("JUMP PAD")

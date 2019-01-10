@@ -1,0 +1,88 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="RectangleShape2D" id=13]
+
+extents = Vector2( 6.39141, 1.97045 )
+
+[sub_resource type="Gradient" id=8]
+
+offsets = PoolRealArray( 0, 0.219858, 1 )
+colors = PoolColorArray( 1, 1, 1, 0, 1, 1, 1, 0.376365, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+
+gradient = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=10]
+
+emission_shape = 2
+emission_box_extents = Vector3( 0, 10, 1 )
+flag_disable_z = true
+spread = 0.0
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 90.91
+initial_velocity_random = 1.0
+angular_velocity = 2.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 500.0
+scale = 4.0
+scale_random = 0.64
+color_ramp = SubResource( 9 )
+
+[sub_resource type="Animation" id=11]
+
+resource_name = "jump"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("shape:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 0.1 ), Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=12]
+
+
+[node name="jump_pad" type="StaticBody2D" groups=[
+"small",
+"jump_pad",
+]]
+position = Vector2( 90, 350 )
+collision_layer = 4
+collision_mask = 0
+
+[node name="col" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 8.20791 )
+shape = SubResource( 13 )
+
+[node name="particles" type="Particles2D" parent="."]
+position = Vector2( 0, 3.65015 )
+rotation = -1.5708
+scale = Vector2( 2.32, 0.44 )
+lifetime = 0.15
+speed_scale = 0.1
+process_material = SubResource( 10 )
+
+[node name="shape" type="Polygon2D" parent="."]
+position = Vector2( 0.0181885, 10.3119 )
+polygon = PoolVector2Array( -6.5, 1, -6.5, -3, 6.5, -3, 6.5, 1 )
+offset = Vector2( -0.0181885, -1.12016 )
+
+[node name="anim" type="AnimationPlayer" parent="."]
+playback_speed = 3.0
+anims/jump = SubResource( 11 )
+
+[node name="build_check" type="StaticBody2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="col" type="CollisionShape2D" parent="build_check"]
+shape = SubResource( 12 )
+
