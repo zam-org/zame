@@ -11,7 +11,7 @@ const MAX_MAP_LIST_SIZE = 340
 func _ready():
 	set_process_input(false)
 	map_list.rect_min_size.y = load_setting("main_menu", "map_list_length", 139)
-	map_list.select(0)
+	map_list.select(load_setting("main_menu", "selected_map", 0))
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -63,3 +63,6 @@ func play_click() -> void:
 	
 func play_knob_turn() -> void:
 	$audio/knob.play()
+
+func _on_MapList_item_selected(index):
+	save_setting("main_menu", "selected_map", index)
