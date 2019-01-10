@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=2]
@@ -8,7 +8,9 @@
 [ext_resource path="res://ui/ui_theme.tres" type="Theme" id=6]
 [ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=7]
 [ext_resource path="res://ui/buttons/grab/grab_active.png" type="Texture" id=8]
-[ext_resource path="res://audio/effects/click.wav" type="AudioStream" id=9]
+[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=9]
+[ext_resource path="res://audio/effects/click.wav" type="AudioStream" id=10]
+[ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=11]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -25,7 +27,7 @@ font_data = ExtResource( 5 )
 
 size = 50
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 9 )
 
 [sub_resource type="Animation" id=4]
 
@@ -77,6 +79,7 @@ expand = true
 stretch_mode = 6
 
 [node name="SidePanelSpace" type="HBoxContainer" parent="."]
+editor/display_folded = true
 anchor_bottom = 1.0
 margin_right = 427.0
 
@@ -208,28 +211,42 @@ text = "zeronet.io"
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -87.1646
-margin_top = 16.6743
-margin_right = -17.1646
-margin_bottom = 56.6743
+margin_left = -190.15
+margin_top = 23.5173
+margin_right = -26.1499
+margin_bottom = 74.5173
 
 [node name="question" type="Button" parent="HBoxContainer"]
-margin_right = 18.0
-margin_bottom = 40.0
+margin_right = 39.0
+margin_bottom = 51.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 3 )
 text = "?"
 
+[node name="Control2" type="Control" parent="HBoxContainer"]
+margin_left = 43.0
+margin_right = 60.94
+margin_bottom = 51.0
+rect_min_size = Vector2( 17.94, 0 )
+
+[node name="config" type="Button" parent="HBoxContainer"]
+margin_left = 64.0
+margin_right = 106.0
+margin_bottom = 51.0
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 3 )
+text = "("
+
 [node name="Control" type="Control" parent="HBoxContainer"]
-margin_left = 22.0
-margin_right = 39.94
-margin_bottom = 40.0
+margin_left = 110.0
+margin_right = 127.94
+margin_bottom = 51.0
 rect_min_size = Vector2( 17.94, 0 )
 
 [node name="exit" type="Button" parent="HBoxContainer"]
-margin_left = 43.0
-margin_right = 70.0
-margin_bottom = 40.0
+margin_left = 131.0
+margin_right = 164.0
+margin_bottom = 51.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 3 )
 text = "X"
@@ -238,14 +255,22 @@ text = "X"
 autoplay = "logo_idle"
 anims/logo_idle = SubResource( 4 )
 
-[node name="click" type="AudioStreamPlayer" parent="."]
-stream = ExtResource( 9 )
+[node name="audio" type="Node" parent="."]
+
+[node name="click" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource( 10 )
 volume_db = -8.723
 bus = "Effects"
+
+[node name="knob" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource( 11 )
+volume_db = -10.0
+bus = "knob"
 
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_GrabMe_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="zn_button" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
+[connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/exit" to="." method="play_click"]

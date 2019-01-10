@@ -1,4 +1,10 @@
-[gd_resource type="AudioBusLayout" format=2]
+[gd_resource type="AudioBusLayout" load_steps=2 format=2]
+
+[sub_resource type="AudioEffectReverb" id=1]
+
+resource_name = "Reverb"
+room_size = 0.05
+wet = 0.15
 
 [resource]
 
@@ -14,4 +20,12 @@ bus/2/mute = false
 bus/2/bypass_fx = false
 bus/2/volume_db = 0.0
 bus/2/send = "Master"
+bus/3/name = "knob"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = 0.0
+bus/3/send = "Effects"
+bus/3/effect/0/effect = SubResource( 1 )
+bus/3/effect/0/enabled = true
 
