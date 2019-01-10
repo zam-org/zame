@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=9]
 [ext_resource path="res://audio/effects/click.wav" type="AudioStream" id=10]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 
@@ -46,6 +47,12 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 0.0627451 ), Color( 1, 1, 1, 0.137255 ), Color( 1, 1, 1, 0.0627451 ) ]
 }
+
+[sub_resource type="ShaderMaterial" id=5]
+
+shader = ExtResource( 12 )
+shader_param/hdr_threshold = 0.01
+shader_param/bloom = 1.5
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -89,17 +96,17 @@ rect_min_size = Vector2( 53.7, 3.55 )
 
 [node name="SidePanel" type="VBoxContainer" parent="SidePanelSpace"]
 margin_left = 57.0
-margin_right = 484.0
+margin_right = 480.0
 margin_bottom = 720.0
 
 [node name="SpacerAtTheTop" type="Control" parent="SidePanelSpace/SidePanel"]
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 63.95
 rect_min_size = Vector2( 0, 63.95 )
 
 [node name="name" type="Label" parent="SidePanelSpace/SidePanel"]
 margin_top = 67.0
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 162.0
 custom_fonts/font = SubResource( 1 )
 text = "zame"
@@ -107,27 +114,27 @@ uppercase = true
 
 [node name="spacer" type="Control" parent="SidePanelSpace/SidePanel"]
 margin_top = 166.0
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 168.0
 rect_min_size = Vector2( 0, 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SidePanelSpace/SidePanel"]
 modulate = Color( 1, 1, 1, 0.643137 )
 margin_top = 172.0
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 205.0
 
 [node name="Label" type="Label" parent="SidePanelSpace/SidePanel/HBoxContainer"]
 margin_top = 6.0
-margin_right = 398.0
+margin_right = 394.0
 margin_bottom = 27.0
 custom_fonts/font = SubResource( 2 )
-text = "A game showcasing the Zero Frame Godot Engine addon"
+text = "A game showcasing the ZeroFrame Godot Engine addon"
 
 [node name="TextureRect2" type="TextureRect" parent="SidePanelSpace/SidePanel/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.486275 )
-margin_left = 402.0
-margin_right = 427.52
+margin_left = 398.0
+margin_right = 423.52
 margin_bottom = 33.0
 rect_min_size = Vector2( 25.52, 33 )
 texture = ExtResource( 3 )
@@ -136,13 +143,13 @@ stretch_mode = 6
 
 [node name="spacer3" type="Control" parent="SidePanelSpace/SidePanel"]
 margin_top = 209.0
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 234.0
 rect_min_size = Vector2( 0, 25 )
 
 [node name="Play" type="Button" parent="SidePanelSpace/SidePanel"]
 margin_top = 238.0
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 276.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
@@ -152,7 +159,7 @@ align = 0
 
 [node name="MapList" type="ItemList" parent="SidePanelSpace/SidePanel"]
 margin_top = 280.0
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 419.08
 rect_min_size = Vector2( 0, 139.08 )
 rect_pivot_offset = Vector2( 619.686, 73.718 )
@@ -161,12 +168,12 @@ items = [ "Default", null, false, "Map 2", null, false, "Map 3", null, false, "M
 
 [node name="grab_container" type="CenterContainer" parent="SidePanelSpace/SidePanel"]
 margin_top = 423.0
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 443.0
 
 [node name="GrabMe" type="TextureButton" parent="SidePanelSpace/SidePanel/grab_container"]
-margin_left = 198.0
-margin_right = 229.0
+margin_left = 196.0
+margin_right = 227.0
 margin_bottom = 20.0
 focus_mode = 0
 mouse_default_cursor_shape = 6
@@ -181,13 +188,13 @@ stretch_mode = 2
 
 [node name="spacer4" type="Control" parent="SidePanelSpace/SidePanel"]
 margin_top = 447.0
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 461.7
 rect_min_size = Vector2( 0, 14.7 )
 
 [node name="Update" type="Button" parent="SidePanelSpace/SidePanel"]
 margin_top = 465.0
-margin_right = 427.0
+margin_right = 423.0
 margin_bottom = 503.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
@@ -265,6 +272,12 @@ bus = "Effects"
 stream = ExtResource( 11 )
 volume_db = -10.0
 bus = "knob"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+material = SubResource( 5 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_Play_pressed"]

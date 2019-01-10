@@ -1,12 +1,13 @@
-[gd_scene format=2]
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+
 
 [node name="2x2" type="StaticBody2D"]
-editor/display_folded = true
-position = Vector2( 60, 0 )
-
-[node name="col" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -10, 10, -10, -10, 10, -10, 10, 10 )
 
 [node name="shape" type="Polygon2D" parent="."]
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
+
+[node name="col" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
 
