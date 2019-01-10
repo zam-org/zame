@@ -65,4 +65,9 @@ func play_knob_turn() -> void:
 	$audio/knob.play()
 
 func _on_MapList_item_selected(index):
+	play_click()
 	save_setting("main_menu", "selected_map", index)
+
+
+func _on_zn_button_pressed():
+	OS.shell_open("https://zeronet.io")

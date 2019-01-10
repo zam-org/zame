@@ -271,6 +271,7 @@ bus = "knob"
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_GrabMe_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="zn_button" to="." method="play_click"]
+[connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/exit" to="." method="play_click"]
