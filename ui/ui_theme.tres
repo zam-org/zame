@@ -1,6 +1,7 @@
-[gd_resource type="Theme" load_steps=17 format=2]
+[gd_resource type="Theme" load_steps=18 format=2]
 
-[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=1]
+[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=2]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -63,7 +64,7 @@ bg_color = Color( 0.858824, 0.152941, 0.152941, 1 )
 [sub_resource type="DynamicFont" id=14]
 
 use_filter = true
-font_data = ExtResource( 1 )
+font_data = ExtResource( 2 )
 
 [resource]
 
@@ -466,7 +467,7 @@ VSlider/styles/grabber_highlight = null
 VSlider/styles/slider = null
 VSplitContainer/constants/autohide = 1
 VSplitContainer/constants/separation = 12
-VSplitContainer/icons/grabber = null
+VSplitContainer/icons/grabber = ExtResource( 1 )
 VSplitContainer/styles/bg = null
 WindowDialog/colors/title_color = Color( 0, 0, 0, 1 )
 WindowDialog/constants/close_h_ofs = 18

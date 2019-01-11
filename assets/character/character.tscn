@@ -75,7 +75,7 @@ collision_mask = 4
 polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 
 [node name="col" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -8.28889, 0.0458393, -9.61573, -1.08212, -9.56378, -39.5696, 9.71285, -39.5469, 9.72618, -1.25308, 7.98121, 0.0458393 )
+polygon = PoolVector2Array( -8.35726, -0.193426, -9.61573, -1.08212, -9.56378, -39.5696, 9.71285, -39.5469, 9.72618, -1.25308, 8.04957, -0.261787 )
 
 [node name="shape" type="Polygon2D" parent="."]
 material = SubResource( 2 )
