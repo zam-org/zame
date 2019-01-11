@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/character/character.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/coin.wav" type="AudioStream" id=2]
+[ext_resource path="res://audio/effects/jump.wav" type="AudioStream" id=3]
 
 [sub_resource type="Shader" id=1]
 
@@ -75,7 +76,7 @@ collision_mask = 4
 polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 
 [node name="col" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -8.35726, -0.193426, -9.61573, -1.08212, -9.56378, -39.5696, 9.71285, -39.5469, 9.72618, -1.25308, 8.04957, -0.261787 )
+polygon = PoolVector2Array( -7.57109, -0.193428, -8.86997, -1.11631, -9.56378, -39.5696, 9.71285, -39.5469, 8.49392, -1.21885, 6.81906, -0.295971 )
 
 [node name="shape" type="Polygon2D" parent="."]
 material = SubResource( 2 )
@@ -88,6 +89,11 @@ antialiased = true
 
 [node name="coin" type="AudioStreamPlayer" parent="audio"]
 stream = ExtResource( 2 )
+volume_db = -10.0
+bus = "knob"
+
+[node name="jump" type="AudioStreamPlayer" parent="audio"]
+stream = ExtResource( 3 )
 volume_db = -10.0
 bus = "knob"
 

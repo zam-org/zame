@@ -20,6 +20,7 @@ const JUMP_POWER = 10000
 
 #	did anyone say signals?
 signal coin
+signal death
 
 func _process(delta):
 	send_tilt_info(delta)
@@ -58,6 +59,7 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("up") && is_on_floor():
 		$animations.play("jump")
+		play_jump_sound()
 		motion.y -= JUMP_POWER * delta
 	
 	if jump_pad:
@@ -87,6 +89,13 @@ func _on_check_body_entered(body):
 		body.queue_free()
 		$audio/coin.play()
 		emit_signal("coin")
+	elif body.is_in_group("mine"):
+		yield(get_tree(), 'idle_frame')
+		emit_signal("death")
+		
 	elif body.is_in_group("jump_pad"):
 		jump_pad = true
 		print("JUMP PAD")
+
+func play_jump_sound() -> void:
+	$audio/jump.play()

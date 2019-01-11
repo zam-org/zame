@@ -3,9 +3,10 @@ extends Node2D
 onready var two : PackedScene = preload("res://assets/platforms/two/two.tscn") 
 onready var coin : PackedScene = preload("res://assets/coin/coin.tscn") 
 onready var jump_pad : PackedScene = preload("res://assets/jump_pad/jump_pad.tscn") 
+onready var mine : PackedScene = preload("res://assets/mine/mine.tscn") 
 
 var toolkit : Array
-var selected_tool
+var selected_tool : int
 
 var grid_size = 20
 var building_piece
@@ -16,6 +17,7 @@ func _ready():
 	toolkit.append(two)
 	toolkit.append(coin)
 	toolkit.append(jump_pad)
+	toolkit.append(mine)	
 	selected_tool = 0
 	reload()
 
@@ -87,17 +89,19 @@ func reload(clean : bool = false) -> void:
 func _on_Block_pressed():
 	selected_tool = 0
 	reload(true)
-
+	
+func _on_coin_pressed():
+	selected_tool = 1
+	reload(true)
 
 func _on_JumpPad_pressed():
 	selected_tool = 2
 	reload(true)
 
-
-func _on_coin_pressed():
-	selected_tool = 1
+func _on_Mine_pressed():
+	selected_tool = 3
 	reload(true)
-
 
 func _on_Reset_pressed():
 	get_tree().reload_current_scene()
+
