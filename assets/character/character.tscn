@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/character/character.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/coin.wav" type="AudioStream" id=2]
 
-[sub_resource type="Shader" id=2]
+[sub_resource type="Shader" id=1]
 
 code = "shader_type canvas_item;
 
@@ -19,12 +19,12 @@ void vertex(){
 }
 "
 
-[sub_resource type="ShaderMaterial" id=3]
+[sub_resource type="ShaderMaterial" id=2]
 
-shader = SubResource( 2 )
+shader = SubResource( 1 )
 shader_param/disp = Vector2( 0, 0 )
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 
 length = 0.25
 tracks/0/type = "bezier"
@@ -50,7 +50,7 @@ tracks/1/keys = {
 "values": [ Vector2( 0, -2 ), Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 
 length = 0.25
 tracks/0/type = "bezier"
@@ -75,10 +75,10 @@ collision_mask = 4
 polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 
 [node name="col" type="CollisionPolygon2D" parent="."]
-polygon = PoolVector2Array( -9.6172, 0.00886631, -9.56378, -39.5696, 9.71285, -39.5469, 9.72663, 0.0147314 )
+polygon = PoolVector2Array( -8.28889, 0.0458393, -9.61573, -1.08212, -9.56378, -39.5696, 9.71285, -39.5469, 9.72618, -1.25308, 7.98121, 0.0458393 )
 
 [node name="shape" type="Polygon2D" parent="."]
-material = SubResource( 3 )
+material = SubResource( 2 )
 scale = Vector2( 1, 1.00277 )
 polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 uv = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
@@ -92,8 +92,8 @@ volume_db = -10.0
 bus = "knob"
 
 [node name="animations" type="AnimationPlayer" parent="."]
-anims/jump = SubResource( 4 )
-anims/landing = SubResource( 5 )
+anims/jump = SubResource( 3 )
+anims/landing = SubResource( 4 )
 
 [node name="floor_check" type="RayCast2D" parent="."]
 position = Vector2( 0, -5.11208 )

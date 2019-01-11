@@ -22,16 +22,8 @@ const JUMP_POWER = 10000
 signal coin
 
 func _process(delta):
-	var mat = $shape.material
-	
-#	tilt direction changes depending on whether we're falling or gaining altitude
-	if motion.y > 0.1:
-		smooth_tilt = smooth_tilt.linear_interpolate(-motion, 3 * delta)
-	else:
-		smooth_tilt = smooth_tilt.linear_interpolate(motion, 10 * delta)
+	send_tilt_info(delta)
 		
-	mat.set_shader_param('disp', smooth_tilt / 10)
-	
 	#	raycast to check for ground as "_is_on_floor()" was acting up
 	if $floor_check.is_colliding():
 		in_air = false
@@ -73,6 +65,22 @@ func _physics_process(delta):
 		jump_pad = false
 	
 	motion = move_and_slide(motion, Vector2(0,-1), false, 4, -0.1, true)
+	
+#	tilt direction changes depending on whether we're falling or gaining altitude	
+func send_tilt_info(delta) -> void:
+	var mat = $shape.material
+	
+	if motion.y > 0.1:
+		smooth_tilt = smooth_tilt.linear_interpolate(-motion, 3 * delta)
+	else:
+		smooth_tilt = smooth_tilt.linear_interpolate(motion, 10 * delta)
+	
+	if Input.is_action_pressed("left"):
+		smooth_tilt.y = smooth_tilt.y + (smooth_tilt.x / 7)
+	if Input.is_action_pressed("right"):
+		smooth_tilt.y = smooth_tilt.y - (smooth_tilt.x / 7)
+	
+	mat.set_shader_param('disp', Vector2(smooth_tilt.x / 20, (smooth_tilt.y * -1) / 10))		
 	
 func _on_check_body_entered(body):
 	if body.is_in_group("coin"):

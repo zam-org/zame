@@ -10,26 +10,29 @@ var selected_tool
 var grid_size = 20
 var building_piece
 
+var can_build : bool = true
 
 func _ready():
 	toolkit.append(two)
 	toolkit.append(coin)
-	toolkit.append(coin)	
 	toolkit.append(jump_pad)
 	selected_tool = 0
 	reload()
 
-func _input(event):
+func _unhandled_input(event):
 	if event is InputEventMouseButton:
-		if event.button_index == 4:
+		if event.button_index == 1 and event.pressed and can_build == true:
+			build_current_piece()
+			
+		#switch tools
+		if event.button_index == 4 and event.pressed:
 			if selected_tool > 0:
 				selected_tool -= 1
 				reload(true)
-		elif event.button_index == 5:
+		elif event.button_index == 5 and event.pressed:
 			if selected_tool < toolkit.size() - 1 :
 				selected_tool += 1
 				reload(true)
-		print(selected_tool)
 
 func _process(delta):
 	var grid_pos = get_local_mouse_position()
@@ -45,33 +48,56 @@ func _process(delta):
 				if i.is_in_group("delete"):
 					i.queue_free()
 	
-	if building_piece != null:
+	if can_build:
 		building_piece.position = grid_pos
 	
-		if Input.is_mouse_button_pressed(1) and $delete.get_overlapping_bodies().size() == 0:
-			building_piece.modulate.a = 1
-			building_piece.add_to_group("delete")
-			
-			#	set up collision based on what the item is
-			#	1 - static
-			#	2 - pickup, eg. coins
-			#	3 - traps
-			
-			if building_piece.is_in_group('small'):
-				building_piece.set_collision_layer_bit(2,true)
-				building_piece.get_node("build_check").set_collision_layer_bit(10, true)
-			else:
-				building_piece.set_collision_layer_bit(1,true)
-			building_piece = null
-			reload()
-			
-			
+func build_current_piece():
+	if $delete.get_overlapping_bodies().size() > 0:
+		return
+	building_piece.modulate.a = 1
+	building_piece.add_to_group("delete")
+	
+	#	set up collision based on what the item is
+	#	1 - static
+	#	2 - pickup, eg. coins
+	#	3 - traps
+	
+	if building_piece.is_in_group('small'):
+		building_piece.set_collision_layer_bit(2,true)
+		building_piece.get_node("build_check").set_collision_layer_bit(10, true)
+	else:
+		building_piece.set_collision_layer_bit(1,true)
+		building_piece = null
+	reload()
+	
 func reload(clean : bool = false) -> void:
 	if clean:
+		can_build = false
 		building_piece.queue_free()
 		building_piece = null
 	var new = toolkit[selected_tool].instance()
 	new.modulate.a = 0.5
 	add_child(new)
 	building_piece = new
+	can_build = true
 	print(building_piece.name)
+	print(get_children())
+
+###	UI SELECTION OF TOOLS SINGALS
+func _on_Block_pressed():
+	selected_tool = 0
+	reload(true)
+
+
+func _on_JumpPad_pressed():
+	selected_tool = 2
+	reload(true)
+
+
+func _on_coin_pressed():
+	selected_tool = 1
+	reload(true)
+
+
+func _on_Reset_pressed():
+	get_tree().reload_current_scene()
