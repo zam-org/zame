@@ -14,6 +14,7 @@ var building_piece
 var can_build : bool = true
 
 func _ready():
+	toolkit.clear()
 	toolkit.append(two)
 	toolkit.append(coin)
 	toolkit.append(jump_pad)
@@ -82,8 +83,6 @@ func reload(clean : bool = false) -> void:
 	add_child(new)
 	building_piece = new
 	can_build = true
-	print(building_piece.name)
-	print(get_children())
 
 ###	UI SELECTION OF TOOLS SINGALS
 func _on_Block_pressed():

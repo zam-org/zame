@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=2]
@@ -22,37 +22,44 @@
 [ext_resource path="res://ui/buttons/build_tools/skull_hover.png" type="Texture" id=20]
 [ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=21]
 [ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=22]
+[ext_resource path="res://ui/crosshair.png" type="Texture" id=23]
+[ext_resource path="res://assets/grid/grid_shader.tres" type="Material" id=24]
+[ext_resource path="res://assets/grid/grid_texture.png" type="Texture" id=25]
+[ext_resource path="res://assets/grid/grid.gd" type="Script" id=26]
+[ext_resource path="res://assets/grid/big_grid_shader.tres" type="Material" id=27]
+[ext_resource path="res://assets/grid/big_grid.png" type="Texture" id=28]
+[ext_resource path="res://assets/grid/big_grid.gd" type="Script" id=29]
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=1]
 
 size = 40
 font_data = ExtResource( 6 )
 
-[sub_resource type="CircleShape2D" id=5]
+[sub_resource type="CircleShape2D" id=2]
 
 radius = 1.5546
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=3]
 
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=4]
 
 shader = ExtResource( 7 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=5]
 
 size = 12
 use_filter = true
 font_data = ExtResource( 10 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=6]
 
 size = 36
 font_data = ExtResource( 6 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=7]
 
 size = 24
 font_data = ExtResource( 6 )
@@ -89,7 +96,7 @@ margin_left = -11.3318
 margin_top = -20.1455
 margin_right = 16.6682
 margin_bottom = 19.8545
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 1, 1, 1, 0.392157 )
 text = "^"
 
@@ -100,40 +107,40 @@ collision_layer = 2
 collision_mask = 1054
 
 [node name="col" type="CollisionShape2D" parent="level/delete"]
-shape = SubResource( 5 )
+shape = SubResource( 2 )
 
 [node name="shape" type="Polygon2D" parent="level/delete"]
 visible = false
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
-[node name="2x2" type="StaticBody2D" parent="level" groups=[
+[node name="StartingBlockTwo" type="StaticBody2D" parent="level" groups=[
 "delete",
 ]]
-editor/display_folded = true
 position = Vector2( 700.177, -379.738 )
 collision_layer = 3
 
-[node name="shape" type="Polygon2D" parent="level/2x2"]
+[node name="shape" type="Polygon2D" parent="level/StartingBlockTwo"]
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
-[node name="col" type="CollisionShape2D" parent="level/2x2"]
-shape = SubResource( 4 )
+[node name="col" type="CollisionShape2D" parent="level/StartingBlockTwo"]
+shape = SubResource( 3 )
 
-[node name="2x3" type="StaticBody2D" parent="level" groups=[
+[node name="StartingBlockOne" type="StaticBody2D" parent="level" groups=[
 "delete",
 ]]
 editor/display_folded = true
 position = Vector2( 720.135, -379.738 )
 collision_layer = 3
 
-[node name="shape" type="Polygon2D" parent="level/2x3"]
+[node name="shape" type="Polygon2D" parent="level/StartingBlockOne"]
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
-[node name="col" type="CollisionShape2D" parent="level/2x3"]
-shape = SubResource( 4 )
+[node name="col" type="CollisionShape2D" parent="level/StartingBlockOne"]
+shape = SubResource( 3 )
 
 [node name="bloom" type="ColorRect" parent="."]
-material = SubResource( 6 )
+editor/display_folded = true
+material = SubResource( 4 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -148,58 +155,60 @@ script = ExtResource( 8 )
 
 [node name="tween" type="Tween" parent="bloom"]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="UI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
-[node name="ItemList" type="ColorRect" parent="CanvasLayer"]
+[node name="ItemList" type="ColorRect" parent="UI"]
 anchor_bottom = 1.0
 margin_right = 70.0
 rect_min_size = Vector2( 70, 0 )
 theme = ExtResource( 9 )
 color = Color( 0.211765, 0.137255, 0.301961, 0.462745 )
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer/ItemList"]
+[node name="ShadowTop" type="ColorRect" parent="UI/ItemList"]
 anchor_right = 1.0
-rect_min_size = Vector2( 0, 324.61 )
+margin_bottom = 269.0
+rect_min_size = Vector2( 0, 256.97 )
 color = Color( 0, 0, 0, 0.239216 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ItemList"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ItemList"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="ScrollContainer" type="ScrollContainer" parent="CanvasLayer/ItemList/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="UI/ItemList/VBoxContainer"]
 margin_right = 71.0
-margin_bottom = 316.31
-rect_min_size = Vector2( 0, 316.31 )
+margin_bottom = 268.29
+rect_min_size = Vector2( 0, 268.29 )
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ItemList/VBoxContainer/ScrollContainer"]
 margin_right = 65.0
-margin_bottom = 364.0
+margin_bottom = 324.0
 rect_min_size = Vector2( 65, 0 )
 alignment = 1
 
-[node name="Control3" type="Control" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Control3" type="Control" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_right = 65.0
 margin_bottom = 12.47
 rect_min_size = Vector2( 5.7, 12.47 )
 
-[node name="Label3" type="Label" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 16.0
 margin_right = 65.0
 margin_bottom = 33.0
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
 text = "Tools"
 align = 1
 uppercase = true
 
-[node name="Control9" type="Control" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Control9" type="Control" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 37.0
 margin_right = 65.0
 margin_bottom = 44.1
 rect_min_size = Vector2( 5.7, 7.1 )
 
-[node name="Block" type="TextureButton" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Block" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 48.0
 margin_right = 65.0
 margin_bottom = 75.68
@@ -211,13 +220,13 @@ texture_hover = ExtResource( 12 )
 expand = true
 stretch_mode = 5
 
-[node name="Control4" type="Control" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Control4" type="Control" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 79.0
 margin_right = 65.0
 margin_bottom = 84.59
 rect_min_size = Vector2( 5.7, 5.59 )
 
-[node name="Finish" type="TextureButton" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Finish" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 88.0
 margin_right = 65.0
 margin_bottom = 115.68
@@ -229,13 +238,13 @@ texture_hover = ExtResource( 14 )
 expand = true
 stretch_mode = 5
 
-[node name="Control5" type="Control" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Control5" type="Control" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 119.0
 margin_right = 65.0
 margin_bottom = 124.59
 rect_min_size = Vector2( 5.7, 5.59 )
 
-[node name="JumpPad" type="TextureButton" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="JumpPad" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 128.0
 margin_right = 65.0
 margin_bottom = 155.68
@@ -247,13 +256,13 @@ texture_hover = ExtResource( 16 )
 expand = true
 stretch_mode = 5
 
-[node name="Control6" type="Control" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Control6" type="Control" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 159.0
 margin_right = 65.0
 margin_bottom = 164.59
 rect_min_size = Vector2( 5.7, 5.59 )
 
-[node name="Mine" type="TextureButton" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Mine" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 168.0
 margin_right = 65.0
 margin_bottom = 195.68
@@ -265,13 +274,13 @@ texture_hover = ExtResource( 18 )
 expand = true
 stretch_mode = 5
 
-[node name="Control7" type="Control" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Control7" type="Control" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 199.0
 margin_right = 65.0
 margin_bottom = 204.59
 rect_min_size = Vector2( 5.7, 5.59 )
 
-[node name="DeathArea" type="TextureButton" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="DeathArea" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 208.0
 margin_right = 65.0
 margin_bottom = 235.68
@@ -283,127 +292,127 @@ texture_hover = ExtResource( 20 )
 expand = true
 stretch_mode = 5
 
-[node name="Control8" type="Control" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Control8" type="Control" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 239.0
 margin_right = 65.0
 margin_bottom = 244.59
 rect_min_size = Vector2( 5.7, 5.59 )
 
-[node name="coin" type="Button" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="coin" type="Button" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 248.0
 margin_right = 65.0
 margin_bottom = 284.0
 hint_tooltip = "Coin"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "$"
 
-[node name="Spawn" type="Button" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Spawn" type="Button" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 288.0
 margin_right = 65.0
 margin_bottom = 324.0
 hint_tooltip = "Player spawn point"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "+"
 
-[node name="Reset" type="Button" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 328.0
-margin_right = 65.0
-margin_bottom = 364.0
-hint_tooltip = "Reset level"
-theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
-text = "R"
-
-[node name="Control" type="Control" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 320.0
+[node name="Control" type="Control" parent="UI/ItemList/VBoxContainer"]
+margin_top = 272.0
 margin_right = 71.0
-margin_bottom = 344.37
-rect_min_size = Vector2( 0, 24.37 )
+margin_bottom = 281.17
+rect_min_size = Vector2( 0, 9.17 )
 
-[node name="Label2" type="Label" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 348.0
+[node name="Label2" type="Label" parent="UI/ItemList/VBoxContainer"]
+margin_top = 285.0
 margin_right = 71.0
-margin_bottom = 365.0
+margin_bottom = 302.0
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
 text = "GAME"
 align = 1
 uppercase = true
 
-[node name="CenterPlayer6" type="Button" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 369.0
+[node name="Reset" type="Button" parent="UI/ItemList/VBoxContainer"]
+margin_top = 306.0
 margin_right = 71.0
-margin_bottom = 405.0
+margin_bottom = 342.0
+hint_tooltip = "Reset level"
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 6 )
+text = "R"
+
+[node name="CenterPlayer6" type="Button" parent="UI/ItemList/VBoxContainer"]
+margin_top = 346.0
+margin_right = 71.0
+margin_bottom = 382.0
 hint_tooltip = "Center Player"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "u"
 
-[node name="Play" type="Button" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 409.0
+[node name="Play" type="Button" parent="UI/ItemList/VBoxContainer"]
+margin_top = 386.0
 margin_right = 71.0
-margin_bottom = 445.0
+margin_bottom = 422.0
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = ">"
 
-[node name="Upload" type="Button" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 449.0
+[node name="Upload" type="Button" parent="UI/ItemList/VBoxContainer"]
+margin_top = 426.0
 margin_right = 71.0
-margin_bottom = 485.0
+margin_bottom = 462.0
 hint_tooltip = "Upload to ZeroNet"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "]"
 
-[node name="Download" type="Button" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 489.0
+[node name="Download" type="Button" parent="UI/ItemList/VBoxContainer"]
+margin_top = 466.0
 margin_right = 71.0
-margin_bottom = 525.0
+margin_bottom = 502.0
 hint_tooltip = "Save"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "D"
 
-[node name="Share" type="Button" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 529.0
+[node name="Share" type="Button" parent="UI/ItemList/VBoxContainer"]
+margin_top = 506.0
 margin_right = 71.0
-margin_bottom = 565.0
+margin_bottom = 542.0
 hint_tooltip = "Share"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "o"
 
-[node name="Remove" type="Button" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 569.0
+[node name="Remove" type="Button" parent="UI/ItemList/VBoxContainer"]
+margin_top = 546.0
 margin_right = 71.0
-margin_bottom = 605.0
+margin_bottom = 582.0
 hint_tooltip = "Delete from disk"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "X"
 
-[node name="MapList" type="Button" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 609.0
+[node name="MapList" type="Button" parent="UI/ItemList/VBoxContainer"]
+margin_top = 586.0
 margin_right = 71.0
-margin_bottom = 645.0
+margin_bottom = 622.0
 hint_tooltip = "Map list"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "4"
 
-[node name="ScrollContainer2" type="ScrollContainer" parent="CanvasLayer/ItemList/VBoxContainer"]
-margin_top = 649.0
+[node name="ScrollContainer2" type="ScrollContainer" parent="UI/ItemList/VBoxContainer"]
+margin_top = 626.0
 margin_right = 71.0
-margin_bottom = 649.0
+margin_bottom = 626.0
 scroll_horizontal_enabled = false
 
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/ItemList/VBoxContainer/ScrollContainer2"]
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/ItemList/VBoxContainer/ScrollContainer2"]
 alignment = 1
 
-[node name="ZeroNetLogo" type="VBoxContainer" parent="CanvasLayer/ItemList"]
+[node name="ZeroNetLogo" type="VBoxContainer" parent="UI/ItemList"]
 editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
@@ -413,7 +422,7 @@ margin_left = -25.0
 margin_top = -51.0
 margin_right = 25.0
 
-[node name="ZeroNet" type="TextureButton" parent="CanvasLayer/ItemList/ZeroNetLogo"]
+[node name="ZeroNet" type="TextureButton" parent="UI/ItemList/ZeroNetLogo"]
 margin_right = 50.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
@@ -422,13 +431,13 @@ texture_hover = ExtResource( 22 )
 expand = true
 stretch_mode = 5
 
-[node name="Control2" type="Control" parent="CanvasLayer/ItemList/ZeroNetLogo"]
+[node name="Control2" type="Control" parent="UI/ItemList/ZeroNetLogo"]
 margin_top = 36.0
 margin_right = 50.0
 margin_bottom = 51.39
 rect_min_size = Vector2( 5.7, 15.39 )
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer/ItemList"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/ItemList"]
 editor/display_folded = true
 anchor_top = 1.0
 anchor_right = 1.0
@@ -438,26 +447,26 @@ grow_vertical = 0
 rect_min_size = Vector2( 0, 63.26 )
 mouse_filter = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/ItemList/VBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/ItemList/VBoxContainer2"]
 margin_right = 70.0
 margin_bottom = 24.0
 grow_vertical = 0
 mouse_filter = 2
 alignment = 2
 
-[node name="logged_in" type="Label" parent="CanvasLayer/ItemList/VBoxContainer2/HBoxContainer"]
+[node name="logged_in" type="Label" parent="UI/ItemList/VBoxContainer2/HBoxContainer"]
 margin_left = 41.0
 margin_right = 61.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0.78, 0 )
 hint_tooltip = "ZeroNet profile"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.894118, 0.945098, 0.443137, 1 )
 text = "%"
 align = 2
 
-[node name="not_logged_in2" type="Label" parent="CanvasLayer/ItemList/VBoxContainer2/HBoxContainer"]
+[node name="not_logged_in2" type="Label" parent="UI/ItemList/VBoxContainer2/HBoxContainer"]
 visible = false
 margin_left = 23.0
 margin_right = 42.0
@@ -465,23 +474,55 @@ margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0.78, 0 )
 hint_tooltip = "ZeroNet profile"
 theme = ExtResource( 9 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 0.470588, 0.00392157, 1 )
 text = "!"
 align = 2
 
-[node name="Control" type="Control" parent="CanvasLayer/ItemList/VBoxContainer2/HBoxContainer"]
+[node name="Control" type="Control" parent="UI/ItemList/VBoxContainer2/HBoxContainer"]
 margin_left = 65.0
 margin_right = 70.7
 margin_bottom = 24.0
 rect_min_size = Vector2( 5.7, 0 )
 
+[node name="TextureRect" type="TextureRect" parent="UI"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -20.0
+margin_top = -20.0
+margin_right = 20.0
+margin_bottom = 20.0
+mouse_filter = 2
+texture = ExtResource( 23 )
+expand = true
+stretch_mode = 4
+
+[node name="grid" type="Polygon2D" parent="."]
+visible = false
+material = ExtResource( 24 )
+position = Vector2( -97.4001, -27.0374 )
+polygon = PoolVector2Array( -55, -55, 55, -55, 55, 55, -55, 55 )
+antialiased = true
+texture = ExtResource( 25 )
+script = ExtResource( 26 )
+
+[node name="big_grid" type="Polygon2D" parent="."]
+material = ExtResource( 27 )
+position = Vector2( -97.4001, -27.0374 )
+polygon = PoolVector2Array( -150, -150, 150, -150, 150, 150, -150, 150 )
+antialiased = true
+texture = ExtResource( 28 )
+texture_offset = Vector2( 150.87, 150 )
+script = ExtResource( 29 )
+
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
-[connection signal="pressed" from="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
-[connection signal="pressed" from="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/JumpPad" to="level" method="_on_JumpPad_pressed"]
-[connection signal="pressed" from="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Mine" to="level" method="_on_Mine_pressed"]
-[connection signal="pressed" from="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
-[connection signal="pressed" from="CanvasLayer/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
-[connection signal="pressed" from="CanvasLayer/ItemList/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
+[connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
+[connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/JumpPad" to="level" method="_on_JumpPad_pressed"]
+[connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Mine" to="level" method="_on_Mine_pressed"]
+[connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
+[connection signal="pressed" from="UI/ItemList/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
+[connection signal="pressed" from="UI/ItemList/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
