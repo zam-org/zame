@@ -24,6 +24,6 @@ void fragment(){
 
 shader = SubResource( 1 )
 shader_param/alpha_multiplier = 0.4
-shader_param/location = Vector2( -0.732839, 0.877109 )
+shader_param/location = Vector2( -0.459822, -0.340898 )
 shader_param/alpha_texture = ExtResource( 1 )
 

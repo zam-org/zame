@@ -6,6 +6,7 @@ func _ready():
 	$crosshair.position = Vector2()
 
 func _process(delta):
+	$bloom.rect_position = $Camera.position + Vector2(-640, -360)
 	#position crosshair
 	var grid_pos = $Camera.position
 	grid_pos.x = round(grid_pos.x/grid_size) * grid_size

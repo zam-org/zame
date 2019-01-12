@@ -6,7 +6,7 @@
 [ext_resource path="res://ui/crosshair.png" type="Texture" id=4]
 [ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/builder.gd" type="Script" id=6]
-[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=7]
+[ext_resource path="res://ui/editor/player_spawn.png" type="Texture" id=7]
 [ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=8]
 [ext_resource path="res://scripts/bloom.gd" type="Script" id=9]
 [ext_resource path="res://ui/ui_theme.tres" type="Theme" id=10]
@@ -21,19 +21,15 @@
 [ext_resource path="res://ui/buttons/build_tools/mine_hover.png" type="Texture" id=19]
 [ext_resource path="res://ui/buttons/build_tools/skull_idle.png" type="Texture" id=20]
 [ext_resource path="res://ui/buttons/build_tools/skull_hover.png" type="Texture" id=21]
-[ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=22]
-[ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=23]
-[ext_resource path="res://assets/grid/grid_shader.tres" type="Material" id=24]
-[ext_resource path="res://assets/grid/grid_texture.png" type="Texture" id=25]
-[ext_resource path="res://assets/grid/grid.gd" type="Script" id=26]
-[ext_resource path="res://assets/grid/big_grid_shader.tres" type="Material" id=27]
-[ext_resource path="res://assets/grid/big_grid.png" type="Texture" id=28]
-[ext_resource path="res://assets/grid/big_grid.gd" type="Script" id=29]
-
-[sub_resource type="DynamicFont" id=1]
-
-size = 40
-font_data = ExtResource( 7 )
+[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=22]
+[ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=23]
+[ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=24]
+[ext_resource path="res://assets/grid/grid_shader.tres" type="Material" id=25]
+[ext_resource path="res://assets/grid/grid_texture.png" type="Texture" id=26]
+[ext_resource path="res://assets/grid/grid.gd" type="Script" id=27]
+[ext_resource path="res://assets/grid/big_grid_shader.tres" type="Material" id=28]
+[ext_resource path="res://assets/grid/big_grid.png" type="Texture" id=29]
+[ext_resource path="res://assets/grid/big_grid.gd" type="Script" id=30]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -57,12 +53,12 @@ font_data = ExtResource( 11 )
 [sub_resource type="DynamicFont" id=6]
 
 size = 36
-font_data = ExtResource( 7 )
+font_data = ExtResource( 22 )
 
 [sub_resource type="DynamicFont" id=7]
 
 size = 24
-font_data = ExtResource( 7 )
+font_data = ExtResource( 22 )
 
 [node name="game" type="Node2D"]
 script = ExtResource( 1 )
@@ -91,17 +87,12 @@ texture = ExtResource( 4 )
 script = ExtResource( 6 )
 
 [node name="SpawnPos" type="Position2D" parent="level"]
-editor/display_folded = true
 position = Vector2( 1.22668, -45.1002 )
 
-[node name="Polygon2D" type="Label" parent="level/SpawnPos"]
-margin_left = -11.3318
-margin_top = -20.1455
-margin_right = 16.6682
-margin_bottom = 19.8545
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 1, 1, 1, 0.392157 )
-text = "^"
+[node name="player_spawn" type="Sprite" parent="level/SpawnPos"]
+modulate = Color( 1, 1, 1, 0.254902 )
+position = Vector2( -0.113434, -36.0551 )
+texture = ExtResource( 7 )
 
 [node name="delete" type="Area2D" parent="level"]
 editor/display_folded = true
@@ -115,19 +106,6 @@ shape = SubResource( 2 )
 [node name="shape" type="Polygon2D" parent="level/delete"]
 visible = false
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
-
-[node name="StartingBlockTwo" type="StaticBody2D" parent="level" groups=[
-"delete",
-]]
-editor/display_folded = true
-position = Vector2( -20, 60 )
-collision_layer = 3
-
-[node name="shape" type="Polygon2D" parent="level/StartingBlockTwo"]
-polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
-
-[node name="col" type="CollisionShape2D" parent="level/StartingBlockTwo"]
-shape = SubResource( 3 )
 
 [node name="StartingBlockOne" type="StaticBody2D" parent="level" groups=[
 "delete",
@@ -149,17 +127,21 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -667.901
-margin_top = -432.261
-margin_right = 729.099
-margin_bottom = 412.739
-rect_min_size = Vector2( 500, 500 )
+margin_left = -690.0
+margin_top = -420.0
+margin_right = 707.0
+margin_bottom = 425.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 2500, 2000 )
+rect_pivot_offset = Vector2( 1250, 1000 )
 mouse_filter = 2
 script = ExtResource( 9 )
 
 [node name="tween" type="Tween" parent="bloom"]
 
 [node name="UI" type="CanvasLayer" parent="."]
+editor/display_folded = true
 
 [node name="ItemList" type="ColorRect" parent="UI"]
 anchor_bottom = 1.0
@@ -429,8 +411,8 @@ margin_right = 25.0
 margin_right = 50.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-texture_normal = ExtResource( 22 )
-texture_hover = ExtResource( 23 )
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
 expand = true
 stretch_mode = 5
 
@@ -490,21 +472,21 @@ rect_min_size = Vector2( 5.7, 0 )
 
 [node name="grid" type="Polygon2D" parent="."]
 visible = false
-material = ExtResource( 24 )
-position = Vector2( -219.852, 263.133 )
+material = ExtResource( 25 )
+position = Vector2( -137.947, -102.269 )
 polygon = PoolVector2Array( -55, -55, 55, -55, 55, 55, -55, 55 )
 antialiased = true
-texture = ExtResource( 25 )
-script = ExtResource( 26 )
+texture = ExtResource( 26 )
+script = ExtResource( 27 )
 
 [node name="big_grid" type="Polygon2D" parent="."]
-material = ExtResource( 27 )
-position = Vector2( -219.852, 263.133 )
+material = ExtResource( 28 )
+position = Vector2( -137.947, -102.269 )
 polygon = PoolVector2Array( -300, -300, 300, -300, 300, 300, -300, 300 )
 antialiased = true
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 texture_offset = Vector2( 300, 300 )
-script = ExtResource( 29 )
+script = ExtResource( 30 )
 
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
