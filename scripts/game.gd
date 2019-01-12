@@ -23,11 +23,16 @@ func _process(delta):
 		
 	$DeathZone/Label.rect_position.x = $Camera.position.x + 450
 
+func play_click() -> void:
+	$Audio/Click.play()
+
 func _on_CenterPlayer6_pressed() -> void:
+	play_click()
 	$character.motion = Vector2()
-	$character.position = $Camera.position
+	$character.position = $crosshair.position
 
 func _on_character_death() -> void:
+	play_click()
 	reset_character_pos()
 	
 func reset_character_pos() -> void:
@@ -36,12 +41,15 @@ func reset_character_pos() -> void:
 
 #	the button to change player spawn point moves the player spawn to the center of camera
 func _on_Spawn_pressed() -> void:
+	play_click()
 	$level/SpawnPos.position = $crosshair.position
 
 func _on_Finish_pressed() -> void:
+	play_click()
 	$Finish.position = $crosshair.position
 
 func _on_DeathArea_pressed() -> void:
+	play_click()
 	if $crosshair.position.y < $character.position.y:
 		$UI/ItemList/ConfirmPopUp.pop_up()
 		death_zone_confirm = true
@@ -50,5 +58,6 @@ func _on_DeathArea_pressed() -> void:
 
 
 func _on_pop_up_yes_pressed() -> void:
+	play_click()
 	if death_zone_confirm :
 		$DeathZone.position.y = $crosshair.position.y

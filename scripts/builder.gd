@@ -82,7 +82,7 @@ func build_current_piece():
 		building_piece = null
 	can_build = false
 	reload()
-	$BlockPlaced.play()
+	$Audio/BlockPlaced.play()
 	print(get_children())
 	
 func reload(clean : bool = false) -> void:
@@ -99,23 +99,31 @@ func reload(clean : bool = false) -> void:
 	yield(get_tree(), 'idle_frame')
 	building_piece.visible = true
 
+func play_click() -> void:
+	$Audio/Click.play()
+
 ###	UI SELECTION OF TOOLS SINGALS
 func _on_Block_pressed():
+	play_click()
 	selected_tool = 0
 	reload(true)
 	
 func _on_coin_pressed():
+	play_click()	
 	selected_tool = 1
 	reload(true)
 
 func _on_JumpPad_pressed():
+	play_click()	
 	selected_tool = 2
 	reload(true)
 
 func _on_Mine_pressed():
+	play_click()
 	selected_tool = 3
 	reload(true)
 
 func _on_Reset_pressed():
+	play_click()	
 	get_tree().reload_current_scene()
 
