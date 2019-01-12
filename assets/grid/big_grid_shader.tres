@@ -11,9 +11,9 @@ uniform float alpha_multiplier;
 uniform vec2 location;
 
 void fragment(){
-	vec4 color = texture(TEXTURE, UV + location + vec2(0.0055,-0.0505));
+	vec4 color = texture(TEXTURE, UV + location);// + vec2(0.0055,-0.0505));
 	//alpha is taken form the red channel only
-	float new_alpha = texture(alpha_texture, UV).r;
+	float new_alpha = texture(alpha_texture, UV * 0.5).r;
 	color.a = color.a * new_alpha * new_alpha * alpha_multiplier;
 	
 	COLOR = color;
@@ -24,6 +24,6 @@ void fragment(){
 
 shader = SubResource( 1 )
 shader_param/alpha_multiplier = 0.4
-shader_param/location = Vector2( 0.40423, -0.718715 )
+shader_param/location = Vector2( -0.732839, 0.877109 )
 shader_param/alpha_texture = ExtResource( 1 )
 

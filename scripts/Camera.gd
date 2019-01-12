@@ -3,7 +3,6 @@ extends Camera2D
 var mouse_speed : Vector2
 var smooth_mouse : Vector2
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	smooth_mouse = smooth_mouse.linear_interpolate(mouse_speed, 50 * delta)
