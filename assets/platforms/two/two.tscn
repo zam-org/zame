@@ -4,6 +4,8 @@
 
 
 [node name="2x2" type="StaticBody2D"]
+collision_layer = 0
+collision_mask = 0
 
 [node name="shape" type="Polygon2D" parent="."]
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )

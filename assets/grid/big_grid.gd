@@ -1,4 +1,3 @@
-tool
 extends Polygon2D
 
 func _process(delta):

@@ -12,3 +12,7 @@ func _on_character_coin():
 
 func _on_character_death():
 	bloom(0.1, 5, true, 20)
+
+
+func _on_Exit_activated():
+	bloom(0.1, 4, true, 40)

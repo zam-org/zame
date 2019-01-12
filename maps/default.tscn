@@ -1,35 +1,38 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=43 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=2]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=3]
-[ext_resource path="res://ui/crosshair.png" type="Texture" id=4]
-[ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scripts/builder.gd" type="Script" id=6]
-[ext_resource path="res://ui/editor/player_spawn.png" type="Texture" id=7]
-[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=8]
-[ext_resource path="res://scripts/bloom.gd" type="Script" id=9]
-[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=10]
-[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=11]
-[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=12]
-[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=13]
-[ext_resource path="res://ui/buttons/build_tools/flag_idle.png" type="Texture" id=14]
-[ext_resource path="res://ui/buttons/build_tools/flag_hover.png" type="Texture" id=15]
-[ext_resource path="res://ui/buttons/build_tools/jump_pad_idle.png" type="Texture" id=16]
-[ext_resource path="res://ui/buttons/build_tools/jump_pad_hover.png" type="Texture" id=17]
-[ext_resource path="res://ui/buttons/build_tools/mine_idle.png" type="Texture" id=18]
-[ext_resource path="res://ui/buttons/build_tools/mine_hover.png" type="Texture" id=19]
-[ext_resource path="res://ui/buttons/build_tools/skull_idle.png" type="Texture" id=20]
-[ext_resource path="res://ui/buttons/build_tools/skull_hover.png" type="Texture" id=21]
+[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=4]
+[ext_resource path="res://assets/grid/grid_shader.tres" type="Material" id=5]
+[ext_resource path="res://assets/grid/grid_texture.png" type="Texture" id=6]
+[ext_resource path="res://assets/grid/grid.gd" type="Script" id=7]
+[ext_resource path="res://assets/grid/big_grid_shader.tres" type="Material" id=8]
+[ext_resource path="res://assets/grid/big_grid.png" type="Texture" id=9]
+[ext_resource path="res://assets/grid/big_grid.gd" type="Script" id=10]
+[ext_resource path="res://ui/crosshair.png" type="Texture" id=11]
+[ext_resource path="res://scripts/builder.gd" type="Script" id=12]
+[ext_resource path="res://audio/effects/place_block.wav" type="AudioStream" id=13]
+[ext_resource path="res://ui/editor/player_spawn.png" type="Texture" id=14]
+[ext_resource path="res://assets/finish/finish.gd" type="Script" id=15]
+[ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=17]
+[ext_resource path="res://scripts/bloom.gd" type="Script" id=18]
+[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=20]
+[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=21]
 [ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=22]
-[ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=23]
-[ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=24]
-[ext_resource path="res://assets/grid/grid_shader.tres" type="Material" id=25]
-[ext_resource path="res://assets/grid/grid_texture.png" type="Texture" id=26]
-[ext_resource path="res://assets/grid/grid.gd" type="Script" id=27]
-[ext_resource path="res://assets/grid/big_grid_shader.tres" type="Material" id=28]
-[ext_resource path="res://assets/grid/big_grid.png" type="Texture" id=29]
-[ext_resource path="res://assets/grid/big_grid.gd" type="Script" id=30]
+[ext_resource path="res://ui/buttons/build_tools/jump_pad_idle.png" type="Texture" id=23]
+[ext_resource path="res://ui/buttons/build_tools/jump_pad_hover.png" type="Texture" id=24]
+[ext_resource path="res://ui/buttons/build_tools/mine_idle.png" type="Texture" id=25]
+[ext_resource path="res://ui/buttons/build_tools/mine_hover.png" type="Texture" id=26]
+[ext_resource path="res://ui/buttons/build_tools/skull_idle.png" type="Texture" id=27]
+[ext_resource path="res://ui/buttons/build_tools/skull_hover.png" type="Texture" id=28]
+[ext_resource path="res://ui/buttons/build_tools/flag_idle.png" type="Texture" id=29]
+[ext_resource path="res://ui/buttons/build_tools/flag_hover.png" type="Texture" id=30]
+[ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=31]
+[ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=32]
+[ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=33]
 
 [sub_resource type="CircleShape2D" id=2]
 
@@ -38,9 +41,35 @@ radius = 1.5546
 [sub_resource type="RectangleShape2D" id=3]
 
 
+[sub_resource type="Gradient" id=8]
+
+offsets = PoolRealArray( 0, 0.168, 0.656 )
+colors = PoolColorArray( 1, 1, 1, 0.465116, 1, 1, 1, 0.193529, 1, 1, 1, 0 )
+
+[sub_resource type="GradientTexture" id=9]
+
+gradient = SubResource( 8 )
+
+[sub_resource type="ParticlesMaterial" id=11]
+
+emission_shape = 2
+emission_box_extents = Vector3( 5, 10, 1 )
+flag_disable_z = true
+spread = 0.0
+flatness = 1.0
+gravity = Vector3( 0, 0, 0 )
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+linear_accel = 70.0
+radial_accel = 100.0
+tangential_accel = 26.03
+scale = 12.0
+scale_random = 0.74
+color_ramp = SubResource( 9 )
+
 [sub_resource type="ShaderMaterial" id=4]
 
-shader = ExtResource( 8 )
+shader = ExtResource( 17 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
@@ -48,7 +77,7 @@ shader_param/bloom = 5.06
 
 size = 12
 use_filter = true
-font_data = ExtResource( 11 )
+font_data = ExtResource( 19 )
 
 [sub_resource type="DynamicFont" id=6]
 
@@ -78,21 +107,58 @@ rotation = 0.919979
 polygon = PoolVector2Array( -33.7595, 651.444, 793.134, -446.771, 1454.86, 45.3892, 607.131, 1157.09 )
 texture = ExtResource( 3 )
 
-[node name="crosshair" type="Sprite" parent="."]
-texture = ExtResource( 4 )
+[node name="DeathZone" type="Line2D" parent="."]
+position = Vector2( 9.95801, 380 )
+points = PoolVector2Array( -10000, 0, 10000, 0 )
+width = 2.0
+default_color = Color( 1, 1, 1, 0.156863 )
+texture_mode = 1873099216
 
-[node name="character" parent="." instance=ExtResource( 5 )]
+[node name="Label" type="Label" parent="DeathZone"]
+margin_left = -165.958
+margin_top = -30.0
+margin_right = -58.958
+margin_bottom = -8.0
+theme = ExtResource( 4 )
+text = "DEATH ZONE"
+
+[node name="grid" type="Polygon2D" parent="."]
+visible = false
+material = ExtResource( 5 )
+position = Vector2( -151.75, -74.0799 )
+polygon = PoolVector2Array( -55, -55, 55, -55, 55, 55, -55, 55 )
+antialiased = true
+texture = ExtResource( 6 )
+script = ExtResource( 7 )
+
+[node name="big_grid" type="Polygon2D" parent="."]
+material = ExtResource( 8 )
+position = Vector2( -1161.69, -42.2356 )
+polygon = PoolVector2Array( -300, -300, 300, -300, 300, 300, -300, 300 )
+antialiased = true
+texture = ExtResource( 9 )
+texture_offset = Vector2( 300, 300 )
+script = ExtResource( 10 )
+
+[node name="crosshair" type="Sprite" parent="."]
+texture = ExtResource( 11 )
 
 [node name="level" type="Node2D" parent="."]
-script = ExtResource( 6 )
+editor/display_folded = true
+script = ExtResource( 12 )
+
+[node name="BlockPlaced" type="AudioStreamPlayer" parent="level"]
+stream = ExtResource( 13 )
+bus = "Effects"
 
 [node name="SpawnPos" type="Position2D" parent="level"]
+editor/display_folded = true
 position = Vector2( 1.22668, -45.1002 )
 
 [node name="player_spawn" type="Sprite" parent="level/SpawnPos"]
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( -0.113434, -36.0551 )
-texture = ExtResource( 7 )
+texture = ExtResource( 14 )
 
 [node name="delete" type="Area2D" parent="level"]
 editor/display_folded = true
@@ -120,6 +186,43 @@ polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 [node name="col" type="CollisionShape2D" parent="level/StartingBlockOne"]
 shape = SubResource( 3 )
 
+[node name="Finish" type="StaticBody2D" parent="." groups=[
+"finish",
+]]
+position = Vector2( -140, 20 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 15 )
+
+[node name="Particles2" type="Particles2D" parent="Finish"]
+position = Vector2( 0, -9.72745 )
+rotation = 3.14159
+emitting = false
+amount = 200
+lifetime = 2.0
+speed_scale = 0.5
+process_material = SubResource( 11 )
+
+[node name="DoorCol" type="CollisionPolygon2D" parent="Finish"]
+position = Vector2( 0, 10.2726 )
+polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
+
+[node name="BackDoor" type="Polygon2D" parent="Finish"]
+position = Vector2( 0, 10.2726 )
+scale = Vector2( 1, 0.05 )
+polygon = PoolVector2Array( -12, 0, -12, -42, 12, -42, 12, 0 )
+color = Color( 1, 1, 1, 0.431373 )
+antialiased = true
+
+[node name="DoorShape" type="Polygon2D" parent="Finish"]
+position = Vector2( 0, 10.2726 )
+polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
+color = Color( 1, 1, 1, 0.431373 )
+
+[node name="Tween" type="Tween" parent="Finish"]
+
+[node name="character" parent="." instance=ExtResource( 16 )]
+
 [node name="bloom" type="ColorRect" parent="."]
 editor/display_folded = true
 material = SubResource( 4 )
@@ -127,27 +230,26 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -690.0
-margin_top = -420.0
-margin_right = 707.0
-margin_bottom = 425.0
+margin_left = -1241.5
+margin_top = -997.5
+margin_right = 1258.5
+margin_bottom = 1002.5
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 2500, 2000 )
 rect_pivot_offset = Vector2( 1250, 1000 )
 mouse_filter = 2
-script = ExtResource( 9 )
+script = ExtResource( 18 )
 
 [node name="tween" type="Tween" parent="bloom"]
 
 [node name="UI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="ItemList" type="ColorRect" parent="UI"]
 anchor_bottom = 1.0
 margin_right = 70.0
 rect_min_size = Vector2( 70, 0 )
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 color = Color( 0.211765, 0.137255, 0.301961, 0.462745 )
 
 [node name="ShadowTop" type="ColorRect" parent="UI/ItemList"]
@@ -168,7 +270,7 @@ scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/ItemList/VBoxContainer/ScrollContainer"]
 margin_right = 65.0
-margin_bottom = 324.0
+margin_bottom = 315.0
 rect_min_size = Vector2( 65, 0 )
 alignment = 1
 
@@ -181,7 +283,7 @@ rect_min_size = Vector2( 5.7, 12.47 )
 margin_top = 16.0
 margin_right = 65.0
 margin_bottom = 33.0
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 5 )
 text = "Tools"
 align = 1
@@ -199,9 +301,9 @@ margin_right = 65.0
 margin_bottom = 75.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Base block"
-theme = ExtResource( 10 )
-texture_normal = ExtResource( 12 )
-texture_hover = ExtResource( 13 )
+theme = ExtResource( 4 )
+texture_normal = ExtResource( 20 )
+texture_hover = ExtResource( 21 )
 expand = true
 stretch_mode = 5
 
@@ -211,23 +313,14 @@ margin_right = 65.0
 margin_bottom = 84.59
 rect_min_size = Vector2( 5.7, 5.59 )
 
-[node name="Finish" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="coin" type="Button" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 88.0
 margin_right = 65.0
-margin_bottom = 115.68
-rect_min_size = Vector2( 0, 27.68 )
-hint_tooltip = "Goal"
-theme = ExtResource( 10 )
-texture_normal = ExtResource( 14 )
-texture_hover = ExtResource( 15 )
-expand = true
-stretch_mode = 5
-
-[node name="Control5" type="Control" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 119.0
-margin_right = 65.0
-margin_bottom = 124.59
-rect_min_size = Vector2( 5.7, 5.59 )
+margin_bottom = 124.0
+hint_tooltip = "Coin"
+theme = ExtResource( 4 )
+custom_fonts/font = SubResource( 6 )
+text = "$"
 
 [node name="JumpPad" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 128.0
@@ -235,9 +328,9 @@ margin_right = 65.0
 margin_bottom = 155.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Jump pad"
-theme = ExtResource( 10 )
-texture_normal = ExtResource( 16 )
-texture_hover = ExtResource( 17 )
+theme = ExtResource( 4 )
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
 expand = true
 stretch_mode = 5
 
@@ -253,9 +346,9 @@ margin_right = 65.0
 margin_bottom = 195.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Mine"
-theme = ExtResource( 10 )
-texture_normal = ExtResource( 18 )
-texture_hover = ExtResource( 19 )
+theme = ExtResource( 4 )
+texture_normal = ExtResource( 25 )
+texture_hover = ExtResource( 26 )
 expand = true
 stretch_mode = 5
 
@@ -271,9 +364,9 @@ margin_right = 65.0
 margin_bottom = 235.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Death zone"
-theme = ExtResource( 10 )
-texture_normal = ExtResource( 20 )
-texture_hover = ExtResource( 21 )
+theme = ExtResource( 4 )
+texture_normal = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
 expand = true
 stretch_mode = 5
 
@@ -283,21 +376,24 @@ margin_right = 65.0
 margin_bottom = 244.59
 rect_min_size = Vector2( 5.7, 5.59 )
 
-[node name="coin" type="Button" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
+[node name="Finish" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
 margin_top = 248.0
 margin_right = 65.0
-margin_bottom = 284.0
-hint_tooltip = "Coin"
-theme = ExtResource( 10 )
-custom_fonts/font = SubResource( 6 )
-text = "$"
+margin_bottom = 275.68
+rect_min_size = Vector2( 0, 27.68 )
+hint_tooltip = "Goal"
+theme = ExtResource( 4 )
+texture_normal = ExtResource( 29 )
+texture_hover = ExtResource( 30 )
+expand = true
+stretch_mode = 5
 
 [node name="Spawn" type="Button" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
-margin_top = 288.0
+margin_top = 279.0
 margin_right = 65.0
-margin_bottom = 324.0
+margin_bottom = 315.0
 hint_tooltip = "Player spawn point"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 text = "+"
 
@@ -311,7 +407,7 @@ rect_min_size = Vector2( 0, 9.17 )
 margin_top = 285.0
 margin_right = 71.0
 margin_bottom = 302.0
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 5 )
 text = "GAME"
 align = 1
@@ -322,7 +418,7 @@ margin_top = 306.0
 margin_right = 71.0
 margin_bottom = 342.0
 hint_tooltip = "Reset level"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 text = "R"
 
@@ -331,7 +427,7 @@ margin_top = 346.0
 margin_right = 71.0
 margin_bottom = 382.0
 hint_tooltip = "Center Player"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 text = "u"
 
@@ -339,7 +435,7 @@ text = "u"
 margin_top = 386.0
 margin_right = 71.0
 margin_bottom = 422.0
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 text = ">"
 
@@ -348,7 +444,7 @@ margin_top = 426.0
 margin_right = 71.0
 margin_bottom = 462.0
 hint_tooltip = "Upload to ZeroNet"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 text = "]"
 
@@ -357,7 +453,7 @@ margin_top = 466.0
 margin_right = 71.0
 margin_bottom = 502.0
 hint_tooltip = "Save"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 text = "D"
 
@@ -366,7 +462,7 @@ margin_top = 506.0
 margin_right = 71.0
 margin_bottom = 542.0
 hint_tooltip = "Share"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 text = "o"
 
@@ -375,7 +471,7 @@ margin_top = 546.0
 margin_right = 71.0
 margin_bottom = 582.0
 hint_tooltip = "Delete from disk"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 text = "X"
 
@@ -384,7 +480,7 @@ margin_top = 586.0
 margin_right = 71.0
 margin_bottom = 622.0
 hint_tooltip = "Map list"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 6 )
 text = "4"
 
@@ -411,8 +507,8 @@ margin_right = 25.0
 margin_right = 50.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-texture_normal = ExtResource( 23 )
-texture_hover = ExtResource( 24 )
+texture_normal = ExtResource( 31 )
+texture_hover = ExtResource( 32 )
 expand = true
 stretch_mode = 5
 
@@ -445,7 +541,7 @@ margin_right = 61.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0.78, 0 )
 hint_tooltip = "ZeroNet profile"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0.894118, 0.945098, 0.443137, 1 )
 text = "%"
@@ -458,7 +554,7 @@ margin_right = 42.0
 margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0.78, 0 )
 hint_tooltip = "ZeroNet profile"
-theme = ExtResource( 10 )
+theme = ExtResource( 4 )
 custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 1, 0.470588, 0.00392157, 1 )
 text = "!"
@@ -470,31 +566,89 @@ margin_right = 70.7
 margin_bottom = 24.0
 rect_min_size = Vector2( 5.7, 0 )
 
-[node name="grid" type="Polygon2D" parent="."]
+[node name="ConfirmPopUp" type="Control" parent="UI/ItemList"]
 visible = false
-material = ExtResource( 25 )
-position = Vector2( -137.947, -102.269 )
-polygon = PoolVector2Array( -55, -55, 55, -55, 55, 55, -55, 55 )
-antialiased = true
-texture = ExtResource( 26 )
-script = ExtResource( 27 )
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 445.0
+margin_top = -80.0
+margin_right = 845.0
+margin_bottom = 80.0
+theme = ExtResource( 4 )
+script = ExtResource( 33 )
 
-[node name="big_grid" type="Polygon2D" parent="."]
-material = ExtResource( 28 )
-position = Vector2( -137.947, -102.269 )
-polygon = PoolVector2Array( -300, -300, 300, -300, 300, 300, -300, 300 )
-antialiased = true
-texture = ExtResource( 29 )
-texture_offset = Vector2( 300, 300 )
-script = ExtResource( 30 )
+[node name="BottomBackground" type="ColorRect" parent="UI/ItemList/ConfirmPopUp"]
+margin_top = 160.0
+margin_right = 400.0
+margin_bottom = 206.0
+color = Color( 0.258824, 0.223529, 0.298039, 0.462745 )
 
+[node name="Background" type="ColorRect" parent="UI/ItemList/ConfirmPopUp"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.219608, 0.137255, 0.45098, 0.890196 )
+
+[node name="Text" type="Label" parent="UI/ItemList/ConfirmPopUp/Background"]
+anchor_top = 0.012
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 18.08
+margin_right = -20.0
+margin_bottom = -20.0
+theme = ExtResource( 4 )
+custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
+text = "Placing the Death Zone above the player will cause an endless spawn. A headache, a nasty migraine will likely follow.
+
+Are you sure buds? Justsayin'"
+align = 1
+autowrap = true
+
+[node name="Menu" type="HBoxContainer" parent="UI/ItemList/ConfirmPopUp"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 10.0
+margin_bottom = 32.0
+alignment = 1
+
+[node name="No" type="Button" parent="UI/ItemList/ConfirmPopUp/Menu"]
+margin_left = 86.0
+margin_right = 166.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 80, 22 )
+theme = ExtResource( 4 )
+text = "NUH-UH"
+
+[node name="Spacer" type="Control" parent="UI/ItemList/ConfirmPopUp/Menu"]
+margin_left = 170.0
+margin_right = 230.74
+margin_bottom = 22.0
+rect_min_size = Vector2( 60.74, 0 )
+
+[node name="Yes" type="Button" parent="UI/ItemList/ConfirmPopUp/Menu"]
+margin_left = 234.0
+margin_right = 314.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 80, 0 )
+theme = ExtResource( 4 )
+text = "YA MAN"
+
+[connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
-[connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
+[connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
+[connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/JumpPad" to="level" method="_on_JumpPad_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Mine" to="level" method="_on_Mine_pressed"]
-[connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
+[connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/DeathArea" to="." method="_on_DeathArea_pressed"]
+[connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Finish" to="." method="_on_Finish_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Spawn" to="." method="_on_Spawn_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
+[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/No" to="UI/ItemList/ConfirmPopUp" method="_on_No_pressed"]
+[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]
+[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]

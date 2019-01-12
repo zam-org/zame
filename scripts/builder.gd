@@ -12,6 +12,7 @@ var grid_size = 20
 var building_piece
 
 var can_build : bool = true
+var building : bool = false
 
 func _ready():
 	toolkit.clear()
@@ -25,8 +26,9 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == 1 and event.pressed and can_build == true:
-			build_current_piece()
-			
+			building = true
+		elif event.button_index == 1 and !event.pressed:
+			building = false
 		#switch tools
 		if event.button_index == 4 and event.pressed:
 			if selected_tool > 0:
@@ -42,7 +44,9 @@ func _process(delta):
 	grid_pos.x = round(grid_pos.x/grid_size) * grid_size
 	grid_pos.y = round(grid_pos.y/grid_size) * grid_size
 	
-	$delete.position = get_local_mouse_position()
+#	$delete.position = grid_pos
+	$delete.position = get_local_mouse_position()	
+	
 	
 	if Input.is_mouse_button_pressed(2):
 		var overlapping = $delete.get_overlapping_bodies()
@@ -54,6 +58,10 @@ func _process(delta):
 	if can_build:
 		building_piece.position = grid_pos
 	
+	if building:
+		build_current_piece()
+		building = false
+	
 func build_current_piece():
 	if $delete.get_overlapping_bodies().size() > 0:
 		return
@@ -62,16 +70,20 @@ func build_current_piece():
 	
 	#	set up collision based on what the item is
 	#	1 - static
-	#	2 - pickup, eg. coins
+	#	2 - pickup/interactive, eg. coins and jumppads
 	#	3 - traps
 	
 	if building_piece.is_in_group('small'):
 		building_piece.set_collision_layer_bit(2,true)
 		building_piece.get_node("build_check").set_collision_layer_bit(10, true)
 	else:
-		building_piece.set_collision_layer_bit(1,true)
+		building_piece.set_collision_layer_bit(0,true)
+		building_piece.set_collision_layer_bit(1,true)		
 		building_piece = null
+	can_build = false
 	reload()
+	$BlockPlaced.play()
+	print(get_children())
 	
 func reload(clean : bool = false) -> void:
 	if clean:
@@ -79,10 +91,13 @@ func reload(clean : bool = false) -> void:
 		building_piece.queue_free()
 		building_piece = null
 	var new = toolkit[selected_tool].instance()
+	new.visible = false
 	new.modulate.a = 0.5
 	add_child(new)
 	building_piece = new
 	can_build = true
+	yield(get_tree(), 'idle_frame')
+	building_piece.visible = true
 
 ###	UI SELECTION OF TOOLS SINGALS
 func _on_Block_pressed():

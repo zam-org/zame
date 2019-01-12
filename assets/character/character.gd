@@ -83,12 +83,15 @@ func send_tilt_info(delta) -> void:
 		smooth_tilt.y = smooth_tilt.y - (smooth_tilt.x / 7)
 	
 	mat.set_shader_param('disp', Vector2(smooth_tilt.x / 20, (smooth_tilt.y * -1) / 10))		
+
+###	in order to be picked up the item needs to be on the third mask	
+func _on_check_body_entered(body) -> void:
 	
-func _on_check_body_entered(body):
 	if body.is_in_group("coin"):
 		body.queue_free()
 		$audio/coin.play()
 		emit_signal("coin")
+		
 	elif body.is_in_group("mine"):
 		yield(get_tree(), 'idle_frame')
 		emit_signal("death")
@@ -96,6 +99,14 @@ func _on_check_body_entered(body):
 	elif body.is_in_group("jump_pad"):
 		jump_pad = true
 		print("JUMP PAD")
+	
+	elif body.is_in_group("finish"):
+		print("DA END")
+		body.fill_up()
 
 func play_jump_sound() -> void:
 	$audio/jump.play()
+
+func _on_check_body_exited(body) -> void:
+	if body.is_in_group("finish"):
+		print("DA END NO MOAR")
