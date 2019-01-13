@@ -649,7 +649,7 @@ margin_right = -20.0
 margin_bottom = -20.0
 theme = ExtResource( 5 )
 custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
-text = "Placing the Death Zone above the player will cause an endless spawn. A headache, a nasty migraine will likely follow.
+text = "Placing the Death Zone above the player will cause an endless respawn. A headache is likely to follow.
 
 Are you sure buds? Justsayin'"
 align = 1
@@ -700,5 +700,5 @@ text = "YA MAN"
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
 [connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/No" to="UI/ItemList/ConfirmPopUp" method="_on_No_pressed"]
-[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
 [connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]
+[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
