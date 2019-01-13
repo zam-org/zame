@@ -59,6 +59,7 @@ flag_disable_z = true
 spread = 0.0
 flatness = 1.0
 gravity = Vector3( 0, 0, 0 )
+angular_velocity = 7.70714e-44
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = 70.0
@@ -114,6 +115,8 @@ position = Vector2( -147.754, -790.853 )
 rotation = 0.919979
 polygon = PoolVector2Array( -33.7595, 651.444, 793.134, -446.771, 1454.86, 45.3892, 607.131, 1157.09 )
 texture = ExtResource( 4 )
+
+[node name="Tween" type="Tween" parent="Camera"]
 
 [node name="DeathZone" type="Line2D" parent="."]
 editor/display_folded = true
@@ -683,6 +686,7 @@ theme = ExtResource( 5 )
 text = "YA MAN"
 
 [connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
+[connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
@@ -696,5 +700,5 @@ text = "YA MAN"
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
 [connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/No" to="UI/ItemList/ConfirmPopUp" method="_on_No_pressed"]
-[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
+[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]
