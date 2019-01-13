@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/character/character.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/coin.wav" type="AudioStream" id=2]
@@ -65,6 +65,21 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 0.2 )
 }
 
+[sub_resource type="ParticlesMaterial" id=5]
+
+emission_shape = 2
+emission_box_extents = Vector3( 1, 11.04, 1 )
+flag_disable_z = true
+spread = 39.85
+gravity = Vector3( 0, 0, 0 )
+initial_velocity = 143.84
+angular_velocity = 0.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 500.0
+scale = 2.0
+scale_random = 0.58
+
 [node name="character" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
@@ -106,6 +121,14 @@ position = Vector2( 0, -5.11208 )
 enabled = true
 cast_to = Vector2( 0, 6.24 )
 collision_mask = 15
+
+[node name="WalkParticles" type="Particles2D" parent="."]
+rotation = -1.5708
+amount = 21
+lifetime = 0.2
+speed_scale = 0.5
+local_coords = false
+process_material = SubResource( 5 )
 
 [connection signal="body_entered" from="check" to="." method="_on_check_body_entered"]
 [connection signal="body_exited" from="check" to="." method="_on_check_body_exited"]

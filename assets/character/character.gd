@@ -29,6 +29,7 @@ func _process(delta):
 	if $floor_check.is_colliding():
 		in_air = false
 	else:
+		$WalkParticles.emitting = false
 		in_air = true
 		landed = false
 
@@ -55,6 +56,7 @@ func _physics_process(delta):
 	else:
 		if !landed:
 			$animations.play("landing")
+			$WalkParticles.emitting = true
 			landed = true
 	
 	if Input.is_action_pressed("up") && is_on_floor():
@@ -82,7 +84,7 @@ func send_tilt_info(delta) -> void:
 	if Input.is_action_pressed("right"):
 		smooth_tilt.y = smooth_tilt.y - (smooth_tilt.x / 7)
 	
-	mat.set_shader_param('disp', Vector2(smooth_tilt.x / 20, (smooth_tilt.y * -1) / 10))		
+	mat.set_shader_param('disp', Vector2(-smooth_tilt.x / 20, (smooth_tilt.y * -1) / 10))		
 
 ###	in order to be picked up the item needs to be on the third mask	
 func _on_check_body_entered(body) -> void:

@@ -1,39 +1,34 @@
-[gd_scene load_steps=44 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=2]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=3]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=4]
 [ext_resource path="res://ui/ui_theme.tres" type="Theme" id=5]
-[ext_resource path="res://assets/grid/grid_shader.tres" type="Material" id=6]
-[ext_resource path="res://assets/grid/grid_texture.png" type="Texture" id=7]
-[ext_resource path="res://assets/grid/grid.gd" type="Script" id=8]
-[ext_resource path="res://assets/grid/big_grid_shader.tres" type="Material" id=9]
-[ext_resource path="res://assets/grid/big_grid.png" type="Texture" id=10]
-[ext_resource path="res://assets/grid/big_grid.gd" type="Script" id=11]
-[ext_resource path="res://ui/crosshair.png" type="Texture" id=12]
-[ext_resource path="res://scripts/builder.gd" type="Script" id=13]
-[ext_resource path="res://audio/effects/place_block.wav" type="AudioStream" id=14]
-[ext_resource path="res://ui/editor/player_spawn.png" type="Texture" id=15]
-[ext_resource path="res://assets/finish/finish.gd" type="Script" id=16]
-[ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=17]
-[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=18]
-[ext_resource path="res://scripts/bloom.gd" type="Script" id=19]
-[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=20]
-[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=21]
-[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=22]
-[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=23]
-[ext_resource path="res://ui/buttons/build_tools/jump_pad_idle.png" type="Texture" id=24]
-[ext_resource path="res://ui/buttons/build_tools/jump_pad_hover.png" type="Texture" id=25]
-[ext_resource path="res://ui/buttons/build_tools/mine_idle.png" type="Texture" id=26]
-[ext_resource path="res://ui/buttons/build_tools/mine_hover.png" type="Texture" id=27]
-[ext_resource path="res://ui/buttons/build_tools/skull_idle.png" type="Texture" id=28]
-[ext_resource path="res://ui/buttons/build_tools/skull_hover.png" type="Texture" id=29]
-[ext_resource path="res://ui/buttons/build_tools/flag_idle.png" type="Texture" id=30]
-[ext_resource path="res://ui/buttons/build_tools/flag_hover.png" type="Texture" id=31]
-[ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=32]
-[ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=33]
-[ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=34]
+[ext_resource path="res://assets/grid/big_grid.tscn" type="PackedScene" id=6]
+[ext_resource path="res://ui/crosshair.png" type="Texture" id=7]
+[ext_resource path="res://scripts/builder.gd" type="Script" id=8]
+[ext_resource path="res://audio/effects/place_block.wav" type="AudioStream" id=9]
+[ext_resource path="res://ui/editor/player_spawn.png" type="Texture" id=10]
+[ext_resource path="res://assets/finish/finish.gd" type="Script" id=11]
+[ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=12]
+[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=13]
+[ext_resource path="res://scripts/bloom.gd" type="Script" id=14]
+[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=16]
+[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=17]
+[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=18]
+[ext_resource path="res://ui/buttons/build_tools/jump_pad_idle.png" type="Texture" id=19]
+[ext_resource path="res://ui/buttons/build_tools/jump_pad_hover.png" type="Texture" id=20]
+[ext_resource path="res://ui/buttons/build_tools/mine_idle.png" type="Texture" id=21]
+[ext_resource path="res://ui/buttons/build_tools/mine_hover.png" type="Texture" id=22]
+[ext_resource path="res://ui/buttons/build_tools/skull_idle.png" type="Texture" id=23]
+[ext_resource path="res://ui/buttons/build_tools/skull_hover.png" type="Texture" id=24]
+[ext_resource path="res://ui/buttons/build_tools/flag_idle.png" type="Texture" id=25]
+[ext_resource path="res://ui/buttons/build_tools/flag_hover.png" type="Texture" id=26]
+[ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=27]
+[ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=28]
+[ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=29]
 
 [sub_resource type="CircleShape2D" id=1]
 
@@ -71,7 +66,7 @@ color_ramp = SubResource( 4 )
 
 [sub_resource type="ShaderMaterial" id=6]
 
-shader = ExtResource( 18 )
+shader = ExtResource( 13 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
@@ -79,17 +74,17 @@ shader_param/bloom = 5.06
 
 size = 12
 use_filter = true
-font_data = ExtResource( 20 )
+font_data = ExtResource( 15 )
 
 [sub_resource type="DynamicFont" id=8]
 
 size = 36
-font_data = ExtResource( 23 )
+font_data = ExtResource( 18 )
 
 [sub_resource type="DynamicFont" id=9]
 
 size = 24
-font_data = ExtResource( 23 )
+font_data = ExtResource( 18 )
 
 [node name="game" type="Node2D"]
 script = ExtResource( 1 )
@@ -134,29 +129,13 @@ margin_bottom = -8.0
 theme = ExtResource( 5 )
 text = "DEATH ZONE"
 
-[node name="grid" type="Polygon2D" parent="."]
-visible = false
-material = ExtResource( 6 )
-position = Vector2( -151.75, -74.0799 )
-polygon = PoolVector2Array( -55, -55, 55, -55, 55, 55, -55, 55 )
-antialiased = true
-texture = ExtResource( 7 )
-script = ExtResource( 8 )
-
-[node name="big_grid" type="Polygon2D" parent="."]
-material = ExtResource( 9 )
-position = Vector2( -1161.69, -42.2356 )
-polygon = PoolVector2Array( -300, -300, 300, -300, 300, 300, -300, 300 )
-antialiased = true
-texture = ExtResource( 10 )
-texture_offset = Vector2( 300, 300 )
-script = ExtResource( 11 )
+[node name="big_grid" parent="." instance=ExtResource( 6 )]
 
 [node name="crosshair" type="Sprite" parent="."]
-texture = ExtResource( 12 )
+texture = ExtResource( 7 )
 
 [node name="level" type="Node2D" parent="."]
-script = ExtResource( 13 )
+script = ExtResource( 8 )
 
 [node name="Audio" type="Node" parent="level"]
 
@@ -166,7 +145,7 @@ volume_db = -4.0
 bus = "Effects"
 
 [node name="BlockPlaced" type="AudioStreamPlayer" parent="level/Audio"]
-stream = ExtResource( 14 )
+stream = ExtResource( 9 )
 bus = "Effects"
 
 [node name="SpawnPos" type="Position2D" parent="level"]
@@ -176,7 +155,7 @@ position = Vector2( 1.22668, -45.1002 )
 [node name="player_spawn" type="Sprite" parent="level/SpawnPos"]
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( -0.113434, -36.0551 )
-texture = ExtResource( 15 )
+texture = ExtResource( 10 )
 
 [node name="delete" type="Area2D" parent="level"]
 editor/display_folded = true
@@ -211,7 +190,7 @@ editor/display_folded = true
 position = Vector2( -140, 20 )
 collision_layer = 4
 collision_mask = 0
-script = ExtResource( 16 )
+script = ExtResource( 11 )
 
 [node name="Particles2" type="Particles2D" parent="Finish"]
 position = Vector2( 0, -9.72745 )
@@ -240,7 +219,7 @@ color = Color( 1, 1, 1, 0.431373 )
 
 [node name="Tween" type="Tween" parent="Finish"]
 
-[node name="character" parent="." instance=ExtResource( 17 )]
+[node name="character" parent="." instance=ExtResource( 12 )]
 
 [node name="bloom" type="ColorRect" parent="."]
 editor/display_folded = true
@@ -258,7 +237,7 @@ grow_vertical = 2
 rect_min_size = Vector2( 2500, 2000 )
 rect_pivot_offset = Vector2( 1250, 1000 )
 mouse_filter = 2
-script = ExtResource( 19 )
+script = ExtResource( 14 )
 
 [node name="tween" type="Tween" parent="bloom"]
 
@@ -320,9 +299,11 @@ margin_right = 65.0
 margin_bottom = 75.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Base block"
+focus_mode = 0
 theme = ExtResource( 5 )
-texture_normal = ExtResource( 21 )
-texture_hover = ExtResource( 22 )
+enabled_focus_mode = 0
+texture_normal = ExtResource( 16 )
+texture_hover = ExtResource( 17 )
 expand = true
 stretch_mode = 5
 
@@ -337,8 +318,10 @@ margin_top = 88.0
 margin_right = 65.0
 margin_bottom = 124.0
 hint_tooltip = "Coin"
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = "$"
 
 [node name="JumpPad" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
@@ -347,9 +330,11 @@ margin_right = 65.0
 margin_bottom = 155.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Jump pad"
+focus_mode = 0
 theme = ExtResource( 5 )
-texture_normal = ExtResource( 24 )
-texture_hover = ExtResource( 25 )
+enabled_focus_mode = 0
+texture_normal = ExtResource( 19 )
+texture_hover = ExtResource( 20 )
 expand = true
 stretch_mode = 5
 
@@ -365,9 +350,11 @@ margin_right = 65.0
 margin_bottom = 195.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Mine"
+focus_mode = 0
 theme = ExtResource( 5 )
-texture_normal = ExtResource( 26 )
-texture_hover = ExtResource( 27 )
+enabled_focus_mode = 0
+texture_normal = ExtResource( 21 )
+texture_hover = ExtResource( 22 )
 expand = true
 stretch_mode = 5
 
@@ -401,9 +388,11 @@ margin_right = 65.0
 margin_bottom = 250.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Death zone"
+focus_mode = 0
 theme = ExtResource( 5 )
-texture_normal = ExtResource( 28 )
-texture_hover = ExtResource( 29 )
+enabled_focus_mode = 0
+texture_normal = ExtResource( 23 )
+texture_hover = ExtResource( 24 )
 expand = true
 stretch_mode = 5
 
@@ -419,9 +408,11 @@ margin_right = 65.0
 margin_bottom = 290.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Goal"
+focus_mode = 0
 theme = ExtResource( 5 )
-texture_normal = ExtResource( 30 )
-texture_hover = ExtResource( 31 )
+enabled_focus_mode = 0
+texture_normal = ExtResource( 25 )
+texture_hover = ExtResource( 26 )
 expand = true
 stretch_mode = 5
 
@@ -430,8 +421,10 @@ margin_top = 294.0
 margin_right = 65.0
 margin_bottom = 330.0
 hint_tooltip = "Player spawn point"
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = "+"
 
 [node name="Control" type="Control" parent="UI/ItemList/VBoxContainer"]
@@ -454,8 +447,10 @@ uppercase = true
 margin_top = 306.0
 margin_right = 71.0
 margin_bottom = 342.0
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = ">"
 
 [node name="CenterPlayer6" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -463,8 +458,10 @@ margin_top = 346.0
 margin_right = 71.0
 margin_bottom = 382.0
 hint_tooltip = "Center Player"
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = "u"
 
 [node name="Save" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -472,8 +469,10 @@ margin_top = 386.0
 margin_right = 71.0
 margin_bottom = 422.0
 hint_tooltip = "Save"
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = "D"
 
 [node name="Upload" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -481,8 +480,10 @@ margin_top = 426.0
 margin_right = 71.0
 margin_bottom = 462.0
 hint_tooltip = "Upload to ZeroNet"
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = "]"
 
 [node name="Share" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -490,8 +491,10 @@ margin_top = 466.0
 margin_right = 71.0
 margin_bottom = 502.0
 hint_tooltip = "Share"
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = "o"
 
 [node name="Reset" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -499,8 +502,10 @@ margin_top = 506.0
 margin_right = 71.0
 margin_bottom = 542.0
 hint_tooltip = "Reset level"
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = "R"
 
 [node name="Remove" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -508,8 +513,10 @@ margin_top = 546.0
 margin_right = 71.0
 margin_bottom = 582.0
 hint_tooltip = "Delete from disk"
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = "X"
 
 [node name="CenterContainer" type="CenterContainer" parent="UI/ItemList/VBoxContainer"]
@@ -529,8 +536,10 @@ margin_top = 592.0
 margin_right = 71.0
 margin_bottom = 628.0
 hint_tooltip = "Map list"
+focus_mode = 0
 theme = ExtResource( 5 )
 custom_fonts/font = SubResource( 8 )
+enabled_focus_mode = 0
 text = "4"
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="UI/ItemList/VBoxContainer"]
@@ -543,7 +552,6 @@ scroll_horizontal_enabled = false
 alignment = 1
 
 [node name="ZeroNetLogo" type="VBoxContainer" parent="UI/ItemList"]
-editor/display_folded = true
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -556,8 +564,10 @@ margin_right = 25.0
 margin_right = 50.0
 margin_bottom = 32.0
 rect_min_size = Vector2( 32, 32 )
-texture_normal = ExtResource( 32 )
-texture_hover = ExtResource( 33 )
+focus_mode = 0
+enabled_focus_mode = 0
+texture_normal = ExtResource( 27 )
+texture_hover = ExtResource( 28 )
 expand = true
 stretch_mode = 5
 
@@ -616,17 +626,18 @@ margin_bottom = 24.0
 rect_min_size = Vector2( 5.7, 0 )
 
 [node name="ConfirmPopUp" type="Control" parent="UI/ItemList"]
+editor/display_folded = true
 visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = 445.0
-margin_top = -80.0
-margin_right = 845.0
-margin_bottom = 80.0
+margin_left = 395.0
+margin_top = -88.0
+margin_right = 795.0
+margin_bottom = 72.0
 theme = ExtResource( 5 )
-script = ExtResource( 34 )
+script = ExtResource( 29 )
 
 [node name="BottomBackground" type="ColorRect" parent="UI/ItemList/ConfirmPopUp"]
 margin_top = 160.0
@@ -668,7 +679,9 @@ margin_left = 86.0
 margin_right = 166.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 80, 22 )
+focus_mode = 0
 theme = ExtResource( 5 )
+enabled_focus_mode = 0
 text = "NUH-UH"
 
 [node name="Spacer" type="Control" parent="UI/ItemList/ConfirmPopUp/Menu"]
@@ -682,14 +695,16 @@ margin_left = 234.0
 margin_right = 314.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 80, 0 )
+focus_mode = 0
 theme = ExtResource( 5 )
+enabled_focus_mode = 0
 text = "YA MAN"
 
-[connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
+[connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
-[connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
+[connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/JumpPad" to="level" method="_on_JumpPad_pressed"]
@@ -700,5 +715,5 @@ text = "YA MAN"
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
 [connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/No" to="UI/ItemList/ConfirmPopUp" method="_on_No_pressed"]
-[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
+[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]

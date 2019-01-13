@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/grid/grid_shader.tres" type="Material" id=1]
+[ext_resource path="res://assets/grid/grid_texture.png" type="Texture" id=2]
+[ext_resource path="res://assets/grid/grid.gd" type="Script" id=3]
+
+[node name="grid" type="Polygon2D"]
+material = ExtResource( 1 )
+position = Vector2( -151.75, -74.0799 )
+polygon = PoolVector2Array( -55, -55, 55, -55, 55, 55, -55, 55 )
+antialiased = true
+texture = ExtResource( 2 )
+script = ExtResource( 3 )
+

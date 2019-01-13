@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/grid/big_grid_shader.tres" type="Material" id=1]
+[ext_resource path="res://assets/grid/big_grid.png" type="Texture" id=2]
+[ext_resource path="res://assets/grid/big_grid.gd" type="Script" id=3]
+
+[node name="big_grid" type="Polygon2D"]
+material = ExtResource( 1 )
+position = Vector2( -1161.69, -42.2356 )
+polygon = PoolVector2Array( -300, -300, 300, -300, 300, 300, -300, 300 )
+antialiased = true
+texture = ExtResource( 2 )
+texture_offset = Vector2( 300, 300 )
+script = ExtResource( 3 )
+
