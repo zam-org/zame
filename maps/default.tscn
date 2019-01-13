@@ -35,23 +35,23 @@
 [ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=33]
 [ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=34]
 
-[sub_resource type="CircleShape2D" id=2]
+[sub_resource type="CircleShape2D" id=1]
 
 radius = 1.5546
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=2]
 
 
-[sub_resource type="Gradient" id=8]
+[sub_resource type="Gradient" id=3]
 
 offsets = PoolRealArray( 0, 0.168, 0.656 )
 colors = PoolColorArray( 1, 1, 1, 0.465116, 1, 1, 1, 0.193529, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=9]
+[sub_resource type="GradientTexture" id=4]
 
-gradient = SubResource( 8 )
+gradient = SubResource( 3 )
 
-[sub_resource type="ParticlesMaterial" id=11]
+[sub_resource type="ParticlesMaterial" id=5]
 
 emission_shape = 2
 emission_box_extents = Vector3( 5, 10, 1 )
@@ -66,26 +66,26 @@ radial_accel = 100.0
 tangential_accel = 26.03
 scale = 12.0
 scale_random = 0.74
-color_ramp = SubResource( 9 )
+color_ramp = SubResource( 4 )
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=6]
 
 shader = ExtResource( 18 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=7]
 
 size = 12
 use_filter = true
 font_data = ExtResource( 20 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=8]
 
 size = 36
 font_data = ExtResource( 23 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=9]
 
 size = 24
 font_data = ExtResource( 23 )
@@ -182,7 +182,7 @@ collision_layer = 2
 collision_mask = 1054
 
 [node name="col" type="CollisionShape2D" parent="level/delete"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="shape" type="Polygon2D" parent="level/delete"]
 visible = false
@@ -199,7 +199,7 @@ collision_layer = 3
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
 [node name="col" type="CollisionShape2D" parent="level/StartingBlockOne"]
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [node name="Finish" type="StaticBody2D" parent="." groups=[
 "finish",
@@ -217,7 +217,7 @@ emitting = false
 amount = 200
 lifetime = 2.0
 speed_scale = 0.5
-process_material = SubResource( 11 )
+process_material = SubResource( 5 )
 
 [node name="DoorCol" type="CollisionPolygon2D" parent="Finish"]
 position = Vector2( 0, 10.2726 )
@@ -241,7 +241,7 @@ color = Color( 1, 1, 1, 0.431373 )
 
 [node name="bloom" type="ColorRect" parent="."]
 editor/display_folded = true
-material = SubResource( 4 )
+material = SubResource( 6 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -260,7 +260,6 @@ script = ExtResource( 19 )
 [node name="tween" type="Tween" parent="bloom"]
 
 [node name="UI" type="CanvasLayer" parent="."]
-editor/display_folded = true
 
 [node name="ItemList" type="ColorRect" parent="UI"]
 anchor_bottom = 1.0
@@ -301,8 +300,8 @@ margin_top = 16.0
 margin_right = 65.0
 margin_bottom = 33.0
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 5 )
-text = "Tools"
+custom_fonts/font = SubResource( 7 )
+text = "BUILD"
 align = 1
 uppercase = true
 
@@ -336,7 +335,7 @@ margin_right = 65.0
 margin_bottom = 124.0
 hint_tooltip = "Coin"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "$"
 
 [node name="JumpPad" type="TextureButton" parent="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer"]
@@ -429,7 +428,7 @@ margin_right = 65.0
 margin_bottom = 330.0
 hint_tooltip = "Player spawn point"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "+"
 
 [node name="Control" type="Control" parent="UI/ItemList/VBoxContainer"]
@@ -443,7 +442,7 @@ margin_top = 285.0
 margin_right = 71.0
 margin_bottom = 302.0
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 7 )
 text = "GAME"
 align = 1
 uppercase = true
@@ -453,7 +452,7 @@ margin_top = 306.0
 margin_right = 71.0
 margin_bottom = 342.0
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = ">"
 
 [node name="CenterPlayer6" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -462,7 +461,7 @@ margin_right = 71.0
 margin_bottom = 382.0
 hint_tooltip = "Center Player"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "u"
 
 [node name="Save" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -471,7 +470,7 @@ margin_right = 71.0
 margin_bottom = 422.0
 hint_tooltip = "Save"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "D"
 
 [node name="Upload" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -480,7 +479,7 @@ margin_right = 71.0
 margin_bottom = 462.0
 hint_tooltip = "Upload to ZeroNet"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "]"
 
 [node name="Share" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -489,7 +488,7 @@ margin_right = 71.0
 margin_bottom = 502.0
 hint_tooltip = "Share"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "o"
 
 [node name="Reset" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -498,7 +497,7 @@ margin_right = 71.0
 margin_bottom = 542.0
 hint_tooltip = "Reset level"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "R"
 
 [node name="Remove" type="Button" parent="UI/ItemList/VBoxContainer"]
@@ -507,7 +506,7 @@ margin_right = 71.0
 margin_bottom = 582.0
 hint_tooltip = "Delete from disk"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "X"
 
 [node name="CenterContainer" type="CenterContainer" parent="UI/ItemList/VBoxContainer"]
@@ -528,7 +527,7 @@ margin_right = 71.0
 margin_bottom = 628.0
 hint_tooltip = "Map list"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "4"
 
 [node name="ScrollContainer2" type="ScrollContainer" parent="UI/ItemList/VBoxContainer"]
@@ -589,7 +588,7 @@ margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0.78, 0 )
 hint_tooltip = "ZeroNet profile"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.894118, 0.945098, 0.443137, 1 )
 text = "%"
 align = 2
@@ -602,7 +601,7 @@ margin_bottom = 24.0
 rect_pivot_offset = Vector2( 0.78, 0 )
 hint_tooltip = "ZeroNet profile"
 theme = ExtResource( 5 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 1, 0.470588, 0.00392157, 1 )
 text = "!"
 align = 2

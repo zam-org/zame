@@ -7,7 +7,7 @@ var smooth_motion : Vector2
 
 #	fun stuff with numbers for character controller
 var speed : int = 12000
-var gravity = 9.8 * 20
+var gravity = 9.8 * 35
 
 #	var used for sending the tilt amount to the player shape shader
 var smooth_tilt : Vector2
