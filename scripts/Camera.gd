@@ -18,7 +18,6 @@ func _process(delta):
 	mouse_speed = Vector2()
 		
 func _input(event):
-	print(event)
 	if event is InputEventMouseMotion:
 		mouse_speed = event.relative
 	

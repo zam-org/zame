@@ -60,7 +60,7 @@ func _process(delta):
 	
 	if building:
 		build_current_piece()
-		building = false
+#		building = false
 	
 func build_current_piece():
 	if $delete.get_overlapping_bodies().size() > 0:
@@ -89,8 +89,14 @@ func reload(clean : bool = false) -> void:
 	if clean:
 		can_build = false
 		building_piece.queue_free()
-		building_piece = null
+	building_piece = null
 	var new = toolkit[selected_tool].instance()
+	
+#	activate collision if we've just loaded a 2x2 block
+#	--- edit this one out should you not want for the building block to collide with character
+	if selected_tool == 0:
+		new.set_collision_layer_bit(0,true)
+	
 	new.visible = false
 	new.modulate.a = 0.5
 	add_child(new)
