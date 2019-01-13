@@ -38,3 +38,6 @@ func shake(strength : float = 5.0, duration : float = 2.0):
 
 func _on_Finish_activated():
 	shake(10.5, 2.2)
+
+func _on_character_death():
+	pass

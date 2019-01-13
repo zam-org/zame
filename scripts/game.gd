@@ -36,6 +36,7 @@ func _on_character_death() -> void:
 	reset_character_pos()
 	
 func reset_character_pos() -> void:
+	$Camera.shake(25.0, 1.5)	
 	$character.motion = Vector2()
 	$character.position = $level/SpawnPos.global_position
 
