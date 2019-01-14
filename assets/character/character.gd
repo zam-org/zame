@@ -35,9 +35,13 @@ func _process(delta):
 
 func _physics_process(delta):
 	direction = Vector2()
+	$WalkParticles.emitting = false
+	
 	if Input.is_action_pressed("left"):
+		$WalkParticles.emitting = true
 		direction.x -= 1
 	if Input.is_action_pressed("right"):
+		$WalkParticles.emitting = true
 		direction.x += 1
 		
 	direction = direction.normalized()
@@ -56,7 +60,6 @@ func _physics_process(delta):
 	else:
 		if !landed:
 			$animations.play("landing")
-			$WalkParticles.emitting = true
 			landed = true
 	
 	if Input.is_action_pressed("up") && is_on_floor():
