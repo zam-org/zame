@@ -24,7 +24,7 @@ signal death
 
 func _process(delta):
 	send_tilt_info(delta)
-		
+
 	#	raycast to check for ground as "_is_on_floor()" was acting up
 	if $floor_check.is_colliding():
 		in_air = false
@@ -36,75 +36,75 @@ func _process(delta):
 func _physics_process(delta):
 	direction = Vector2()
 	$WalkParticles.emitting = false
-	
+
 	if Input.is_action_pressed("left"):
 		$WalkParticles.emitting = true
 		direction.x -= 1
 	if Input.is_action_pressed("right"):
 		$WalkParticles.emitting = true
 		direction.x += 1
-		
+
 	direction = direction.normalized()
-	
+
 #	seperate slerp because gravity
-	smooth_motion = smooth_motion.linear_interpolate(direction * speed * delta, 5 * delta) 
-	
+	smooth_motion = smooth_motion.linear_interpolate(direction * speed * delta, 5 * delta)
+
 	motion.x = smooth_motion.x
-	
+
 	#	gravity is faster when falling
 	if !is_on_floor():
 		if motion.y > 0:
 			motion.y += gravity * 2* delta
 		else:
-			motion.y += gravity * delta			
+			motion.y += gravity * delta
 	else:
 		if !landed:
 			$animations.play("landing")
 			landed = true
-	
+
 	if Input.is_action_pressed("up") && is_on_floor():
 		$animations.play("jump")
 		play_jump_sound()
 		motion.y -= JUMP_POWER * delta
-	
+
 	if jump_pad:
 		motion.y -= JUMP_POWER * 2 * delta
 		jump_pad = false
-	
+
 	motion = move_and_slide(motion, Vector2(0,-1), false, 4, -0.1, true)
-	
-#	tilt direction changes depending on whether we're falling or gaining altitude	
+
+#	tilt direction changes depending on whether we're falling or gaining altitude
 func send_tilt_info(delta) -> void:
 	var mat = $shape.material
-	
+
 	if motion.y > 0.1:
 		smooth_tilt = smooth_tilt.linear_interpolate(-motion, 3 * delta)
 	else:
 		smooth_tilt = smooth_tilt.linear_interpolate(motion, 10 * delta)
-	
+
 	if Input.is_action_pressed("left"):
 		smooth_tilt.y = smooth_tilt.y + (smooth_tilt.x / 7)
 	if Input.is_action_pressed("right"):
 		smooth_tilt.y = smooth_tilt.y - (smooth_tilt.x / 7)
-	
-	mat.set_shader_param('disp', Vector2(-smooth_tilt.x / 20, (smooth_tilt.y * -1) / 10))		
 
-###	in order to be picked up the item needs to be on the third mask	
+	mat.set_shader_param('disp', Vector2(-smooth_tilt.x / 20, (smooth_tilt.y * -1) / 10))
+
+###	in order to be picked up the item needs to be on the third mask
 func _on_check_body_entered(body) -> void:
-	
+
 	if body.is_in_group("coin"):
 		body.queue_free()
 		$audio/coin.play()
 		emit_signal("coin")
-		
+
 	elif body.is_in_group("mine"):
 		yield(get_tree(), 'idle_frame')
 		emit_signal("death")
-		
+
 	elif body.is_in_group("jump_pad"):
 		jump_pad = true
 		print("JUMP PAD")
-	
+
 	elif body.is_in_group("finish"):
 		print("DA END")
 		body.fill_up()

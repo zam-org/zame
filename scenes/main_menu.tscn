@@ -91,7 +91,6 @@ expand = true
 stretch_mode = 6
 
 [node name="SidePanelSpace" type="HBoxContainer" parent="."]
-editor/display_folded = true
 anchor_bottom = 1.0
 margin_right = 427.0
 
@@ -221,7 +220,6 @@ theme = ExtResource( 6 )
 text = "zeronet.io"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -190.15
@@ -660,12 +658,13 @@ disabled = true
 text = "DELETE"
 
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
-[connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_GrabMe_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="zn_button" to="." method="play_click"]
 [connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
+[connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="HBoxContainer/exit" to="." method="play_click"]

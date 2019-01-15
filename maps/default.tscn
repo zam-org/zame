@@ -109,8 +109,8 @@ script = ExtResource( 3 )
 [node name="backgorund_gradient" type="Polygon2D" parent="Camera"]
 position = Vector2( -147.754, -790.853 )
 rotation = 0.919979
-polygon = PoolVector2Array( -33.7595, 651.444, 793.134, -446.771, 1454.86, 45.3892, 607.131, 1157.09 )
 texture = ExtResource( 4 )
+polygon = PoolVector2Array( -33.7595, 651.444, 793.134, -446.771, 1454.86, 45.3892, 607.131, 1157.09 )
 
 [node name="Tween" type="Tween" parent="Camera"]
 
@@ -210,14 +210,14 @@ polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 [node name="BackDoor" type="Polygon2D" parent="Finish"]
 position = Vector2( 0, 10.2726 )
 scale = Vector2( 1, 0.05 )
-polygon = PoolVector2Array( -12, 0, -12, -42, 12, -42, 12, 0 )
 color = Color( 1, 1, 1, 0.431373 )
 antialiased = true
+polygon = PoolVector2Array( -12, 0, -12, -42, 12, -42, 12, 0 )
 
 [node name="DoorShape" type="Polygon2D" parent="Finish"]
 position = Vector2( 0, 10.2726 )
-polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 color = Color( 1, 1, 1, 0.431373 )
+polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 
 [node name="Tween" type="Tween" parent="Finish"]
 
@@ -702,12 +702,12 @@ theme = ExtResource( 5 )
 enabled_focus_mode = 0
 text = "YA MAN"
 
-[connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
+[connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
-[connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
+[connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/ScrollContainer/VBoxContainer/JumpPad" to="level" method="_on_JumpPad_pressed"]
@@ -718,5 +718,5 @@ text = "YA MAN"
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
 [connection signal="pressed" from="UI/ItemList/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
 [connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/No" to="UI/ItemList/ConfirmPopUp" method="_on_No_pressed"]
-[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
+[connection signal="pressed" from="UI/ItemList/ConfirmPopUp/Menu/Yes" to="UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]
