@@ -14,12 +14,25 @@ func _process(delta):
 func _ready():
 	# Load config file
 	var err = config.load(config_file_path)
+	
+	# If the config file has yet to exist
 	if err != OK:
 		print(OK)
 
 		# File does not exist yet, create it
 		print("Creating initial config file")
 		config.save(config_file_path)
+	# if it does exist we load the values
+	else:
+		$VBoxContainer/site_address_edit.text = load_setting("zeroframe", "site_address", "")
+		$VBoxContainer/zeronet_address_edit.text = load_setting("zeroframe", "zeronet_address", "127.0.0.1")
+		$VBoxContainer/zeronet_port_edit.text = load_setting("zeroframe", "zeronet_port", "43110")
+		$VBoxContainer/center/HBoxContainer/max_in.text = load_setting("zeroframe", "max_in_buffer_kb", "64")
+		$VBoxContainer/center/HBoxContainer/max_out.text = load_setting("zeroframe", "max_out_buffer_kb", "64")
+		$VBoxContainer/automatic_limit.pressed = load_setting("zeroframe", "automatic_buffer_kb", false)
+		if load_setting("zeroframe", "automatic_buffer_kb", false):
+			$VBoxContainer/center/HBoxContainer/max_in.editable = false
+			$VBoxContainer/center/HBoxContainer/max_out.editable = false
 
 func refresh_values():
 	# TODO: Get version from the plugin.cfg instead
@@ -50,9 +63,9 @@ func _on_zeronet_address_edit_text_changed(address):
 	zeroFrame.set_daemon(address, int($VBoxContainer/zeronet_port_edit.text))
 
 func _on_zeronet_port_edit_text_changed(port):
-	port = int(port)
-	save_setting("zeroframe", "zeronet_port", port)
-	zeroFrame.set_daemon($VBoxContainer/zeronet_address_edit.text, port)
+	var int_port = int(port)
+	zeroFrame.set_daemon($VBoxContainer/zeronet_address_edit.text, int_port)
+	save_setting("zeroframe", "zeronet_port", port)	
 
 func _on_check_button_pressed():
 	# Inform user that the connection is being checked

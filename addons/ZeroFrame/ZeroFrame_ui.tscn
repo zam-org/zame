@@ -38,7 +38,6 @@ anchor_bottom = 1.0
 color = Color( 0.0823529, 0.0862745, 0.0980392, 1 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
-editor/display_folded = true
 anchor_right = 1.0
 margin_left = 9.0
 margin_right = -10.0
@@ -271,7 +270,6 @@ custom_colors/font_color = Color( 0.588235, 0.372549, 0.976471, 1 )
 text = "RESET SETTINGS"
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="."]
-editor/display_folded = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0

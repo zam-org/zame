@@ -36,7 +36,7 @@ func _init(config_file=config_file_path, use_config_file=true, daemon_address="1
 	if use_config_file:
 		if config.load(config_file) == OK:
 			_daemon_address = config.get_value("zeroframe", "daemon_address", daemon_address)
-			_daemon_port = config.get_value("zeroframe", "daemon_port", daemon_port)
+			_daemon_port = int(config.get_value("zeroframe", "daemon_port", daemon_port))
 		else:
 			print("No address/port specified and config file not available at: ", config_file)
 			return

@@ -53,6 +53,11 @@ up={
  ]
 }
 
+[network]
+
+limits/websocket_client/max_in_buffer_kb="64"
+limits/websocket_client/max_out_buffer_kb="64"
+
 [rendering]
 
 environment/default_environment="res://default_env.tres"
