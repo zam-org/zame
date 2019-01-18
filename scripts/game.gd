@@ -45,23 +45,23 @@ func reset_character_pos() -> void:
 	$character.position = $level/SpawnPos.global_position
 
 # the button to change player spawn point moves the player spawn to the center of camera
-func _on_spawn_pressed() -> void:
+func _on_Spawn_pressed() -> void:
 	play_click()
 	$level/SpawnPos.position = $crosshair.position
 
-func _on_finish_pressed() -> void:
+func _on_Finish_pressed() -> void:
 	play_click()
 	$Finish.position = $crosshair.position
 
-func _on_death_area_pressed() -> void:
+func _on_pop_up_yes_pressed() -> void:
+	play_click()
+	if death_zone_confirm :
+		$DeathZone.position.y = $crosshair.position.y
+
+func _on_DeathArea_pressed():
 	play_click()
 	if $crosshair.position.y < $character.position.y:
 		$UI/ItemList/ConfirmPopUp.pop_up()
 		death_zone_confirm = true
 		return
 	$DeathZone.position.y = $crosshair.position.y
-
-func _on_pop_up_yes_pressed() -> void:
-	play_click()
-	if death_zone_confirm :
-		$DeathZone.position.y = $crosshair.position.y

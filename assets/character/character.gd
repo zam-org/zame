@@ -88,6 +88,14 @@ func send_tilt_info(delta) -> void:
 		smooth_tilt.y = smooth_tilt.y - (smooth_tilt.x / 7)
 
 	mat.set_shader_param('disp', Vector2(-smooth_tilt.x / 20, (smooth_tilt.y * -1) / 10))
+	
+	var limit : float
+	if in_air:
+		limit = 0.1
+	else:
+		limit = 0.9
+		
+	mat.set_shader_param('limit', limit)
 
 ###	in order to be picked up the item needs to be on the third mask
 func _on_check_body_entered(body) -> void:

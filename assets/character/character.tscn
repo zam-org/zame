@@ -1,29 +1,15 @@
 [gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/character/character.gd" type="Script" id=1]
-[ext_resource path="res://audio/effects/coin.wav" type="AudioStream" id=2]
-[ext_resource path="res://audio/effects/jump.wav" type="AudioStream" id=3]
-
-[sub_resource type="Shader" id=1]
-
-code = "shader_type canvas_item;
-
-uniform vec2 disp = vec2(0,0);
-
-void vertex(){
-//	VERTEX += disp;
-	if(VERTEX.y < -30.0){
-		VERTEX.x += disp.x * 0.75;
-		VERTEX.y += disp.y * 0.5;
-	}
-	
-}
-"
+[ext_resource path="res://assets/character/character.shader" type="Shader" id=2]
+[ext_resource path="res://audio/effects/coin.wav" type="AudioStream" id=3]
+[ext_resource path="res://audio/effects/jump.wav" type="AudioStream" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
 
-shader = SubResource( 1 )
+shader = ExtResource( 2 )
 shader_param/disp = Vector2( 0, 0 )
+shader_param/limit = 0.9
 
 [sub_resource type="Animation" id=3]
 
@@ -96,19 +82,20 @@ polygon = PoolVector2Array( -7.57109, -0.193428, -8.86997, -1.11631, -9.56378, -
 [node name="shape" type="Polygon2D" parent="."]
 material = SubResource( 2 )
 scale = Vector2( 1, 1.00277 )
+antialiased = true
 polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 uv = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
-antialiased = true
+vertex_colors = PoolColorArray( 0, 0, 0.745098, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0.745098, 0, 0, 1 )
 
 [node name="audio" type="Node" parent="."]
 
 [node name="coin" type="AudioStreamPlayer" parent="audio"]
-stream = ExtResource( 2 )
+stream = ExtResource( 3 )
 volume_db = -10.0
 bus = "knob"
 
 [node name="jump" type="AudioStreamPlayer" parent="audio"]
-stream = ExtResource( 3 )
+stream = ExtResource( 4 )
 volume_db = -10.0
 bus = "knob"
 
