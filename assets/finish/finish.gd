@@ -19,3 +19,4 @@ func fill_up() -> void:
 	$DoorShape.color = final_col
 	emit_signal("activated")
 	on = true
+	$Sound.play()

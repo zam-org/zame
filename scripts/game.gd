@@ -21,7 +21,7 @@ func _process(delta):
 
 	# check for the death zone and move the label to the middle of the camera
 	if $character.position.y > $DeathZone.position.y:
-		reset_character_pos()
+		death()
 
 	$DeathZone/Label.rect_position.x = $Camera.position.x + 450
 
@@ -36,7 +36,10 @@ func _on_center_player6_pressed() -> void:
 	$character.position = $crosshair.position
 
 func _on_character_death() -> void:
-	play_click()
+	death()
+	
+func death() -> void:
+	$Audio/Damage.play()
 	reset_character_pos()
 
 func reset_character_pos() -> void:

@@ -111,6 +111,7 @@ func _on_check_body_entered(body) -> void:
 
 	elif body.is_in_group("jump_pad"):
 		jump_pad = true
+		$audio/JumpPad.play()
 		print("JUMP PAD")
 
 	elif body.is_in_group("finish"):
