@@ -276,7 +276,6 @@ script = ExtResource( 17 )
 script = ExtResource( 18 )
 
 [node name="ItemList" type="ColorRect" parent="editor_UI"]
-editor/display_folded = true
 anchor_bottom = 1.0
 margin_right = 70.0
 rect_min_size = Vector2( 70, 0 )
@@ -294,6 +293,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="ScrollContainer" type="ScrollContainer" parent="editor_UI/ItemList/VBoxContainer"]
+editor/display_folded = true
 margin_right = 71.0
 margin_bottom = 268.29
 rect_min_size = Vector2( 0, 268.29 )
@@ -744,11 +744,12 @@ enabled_focus_mode = 0
 text = "YA MAN"
 
 [node name="Details" type="ColorRect" parent="editor_UI"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -560.0
 margin_top = 12.0
-margin_right = -195.0
+margin_right = 60.0
 margin_bottom = 82.0
 color = Color( 0.211765, 0.137255, 0.301961, 0.894118 )
 script = ExtResource( 34 )
@@ -756,7 +757,6 @@ script = ExtResource( 34 )
 [node name="MarginContainer" type="MarginContainer" parent="editor_UI/Details"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = 3.0
 custom_constants/margin_right = 22
 custom_constants/margin_top = 10
 custom_constants/margin_left = 22
@@ -765,11 +765,19 @@ custom_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="editor_UI/Details/MarginContainer"]
 margin_left = 22.0
 margin_top = 10.0
-margin_right = 346.0
+margin_right = 598.0
 margin_bottom = 60.0
 
+[node name="Type" type="Label" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
+margin_top = 14.0
+margin_right = 39.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+text = "Type:"
+
 [node name="PlatformOptions" type="OptionButton" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
-margin_right = 120.0
+margin_left = 43.0
+margin_right = 163.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 120, 0 )
 focus_mode = 0
@@ -778,20 +786,51 @@ enabled_focus_mode = 0
 text = "Platform"
 
 [node name="Control" type="Control" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
-margin_left = 124.0
-margin_right = 143.77
+margin_left = 167.0
+margin_right = 186.77
 margin_bottom = 50.0
 rect_min_size = Vector2( 19.77, 0 )
 
+[node name="Type2" type="Label" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
+margin_left = 190.0
+margin_top = 14.0
+margin_right = 229.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+text = "Logic"
+
 [node name="Left" type="OptionButton" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
-margin_left = 147.0
-margin_right = 267.0
+margin_left = 233.0
+margin_right = 353.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 120, 0 )
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
 text = "Left"
+
+[node name="Control2" type="Control" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
+margin_left = 357.0
+margin_right = 376.77
+margin_bottom = 50.0
+rect_min_size = Vector2( 19.77, 0 )
+
+[node name="DirectionLabel" type="Label" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
+margin_left = 380.0
+margin_top = 14.0
+margin_right = 448.0
+margin_bottom = 36.0
+theme = ExtResource( 6 )
+text = "Direction"
+
+[node name="Direction" type="OptionButton" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
+margin_left = 452.0
+margin_right = 572.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 120, 0 )
+focus_mode = 0
+theme = ExtResource( 6 )
+enabled_focus_mode = 0
 
 [node name="Tween" type="Tween" parent="editor_UI/Details"]
 
@@ -837,3 +876,4 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/ItemList/ConfirmPopUp/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/PlatformOptions" to="editor_UI/Details" method="_on_PlatformOptions_item_selected"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Left" to="editor_UI/Details" method="_on_Left_item_selected"]
+[connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Direction" to="editor_UI/Details" method="_on_Direction_item_selected"]

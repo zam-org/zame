@@ -5,6 +5,7 @@ var block : KinematicBody2D
 
 var dangerous = 0
 var left = 1
+var direction : Vector2 = Vector2.UP
 
 func _ready():
 	self.visible = false
@@ -17,16 +18,22 @@ func _ready():
 	$MarginContainer/HBoxContainer/Left.add_item("Left")
 	$MarginContainer/HBoxContainer/Left.add_item("Right")	
 	
+	$MarginContainer/HBoxContainer/Direction.clear()
+	$MarginContainer/HBoxContainer/Direction.add_item("Up")
+	$MarginContainer/HBoxContainer/Direction.add_item("Left")
+	$MarginContainer/HBoxContainer/Direction.add_item("Right")
+	$MarginContainer/HBoxContainer/Direction.add_item("Down")		
+	
 func activate():
 	active = true
 	self.visible = true
-	$Tween.interpolate_property(self, "modulate", Color(1,1,1,0), Color(1,1,1,1), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property(self, "modulate", modulate, Color(1,1,1,1), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
 	$Tween.start()
 	set_enemy_style()
 
 func deactivate():
 	active = false
-	$Tween.interpolate_property(self, "modulate", Color(1,1,1,1), Color(1,1,1,0), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property(self, "modulate", modulate, Color(1,1,1,0), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
 	$Tween.start()
 	yield($Tween, 'tween_completed')
 	if active == false:
@@ -59,8 +66,28 @@ func _on_Left_item_selected(ID):
 	else:
 		block.left = false
 		left = 0
-		
+
+# Directions
+# 0 - UP
+# 1 - LEFT
+# 2 - RIGHT
+# 3 - DOWN
+
+func _on_Direction_item_selected(ID):
+	match ID:
+		0:
+			direction = Vector2.UP
+		1:
+			direction = Vector2.LEFT
+		2:
+			direction = Vector2.RIGHT
+		3:
+			direction = Vector2.DOWN
+			
+	block.direction = direction
+
 func set_enemy_style():
 	print(dangerous, left)
 	block.dangerous = true if dangerous else false
 	block.left = true if left else false
+	block.direction = direction

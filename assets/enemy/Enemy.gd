@@ -1,12 +1,14 @@
 extends KinematicBody2D
 
-var direction : Vector2 = Vector2(-1,0)
+var direction : Vector2 = Vector2(-1,0) setget direction_set, direction_get
 var left : bool = true setget left_set, left_get
 var dangerous : bool = false setget dangerous_set, dangerous_get
 var dangerous_color : Color = Color(0.96875, 0.476215, 0.041626)
 const SPEED = 30
 
 var original_position : Vector2 = Vector2()
+var original_direction : Vector2 = Vector2()
+var original_rotation : int = 0
 
 var current_rotation : int = 0
 
@@ -45,7 +47,9 @@ func activate():
 func deactivate():
 	set_physics_process(false)
 	position = original_position
-
+	$Shape/Eye.look_at(to_global(original_direction * -1))
+	current_rotation = original_rotation
+	
 # setters and getters	
 func dangerous_set(yes):
 	if yes:
@@ -58,18 +62,20 @@ func dangerous_set(yes):
 func dangerous_get():
 	return dangerous	
 	
-func left_set(new):
-	if new:
-		left = true
-		$Shape/Eye.rotation_degrees = 0
-		current_rotation = 0
-		direction.x = -1
-	else:
-		left = false
-		$Shape/Eye.rotation_degrees = 180
-		current_rotation = 180
-		direction.x = 1
+func left_set(new : bool):
+	left = new
 
 func left_get():
 	return left
 	
+func direction_set(new : Vector2):
+	print("setting direction")
+	$Shape/Eye.look_at(to_global(new * -1))
+	current_rotation = round($Shape/Eye.rotation_degrees)
+	
+	direction = new
+	original_direction = new
+	original_rotation = int(current_rotation)
+	
+func direction_get():
+	return direction

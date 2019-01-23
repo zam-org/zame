@@ -5,6 +5,7 @@ var play : bool = false
 var details_on : bool = false
 
 func _ready():
+	$Esc.visible = false
 	set_process_input(false)	
 
 func _input(event):
@@ -22,10 +23,10 @@ func activate():
 	
 	if $Details.visible:
 		details_on = true
-		$Details.visible = false	
+		$Details.visible = false
 	
 func deactivate():
-	set_process_input(false)	
+	set_process_input(false)
 	play = false
 	$ItemList.visible = true
 	$Esc.visible = false

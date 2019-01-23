@@ -151,15 +151,17 @@ func reload(clean : bool = false) -> void:
 #	activate collision if we've just loaded a 2x2 block
 #	--- edit this one out should you not want for the building block to collide with character
 #	--- except don't because it's totally awesome
-	if selected_tool == 0:
-		new.set_collision_layer_bit(0,true)
-	elif selected_tool == 4:
-		emit_signal("on_enemy_selected", true, new)
-
+		
 	new.visible = false
 	new.modulate.a = 0.5
 	add_child(new)
 	building_piece = new
+
+	if selected_tool == 0:
+		building_piece.set_collision_layer_bit(0,true)
+	elif selected_tool == 4:
+		emit_signal("on_enemy_selected", true, building_piece)	
+	
 	yield(get_tree(), 'idle_frame')
 	building_piece.visible = true
 
