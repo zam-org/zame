@@ -4,6 +4,7 @@ onready var two : PackedScene = preload("res://assets/platforms/two/two.tscn")
 onready var coin : PackedScene = preload("res://assets/coin/coin.tscn")
 onready var jump_pad : PackedScene = preload("res://assets/jump_pad/jump_pad.tscn")
 onready var mine : PackedScene = preload("res://assets/mine/mine.tscn")
+onready var enemy : PackedScene = preload("res://assets/enemy/Enemy.tscn")
 
 var toolkit : Array
 var selected_tool : int
@@ -16,11 +17,15 @@ var building : bool = false
 
 var mouse_grid_pos : Vector2
 
-# STATS
+var play : bool = false
 
+# STATS
 # start off with a single built object as we have that as a ledge for the player to stand on
 var built_objects : int = 1
 var removed_objects : int = 0
+
+# Signals
+signal on_enemy_selected(yes, enemy)
 
 func _ready():
 	toolkit.clear()
@@ -28,26 +33,50 @@ func _ready():
 	toolkit.append(coin)
 	toolkit.append(jump_pad)
 	toolkit.append(mine)
+	toolkit.append(enemy)	
 	selected_tool = 0
 	reload()
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 #		if the LMB has been clicked the building mode is set on to toggle PAINT building in _process
-		if event.button_index == 1 and event.pressed:
-			building = true
-		elif event.button_index == 1 and !event.pressed:
-			building = false
+		if event.button_index == 1 and event.pressed and !play:
+#			building = true
+			build_current_piece()
+#		elif event.button_index == 1 and !event.pressed:
+#			building = false
 			
 		#switch tools
-		if event.button_index == 4 and event.pressed:
+		if event.button_index == 4 and event.pressed and !play:
 			if selected_tool > 0:
 				selected_tool -= 1
 				reload(true)
-		elif event.button_index == 5 and event.pressed:
+				check_build_type()
+		elif event.button_index == 5 and event.pressed and !play:
 			if selected_tool < toolkit.size() - 1 :
 				selected_tool += 1
 				reload(true)
+				check_build_type()
+
+func activate():
+	play = true
+	set_process(false)
+	set_process_unhandled_input(false)
+	if building_piece != null :
+		building_piece.queue_free()
+		building_piece = null
+	
+func deactivate():
+	play = false
+	set_process(true)
+	set_process_unhandled_input(true)
+	reload()
+
+func check_build_type():
+	if selected_tool == 4:
+		 emit_signal("on_enemy_selected", true, building_piece)
+	elif selected_tool == 3:
+		 emit_signal("on_enemy_selected", false, null)
 
 func _process(delta):
 	if $delete.get_overlapping_bodies().size() > 0:
@@ -115,7 +144,7 @@ func reload(clean : bool = false) -> void:
 	if clean:
 		building_piece.queue_free()
 		
-	building_piece = null
+		building_piece = null
 	var new = toolkit[selected_tool].instance()
 	new.position = mouse_grid_pos
 
@@ -124,6 +153,8 @@ func reload(clean : bool = false) -> void:
 #	--- except don't because it's totally awesome
 	if selected_tool == 0:
 		new.set_collision_layer_bit(0,true)
+	elif selected_tool == 4:
+		emit_signal("on_enemy_selected", true, new)
 
 	new.visible = false
 	new.modulate.a = 0.5
@@ -159,4 +190,3 @@ func _on_Mine_pressed() -> void:
 func _on_Reset_pressed() -> void:
 	play_click()
 	get_tree().reload_current_scene()
-

@@ -67,7 +67,9 @@ damping = 500.0
 scale = 2.0
 scale_random = 0.58
 
-[node name="character" type="KinematicBody2D"]
+[node name="character" type="KinematicBody2D" groups=[
+"play",
+]]
 script = ExtResource( 1 )
 
 [node name="check" type="Area2D" parent="."]

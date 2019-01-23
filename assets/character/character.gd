@@ -15,16 +15,20 @@ var smooth_tilt : Vector2
 var landed : bool = false
 var in_air : bool = true
 var jump_pad : bool = false
+var play : bool = false
 #	constants y'all!
 const JUMP_POWER = 10000
 
 #	did anyone say signals?
 signal coin
 signal death
+signal pos(pos)
 
 func _process(delta):
 	send_tilt_info(delta)
-
+	if play:
+		emit_signal("pos", position)
+	
 	#	raycast to check for ground as "_is_on_floor()" was acting up
 	if $floor_check.is_colliding():
 		in_air = false
@@ -81,7 +85,9 @@ func send_tilt_info(delta) -> void:
 		smooth_tilt = smooth_tilt.linear_interpolate(-motion, 3 * delta)
 	else:
 		smooth_tilt = smooth_tilt.linear_interpolate(motion, 10 * delta)
-
+	
+	randomize()
+	
 	if Input.is_action_pressed("left"):
 		smooth_tilt.y = smooth_tilt.y + (smooth_tilt.x / 7)
 	if Input.is_action_pressed("right"):
@@ -124,3 +130,9 @@ func play_jump_sound() -> void:
 func _on_check_body_exited(body) -> void:
 	if body.is_in_group("finish"):
 		print("DA END NO MOAR")
+		
+func activate():
+	play = true
+	
+func deactivate():
+	play = false

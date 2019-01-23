@@ -2,6 +2,7 @@ extends Node2D
 
 var grid_size = 20
 
+var play : bool = false setget play_set, play_get
 # waiting for a confirmation on these. Prevent players from messing things up.
 var death_zone_confirm : bool = false
 
@@ -28,7 +29,6 @@ func _process(delta):
 # play a little audible click now
 func play_click() -> void:
 	$Audio/Click.play()
-
 #
 func _on_center_player6_pressed() -> void:
 	play_click()
@@ -68,3 +68,36 @@ func _on_DeathArea_pressed():
 		death_zone_confirm = true
 		return
 	$DeathZone.position.y = $crosshair.position.y
+
+# setget
+func play_set(new):
+	play = new
+	if new:
+		get_tree().call_group_flags(1, "play", "activate")
+		$crosshair.visible = false
+	else:
+		get_tree().call_group_flags(1, "play", "deactivate")
+		$character.position = $level/SpawnPos.global_position
+		$crosshair.visible = true	
+	
+func play_get():
+	return play
+
+# Each node in the group play will have the functions activate and deactivate called when these buttons are pressed
+func _on_Play_pressed():
+	$Audio/Click.play()
+	get_tree().call_group("play", "activate")
+
+func _on_Stop_pressed():
+	$Audio/Click.play()
+	get_tree().call_group("play", "deactivate")
+
+
+func activate():
+	$crosshair.visible = false
+	Input.set_mouse_mode(2)	
+	
+func deactivate():
+	$character.position = $level/SpawnPos.global_position
+	$crosshair.visible = true
+	Input.set_mouse_mode(0)	
