@@ -84,10 +84,10 @@ func _on_Direction_item_selected(ID):
 		3:
 			direction = Vector2.DOWN
 			
-	block.direction = direction
+	block.desired_direction = direction
 
 func set_enemy_style():
 	print(dangerous, left)
 	block.dangerous = true if dangerous else false
 	block.left = true if left else false
-	block.direction = direction
+	block.desired_direction = direction

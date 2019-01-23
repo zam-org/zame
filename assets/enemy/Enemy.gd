@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
-var direction : Vector2 = Vector2(-1,0) setget direction_set, direction_get
+var desired_direction : Vector2 = Vector2(-1,0) setget desired_direction_set, desired_direction_get
+var direction : Vector2 = Vector2()
 var left : bool = true setget left_set, left_get
 var dangerous : bool = false setget dangerous_set, dangerous_get
 var dangerous_color : Color = Color(0.96875, 0.476215, 0.041626)
@@ -8,8 +9,8 @@ const SPEED = 30
 
 var original_position : Vector2 = Vector2()
 var original_direction : Vector2 = Vector2()
-var original_rotation : int = 0
 
+var original_rotation : int = 0
 var current_rotation : int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -41,8 +42,11 @@ func change():
 	$Tween.start()
 	
 func activate():
+	direction = desired_direction
 	set_physics_process(true)
 	original_position = position
+	original_direction = direction
+	original_rotation = int(current_rotation)	
 	
 func deactivate():
 	set_physics_process(false)
@@ -68,14 +72,12 @@ func left_set(new : bool):
 func left_get():
 	return left
 	
-func direction_set(new : Vector2):
+func desired_direction_set(new : Vector2):
 	print("setting direction")
 	$Shape/Eye.look_at(to_global(new * -1))
 	current_rotation = round($Shape/Eye.rotation_degrees)
 	
-	direction = new
-	original_direction = new
-	original_rotation = int(current_rotation)
+	desired_direction = new
 	
-func direction_get():
+func desired_direction_get():
 	return direction
