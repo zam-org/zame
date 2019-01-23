@@ -720,6 +720,9 @@ theme = ExtResource( 6 )
 enabled_focus_mode = 0
 text = "YA MAN"
 
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+bus = "Music"
+
 [connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]

@@ -86,6 +86,15 @@ func get_grid_pos(pos : Vector2) -> Vector2:
 func build_current_piece() -> void:
 	if !can_build:
 		return
+		
+	if building_piece.is_in_group('small'):
+		building_piece.set_collision_layer_bit(2,true)
+		building_piece.get_node("build_check").set_collision_layer_bit(10, true)
+	else:
+		building_piece.set_collision_layer_bit(0,true)
+		building_piece.set_collision_layer_bit(1,true)
+#		building_piece = null		
+		
 	building_piece.modulate.a = 1
 	building_piece.add_to_group("delete")
 
@@ -93,18 +102,11 @@ func build_current_piece() -> void:
 	#	1 - static
 	#	2 - pickup/interactive, eg. coins and jumppads
 	#	3 - traps
-
-	if building_piece.is_in_group('small'):
-		building_piece.set_collision_layer_bit(2,true)
-		building_piece.get_node("build_check").set_collision_layer_bit(10, true)
-	else:
-		building_piece.set_collision_layer_bit(0,true)
-		building_piece.set_collision_layer_bit(1,true)
-		building_piece = null
 		
 	reload()
 	$Audio/BlockPlaced.play()
 	built_objects += 1
+	print(built_objects)
 
 # called to put a new item under the mouse's grid posiiton aka. the item to be built
 func reload(clean : bool = false) -> void:

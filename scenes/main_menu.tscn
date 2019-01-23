@@ -657,14 +657,17 @@ custom_colors/font_color_disabled = Color( 1, 1, 1, 0.231373 )
 disabled = true
 text = "DELETE"
 
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+bus = "Music"
+
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
-[connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="zn_button" to="." method="play_click"]
+[connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
-[connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
+[connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="HBoxContainer/exit" to="." method="play_click"]
