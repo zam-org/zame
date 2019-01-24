@@ -1,5 +1,5 @@
 # ZAME - BUILD. SHARE. PLAY
-*Example Game for the ZeroFrame Godot Engine addon.*
+> *Example Game for the ZeroFrame Godot Engine addon [ZeroFrame](https://github.com/anoadragon453/godot-zeroframe-plugin).*
 
 [Itch.io](https://lentsius-bark.itch.io/zame) link where you can download the game.
 
@@ -46,9 +46,8 @@ The editor allows you to fully build a level from ground up, from walking blocks
 * death zone **So that you don't go** ***AAARGHRGHRRG!*** **right off the bat.**
 
 ## ZeroNet // and why you might want to use it
-<img src="ui/logos/zn_purple.png" alt="ZN logo" width="100"/>
-
 > *Open, free and uncensorable websites, using Bitcoin cryptography and BitTorrent network.*
+<img src="ui/logos/zn_purple.png" alt="ZN logo" width="100"/>
 
 Zame is an example game made for an [add-on](https://github.com/anoadragon453/godot-zeroframe-plugin) developed for [GodotEngine](https://godotengine.org) which enables the developers to communicate with [ZeroNet](https://zeronet.io), send/receive files and more. Zame represents a working example project which shows the possibilities as well as possible uses of the addon (getting/sending data, user check, call usage).
 
