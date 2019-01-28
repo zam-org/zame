@@ -27,6 +27,7 @@ ZeroFrame="*res://addons/ZeroFrame/ZeroFrame.gd"
 
 window/size/width=1280
 window/size/height=720
+window/size/borderless=true
 
 [editor_plugins]
 
@@ -60,4 +61,6 @@ limits/websocket_client/max_out_buffer_kb="64"
 
 [rendering]
 
+quality/filters/use_nearest_mipmap_filter=true
+quality/filters/msaa=3
 environment/default_environment="res://default_env.tres"

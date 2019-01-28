@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=2]
 
-[ext_resource path="res://assets/enemy/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/platforms/moving/MovingPlatform.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 extents = Vector2( 9.7, 9.7 )
 
-[node name="Enemy" type="KinematicBody2D" groups=[
+[node name="MovingPlatform" type="KinematicBody2D" groups=[
 "play",
 ]]
 script = ExtResource( 1 )
@@ -15,7 +15,6 @@ script = ExtResource( 1 )
 shape = SubResource( 1 )
 
 [node name="Shape" type="Polygon2D" parent="."]
-color = Color( 0.921569, 0.568627, 0.0666667, 1 )
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
 [node name="Eye" type="Polygon2D" parent="Shape"]

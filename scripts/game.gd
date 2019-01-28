@@ -9,6 +9,7 @@ var death_zone_confirm : bool = false
 func _ready():
 	$crosshair.position = Vector2()
 
+
 # Runs every frame
 func _process(delta):
 	$bloom.rect_position = $Camera.position + Vector2(-640, -360)
@@ -25,6 +26,9 @@ func _process(delta):
 		death()
 
 	$DeathZone/Label.rect_position.x = $Camera.position.x + 450
+	
+	if Input.is_action_just_pressed("ui_select"):
+		play_set(!play)
 
 # play a little audible click now
 func play_click() -> void:
@@ -64,7 +68,7 @@ func _on_pop_up_yes_pressed() -> void:
 func _on_DeathArea_pressed():
 	play_click()
 	if $crosshair.position.y < $character.position.y:
-		$UI/ItemList/ConfirmPopUp.pop_up()
+		$editor_UI/ItemList/ConfirmPopUp.pop_up()
 		death_zone_confirm = true
 		return
 	$DeathZone.position.y = $crosshair.position.y

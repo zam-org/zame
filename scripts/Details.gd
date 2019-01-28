@@ -4,19 +4,20 @@ var active : bool = false
 var block : KinematicBody2D
 
 var dangerous = 0
-var left = 1
+var logic = 0
 var direction : Vector2 = Vector2.UP
 
 func _ready():
 	self.visible = false
 	
-	$MarginContainer/HBoxContainer/PlatformOptions.clear()
-	$MarginContainer/HBoxContainer/PlatformOptions.add_item("Platform")
-	$MarginContainer/HBoxContainer/PlatformOptions.add_item("Enemy")	
+#	$MarginContainer/HBoxContainer/PlatformOptions.clear()
+#	$MarginContainer/HBoxContainer/PlatformOptions.add_item("Platform")
+#	$MarginContainer/HBoxContainer/PlatformOptions.add_item("Enemy")	
 
 	$MarginContainer/HBoxContainer/Left.clear()
 	$MarginContainer/HBoxContainer/Left.add_item("Left")
-	$MarginContainer/HBoxContainer/Left.add_item("Right")	
+	$MarginContainer/HBoxContainer/Left.add_item("Right")
+	$MarginContainer/HBoxContainer/Left.add_item("Bounce")
 	
 	$MarginContainer/HBoxContainer/Direction.clear()
 	$MarginContainer/HBoxContainer/Direction.add_item("Up")
@@ -43,6 +44,11 @@ func _on_level_on_enemy_selected(yes, node):
 	if yes:
 		if node is KinematicBody2D:
 			block = node
+			print(block.type)
+			if block.type == "Moving":
+				$MarginContainer/HBoxContainer/SoftContainer.visible = true
+			else:
+				$MarginContainer/HBoxContainer/SoftContainer.visible = false
 			activate()
 		else:
 			print("Selected node is not the enemy type")
@@ -60,12 +66,8 @@ func _on_PlatformOptions_item_selected(ID):
 
 
 func _on_Left_item_selected(ID):
-	if ID == 0:
-		block.left = true
-		left = 1
-	else:
-		block.left = false
-		left = 0
+	block.logic = ID
+	logic = ID
 
 # Directions
 # 0 - UP
@@ -87,7 +89,9 @@ func _on_Direction_item_selected(ID):
 	block.desired_direction = direction
 
 func set_enemy_style():
-	print(dangerous, left)
-	block.dangerous = true if dangerous else false
-	block.left = true if left else false
+	block.logic = logic
 	block.desired_direction = direction
+
+func _on_SoftToggle_pressed():
+	if block.type == "Moving":
+		block.soft = $MarginContainer/HBoxContainer/SoftContainer/CenterContainer/SoftToggle.pressed
