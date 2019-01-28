@@ -233,9 +233,9 @@ text = "zeronet.io"
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -253.448
+margin_left = -195.053
 margin_top = 23.5173
-margin_right = -89.4475
+margin_right = -31.0527
 margin_bottom = 74.5173
 
 [node name="question" type="Button" parent="HBoxContainer"]
@@ -258,12 +258,6 @@ margin_bottom = 51.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 3 )
 text = "("
-
-[node name="Control" type="Control" parent="HBoxContainer"]
-margin_left = 110.0
-margin_right = 127.94
-margin_bottom = 51.0
-rect_min_size = Vector2( 17.94, 0 )
 
 [node name="logo_animation" type="AnimationPlayer" parent="."]
 autoplay = "logo_idle"
