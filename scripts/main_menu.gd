@@ -70,7 +70,7 @@ func _on_zn_button_pressed():
 	OS.shell_open("https://zeronet.io")
 
 func _on_play_pressed():
-	get_tree().change_scene("res://maps/default.tscn")
+	get_tree().change_scene("res://scenes/default.tscn")
 
 func _on_config_pressed():
 	# TODO: testing
@@ -84,3 +84,6 @@ func _connect_to_zame():
 	if not yield(ZeroFrame.use_site(site_address), "site_connected"):
     	print("Unable to connect to site")
     	return
+
+func _on_Exit_pressed():
+	get_tree().quit()

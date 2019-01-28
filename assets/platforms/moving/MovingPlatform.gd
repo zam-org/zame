@@ -3,10 +3,9 @@ extends KinematicBody2D
 var desired_direction : Vector2 = Vector2(-1,0) setget desired_direction_set, desired_direction_get
 var direction : Vector2 = Vector2()
 
-var original_color : Color = Color("eb9111")
-var hit_color : Color = Color(1, 0.890625, 0)
+var soft : bool = false
 
-const type : String = "Enemy"
+const type : String = "Moving"
 
 #	logic states
 #	0 - turns left on impact
@@ -25,6 +24,7 @@ var current_rotation : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+
 	set_physics_process(false)
 	
 func _physics_process(delta):
@@ -34,6 +34,8 @@ func move(delta):
 	var velocity = direction * SPEED * delta
 	var collision = move_and_collide(velocity, true, true, false)
 	if collision:
+		if !soft and collision.collider.name == "character":
+			return
 		change()
 		
 func change():
@@ -50,7 +52,7 @@ func change():
 	current_rotation += rot
 	print(current_rotation)
 	$Tween.interpolate_property($Shape/Eye, 'rotation_degrees', $Shape/Eye.rotation_degrees, current_rotation - 180, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
-	$Tween.interpolate_property($Shape, 'color', hit_color, original_color, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)	
+#	$Tween.interpolate_property($Shape/Eye, 'rotation', $Shape/Eye.rotation, direction.angle_to(to_local(position)), 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)	
 	$Tween.start()
 	print(direction)
 	
