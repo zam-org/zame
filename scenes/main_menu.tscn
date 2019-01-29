@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=2]
@@ -59,6 +59,13 @@ shader_param/bloom = 1.5
 
 size = 32
 font_data = ExtResource( 9 )
+
+[sub_resource type="Shader" id=7]
+
+
+[sub_resource type="ShaderMaterial" id=8]
+
+shader = SubResource( 7 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -660,7 +667,6 @@ bus = "Music"
 [node name="MarginContainer" parent="." instance=ExtResource( 13 )]
 
 [node name="Options" type="Control" parent="."]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -672,13 +678,13 @@ margin_bottom = 240.0
 rect_min_size = Vector2( 480, 480 )
 
 [node name="ColorRect" type="ColorRect" parent="Options"]
-editor/display_folded = true
+material = SubResource( 8 )
+use_parent_material = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0.145098, 0.0627451, 0.290196, 0.74902 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Options/ColorRect"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_bottom = -101.0
@@ -703,7 +709,6 @@ margin_bottom = 75.89
 rect_min_size = Vector2( 0, 23.89 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Options/ColorRect/VBoxContainer"]
-editor/display_folded = true
 margin_top = 79.0
 margin_right = 480.0
 margin_bottom = 335.0
@@ -914,6 +919,7 @@ rect_min_size = Vector2( 28.66, 30.78 )
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="zn_button" to="." method="play_click"]
 [connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]

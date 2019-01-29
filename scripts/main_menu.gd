@@ -73,8 +73,7 @@ func _on_play_pressed():
 	get_tree().change_scene("res://scenes/default.tscn")
 
 func _on_config_pressed():
-	# TODO: testing
-	_connect_to_zame()
+	$Options.visible = true
 
 func _connect_to_zame():
 	# ZAME site address
@@ -87,3 +86,7 @@ func _connect_to_zame():
 
 func _on_Exit_pressed():
 	get_tree().quit()
+
+
+func _on_Update_pressed():
+	_connect_to_zame()

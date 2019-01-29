@@ -28,6 +28,10 @@ ZeroFrame="*res://addons/ZeroFrame/ZeroFrame.gd"
 window/size/width=1280
 window/size/height=720
 window/size/borderless=true
+window/dpi/allow_hidpi=true
+window/allow_per_pixel_transparency=true
+window/per_pixel_transparency=true
+window/per_pixel_transparency_splash=true
 
 [editor_plugins]
 

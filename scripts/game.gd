@@ -5,6 +5,7 @@ var grid_size = 20
 var play : bool = false setget play_set, play_get
 # waiting for a confirmation on these. Prevent players from messing things up.
 var death_zone_confirm : bool = false
+var exit_confirm : bool = false
 
 func _ready():
 	$crosshair.position = Vector2()
@@ -28,7 +29,14 @@ func _process(delta):
 	$DeathZone/Label.rect_position.x = $Camera.position.x + 450
 	
 	if Input.is_action_just_pressed("ui_select"):
+		$Audio/Click.play()
 		play_set(!play)
+	if Input.is_action_just_pressed("ui_cancel") and !play:
+		$Audio/Click.play()
+		exit_confirm_popup()		
+	if Input.is_action_just_pressed("ui_cancel") and play:
+		$Audio/Click.play()
+		play_set(false)
 
 # play a little audible click now
 func play_click() -> void:
@@ -60,15 +68,10 @@ func _on_Finish_pressed() -> void:
 	play_click()
 	$Finish.position = $crosshair.position
 
-func _on_pop_up_yes_pressed() -> void:
-	play_click()
-	if death_zone_confirm :
-		$DeathZone.position.y = $crosshair.position.y
-
 func _on_DeathArea_pressed():
 	play_click()
 	if $crosshair.position.y < $character.position.y:
-		$editor_UI/ItemList/ConfirmPopUp.pop_up()
+		$editor_UI/ItemList/ConfirmPopUp.pop_up("Placing the Death Zone above the player will cause an endless respawn. A headache is likely to follow. \n\n Are you sure buds? Justsayin")
 		death_zone_confirm = true
 		return
 	$DeathZone.position.y = $crosshair.position.y
@@ -105,3 +108,28 @@ func deactivate():
 	$character.position = $level/SpawnPos.global_position
 	$crosshair.visible = true
 	Input.set_mouse_mode(0)	
+
+#	called when the player presses the exit button
+func _on_Exit_pressed() -> void:
+	exit_confirm_popup()
+	
+func exit_confirm_popup() -> void:
+	exit_confirm = true
+	$editor_UI/ItemList/ConfirmPopUp.pop_up("Quit to main menu? \n (All unsaved progress will be lost)")
+
+#	POP UP SIGNALS
+func _on_pop_up_yes_pressed() -> void:
+	play_click()
+	if death_zone_confirm:
+		death_zone_confirm = false		
+		$DeathZone.position.y = $crosshair.position.y
+
+	if exit_confirm:
+		exit_confirm = false
+		get_tree().change_scene("res://scenes/main_menu.tscn")
+
+
+func _on_No_pressed():
+	$Audio/Click.play()
+	death_zone_confirm = false
+	exit_confirm = false

@@ -586,7 +586,7 @@ custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "R"
 
-[node name="Remove" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
+[node name="Exit" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
 margin_top = 622.0
 margin_right = 70.0
 margin_bottom = 658.0
@@ -630,7 +630,6 @@ scroll_horizontal_enabled = false
 alignment = 1
 
 [node name="ConfirmPopUp" type="Control" parent="editor_UI/ItemList"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -642,11 +641,18 @@ margin_bottom = 72.0
 theme = ExtResource( 6 )
 script = ExtResource( 37 )
 
+[node name="Black" type="ColorRect" parent="editor_UI/ItemList/ConfirmPopUp"]
+margin_left = -477.0
+margin_top = -306.0
+margin_right = 890.0
+margin_bottom = 484.0
+color = Color( 1, 1, 1, 0.380392 )
+
 [node name="BottomBackground" type="ColorRect" parent="editor_UI/ItemList/ConfirmPopUp"]
 margin_top = 160.0
 margin_right = 400.0
 margin_bottom = 206.0
-color = Color( 0.258824, 0.223529, 0.298039, 0.462745 )
+color = Color( 0.14902, 0.109804, 0.266667, 0.937255 )
 
 [node name="Background" type="ColorRect" parent="editor_UI/ItemList/ConfirmPopUp"]
 anchor_right = 1.0
@@ -667,6 +673,7 @@ text = "Placing the Death Zone above the player will cause an endless respawn. A
 
 Are you sure buds? Justsayin'"
 align = 1
+valign = 1
 autowrap = true
 
 [node name="Menu" type="HBoxContainer" parent="editor_UI/ItemList/ConfirmPopUp"]
@@ -726,7 +733,7 @@ custom_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="editor_UI/Details/MarginContainer"]
 margin_left = 22.0
 margin_top = 10.0
-margin_right = 623.0
+margin_right = 596.0
 margin_bottom = 60.0
 
 [node name="Type" type="Label" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
@@ -884,9 +891,12 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="gui_input" from="editor_UI/ItemList/ConfirmPopUp/Black" to="editor_UI/ItemList/ConfirmPopUp" method="_on_Black_gui_input"]
+[connection signal="pressed" from="editor_UI/ItemList/ConfirmPopUp/Menu/No" to="." method="_on_No_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/ConfirmPopUp/Menu/No" to="editor_UI/ItemList/ConfirmPopUp" method="_on_No_pressed"]
-[connection signal="pressed" from="editor_UI/ItemList/ConfirmPopUp/Menu/Yes" to="editor_UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/ConfirmPopUp/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/ConfirmPopUp/Menu/Yes" to="editor_UI/ItemList/ConfirmPopUp" method="_on_Yes_pressed"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/PlatformOptions" to="editor_UI/Details" method="_on_PlatformOptions_item_selected"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Left" to="editor_UI/Details" method="_on_Left_item_selected"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Direction" to="editor_UI/Details" method="_on_Direction_item_selected"]
