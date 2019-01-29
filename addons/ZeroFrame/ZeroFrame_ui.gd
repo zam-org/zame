@@ -14,7 +14,7 @@ func _process(delta):
 func _ready():
 	# Load config file
 	var err = config.load(config_file_path)
-	
+
 	# If the config file has yet to exist
 	if err != OK:
 		print(OK)
@@ -65,7 +65,7 @@ func _on_zeronet_address_edit_text_changed(address):
 func _on_zeronet_port_edit_text_changed(port):
 	var int_port = int(port)
 	zeroFrame.set_daemon($VBoxContainer/zeronet_address_edit.text, int_port)
-	save_setting("zeroframe", "zeronet_port", port)	
+	save_setting("zeroframe", "zeronet_port", port)
 
 func _on_check_button_pressed():
 	# Inform user that the connection is being checked
