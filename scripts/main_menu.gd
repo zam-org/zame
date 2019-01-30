@@ -6,12 +6,14 @@ var resizing : bool = false
 onready var map_list : ItemList = $SidePanelSpace/SidePanel/MapList
 
 const MIN_MAP_LIST_SIZE = 95
-const MAX_MAP_LIST_SIZE = 340
 
 func _ready():
 	set_process_input(false)
 	map_list.rect_min_size.y = load_setting("main_menu", "map_list_length", 139)
 	map_list.select(load_setting("main_menu", "selected_map", 0))
+	
+	if map_list.rect_min_size.y > OS.window_size.y / 2.2:
+		map_list.rect_min_size.y = MIN_MAP_LIST_SIZE
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -30,7 +32,7 @@ func _input(event):
 		# listen to mouse speed and apply it to the rectangle size
 		# ONLY if the change in size is within limits
 		var change = event.relative.y
-		if map_list.rect_min_size.y + change > MIN_MAP_LIST_SIZE and map_list.rect_min_size.y + change < MAX_MAP_LIST_SIZE:
+		if map_list.rect_min_size.y + change < OS.window_size.y / 2.2 and map_list.rect_min_size.y + change > MIN_MAP_LIST_SIZE:
 			map_list.rect_min_size.y += change
 			$SidePanelSpace/SidePanel.queue_sort()
 			play_knob_turn()
@@ -73,6 +75,7 @@ func _on_play_pressed():
 	get_tree().change_scene("res://scenes/default.tscn")
 
 func _on_config_pressed():
+	$Options.set_process(true)
 	$Options.visible = true
 
 func _connect_to_zame():

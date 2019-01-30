@@ -25,11 +25,11 @@ func _input(event):
 func pop_up(message : String = "", no : String = "", yes : String = "") -> void:
 	set_process_input(true)
 	if message != "":
-		$Background/Text.text = message
+		$Window/TextContainer/Text.text = message
 	if no != "":
-		$Menu/No.text = no
+		$Window/Buttons/Menu/No.text = no
 	if yes != "":
-		$Menu/Yes.text = yes
+		$Window/Buttons/Menu/Yes.text = yes
 	
 	self.visible = true
 
@@ -44,6 +44,6 @@ func _on_Yes_pressed() -> void:
 func _on_Black_gui_input(event):
 	if event is InputEventMouseButton:
 		visible = false
-		$Menu/No.emit_signal("pressed")
+		$Window/Buttons/Menu/No.emit_signal("pressed")
 		set_process_input(false)
 		

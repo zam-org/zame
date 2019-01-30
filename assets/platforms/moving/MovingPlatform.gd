@@ -32,11 +32,13 @@ func _physics_process(delta):
 
 func move(delta):
 	var velocity = direction * SPEED * delta
+
 	var collision = move_and_collide(velocity, true, true, false)
 	if collision:
 		if !soft and collision.collider.name == "character":
 			return
 		change()
+
 		
 func change():
 	position = position.snapped(Vector2(20,20))
@@ -68,11 +70,10 @@ func deactivate():
 	position = original_position
 	$Shape/Eye.look_at(to_global(original_direction * -1))
 	current_rotation = original_rotation
-
 	
 func logic_set(new : int):
 	logic = new
-
+	
 func logic_get():
 	return logic
 	

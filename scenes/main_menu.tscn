@@ -1,36 +1,37 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=2]
-[ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=3]
-[ext_resource path="res://ui/fonts/Refuge.otf" type="DynamicFontData" id=4]
-[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=5]
-[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=6]
-[ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=7]
-[ext_resource path="res://ui/buttons/grab/grab_active.png" type="Texture" id=8]
-[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=9]
-[ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=10]
-[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=11]
-[ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=12]
-[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=13]
-[ext_resource path="res://scripts/Options.gd" type="Script" id=14]
+[ext_resource path="res://assets/grid/big_grid.tscn" type="PackedScene" id=3]
+[ext_resource path="res://ui/logos/zn_white.png" type="Texture" id=4]
+[ext_resource path="res://ui/fonts/Refuge.otf" type="DynamicFontData" id=5]
+[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=7]
+[ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=8]
+[ext_resource path="res://ui/buttons/grab/grab_active.png" type="Texture" id=9]
+[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=10]
+[ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=11]
+[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=12]
+[ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=13]
+[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=14]
+[ext_resource path="res://scripts/Options.gd" type="Script" id=15]
 
 [sub_resource type="DynamicFont" id=1]
 
 size = 120
-font_data = ExtResource( 4 )
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
 
 size = 15
 use_filter = true
-font_data = ExtResource( 5 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=3]
 
 size = 50
 use_filter = true
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="Animation" id=4]
 
@@ -52,14 +53,14 @@ tracks/0/keys = {
 
 [sub_resource type="ShaderMaterial" id=5]
 
-shader = ExtResource( 11 )
+shader = ExtResource( 12 )
 shader_param/hdr_threshold = 0.01
 shader_param/bloom = 1.5
 
 [sub_resource type="DynamicFont" id=6]
 
 size = 32
-font_data = ExtResource( 9 )
+font_data = ExtResource( 10 )
 
 [sub_resource type="Shader" id=7]
 
@@ -67,6 +68,12 @@ font_data = ExtResource( 9 )
 [sub_resource type="ShaderMaterial" id=8]
 
 shader = SubResource( 7 )
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 30
+use_filter = true
+font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -85,6 +92,9 @@ rect_rotation = 14.3
 texture = ExtResource( 2 )
 expand = true
 
+[node name="big_grid" parent="." instance=ExtResource( 3 )]
+position = Vector2( 654.228, 359.931 )
+
 [node name="zn_logo" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0.0627451 )
 anchor_left = 1.0
@@ -95,7 +105,7 @@ margin_left = -382.811
 margin_top = -407.874
 margin_right = 129.189
 margin_bottom = 104.126
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
@@ -112,31 +122,34 @@ rect_min_size = Vector2( 53.7, 3.55 )
 margin_left = 57.0
 margin_right = 480.0
 margin_bottom = 720.0
+alignment = 1
 
 [node name="SpacerAtTheTop" type="Control" parent="SidePanelSpace/SidePanel"]
+visible = false
+margin_top = 87.0
 margin_right = 423.0
-margin_bottom = 63.95
+margin_bottom = 150.95
 rect_min_size = Vector2( 0, 63.95 )
 
 [node name="name" type="Label" parent="SidePanelSpace/SidePanel"]
-margin_top = 67.0
+margin_top = 121.0
 margin_right = 423.0
-margin_bottom = 162.0
+margin_bottom = 216.0
 custom_fonts/font = SubResource( 1 )
 text = "zame"
 uppercase = true
 
 [node name="spacer" type="Control" parent="SidePanelSpace/SidePanel"]
-margin_top = 166.0
+margin_top = 220.0
 margin_right = 423.0
-margin_bottom = 168.0
+margin_bottom = 222.0
 rect_min_size = Vector2( 0, 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SidePanelSpace/SidePanel"]
 modulate = Color( 1, 1, 1, 0.643137 )
-margin_top = 172.0
+margin_top = 226.0
 margin_right = 423.0
-margin_bottom = 205.0
+margin_bottom = 259.0
 
 [node name="Label" type="Label" parent="SidePanelSpace/SidePanel/HBoxContainer"]
 margin_top = 6.0
@@ -151,39 +164,39 @@ margin_left = 398.0
 margin_right = 423.52
 margin_bottom = 33.0
 rect_min_size = Vector2( 25.52, 33 )
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
 
 [node name="spacer3" type="Control" parent="SidePanelSpace/SidePanel"]
-margin_top = 209.0
+margin_top = 263.0
 margin_right = 423.0
-margin_bottom = 234.0
+margin_bottom = 288.0
 rect_min_size = Vector2( 0, 25 )
 
 [node name="Play" type="Button" parent="SidePanelSpace/SidePanel"]
-margin_top = 238.0
+margin_top = 292.0
 margin_right = 423.0
-margin_bottom = 276.8
+margin_bottom = 330.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "Start"
 align = 0
 
 [node name="MapList" type="ItemList" parent="SidePanelSpace/SidePanel"]
-margin_top = 280.0
+margin_top = 334.0
 margin_right = 423.0
-margin_bottom = 419.08
+margin_bottom = 473.08
 rect_min_size = Vector2( 0, 139.08 )
 rect_pivot_offset = Vector2( 619.686, 73.718 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 items = [ "Default", null, false, "Map 2", null, false, "Map 3", null, false, "Map 4", null, false, "Map 5", null, false, "Map 6", null, false, "Map 7", null, false, "Map 8", null, false ]
 
 [node name="grab_container" type="CenterContainer" parent="SidePanelSpace/SidePanel"]
-margin_top = 423.0
+margin_top = 477.0
 margin_right = 423.0
-margin_bottom = 443.0
+margin_bottom = 497.0
 
 [node name="GrabMe" type="TextureButton" parent="SidePanelSpace/SidePanel/grab_container"]
 margin_left = 196.0
@@ -193,36 +206,36 @@ focus_mode = 0
 mouse_default_cursor_shape = 6
 action_mode = 0
 enabled_focus_mode = 0
-texture_normal = ExtResource( 7 )
-texture_pressed = ExtResource( 8 )
-texture_hover = ExtResource( 8 )
-texture_disabled = ExtResource( 7 )
-texture_focused = ExtResource( 8 )
+texture_normal = ExtResource( 8 )
+texture_pressed = ExtResource( 9 )
+texture_hover = ExtResource( 9 )
+texture_disabled = ExtResource( 8 )
+texture_focused = ExtResource( 9 )
 stretch_mode = 2
 
 [node name="spacer4" type="Control" parent="SidePanelSpace/SidePanel"]
-margin_top = 447.0
+margin_top = 501.0
 margin_right = 423.0
-margin_bottom = 461.7
+margin_bottom = 515.7
 rect_min_size = Vector2( 0, 14.7 )
 
 [node name="Update" type="Button" parent="SidePanelSpace/SidePanel"]
-margin_top = 465.0
+margin_top = 519.0
 margin_right = 423.0
-margin_bottom = 503.8
+margin_bottom = 557.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "Update"
 align = 0
 
 [node name="Exit" type="Button" parent="SidePanelSpace/SidePanel"]
-margin_top = 507.0
+margin_top = 561.0
 margin_right = 423.0
-margin_bottom = 545.8
+margin_bottom = 599.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "Exit"
 align = 0
 
@@ -235,10 +248,11 @@ margin_left = -111.419
 margin_top = -41.7988
 margin_right = -34.4189
 margin_bottom = -21.7988
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "zeronet.io"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -195.053
@@ -249,7 +263,7 @@ margin_bottom = 74.5173
 [node name="question" type="Button" parent="HBoxContainer"]
 margin_right = 39.0
 margin_bottom = 51.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 custom_fonts/font = SubResource( 3 )
 text = "?"
 
@@ -263,7 +277,7 @@ rect_min_size = Vector2( 17.94, 0 )
 margin_left = 64.0
 margin_right = 106.0
 margin_bottom = 51.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 custom_fonts/font = SubResource( 3 )
 text = "("
 
@@ -275,12 +289,12 @@ anims/logo_idle = SubResource( 4 )
 editor/display_folded = true
 
 [node name="click" type="AudioStreamPlayer" parent="audio"]
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = -8.723
 bus = "Effects"
 
 [node name="knob" type="AudioStreamPlayer" parent="audio"]
-stream = ExtResource( 10 )
+stream = ExtResource( 11 )
 volume_db = -10.0
 bus = "knob"
 
@@ -331,7 +345,7 @@ margin_top = 12.0
 margin_right = 142.28
 margin_bottom = 34.0
 rect_min_size = Vector2( 142.28, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "MAP BROWSER"
 align = 2
 
@@ -340,7 +354,7 @@ margin_left = 146.0
 margin_right = 192.13
 margin_bottom = 47.0
 rect_min_size = Vector2( 46.13, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 custom_fonts/font = SubResource( 6 )
 text = "R"
 
@@ -355,7 +369,7 @@ margin_left = 206.0
 margin_right = 261.64
 margin_bottom = 47.0
 rect_min_size = Vector2( 55.64, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 toggle_mode = true
 text = "LOCAL"
 align = 2
@@ -365,7 +379,7 @@ margin_left = 265.0
 margin_right = 407.28
 margin_bottom = 47.0
 rect_min_size = Vector2( 142.28, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 toggle_mode = true
 text = "ZERONET"
 
@@ -375,8 +389,8 @@ margin_left = 411.0
 margin_right = 443.0
 margin_bottom = 47.0
 rect_min_size = Vector2( 32, 32 )
-texture_normal = ExtResource( 12 )
-texture_hover = ExtResource( 3 )
+texture_normal = ExtResource( 13 )
+texture_hover = ExtResource( 4 )
 expand = true
 stretch_mode = 5
 
@@ -411,7 +425,7 @@ margin_left = 21.0
 margin_top = 6.0
 margin_right = 51.0
 margin_bottom = 28.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "NO,"
 
 [node name="Control" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
@@ -425,7 +439,7 @@ margin_left = 76.0
 margin_top = 6.0
 margin_right = 125.0
 margin_bottom = 28.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "NAME"
 
 [node name="Control2" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
@@ -439,7 +453,7 @@ margin_left = 302.0
 margin_top = 6.0
 margin_right = 377.0
 margin_bottom = 28.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "VERSION"
 
 [node name="Control3" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
@@ -453,7 +467,7 @@ margin_left = 415.0
 margin_top = 6.0
 margin_right = 482.0
 margin_bottom = 28.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "SIZE(kb)"
 
 [node name="Control4" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
@@ -467,7 +481,7 @@ margin_left = 520.0
 margin_top = 6.0
 margin_right = 563.0
 margin_bottom = 28.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "DATE"
 
 [node name="Control5" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
@@ -481,7 +495,7 @@ margin_left = 601.0
 margin_top = 6.0
 margin_right = 670.0
 margin_bottom = 28.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "AUTHOR"
 
 [node name="MapScroll" type="ScrollContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer"]
@@ -489,7 +503,7 @@ margin_top = 39.0
 margin_right = 748.0
 margin_bottom = 615.91
 rect_min_size = Vector2( 0, 576.91 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 scroll_horizontal_enabled = false
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/MapScroll"]
@@ -531,7 +545,7 @@ margin_left = -54.5
 margin_top = -11.0
 margin_right = 54.5
 margin_bottom = 11.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "MAP PICTURE"
 align = 1
 
@@ -560,7 +574,7 @@ margin_bottom = 126.0
 margin_right = 384.04
 margin_bottom = 22.0
 rect_min_size = Vector2( 384.04, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "NAME:"
 autowrap = true
 
@@ -569,7 +583,7 @@ margin_top = 26.0
 margin_right = 384.04
 margin_bottom = 48.0
 rect_min_size = Vector2( 384.04, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "VERSION:"
 autowrap = true
 
@@ -578,7 +592,7 @@ margin_top = 52.0
 margin_right = 384.04
 margin_bottom = 74.0
 rect_min_size = Vector2( 384.04, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "SIZE:"
 autowrap = true
 
@@ -587,7 +601,7 @@ margin_top = 78.0
 margin_right = 384.04
 margin_bottom = 100.0
 rect_min_size = Vector2( 384.04, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "CREATED:"
 autowrap = true
 
@@ -596,7 +610,7 @@ margin_top = 104.0
 margin_right = 384.04
 margin_bottom = 126.0
 rect_min_size = Vector2( 384.04, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "AUTHOR:"
 autowrap = true
 
@@ -616,7 +630,7 @@ alignment = 1
 margin_left = 71.0
 margin_right = 111.0
 margin_bottom = 22.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "PLAY"
 
 [node name="Control" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer"]
@@ -629,7 +643,7 @@ rect_min_size = Vector2( 10, 0 )
 margin_left = 129.0
 margin_right = 231.0
 margin_bottom = 22.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.231373 )
 disabled = true
 text = "DOWNLOAD"
@@ -644,7 +658,7 @@ rect_min_size = Vector2( 10, 0 )
 margin_left = 249.0
 margin_right = 317.0
 margin_bottom = 22.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "UPLOAD"
 
 [node name="Control3" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer"]
@@ -657,7 +671,7 @@ rect_min_size = Vector2( 10, 0 )
 margin_left = 335.0
 margin_right = 396.0
 margin_bottom = 22.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.231373 )
 disabled = true
 text = "DELETE"
@@ -665,73 +679,90 @@ text = "DELETE"
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 bus = "Music"
 
-[node name="MarginContainer" parent="." instance=ExtResource( 13 )]
+[node name="MarginContainer" parent="." instance=ExtResource( 14 )]
 
 [node name="Options" type="Control" parent="."]
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -240.0
-margin_top = -240.0
-margin_right = 240.0
-margin_bottom = 240.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 rect_min_size = Vector2( 480, 480 )
-script = ExtResource( 14 )
+script = ExtResource( 15 )
 
-[node name="ColorRect" type="ColorRect" parent="Options"]
-margin_left = -410.0
-margin_top = -131.0
-margin_right = 894.0
-margin_bottom = 611.0
-color = Color( 1, 1, 1, 0 )
+[node name="BackDrop" type="ColorRect" parent="Options"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.388235 )
+
+[node name="Shadow" type="ColorRect" parent="Options"]
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 500, 0 )
+color = Color( 0, 0, 0, 0.12549 )
 
 [node name="OptionsColor" type="ColorRect" parent="Options"]
 material = SubResource( 8 )
 use_parent_material = true
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
-color = Color( 0.145098, 0.0627451, 0.290196, 0.74902 )
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 480, 0 )
+color = Color( 0.388235, 0.160784, 0.835294, 1 )
 
 [node name="Window" type="VBoxContainer" parent="Options/OptionsColor"]
-anchor_right = 1.0
+anchor_left = 0.5
+anchor_right = 0.5
 anchor_bottom = 1.0
-margin_bottom = -101.0
+margin_left = -142.0
+margin_right = 142.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 480, 0 )
+alignment = 1
 
 [node name="Control" type="Control" parent="Options/OptionsColor/Window"]
+margin_top = 149.0
 margin_right = 480.0
-margin_bottom = 22.35
+margin_bottom = 171.35
 rect_min_size = Vector2( 0, 22.35 )
 
 [node name="Label" type="Label" parent="Options/OptionsColor/Window"]
-margin_top = 26.0
+margin_top = 175.0
 margin_right = 480.0
-margin_bottom = 48.0
-theme = ExtResource( 6 )
+margin_bottom = 197.0
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "OPTIONS"
 align = 1
 
 [node name="Control2" type="Control" parent="Options/OptionsColor/Window"]
-margin_top = 52.0
+margin_top = 201.0
 margin_right = 480.0
-margin_bottom = 75.89
+margin_bottom = 224.89
 rect_min_size = Vector2( 0, 23.89 )
 
 [node name="OptionsFrame" type="HBoxContainer" parent="Options/OptionsColor/Window"]
-margin_top = 79.0
+editor/display_folded = true
+margin_top = 228.0
 margin_right = 480.0
-margin_bottom = 374.0
+margin_bottom = 465.0
 alignment = 1
 
 [node name="Labels" type="VBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame"]
-margin_left = 98.0
-margin_right = 224.0
-margin_bottom = 295.0
+editor/display_folded = true
+margin_left = 121.0
+margin_right = 247.0
+margin_bottom = 237.0
 
 [node name="Label2" type="Label" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
 margin_right = 126.0
 margin_bottom = 22.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "Fullscreen"
 align = 2
 
@@ -745,7 +776,7 @@ rect_min_size = Vector2( 0, 9.29 )
 margin_top = 39.0
 margin_right = 126.0
 margin_bottom = 61.0
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "Vsync"
 align = 2
 
@@ -759,229 +790,440 @@ rect_min_size = Vector2( 0, 9.29 )
 margin_top = 78.0
 margin_right = 126.0
 margin_bottom = 100.0
-theme = ExtResource( 6 )
-text = "Vsync"
+theme = ExtResource( 7 )
+text = "Borderless"
+align = 2
+
+[node name="Control7" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
+margin_top = 104.0
+margin_right = 126.0
+margin_bottom = 116.07
+rect_min_size = Vector2( 0, 12.07 )
+
+[node name="Label9" type="Label" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
+margin_top = 120.0
+margin_right = 126.0
+margin_bottom = 142.0
+theme = ExtResource( 7 )
+text = "Resizable"
 align = 2
 
 [node name="Control3" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
-margin_top = 104.0
+margin_top = 146.0
 margin_right = 126.0
-margin_bottom = 119.24
+margin_bottom = 161.24
 rect_min_size = Vector2( 0, 15.24 )
 
 [node name="Label5" type="Label" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
-margin_top = 123.0
+margin_top = 165.0
 margin_right = 126.0
-margin_bottom = 145.0
-theme = ExtResource( 6 )
+margin_bottom = 187.0
+theme = ExtResource( 7 )
 text = "Anti-aliasing"
 align = 2
 
 [node name="Control4" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
-margin_top = 149.0
+margin_top = 191.0
 margin_right = 126.0
-margin_bottom = 159.3
+margin_bottom = 201.3
 rect_min_size = Vector2( 0, 10.3 )
 
 [node name="Label8" type="Label" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
-margin_top = 163.0
+margin_top = 205.0
 margin_right = 126.0
-margin_bottom = 185.0
-theme = ExtResource( 6 )
+margin_bottom = 227.0
+theme = ExtResource( 7 )
 text = "Anisotropic Level"
 align = 2
 
-[node name="Control6" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
-margin_top = 189.0
-margin_right = 126.0
-margin_bottom = 199.3
-rect_min_size = Vector2( 0, 10.3 )
-
-[node name="Label6" type="Label" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
-margin_top = 203.0
-margin_right = 126.0
-margin_bottom = 225.0
-theme = ExtResource( 6 )
-text = "Music"
-align = 2
-
-[node name="Control5" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
-margin_top = 229.0
-margin_right = 126.0
-margin_bottom = 246.67
-rect_min_size = Vector2( 0, 17.67 )
-
-[node name="Label7" type="Label" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
-margin_top = 250.0
-margin_right = 126.0
-margin_bottom = 272.0
-theme = ExtResource( 6 )
-text = "Sound"
-align = 2
-
 [node name="Control" type="Control" parent="Options/OptionsColor/Window/OptionsFrame"]
-margin_left = 228.0
-margin_right = 258.2
-margin_bottom = 295.0
+margin_left = 251.0
+margin_right = 281.2
+margin_bottom = 237.0
 rect_min_size = Vector2( 30.2, 0 )
 
 [node name="Buttons" type="VBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame"]
-margin_left = 262.0
-margin_right = 382.0
-margin_bottom = 295.0
+editor/display_folded = true
+margin_left = 285.0
+margin_right = 359.0
+margin_bottom = 237.0
 
 [node name="CenterContainer" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_right = 120.0
+margin_right = 74.0
 margin_bottom = 22.0
 
 [node name="Fullscreen" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer"]
 margin_right = 22.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 22, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 align = 1
 
 [node name="Control6" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 26.0
-margin_right = 120.0
+margin_right = 74.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="CenterContainer2" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 40.0
-margin_right = 120.0
+margin_right = 74.0
 margin_bottom = 62.0
 
 [node name="Vsync" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer2"]
 margin_right = 22.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 22, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 align = 1
 
 [node name="Control2" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 66.0
-margin_right = 120.0
+margin_right = 74.0
 margin_bottom = 76.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="CenterContainer3" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-editor/display_folded = true
 margin_top = 80.0
-margin_right = 120.0
+margin_right = 74.0
 margin_bottom = 102.0
 
-[node name="Label3" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3"]
+[node name="Borderless" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3"]
 margin_right = 22.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 22, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 align = 1
 
-[node name="Control7" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
+[node name="Control9" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 106.0
-margin_right = 120.0
+margin_right = 74.0
 margin_bottom = 116.0
 rect_min_size = Vector2( 28.66, 10 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
+[node name="CenterContainer4" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 120.0
-margin_right = 120.0
-margin_bottom = 150.0
+margin_right = 74.0
+margin_bottom = 142.0
+
+[node name="Resizable" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer4"]
+margin_right = 22.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 22, 0 )
+theme = ExtResource( 7 )
+align = 1
+
+[node name="Control7" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
+margin_top = 146.0
+margin_right = 74.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 28.66, 10 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
+margin_top = 160.0
+margin_right = 74.0
+margin_bottom = 190.0
 
 [node name="MSAA" type="OptionButton" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer"]
 margin_right = 71.39
 margin_bottom = 30.0
 rect_min_size = Vector2( 71.39, 30 )
-theme = ExtResource( 6 )
+theme = ExtResource( 7 )
 text = "9x"
 
 [node name="Control3" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_top = 154.0
-margin_right = 120.0
-margin_bottom = 161.78
+margin_top = 194.0
+margin_right = 74.0
+margin_bottom = 201.78
 rect_min_size = Vector2( 28.66, 7.78 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_top = 165.0
-margin_right = 120.0
-margin_bottom = 189.0
+margin_top = 205.0
+margin_right = 74.0
+margin_bottom = 237.0
 
 [node name="Anisotropic_level" type="SpinBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer2"]
 margin_right = 74.0
-margin_bottom = 24.0
-theme = ExtResource( 6 )
+margin_bottom = 32.0
+theme = ExtResource( 7 )
 max_value = 32.0
 value = 4.0
 
-[node name="Control8" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_top = 193.0
-margin_right = 120.0
-margin_bottom = 210.42
-rect_min_size = Vector2( 28.66, 17.42 )
+[node name="MusicOptions" type="HBoxContainer" parent="Options/OptionsColor/Window"]
+visible = false
+margin_top = 349.0
+margin_right = 480.0
+margin_bottom = 586.0
+alignment = 1
 
-[node name="HSlider" type="HSlider" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_top = 214.0
-margin_right = 120.0
-margin_bottom = 214.0
-rect_min_size = Vector2( 120, 0 )
-focus_mode = 0
-theme = ExtResource( 6 )
-value = 58.0
-focus_mode = 0
+[node name="Labels" type="VBoxContainer" parent="Options/OptionsColor/Window/MusicOptions"]
+editor/display_folded = true
+margin_left = 121.0
+margin_right = 247.0
+margin_bottom = 237.0
 
-[node name="Control4" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_top = 218.0
-margin_right = 120.0
-margin_bottom = 257.78
-rect_min_size = Vector2( 28.66, 39.78 )
+[node name="Label2" type="Label" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_right = 126.0
+margin_bottom = 22.0
+theme = ExtResource( 7 )
+text = "Fullscreen"
+align = 2
 
-[node name="HSlider2" type="HSlider" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_top = 261.0
-margin_right = 120.0
-margin_bottom = 261.0
-rect_min_size = Vector2( 120, 0 )
-focus_mode = 0
-theme = ExtResource( 6 )
-value = 23.0
-focus_mode = 0
+[node name="Control" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 26.0
+margin_right = 126.0
+margin_bottom = 35.29
+rect_min_size = Vector2( 0, 9.29 )
 
-[node name="Control5" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_top = 265.0
-margin_right = 120.0
-margin_bottom = 295.78
-rect_min_size = Vector2( 28.66, 30.78 )
+[node name="Label3" type="Label" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 39.0
+margin_right = 126.0
+margin_bottom = 61.0
+theme = ExtResource( 7 )
+text = "Vsync"
+align = 2
+
+[node name="Control2" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 65.0
+margin_right = 126.0
+margin_bottom = 74.29
+rect_min_size = Vector2( 0, 9.29 )
+
+[node name="Label4" type="Label" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 78.0
+margin_right = 126.0
+margin_bottom = 100.0
+theme = ExtResource( 7 )
+text = "Borderless"
+align = 2
+
+[node name="Control7" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 104.0
+margin_right = 126.0
+margin_bottom = 116.07
+rect_min_size = Vector2( 0, 12.07 )
+
+[node name="Label9" type="Label" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 120.0
+margin_right = 126.0
+margin_bottom = 142.0
+theme = ExtResource( 7 )
+text = "Resizable"
+align = 2
+
+[node name="Control3" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 146.0
+margin_right = 126.0
+margin_bottom = 161.24
+rect_min_size = Vector2( 0, 15.24 )
+
+[node name="Label5" type="Label" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 165.0
+margin_right = 126.0
+margin_bottom = 187.0
+theme = ExtResource( 7 )
+text = "Anti-aliasing"
+align = 2
+
+[node name="Control4" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 191.0
+margin_right = 126.0
+margin_bottom = 201.3
+rect_min_size = Vector2( 0, 10.3 )
+
+[node name="Label8" type="Label" parent="Options/OptionsColor/Window/MusicOptions/Labels"]
+margin_top = 205.0
+margin_right = 126.0
+margin_bottom = 227.0
+theme = ExtResource( 7 )
+text = "Anisotropic Level"
+align = 2
+
+[node name="Control" type="Control" parent="Options/OptionsColor/Window/MusicOptions"]
+margin_left = 251.0
+margin_right = 281.2
+margin_bottom = 237.0
+rect_min_size = Vector2( 30.2, 0 )
+
+[node name="Buttons" type="VBoxContainer" parent="Options/OptionsColor/Window/MusicOptions"]
+editor/display_folded = true
+margin_left = 285.0
+margin_right = 359.0
+margin_bottom = 237.0
+
+[node name="CenterContainer" type="HBoxContainer" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_right = 74.0
+margin_bottom = 22.0
+
+[node name="Fullscreen" type="CheckBox" parent="Options/OptionsColor/Window/MusicOptions/Buttons/CenterContainer"]
+margin_right = 22.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 22, 0 )
+theme = ExtResource( 7 )
+align = 1
+
+[node name="Control6" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 26.0
+margin_right = 74.0
+margin_bottom = 36.0
+rect_min_size = Vector2( 28.66, 10 )
+
+[node name="CenterContainer2" type="HBoxContainer" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 40.0
+margin_right = 74.0
+margin_bottom = 62.0
+
+[node name="Vsync" type="CheckBox" parent="Options/OptionsColor/Window/MusicOptions/Buttons/CenterContainer2"]
+margin_right = 22.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 22, 0 )
+theme = ExtResource( 7 )
+align = 1
+
+[node name="Control2" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 66.0
+margin_right = 74.0
+margin_bottom = 76.0
+rect_min_size = Vector2( 28.66, 10 )
+
+[node name="CenterContainer3" type="HBoxContainer" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 80.0
+margin_right = 74.0
+margin_bottom = 102.0
+
+[node name="Borderless" type="CheckBox" parent="Options/OptionsColor/Window/MusicOptions/Buttons/CenterContainer3"]
+margin_right = 22.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 22, 0 )
+theme = ExtResource( 7 )
+align = 1
+
+[node name="Control9" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 106.0
+margin_right = 74.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 28.66, 10 )
+
+[node name="CenterContainer4" type="HBoxContainer" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 120.0
+margin_right = 74.0
+margin_bottom = 142.0
+
+[node name="Resizable" type="CheckBox" parent="Options/OptionsColor/Window/MusicOptions/Buttons/CenterContainer4"]
+margin_right = 22.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 22, 0 )
+theme = ExtResource( 7 )
+align = 1
+
+[node name="Control7" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 146.0
+margin_right = 74.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 28.66, 10 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 160.0
+margin_right = 74.0
+margin_bottom = 190.0
+
+[node name="MSAA" type="OptionButton" parent="Options/OptionsColor/Window/MusicOptions/Buttons/HBoxContainer"]
+margin_right = 71.39
+margin_bottom = 30.0
+rect_min_size = Vector2( 71.39, 30 )
+theme = ExtResource( 7 )
+
+[node name="Control3" type="Control" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 194.0
+margin_right = 74.0
+margin_bottom = 201.78
+rect_min_size = Vector2( 28.66, 7.78 )
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Options/OptionsColor/Window/MusicOptions/Buttons"]
+margin_top = 205.0
+margin_right = 74.0
+margin_bottom = 237.0
+
+[node name="Anisotropic_level" type="SpinBox" parent="Options/OptionsColor/Window/MusicOptions/Buttons/HBoxContainer2"]
+margin_right = 74.0
+margin_bottom = 32.0
+theme = ExtResource( 7 )
+max_value = 32.0
+value = 4.0
 
 [node name="Control3" type="Control" parent="Options/OptionsColor/Window"]
-margin_top = 378.0
+margin_top = 469.0
 margin_right = 480.0
-margin_bottom = 408.05
+margin_bottom = 499.05
 rect_min_size = Vector2( 0, 30.05 )
 
 [node name="saved" type="Label" parent="Options/OptionsColor/Window"]
-margin_top = 412.0
+modulate = Color( 1, 1, 1, 0 )
+margin_top = 503.0
 margin_right = 480.0
-margin_bottom = 434.0
-theme = ExtResource( 6 )
+margin_bottom = 544.0
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.996078, 0.639216, 0.0117647, 1 )
 text = "SAVED"
 align = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="Options/OptionsColor/Window"]
+margin_top = 548.0
+margin_right = 480.0
+margin_bottom = 570.0
+alignment = 1
+
+[node name="Defaults" type="Button" parent="Options/OptionsColor/Window/HBoxContainer"]
+margin_left = 141.0
+margin_right = 226.0
+margin_bottom = 22.0
+theme = ExtResource( 7 )
+text = "DEFAULTS"
+
+[node name="Control" type="Control" parent="Options/OptionsColor/Window/HBoxContainer"]
+margin_left = 230.0
+margin_right = 280.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 50, 0 )
+
+[node name="Close" type="Button" parent="Options/OptionsColor/Window/HBoxContainer"]
+margin_left = 284.0
+margin_right = 338.0
+margin_bottom = 22.0
+theme = ExtResource( 7 )
+text = "CLOSE"
+
+[node name="ColorRect" type="ColorRect" parent="Options/OptionsColor"]
+visible = false
+anchor_bottom = 1.0
+rect_min_size = Vector2( 3.35, 0 )
+color = Color( 1, 1, 1, 0.156863 )
+
 [node name="Tween" type="Tween" parent="Options"]
 
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="zn_button" to="." method="play_click"]
 [connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
+[connection signal="pressed" from="zn_button" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
-[connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
-[connection signal="gui_input" from="Options/ColorRect" to="Options" method="_on_ColorRect_gui_input"]
+[connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
+[connection signal="gui_input" from="Options/BackDrop" to="Options" method="_on_ColorRect_gui_input"]
 [connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer/Fullscreen" to="Options" method="_on_Fullscreen_toggled"]
 [connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer2/Vsync" to="Options" method="_on_Vsync_toggled"]
+[connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3/Borderless" to="Options" method="_on_Borderless_toggled"]
+[connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer4/Resizable" to="Options" method="_on_Resizable_toggled"]
 [connection signal="item_selected" from="Options/OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer/MSAA" to="Options" method="_on_MSAA_item_selected"]
 [connection signal="value_changed" from="Options/OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer2/Anisotropic_level" to="Options" method="_on_Anisotropic_level_value_changed"]
+[connection signal="toggled" from="Options/OptionsColor/Window/MusicOptions/Buttons/CenterContainer/Fullscreen" to="Options" method="_on_Fullscreen_toggled"]
+[connection signal="toggled" from="Options/OptionsColor/Window/MusicOptions/Buttons/CenterContainer2/Vsync" to="Options" method="_on_Vsync_toggled"]
+[connection signal="toggled" from="Options/OptionsColor/Window/MusicOptions/Buttons/CenterContainer3/Borderless" to="Options" method="_on_Borderless_toggled"]
+[connection signal="toggled" from="Options/OptionsColor/Window/MusicOptions/Buttons/CenterContainer4/Resizable" to="Options" method="_on_Resizable_toggled"]
+[connection signal="item_selected" from="Options/OptionsColor/Window/MusicOptions/Buttons/HBoxContainer/MSAA" to="Options" method="_on_MSAA_item_selected"]
+[connection signal="value_changed" from="Options/OptionsColor/Window/MusicOptions/Buttons/HBoxContainer2/Anisotropic_level" to="Options" method="_on_Anisotropic_level_value_changed"]

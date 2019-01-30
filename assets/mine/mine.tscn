@@ -25,8 +25,8 @@ tracks/0/keys = {
 extents = Vector2( 9.20169, 9.06365 )
 
 [node name="mine" type="StaticBody2D" groups=[
-"small",
 "mine",
+"small",
 ]]
 position = Vector2( -0.080452, 0.0227318 )
 collision_layer = 0

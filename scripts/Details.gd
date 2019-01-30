@@ -9,10 +9,6 @@ var direction : Vector2 = Vector2.UP
 
 func _ready():
 	self.visible = false
-	
-#	$MarginContainer/HBoxContainer/PlatformOptions.clear()
-#	$MarginContainer/HBoxContainer/PlatformOptions.add_item("Platform")
-#	$MarginContainer/HBoxContainer/PlatformOptions.add_item("Enemy")	
 
 	$MarginContainer/HBoxContainer/Left.clear()
 	$MarginContainer/HBoxContainer/Left.add_item("Left")

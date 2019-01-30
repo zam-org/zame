@@ -89,7 +89,19 @@ func _process(delta):
 	mouse_grid_pos = get_grid_pos(get_local_mouse_position())
 	
 	$delete.position = mouse_grid_pos
-
+	
+	if Input.is_action_just_pressed("1"):
+		select_tool(0)
+	if Input.is_action_just_pressed("2"):
+		select_tool(1)
+	if Input.is_action_just_pressed("3"):
+		select_tool(2)
+	if Input.is_action_just_pressed("4"):
+		select_tool(3)
+	if Input.is_action_just_pressed("5"):
+		select_tool(4)				
+	if Input.is_action_just_pressed("6"):
+		select_tool(5)
 
 	if Input.is_mouse_button_pressed(2):
 		var overlapping = $delete.get_overlapping_bodies()
@@ -124,7 +136,6 @@ func build_current_piece() -> void:
 	else:
 		building_piece.set_collision_layer_bit(0,true)
 		building_piece.set_collision_layer_bit(1,true)
-#		building_piece = null		
 		
 	building_piece.modulate.a = 1
 	building_piece.add_to_group("delete")
@@ -150,10 +161,6 @@ func reload(clean : bool = false) -> void:
 	var new = toolkit[selected_tool].instance()
 	new.position = mouse_grid_pos
 
-#	activate collision if we've just loaded a 2x2 block
-#	--- edit this one out should you not want for the building block to collide with character
-#	--- except don't because it's totally awesome
-		
 	new.visible = false
 	new.modulate.a = 0.5
 	add_child(new)

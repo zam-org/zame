@@ -8,6 +8,7 @@ var death_zone_confirm : bool = false
 var exit_confirm : bool = false
 
 func _ready():
+	VisualServer.viewport_set_msaa(get_viewport().get_viewport_rid(), globals.MSAA)
 	$crosshair.position = Vector2()
 
 
@@ -71,7 +72,7 @@ func _on_Finish_pressed() -> void:
 func _on_DeathArea_pressed():
 	play_click()
 	if $crosshair.position.y < $character.position.y:
-		$editor_UI/ItemList/ConfirmPopUp.pop_up("Placing the Death Zone above the player will cause an endless respawn. A headache is likely to follow. \n\n Are you sure buds? Justsayin")
+		$editor_UI/ConfirmPopUp.pop_up("Placing the Death Zone above the player will cause an endless respawn. A headache is likely to follow. \n\n Are you sure buds? Justsayin")
 		death_zone_confirm = true
 		return
 	$DeathZone.position.y = $crosshair.position.y
@@ -115,7 +116,7 @@ func _on_Exit_pressed() -> void:
 	
 func exit_confirm_popup() -> void:
 	exit_confirm = true
-	$editor_UI/ItemList/ConfirmPopUp.pop_up("Quit to main menu? \n (All unsaved progress will be lost)")
+	$editor_UI/ConfirmPopUp.pop_up("Quit to main menu? \n (All unsaved progress will be lost)")
 
 #	POP UP SIGNALS
 func _on_pop_up_yes_pressed() -> void:
