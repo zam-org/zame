@@ -90,7 +90,7 @@ func play_set(new):
 func play_get():
 	return play
 
-# Each node in the group play will have the functions activate and deactivate called when these buttons are pressed
+# Each node in the group play must have the functions activate and deactivate called when these buttons are pressed
 func _on_Play_pressed():
 	$Audio/Click.play()
 	get_tree().call_group("play", "activate")
@@ -127,7 +127,6 @@ func _on_pop_up_yes_pressed() -> void:
 	if exit_confirm:
 		exit_confirm = false
 		get_tree().change_scene("res://scenes/main_menu.tscn")
-
 
 func _on_No_pressed():
 	$Audio/Click.play()
