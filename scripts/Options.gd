@@ -100,3 +100,13 @@ func save_setting(section, key, value) -> void:
 	var err = conf.load(config_file_path)
 	conf.set_value(section, key, value)
 	conf.save(config_file_path)
+
+
+func _on_Close_pressed():
+	get_parent().play_click()
+	self.visible = false
+	set_process(false)
+
+
+func _on_Defaults_pressed():
+	pass # Replace with function body.

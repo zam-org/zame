@@ -1227,3 +1227,5 @@ color = Color( 1, 1, 1, 0.156863 )
 [connection signal="toggled" from="Options/OptionsColor/Window/MusicOptions/Buttons/CenterContainer4/Resizable" to="Options" method="_on_Resizable_toggled"]
 [connection signal="item_selected" from="Options/OptionsColor/Window/MusicOptions/Buttons/HBoxContainer/MSAA" to="Options" method="_on_MSAA_item_selected"]
 [connection signal="value_changed" from="Options/OptionsColor/Window/MusicOptions/Buttons/HBoxContainer2/Anisotropic_level" to="Options" method="_on_Anisotropic_level_value_changed"]
+[connection signal="pressed" from="Options/OptionsColor/Window/HBoxContainer/Defaults" to="Options" method="_on_Defaults_pressed"]
+[connection signal="pressed" from="Options/OptionsColor/Window/HBoxContainer/Close" to="Options" method="_on_Close_pressed"]
