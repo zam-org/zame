@@ -726,38 +726,38 @@ rect_min_size = Vector2( 480, 0 )
 alignment = 1
 
 [node name="Control" type="Control" parent="Options/OptionsColor/Window"]
-margin_top = 149.0
+margin_top = 162.0
 margin_right = 480.0
-margin_bottom = 171.35
+margin_bottom = 184.35
 rect_min_size = Vector2( 0, 22.35 )
 
 [node name="Label" type="Label" parent="Options/OptionsColor/Window"]
-margin_top = 175.0
+margin_top = 188.0
 margin_right = 480.0
-margin_bottom = 197.0
+margin_bottom = 210.0
 theme = ExtResource( 7 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "OPTIONS"
 align = 1
 
 [node name="Control2" type="Control" parent="Options/OptionsColor/Window"]
-margin_top = 201.0
+margin_top = 214.0
 margin_right = 480.0
-margin_bottom = 224.89
+margin_bottom = 237.89
 rect_min_size = Vector2( 0, 23.89 )
 
 [node name="OptionsFrame" type="HBoxContainer" parent="Options/OptionsColor/Window"]
 editor/display_folded = true
-margin_top = 228.0
+margin_top = 241.0
 margin_right = 480.0
-margin_bottom = 465.0
+margin_bottom = 468.0
 alignment = 1
 
 [node name="Labels" type="VBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame"]
 editor/display_folded = true
-margin_left = 121.0
-margin_right = 247.0
-margin_bottom = 237.0
+margin_left = 122.0
+margin_right = 248.0
+margin_bottom = 227.0
 
 [node name="Label2" type="Label" parent="Options/OptionsColor/Window/OptionsFrame/Labels"]
 margin_right = 126.0
@@ -837,19 +837,18 @@ text = "Anisotropic Level"
 align = 2
 
 [node name="Control" type="Control" parent="Options/OptionsColor/Window/OptionsFrame"]
-margin_left = 251.0
-margin_right = 281.2
-margin_bottom = 237.0
+margin_left = 252.0
+margin_right = 282.2
+margin_bottom = 227.0
 rect_min_size = Vector2( 30.2, 0 )
 
 [node name="Buttons" type="VBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame"]
-editor/display_folded = true
-margin_left = 285.0
-margin_right = 359.0
-margin_bottom = 237.0
+margin_left = 286.0
+margin_right = 357.0
+margin_bottom = 227.0
 
 [node name="CenterContainer" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 22.0
 
 [node name="Fullscreen" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer"]
@@ -861,13 +860,13 @@ align = 1
 
 [node name="Control6" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 26.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="CenterContainer2" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 40.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 62.0
 
 [node name="Vsync" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer2"]
@@ -879,13 +878,13 @@ align = 1
 
 [node name="Control2" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 66.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 76.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="CenterContainer3" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 80.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 102.0
 
 [node name="Borderless" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3"]
@@ -897,13 +896,13 @@ align = 1
 
 [node name="Control9" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 106.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 116.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="CenterContainer4" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 120.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 142.0
 
 [node name="Resizable" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer4"]
@@ -915,13 +914,13 @@ align = 1
 
 [node name="Control7" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 146.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 156.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 160.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 190.0
 
 [node name="MSAA" type="OptionButton" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer"]
@@ -933,21 +932,22 @@ text = "9x"
 
 [node name="Control3" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 194.0
-margin_right = 74.0
+margin_right = 71.0
 margin_bottom = 201.78
 rect_min_size = Vector2( 28.66, 7.78 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 205.0
-margin_right = 74.0
-margin_bottom = 237.0
+margin_right = 71.0
+margin_bottom = 227.0
 
 [node name="Anisotropic_level" type="SpinBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer2"]
-margin_right = 74.0
-margin_bottom = 32.0
+margin_right = 64.0
+margin_bottom = 22.0
 theme = ExtResource( 7 )
 max_value = 32.0
 value = 4.0
+align = 1
 
 [node name="MusicOptions" type="HBoxContainer" parent="Options/OptionsColor/Window"]
 visible = false
@@ -1151,27 +1151,17 @@ theme = ExtResource( 7 )
 max_value = 32.0
 value = 4.0
 
-[node name="Control3" type="Control" parent="Options/OptionsColor/Window"]
-margin_top = 469.0
+[node name="Control4" type="Control" parent="Options/OptionsColor/Window"]
+margin_top = 472.0
 margin_right = 480.0
-margin_bottom = 499.05
-rect_min_size = Vector2( 0, 30.05 )
-
-[node name="saved" type="Label" parent="Options/OptionsColor/Window"]
-modulate = Color( 1, 1, 1, 0 )
-margin_top = 503.0
-margin_right = 480.0
-margin_bottom = 544.0
-theme = ExtResource( 7 )
-custom_fonts/font = SubResource( 9 )
-custom_colors/font_color = Color( 0.996078, 0.639216, 0.0117647, 1 )
-text = "SAVED"
-align = 1
+margin_bottom = 532.0
+rect_min_size = Vector2( 0, 60 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Options/OptionsColor/Window"]
-margin_top = 548.0
+editor/display_folded = true
+margin_top = 536.0
 margin_right = 480.0
-margin_bottom = 570.0
+margin_bottom = 558.0
 alignment = 1
 
 [node name="Defaults" type="Button" parent="Options/OptionsColor/Window/HBoxContainer"]
@@ -1194,6 +1184,22 @@ margin_bottom = 22.0
 theme = ExtResource( 7 )
 text = "CLOSE"
 
+[node name="saved" type="Label" parent="Options/OptionsColor"]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -240.0
+margin_top = -61.0
+margin_right = 240.0
+margin_bottom = -20.0
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0.996078, 0.639216, 0.0117647, 1 )
+text = "SAVED"
+align = 1
+
 [node name="ColorRect" type="ColorRect" parent="Options/OptionsColor"]
 visible = false
 anchor_bottom = 1.0
@@ -1202,18 +1208,18 @@ color = Color( 1, 1, 1, 0.156863 )
 
 [node name="Tween" type="Tween" parent="Options"]
 
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="zn_button" to="." method="play_click"]
+[connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
-[connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
+[connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
 [connection signal="gui_input" from="Options/BackDrop" to="Options" method="_on_ColorRect_gui_input"]
 [connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer/Fullscreen" to="Options" method="_on_Fullscreen_toggled"]
 [connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer2/Vsync" to="Options" method="_on_Vsync_toggled"]

@@ -15,12 +15,12 @@ func _input(event):
 		if event.scancode == OS.find_scancode_from_string("ESCAPE") and event.pressed:
 			set_process_input(false)			
 			visible = false
-			$Menu/No.emit_signal("pressed")
+			$Window/Buttons/Menu/No.emit_signal("pressed")
 
 		elif event.scancode == OS.find_scancode_from_string("ENTER") and event.pressed:
 			set_process_input(false)
 			visible = false
-			$Menu/Yes.emit_signal("pressed")
+			$Window/Buttons/Menu/Yes.emit_signal("pressed")
 
 func pop_up(message : String = "", no : String = "", yes : String = "") -> void:
 	set_process_input(true)

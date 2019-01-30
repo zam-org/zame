@@ -111,7 +111,6 @@ bus = "Effects"
 [node name="Camera" type="Camera2D" parent="." groups=[
 "play",
 ]]
-editor/display_folded = true
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
@@ -119,11 +118,18 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource( 4 )
 
-[node name="backgorund_gradient" type="Polygon2D" parent="Camera"]
-position = Vector2( -147.754, -790.853 )
-rotation = 0.919979
+[node name="backgorund_gradient" type="TextureRect" parent="Camera"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1049.29
+margin_top = -1635.68
+margin_right = -162.196
+margin_bottom = -1193.02
+rect_min_size = Vector2( 887.09, 442.66 )
+rect_rotation = 17.6926
+rect_scale = Vector2( 3.61674, 5.90994 )
 texture = ExtResource( 5 )
-polygon = PoolVector2Array( -33.7595, 651.444, 793.134, -446.771, 1454.86, 45.3892, 607.131, 1157.09 )
+expand = true
 
 [node name="Tween" type="Tween" parent="Camera"]
 
@@ -776,7 +782,7 @@ script = ExtResource( 38 )
 [node name="Black" type="ColorRect" parent="editor_UI/ConfirmPopUp"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 1, 1, 1, 0.380392 )
+color = Color( 0, 0, 0, 0.380392 )
 
 [node name="Window" type="ColorRect" parent="editor_UI/ConfirmPopUp"]
 anchor_left = 0.5
@@ -897,8 +903,8 @@ bus = "Music"
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
-[connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="death" from="character" to="Camera" method="_on_character_death"]
+[connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
