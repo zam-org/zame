@@ -108,14 +108,20 @@ func _process(delta):
 	if Input.is_mouse_button_pressed(2):
 		if $delete/RayCast.is_colliding():
 			var overlapping = $delete/RayCast.get_collider()
-			print(overlapping)
 			if overlapping == null:
 				return
 			if overlapping.is_in_group("delete"):
-				$Audio/BlockDeleted.play()
-				overlapping.queue_free()
-				built_objects -= 1
-				removed_objects += 1
+				if overlapping.name == "build_check":
+					$Audio/BlockDeleted.play()
+					overlapping.get_parent().queue_free()
+					built_objects -= 1
+					removed_objects += 1
+					print("deleted build_check")
+				else:
+					$Audio/BlockDeleted.play()
+					overlapping.queue_free()
+					built_objects -= 1
+					removed_objects += 1
 
 	if can_build:
 		building_piece.position = mouse_grid_pos
@@ -140,6 +146,7 @@ func build_current_piece() -> void:
 	if building_piece.is_in_group('small'):
 		building_piece.set_collision_layer_bit(2,true)
 		building_piece.get_node("build_check").set_collision_layer_bit(10, true)
+		building_piece.get_node("build_check").add_to_group("delete")
 	else:
 		building_piece.set_collision_layer_bit(0,true)
 		building_piece.set_collision_layer_bit(1,true)

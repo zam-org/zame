@@ -156,7 +156,6 @@ texture = ExtResource( 8 )
 [node name="level" type="Node2D" parent="." groups=[
 "play",
 ]]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Audio" type="Node" parent="level"]
@@ -190,7 +189,7 @@ position = Vector2( -158.955, 98.4866 )
 [node name="RayCast" type="RayCast2D" parent="level/delete"]
 enabled = true
 cast_to = Vector2( 0, 0.5 )
-collision_mask = 1031
+collision_mask = 1039
 
 [node name="Content" type="Node2D" parent="level"]
 
