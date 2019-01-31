@@ -163,7 +163,7 @@ func reload(clean : bool = false) -> void:
 
 	new.visible = false
 	new.modulate.a = 0.5
-	add_child(new)
+	$Content.add_child(new)
 	building_piece = new
 
 	if selected_tool < 4:

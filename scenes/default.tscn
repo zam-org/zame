@@ -111,6 +111,7 @@ bus = "Effects"
 [node name="Camera" type="Camera2D" parent="." groups=[
 "play",
 ]]
+editor/display_folded = true
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
@@ -128,6 +129,7 @@ margin_bottom = -1193.02
 rect_min_size = Vector2( 887.09, 442.66 )
 rect_rotation = 17.6926
 rect_scale = Vector2( 3.61674, 5.90994 )
+mouse_filter = 2
 texture = ExtResource( 5 )
 expand = true
 
@@ -142,9 +144,8 @@ default_color = Color( 1, 1, 1, 0.156863 )
 texture_mode = 1873099216
 
 [node name="Label" type="Label" parent="DeathZone"]
-margin_left = -165.958
 margin_top = -30.0
-margin_right = -58.958
+margin_right = 107.0
 margin_bottom = -8.0
 theme = ExtResource( 6 )
 text = "DEATH ZONE"
@@ -159,7 +160,6 @@ texture = ExtResource( 8 )
 [node name="level" type="Node2D" parent="." groups=[
 "play",
 ]]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Audio" type="Node" parent="level"]
@@ -200,24 +200,28 @@ shape = SubResource( 1 )
 visible = false
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
-[node name="StartingBlockOne" type="StaticBody2D" parent="level" groups=[
+[node name="Content" type="Node2D" parent="level"]
+
+[node name="StartingBlockOne" type="StaticBody2D" parent="level/Content" groups=[
 "delete",
 ]]
 editor/display_folded = true
 position = Vector2( -0.0419922, 60 )
 collision_layer = 3
 
-[node name="shape" type="Polygon2D" parent="level/StartingBlockOne"]
+[node name="shape" type="Polygon2D" parent="level/Content/StartingBlockOne"]
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
-[node name="col" type="CollisionShape2D" parent="level/StartingBlockOne"]
+[node name="col" type="CollisionShape2D" parent="level/Content/StartingBlockOne"]
 shape = SubResource( 2 )
+
+[node name="Node" type="Node" parent="level/Content"]
 
 [node name="Finish" type="StaticBody2D" parent="." groups=[
 "finish",
 ]]
 editor/display_folded = true
-position = Vector2( -140, 20 )
+position = Vector2( 120, 40 )
 collision_layer = 4
 collision_mask = 0
 script = ExtResource( 13 )
@@ -282,6 +286,7 @@ script = ExtResource( 17 )
 [node name="editor_UI" type="CanvasLayer" parent="." groups=[
 "play",
 ]]
+editor/display_folded = true
 script = ExtResource( 18 )
 
 [node name="ItemList" type="ColorRect" parent="editor_UI"]
@@ -291,14 +296,15 @@ rect_min_size = Vector2( 70, 0 )
 theme = ExtResource( 6 )
 color = Color( 0.211765, 0.137255, 0.301961, 0.847059 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="editor_UI/ItemList"]
-anchor_right = 1.0
+[node name="VBoxContainer" type="VSplitContainer" parent="editor_UI/ItemList"]
 anchor_bottom = 1.0
+margin_right = 36.0
+rect_min_size = Vector2( 67.54, 0 )
 
 [node name="ShadowTop" type="ColorRect" parent="editor_UI/ItemList/VBoxContainer"]
-margin_right = 70.0
-margin_bottom = 344.67
-rect_min_size = Vector2( 0, 344.67 )
+margin_right = 67.54
+margin_bottom = 332.74
+rect_min_size = Vector2( 0, 332.74 )
 color = Color( 0.168627, 0.113725, 0.231373, 0.788235 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="editor_UI/ItemList/VBoxContainer/ShadowTop"]
@@ -440,6 +446,7 @@ expand = true
 stretch_mode = 5
 
 [node name="CenterContainer" type="CenterContainer" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
+editor/display_folded = true
 margin_top = 279.0
 margin_right = 65.0
 margin_bottom = 281.74
@@ -511,36 +518,40 @@ texture_hover = ExtResource( 36 )
 expand = true
 stretch_mode = 5
 
-[node name="Control" type="Control" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 348.0
-margin_right = 70.0
-margin_bottom = 357.17
+[node name="VBoxContainer" type="VBoxContainer" parent="editor_UI/ItemList/VBoxContainer"]
+margin_top = 352.0
+margin_right = 67.54
+margin_bottom = 720.0
+
+[node name="Control" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_right = 67.0
+margin_bottom = 9.17
 rect_min_size = Vector2( 0, 9.17 )
 
-[node name="Label2" type="Label" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 361.0
-margin_right = 70.0
-margin_bottom = 378.0
+[node name="Label2" type="Label" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 13.0
+margin_right = 67.0
+margin_bottom = 30.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 7 )
 text = "GAME"
 align = 1
 uppercase = true
 
-[node name="Play" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 382.0
-margin_right = 70.0
-margin_bottom = 418.0
+[node name="Play" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 67.0
+margin_bottom = 70.0
 focus_mode = 0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = ">"
 
-[node name="CenterPlayer6" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 422.0
-margin_right = 70.0
-margin_bottom = 458.0
+[node name="CenterPlayer6" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 74.0
+margin_right = 67.0
+margin_bottom = 110.0
 hint_tooltip = "Center Player"
 focus_mode = 0
 theme = ExtResource( 6 )
@@ -548,10 +559,10 @@ custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "u"
 
-[node name="Save" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 462.0
-margin_right = 70.0
-margin_bottom = 498.0
+[node name="Save" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 114.0
+margin_right = 67.0
+margin_bottom = 150.0
 hint_tooltip = "Save"
 focus_mode = 0
 theme = ExtResource( 6 )
@@ -559,10 +570,10 @@ custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "D"
 
-[node name="Upload" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 502.0
-margin_right = 70.0
-margin_bottom = 538.0
+[node name="Upload" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 154.0
+margin_right = 67.0
+margin_bottom = 190.0
 hint_tooltip = "Upload to ZeroNet"
 focus_mode = 0
 theme = ExtResource( 6 )
@@ -570,10 +581,10 @@ custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "]"
 
-[node name="Share" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 542.0
-margin_right = 70.0
-margin_bottom = 578.0
+[node name="Share" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 194.0
+margin_right = 67.0
+margin_bottom = 230.0
 hint_tooltip = "Share"
 focus_mode = 0
 theme = ExtResource( 6 )
@@ -581,10 +592,10 @@ custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "o"
 
-[node name="Reset" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 582.0
-margin_right = 70.0
-margin_bottom = 618.0
+[node name="Reset" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 234.0
+margin_right = 67.0
+margin_bottom = 270.0
 hint_tooltip = "Reset level"
 focus_mode = 0
 theme = ExtResource( 6 )
@@ -592,10 +603,10 @@ custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "R"
 
-[node name="Exit" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 622.0
-margin_right = 70.0
-margin_bottom = 658.0
+[node name="Exit" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 274.0
+margin_right = 67.0
+margin_bottom = 310.0
 hint_tooltip = "Delete from disk"
 focus_mode = 0
 theme = ExtResource( 6 )
@@ -603,37 +614,29 @@ custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "X"
 
-[node name="CenterContainer" type="CenterContainer" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 662.0
-margin_right = 70.0
-margin_bottom = 664.58
+[node name="CenterContainer" type="CenterContainer" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+editor/display_folded = true
+margin_top = 314.0
+margin_right = 67.0
+margin_bottom = 316.58
 
-[node name="ColorRect" type="ColorRect" parent="editor_UI/ItemList/VBoxContainer/CenterContainer"]
-margin_left = 19.0
-margin_right = 50.9
+[node name="ColorRect" type="ColorRect" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer/CenterContainer"]
+margin_left = 17.0
+margin_right = 48.9
 margin_bottom = 2.58
 rect_min_size = Vector2( 31.9, 2.58 )
 color = Color( 1, 1, 1, 0.152941 )
 
-[node name="MapList" type="Button" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 668.0
-margin_right = 70.0
-margin_bottom = 704.0
+[node name="MapList" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 320.0
+margin_right = 67.0
+margin_bottom = 356.0
 hint_tooltip = "Map list"
 focus_mode = 0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 8 )
 enabled_focus_mode = 0
 text = "4"
-
-[node name="ScrollContainer2" type="ScrollContainer" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 708.0
-margin_right = 70.0
-margin_bottom = 708.0
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="editor_UI/ItemList/VBoxContainer/ScrollContainer2"]
-alignment = 1
 
 [node name="Details" type="ColorRect" parent="editor_UI"]
 editor/display_folded = true
@@ -774,6 +777,7 @@ enabled_focus_mode = 0
 [node name="Tween" type="Tween" parent="editor_UI/Details"]
 
 [node name="ConfirmPopUp" type="Control" parent="editor_UI"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
@@ -903,8 +907,8 @@ bus = "Music"
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
-[connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
+[connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
@@ -916,10 +920,10 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Spawn" to="." method="_on_Spawn_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/DeathArea" to="." method="_on_DeathArea_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Finish" to="." method="_on_Finish_pressed"]
-[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
-[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
-[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/PlatformOptions" to="editor_UI/Details" method="_on_PlatformOptions_item_selected"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Left" to="editor_UI/Details" method="_on_Left_item_selected"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Direction" to="editor_UI/Details" method="_on_Direction_item_selected"]

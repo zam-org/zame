@@ -57,9 +57,10 @@ func change():
 func activate():
 	direction = desired_direction
 	set_physics_process(true)
+	current_rotation = $Shape/Eye.rotation_degrees - 180
 	original_position = position
 	original_direction = direction
-	original_rotation = int(current_rotation)	
+	original_rotation = int(current_rotation)
 	
 func deactivate():
 	set_physics_process(false)
