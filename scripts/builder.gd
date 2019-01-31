@@ -15,6 +15,8 @@ var building_piece
 
 var can_build : bool = true
 var building : bool = false
+var build_pause : bool = false
+const build_pause_duration : float = 0.05
 
 var mouse_grid_pos : Vector2
 
@@ -43,10 +45,10 @@ func _unhandled_input(event):
 	if event is InputEventMouseButton:
 #		if the LMB has been clicked the building mode is set on to toggle PAINT building in _process
 		if event.button_index == 1 and event.pressed and !play:
-#			building = true
-			build_current_piece()
-#		elif event.button_index == 1 and !event.pressed:
-#			building = false
+			building = true
+#			build_current_piece()
+		elif event.button_index == 1 and !event.pressed:
+			building = false
 			
 		#switch tools
 		if event.button_index == 4 and event.pressed and !play:
@@ -81,9 +83,9 @@ func check_build_type():
 		 emit_signal("on_enemy_selected", false, null)
 
 func _process(delta):
-	if $delete.get_overlapping_bodies().size() > 0:
-		can_build = false
-	else:
+	can_build = false
+
+	if !$delete/RayCast.is_colliding():
 		can_build = true
 		
 	mouse_grid_pos = get_grid_pos(get_local_mouse_position())
@@ -104,20 +106,25 @@ func _process(delta):
 		select_tool(5)
 
 	if Input.is_mouse_button_pressed(2):
-		var overlapping = $delete.get_overlapping_bodies()
-		if overlapping.size() > 0:
-			for i in overlapping:
-				if i.is_in_group("delete"):
-					i.queue_free()
-					$Audio/BlockDeleted.play()
-					built_objects -= 1
-					removed_objects += 1
+		if $delete/RayCast.is_colliding():
+			var overlapping = $delete/RayCast.get_collider()
+			print(overlapping)
+			if overlapping == null:
+				return
+			if overlapping.is_in_group("delete"):
+				$Audio/BlockDeleted.play()
+				overlapping.queue_free()
+				built_objects -= 1
+				removed_objects += 1
 
 	if can_build:
 		building_piece.position = mouse_grid_pos
 
-	if building:
+	if building and !build_pause:
 		build_current_piece()
+		build_pause = true
+		yield(get_tree().create_timer(build_pause_duration), 'timeout')
+		build_pause = false
 
 func get_grid_pos(pos : Vector2) -> Vector2:
 	var new_grid_pos = pos
@@ -156,8 +163,8 @@ func reload(clean : bool = false) -> void:
 	# this happens when selecting new tools
 	if clean:
 		building_piece.queue_free()
-		
 		building_piece = null
+		
 	var new = toolkit[selected_tool].instance()
 	new.position = mouse_grid_pos
 
@@ -168,7 +175,6 @@ func reload(clean : bool = false) -> void:
 
 	if selected_tool < 4:
 		emit_signal("on_enemy_selected", false, building_piece)
-		building_piece.set_collision_layer_bit(0,true)
 	elif selected_tool > 3:
 		emit_signal("on_enemy_selected", true, building_piece)	
 	

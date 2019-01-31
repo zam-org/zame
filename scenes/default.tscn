@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=2]
+[gd_scene load_steps=47 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=2]
@@ -39,10 +39,6 @@
 [ext_resource path="res://scripts/Details.gd" type="Script" id=37]
 [ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=38]
 [ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=39]
-
-[sub_resource type="CircleShape2D" id=1]
-
-radius = 1.5546
 
 [sub_resource type="RectangleShape2D" id=2]
 
@@ -160,6 +156,7 @@ texture = ExtResource( 8 )
 [node name="level" type="Node2D" parent="." groups=[
 "play",
 ]]
+editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Audio" type="Node" parent="level"]
@@ -187,18 +184,13 @@ modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( -0.113434, -36.0551 )
 texture = ExtResource( 12 )
 
-[node name="delete" type="Area2D" parent="level"]
-editor/display_folded = true
+[node name="delete" type="Node2D" parent="level"]
 position = Vector2( -158.955, 98.4866 )
-collision_layer = 2
-collision_mask = 1054
 
-[node name="col" type="CollisionShape2D" parent="level/delete"]
-shape = SubResource( 1 )
-
-[node name="shape" type="Polygon2D" parent="level/delete"]
-visible = false
-polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
+[node name="RayCast" type="RayCast2D" parent="level/delete"]
+enabled = true
+cast_to = Vector2( 0, 0.5 )
+collision_mask = 1031
 
 [node name="Content" type="Node2D" parent="level"]
 
@@ -270,13 +262,14 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1241.5
-margin_top = -997.5
-margin_right = 1258.5
-margin_bottom = 1002.5
+margin_left = -1180.0
+margin_top = -910.0
+margin_right = 1320.0
+margin_bottom = 1090.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 2500, 2000 )
+rect_scale = Vector2( 1.50069, 1.58875 )
 rect_pivot_offset = Vector2( 1250, 1000 )
 mouse_filter = 2
 script = ExtResource( 17 )

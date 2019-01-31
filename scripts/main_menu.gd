@@ -64,7 +64,7 @@ func play_click() -> void:
 func play_knob_turn() -> void:
 	$audio/knob.play()
 
-func _on_map_list_item_selected(index):
+func _on_MapList_item_selected(index):
 	play_click()
 	save_setting("main_menu", "selected_map", index)
 
@@ -89,7 +89,6 @@ func _connect_to_zame():
 
 func _on_Exit_pressed():
 	get_tree().quit()
-
 
 func _on_Update_pressed():
 	_connect_to_zame()

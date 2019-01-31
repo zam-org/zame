@@ -46,7 +46,7 @@ func _process(delta):
 		
 	
 func _on_Fullscreen_toggled(button_pressed) -> void:
-	if OS.window_borderless and button_pressed:
+	if $OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3/Borderless.pressed and button_pressed:
 		OS.window_borderless = false
 		save_setting("settings", "borderless", false)	
 		$OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3/Borderless.pressed = false

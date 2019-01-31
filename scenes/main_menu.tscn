@@ -93,7 +93,7 @@ texture = ExtResource( 2 )
 expand = true
 
 [node name="big_grid" parent="." instance=ExtResource( 3 )]
-position = Vector2( 654.228, 359.931 )
+position = Vector2( -400, 330 )
 
 [node name="zn_logo" type="TextureRect" parent="."]
 modulate = Color( 1, 1, 1, 0.0627451 )
@@ -101,10 +101,11 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -382.811
-margin_top = -407.874
-margin_right = 129.189
-margin_bottom = 104.126
+margin_left = -460.0
+margin_top = -470.0
+margin_right = 51.9998
+margin_bottom = 42.0
+rect_scale = Vector2( 1.15374, 1.15374 )
 texture = ExtResource( 4 )
 expand = true
 stretch_mode = 6
@@ -120,7 +121,7 @@ rect_min_size = Vector2( 53.7, 3.55 )
 
 [node name="SidePanel" type="VBoxContainer" parent="SidePanelSpace"]
 margin_left = 57.0
-margin_right = 480.0
+margin_right = 490.0
 margin_bottom = 720.0
 alignment = 1
 
@@ -133,7 +134,7 @@ rect_min_size = Vector2( 0, 63.95 )
 
 [node name="name" type="Label" parent="SidePanelSpace/SidePanel"]
 margin_top = 121.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 216.0
 custom_fonts/font = SubResource( 1 )
 text = "zame"
@@ -141,14 +142,14 @@ uppercase = true
 
 [node name="spacer" type="Control" parent="SidePanelSpace/SidePanel"]
 margin_top = 220.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 222.0
 rect_min_size = Vector2( 0, 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SidePanelSpace/SidePanel"]
 modulate = Color( 1, 1, 1, 0.643137 )
 margin_top = 226.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 259.0
 
 [node name="Label" type="Label" parent="SidePanelSpace/SidePanel/HBoxContainer"]
@@ -170,13 +171,13 @@ stretch_mode = 6
 
 [node name="spacer3" type="Control" parent="SidePanelSpace/SidePanel"]
 margin_top = 263.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 288.0
 rect_min_size = Vector2( 0, 25 )
 
 [node name="Play" type="Button" parent="SidePanelSpace/SidePanel"]
 margin_top = 292.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 330.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
@@ -186,21 +187,21 @@ align = 0
 
 [node name="MapList" type="ItemList" parent="SidePanelSpace/SidePanel"]
 margin_top = 334.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 473.08
-rect_min_size = Vector2( 0, 139.08 )
+rect_min_size = Vector2( 433, 139.08 )
 rect_pivot_offset = Vector2( 619.686, 73.718 )
 theme = ExtResource( 7 )
 items = [ "Default", null, false, "Map 2", null, false, "Map 3", null, false, "Map 4", null, false, "Map 5", null, false, "Map 6", null, false, "Map 7", null, false, "Map 8", null, false ]
 
 [node name="grab_container" type="CenterContainer" parent="SidePanelSpace/SidePanel"]
 margin_top = 477.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 497.0
 
 [node name="GrabMe" type="TextureButton" parent="SidePanelSpace/SidePanel/grab_container"]
-margin_left = 196.0
-margin_right = 227.0
+margin_left = 201.0
+margin_right = 232.0
 margin_bottom = 20.0
 focus_mode = 0
 mouse_default_cursor_shape = 6
@@ -215,13 +216,13 @@ stretch_mode = 2
 
 [node name="spacer4" type="Control" parent="SidePanelSpace/SidePanel"]
 margin_top = 501.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 515.7
 rect_min_size = Vector2( 0, 14.7 )
 
 [node name="Update" type="Button" parent="SidePanelSpace/SidePanel"]
 margin_top = 519.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 557.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
@@ -231,7 +232,7 @@ align = 0
 
 [node name="Exit" type="Button" parent="SidePanelSpace/SidePanel"]
 margin_top = 561.0
-margin_right = 423.0
+margin_right = 433.0
 margin_bottom = 599.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
@@ -682,6 +683,7 @@ bus = "Music"
 [node name="MarginContainer" parent="." instance=ExtResource( 14 )]
 
 [node name="Options" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2

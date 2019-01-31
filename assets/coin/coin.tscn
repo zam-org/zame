@@ -23,8 +23,8 @@ tracks/0/keys = {
 extents = Vector2( 9.20169, 9.06365 )
 
 [node name="coin" type="StaticBody2D" groups=[
-"small",
 "coin",
+"small",
 ]]
 position = Vector2( -0.080452, 0.0227318 )
 collision_layer = 0
@@ -36,9 +36,9 @@ polygon = PoolVector2Array( -10, -9.99997, 0, -9.99997, 0, 3.05176e-05, -10, 3.0
 
 [node name="shape" type="Polygon2D" parent="."]
 position = Vector2( -0.00184631, 0.10219 )
-polygon = PoolVector2Array( -10, -9.99997, 0, -9.99997, 0, 3.05176e-05, -10, 3.05176e-05 )
 color = Color( 1, 0.866667, 0, 1 )
 offset = Vector2( 4.97735, 4.90313 )
+polygon = PoolVector2Array( -10, -9.99997, 0, -9.99997, 0, 3.05176e-05, -10, 3.05176e-05 )
 
 [node name="animation" type="AnimationPlayer" parent="."]
 autoplay = "idle"
