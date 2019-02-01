@@ -120,12 +120,12 @@ func _on_RateOfFire_item_selected(ID):
 func _on_RotSpeed_item_selected(ID):
 	var speed : float
 	match ID:
-		1:
-			speed = 2
-		2:
-			speed = 1
-		3:
+		0:
 			speed = 0.5
+		1:
+			speed = 1.0
+		2:
+			speed = 2.0
 	block.rotate_speed = speed
 	rot_speed = speed
 

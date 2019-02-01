@@ -25,9 +25,10 @@ func _ready():
 	
 	
 func _process(delta):
+	print(rotating)
 	match rotating:
 		0:
-			return
+			speed = 0
 		1:
 			speed = 1 * rotate_speed
 		2:
