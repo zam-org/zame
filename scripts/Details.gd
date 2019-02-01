@@ -1,25 +1,44 @@
 extends ColorRect
 
 var active : bool = false
-var block : KinematicBody2D
+var block
 
 var dangerous = 0
 var logic = 0
 var direction : Vector2 = Vector2.UP
+var rot_speed : float
+var rotation : int
+var rate_of_fire : float
 
 func _ready():
 	self.visible = false
 
-	$MarginContainer/HBoxContainer/Left.clear()
-	$MarginContainer/HBoxContainer/Left.add_item("Left")
-	$MarginContainer/HBoxContainer/Left.add_item("Right")
-	$MarginContainer/HBoxContainer/Left.add_item("Bounce")
+	$MarginContainer/HBoxContainer/Logic/Left.clear()
+	$MarginContainer/HBoxContainer/Logic/Left.add_item("Left")
+	$MarginContainer/HBoxContainer/Logic/Left.add_item("Right")
+	$MarginContainer/HBoxContainer/Logic/Left.add_item("Bounce")
 	
-	$MarginContainer/HBoxContainer/Direction.clear()
-	$MarginContainer/HBoxContainer/Direction.add_item("Up")
-	$MarginContainer/HBoxContainer/Direction.add_item("Left")
-	$MarginContainer/HBoxContainer/Direction.add_item("Right")
-	$MarginContainer/HBoxContainer/Direction.add_item("Down")		
+	$MarginContainer/HBoxContainer/Direction/Direction.clear()
+	$MarginContainer/HBoxContainer/Direction/Direction.add_item("Up")
+	$MarginContainer/HBoxContainer/Direction/Direction.add_item("Left")
+	$MarginContainer/HBoxContainer/Direction/Direction.add_item("Right")
+	$MarginContainer/HBoxContainer/Direction/Direction.add_item("Down")
+	
+	$MarginContainer/HBoxContainer/ROF/RateOfFire.clear()
+	$MarginContainer/HBoxContainer/ROF/RateOfFire.add_item("Slow")
+	$MarginContainer/HBoxContainer/ROF/RateOfFire.add_item("Medium")
+	$MarginContainer/HBoxContainer/ROF/RateOfFire.add_item("Fast")
+	
+	$MarginContainer/HBoxContainer/Rotation/Rotation.clear()
+	$MarginContainer/HBoxContainer/Rotation/Rotation.add_item("None")
+	$MarginContainer/HBoxContainer/Rotation/Rotation.add_item("Right")
+	$MarginContainer/HBoxContainer/Rotation/Rotation.add_item("Left")
+	
+	$MarginContainer/HBoxContainer/RotSpeed/RotSpeed.clear()
+	$MarginContainer/HBoxContainer/RotSpeed/RotSpeed.add_item("Slow")
+	$MarginContainer/HBoxContainer/RotSpeed/RotSpeed.add_item("Medium")
+	$MarginContainer/HBoxContainer/RotSpeed/RotSpeed.add_item("Fast")
+	
 	
 func activate():
 	active = true
@@ -38,13 +57,26 @@ func deactivate():
 
 func _on_level_on_enemy_selected(yes, node):
 	if yes:
-		if node is KinematicBody2D:
+		if node is KinematicBody2D or node is StaticBody2D:
+			for i in $MarginContainer/HBoxContainer.get_children():
+				i.visible = false
 			block = node
 			print(block.type)
 			if block.type == "Moving":
-				$MarginContainer/HBoxContainer/SoftContainer.visible = true
+				$MarginContainer/HBoxContainer/Logic.visible = true
+				$MarginContainer/HBoxContainer/Soft.visible = true
+				$MarginContainer/HBoxContainer/Direction.visible = true
+
+				
+			elif block.type == "Turret":
+				$MarginContainer/HBoxContainer/ROF.visible = true
+				$MarginContainer/HBoxContainer/Rotation.visible = true
+				$MarginContainer/HBoxContainer/RotSpeed.visible = true
+				$MarginContainer/HBoxContainer/Direction.visible = true												
+
 			else:
-				$MarginContainer/HBoxContainer/SoftContainer.visible = false
+				$MarginContainer/HBoxContainer/Logic.visible = true
+				$MarginContainer/HBoxContainer/Direction.visible = true
 			activate()
 		else:
 			print("Selected node is not the enemy type")
@@ -64,6 +96,38 @@ func _on_PlatformOptions_item_selected(ID):
 func _on_Left_item_selected(ID):
 	block.logic = ID
 	logic = ID
+
+
+func _on_Rotation_item_selected(ID):
+	print("Block rotating is set to: ", ID)
+	block.rotating = ID
+	rotation = ID
+
+
+func _on_RateOfFire_item_selected(ID):
+	var rof : float
+	match ID:
+		0:
+			rof = 3
+		1:
+			rof = ID
+		2:
+			rof = 0.6
+			
+	block.rate_of_fire = rof
+	rate_of_fire = rof
+
+func _on_RotSpeed_item_selected(ID):
+	var speed : float
+	match ID:
+		1:
+			speed = 2
+		2:
+			speed = 1
+		3:
+			speed = 0.5
+	block.rotate_speed = speed
+	rot_speed = speed
 
 # Directions
 # 0 - UP
@@ -85,8 +149,13 @@ func _on_Direction_item_selected(ID):
 	block.desired_direction = direction
 
 func set_enemy_style():
-	block.logic = logic
 	block.desired_direction = direction
+	if block.type == "Turret":
+		block.rotate_speed = rot_speed
+		block.rate_of_fire = rate_of_fire
+		block.rotating = rotation
+		return
+	block.logic = logic
 
 func _on_SoftToggle_pressed():
 	if block.type == "Moving":

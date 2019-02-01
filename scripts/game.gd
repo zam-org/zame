@@ -39,11 +39,11 @@ func _process(delta):
 		$Audio/Click.play()
 		play_set(false)
 	
-	if Input.is_action_just_pressed("7") and !play:
+	if Input.is_action_just_pressed("8") and !play:
 		move_spawn()
-	elif Input.is_action_just_pressed("8") and !play:
-		move_death_area()
 	elif Input.is_action_just_pressed("9") and !play:
+		move_death_area()
+	elif Input.is_action_just_pressed("0") and !play:
 		move_finish()
 	elif Input.is_action_just_pressed("reset") and !play:
 		$character.motion = Vector2()

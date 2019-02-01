@@ -6,6 +6,7 @@ onready var jump_pad : PackedScene = preload("res://assets/jump_pad/jump_pad.tsc
 onready var mine : PackedScene = preload("res://assets/mine/mine.tscn")
 onready var enemy : PackedScene = preload("res://assets/enemy/Enemy.tscn")
 onready var moving_platform : PackedScene = preload("res://assets/platforms/moving/MovingPlatform.tscn")
+onready var turret : PackedScene = preload("res://assets/Turret/Turret.tscn")
 
 var toolkit : Array
 var selected_tool : int
@@ -38,6 +39,7 @@ func _ready():
 	toolkit.append(mine)
 	toolkit.append(enemy)
 	toolkit.append(moving_platform)
+	toolkit.append(turret)
 	selected_tool = 0
 	reload()
 
@@ -104,6 +106,9 @@ func _process(delta):
 		select_tool(4)				
 	if Input.is_action_just_pressed("6"):
 		select_tool(5)
+	if Input.is_action_just_pressed("7"):
+		select_tool(6)
+
 
 	if Input.is_mouse_button_pressed(2):
 		if $delete/RayCast.is_colliding():
