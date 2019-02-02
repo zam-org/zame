@@ -27,6 +27,13 @@ func _ready():
 
 	set_physics_process(false)
 	
+# call this function upon having it placed in the world
+func boot() -> void:
+	modulate.a = 1
+	set_collision_layer_bit(0,true)
+	set_collision_layer_bit(1,true)
+	add_to_group("delete")	
+	
 func _physics_process(delta):
 	move(delta)
 
@@ -38,7 +45,6 @@ func move(delta):
 		if !soft and collision.collider.name == "character":
 			return
 		change()
-
 		
 func change():
 	position = position.snapped(Vector2(20,20))
@@ -52,11 +58,8 @@ func change():
 	direction = direction.rotated(deg2rad(rot))
 
 	current_rotation += rot
-	print(current_rotation)
 	$Tween.interpolate_property($Shape/Eye, 'rotation_degrees', $Shape/Eye.rotation_degrees, current_rotation - 180, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
-#	$Tween.interpolate_property($Shape/Eye, 'rotation', $Shape/Eye.rotation, direction.angle_to(to_local(position)), 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)	
 	$Tween.start()
-	print(direction)
 	
 func activate():
 	direction = desired_direction
@@ -81,7 +84,7 @@ func desired_direction_set(new : Vector2):
 	print("setting direction")
 	$Shape/Eye.look_at(to_global(new * -1))
 	current_rotation = rad2deg(new.angle())
-	print("Current rotation is: ", rad2deg(new.angle()))
+#	print("Current rotation is: ", rad2deg(new.angle()))
 	
 	desired_direction = new
 	

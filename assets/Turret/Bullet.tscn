@@ -30,6 +30,7 @@ flag_disable_z = true
 spread = 90.0
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 58.51
+angular_velocity = 3.36312e-44
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 scale = 3.0
@@ -37,9 +38,11 @@ scale_random = 0.87
 scale_curve = SubResource( 5 )
 color_ramp = SubResource( 3 )
 
-[node name="Bullet" type="KinematicBody2D"]
+[node name="Bullet" type="KinematicBody2D" groups=[
+"mine",
+]]
 position = Vector2( 0.000133514, 0 )
-collision_layer = 0
+collision_layer = 8
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

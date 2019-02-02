@@ -12,9 +12,13 @@ func shoot():
 	rotation = direction.angle()
 	$Timer.start()
 	
-func _process(delta):
+func _physics_process(delta):
 	var coll = move_and_collide(direction * delta * speed)
 	if coll:
+		#kill le player
+		if coll.collider.name == "character":
+			coll.collider.death()
+			
 		$CollisionShape2D.queue_free()
 		$Line2D.visible = false
 		$Particles.emitting = true

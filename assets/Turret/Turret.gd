@@ -23,6 +23,12 @@ func _ready():
 	set_process(false)
 	look_in_direction()
 	
+# call this function upon having it placed in the world
+func boot() -> void:
+	modulate.a = 1
+	set_collision_layer_bit(0,true)
+	set_collision_layer_bit(1,true)
+	add_to_group("delete")	
 	
 func _process(delta):
 	print(rotating)

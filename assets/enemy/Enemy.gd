@@ -34,6 +34,8 @@ func move(delta):
 	var velocity = direction * SPEED * delta
 	var collision = move_and_collide(velocity, true, true, false)
 	if collision:
+		if collision.collider.name == "character":
+			collision.collider.death()
 		change()
 		
 func change():
@@ -48,11 +50,17 @@ func change():
 	direction = direction.rotated(deg2rad(rot))
 
 	current_rotation += rot
-	print(current_rotation)
 	$Tween.interpolate_property($Shape/Eye, 'rotation_degrees', $Shape/Eye.rotation_degrees, current_rotation - 180, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
 	$Tween.interpolate_property($Shape, 'color', hit_color, original_color, 0.5, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)	
 	$Tween.start()
-	print(direction)
+	
+# call this function upon having it placed in the world
+func boot() -> void:
+	modulate.a = 1
+	set_collision_layer_bit(0,true)
+	set_collision_layer_bit(1,true)
+	set_collision_mask_bit(0,true)
+	add_to_group("delete")
 	
 func activate():
 	direction = desired_direction
@@ -76,11 +84,8 @@ func logic_get():
 	return logic
 	
 func desired_direction_set(new : Vector2):
-	print("setting direction")
 	$Shape/Eye.look_at(to_global(new * -1))
-	current_rotation = rad2deg(new.angle())
-	print("Current rotation is: ", rad2deg(new.angle()))
-	
+	current_rotation = rad2deg(new.angle())	
 	desired_direction = new
 	
 func desired_direction_get():

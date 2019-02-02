@@ -114,7 +114,7 @@ func _on_check_body_entered(body) -> void:
 	elif body.is_in_group("mine"):
 		print("collided with danger")
 		yield(get_tree(), 'idle_frame')
-		emit_signal("death")
+		death()
 
 	elif body.is_in_group("jump_pad"):
 		jump_pad = true
@@ -128,6 +128,9 @@ func _on_check_body_entered(body) -> void:
 func _on_check_body_exited(body) -> void:
 	if body.is_in_group("finish"):
 		print("DA END NO MOAR")
+
+func death() -> void:
+	emit_signal("death")
 
 func play_jump_sound() -> void:
 	$audio/jump.play()

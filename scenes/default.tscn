@@ -42,19 +42,19 @@
 [ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=40]
 [ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=41]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=1]
 
 
-[sub_resource type="Gradient" id=3]
+[sub_resource type="Gradient" id=2]
 
 offsets = PoolRealArray( 0, 0.168, 0.656 )
 colors = PoolColorArray( 1, 1, 1, 0.465116, 1, 1, 1, 0.193529, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=4]
+[sub_resource type="GradientTexture" id=3]
 
-gradient = SubResource( 3 )
+gradient = SubResource( 2 )
 
-[sub_resource type="ParticlesMaterial" id=5]
+[sub_resource type="ParticlesMaterial" id=4]
 
 emission_shape = 2
 emission_box_extents = Vector3( 5, 10, 1 )
@@ -70,21 +70,21 @@ radial_accel = 100.0
 tangential_accel = 26.03
 scale = 12.0
 scale_random = 0.74
-color_ramp = SubResource( 4 )
+color_ramp = SubResource( 3 )
 
-[sub_resource type="ShaderMaterial" id=6]
+[sub_resource type="ShaderMaterial" id=5]
 
 shader = ExtResource( 16 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 
 size = 12
 use_filter = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 
 size = 36
 font_data = ExtResource( 22 )
@@ -208,7 +208,7 @@ collision_layer = 3
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
 [node name="col" type="CollisionShape2D" parent="level/Content/StartingBlockOne"]
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="Node" type="Node" parent="level/Content"]
 
@@ -228,7 +228,7 @@ emitting = false
 amount = 200
 lifetime = 2.0
 speed_scale = 0.5
-process_material = SubResource( 5 )
+process_material = SubResource( 4 )
 
 [node name="DoorCol" type="CollisionPolygon2D" parent="Finish"]
 position = Vector2( 0, 10.2726 )
@@ -260,7 +260,7 @@ bus = "Effects"
 
 [node name="bloom" type="ColorRect" parent="."]
 editor/display_folded = true
-material = SubResource( 6 )
+material = SubResource( 5 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -324,7 +324,7 @@ margin_top = 16.0
 margin_right = 65.0
 margin_bottom = 33.0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "BUILD"
 align = 1
 uppercase = true
@@ -362,7 +362,7 @@ margin_bottom = 124.0
 hint_tooltip = "Coin"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = "$"
 
@@ -552,7 +552,7 @@ margin_top = 13.0
 margin_right = 67.0
 margin_bottom = 30.0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 text = "GAME"
 align = 1
 uppercase = true
@@ -563,7 +563,7 @@ margin_right = 67.0
 margin_bottom = 70.0
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = ">"
 
@@ -574,7 +574,7 @@ margin_bottom = 110.0
 hint_tooltip = "Center Player"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = "u"
 
@@ -585,7 +585,7 @@ margin_bottom = 150.0
 hint_tooltip = "Save"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = "D"
 
@@ -596,7 +596,7 @@ margin_bottom = 190.0
 hint_tooltip = "Upload to ZeroNet"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = "]"
 
@@ -607,7 +607,7 @@ margin_bottom = 230.0
 hint_tooltip = "Share"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = "o"
 
@@ -618,7 +618,7 @@ margin_bottom = 270.0
 hint_tooltip = "Reset level"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = "R"
 
@@ -629,7 +629,7 @@ margin_bottom = 310.0
 hint_tooltip = "Delete from disk"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = "X"
 
@@ -653,7 +653,7 @@ margin_bottom = 356.0
 hint_tooltip = "Map list"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 7 )
 enabled_focus_mode = 0
 text = "4"
 
@@ -1004,11 +1004,11 @@ bus = "Music"
 [connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
+[connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="Camera" method="_on_character_death"]
-[connection signal="death" from="character" to="." method="_on_character_death"]
-[connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
+[connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/JumpPad" to="level" method="_on_JumpPad_pressed"]

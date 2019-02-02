@@ -54,7 +54,7 @@ func play_click() -> void:
 	$Audio/Click.play()
 
 # le Signals
-func _on_center_player6_pressed() -> void:
+func _on_CenterPlayer6_pressed() -> void:
 	center_player()
 
 func _on_character_death() -> void:
