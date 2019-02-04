@@ -23,6 +23,8 @@ var mouse_grid_pos : Vector2
 
 var play : bool = false
 
+onready var content : Node2D = $Content
+
 # STATS
 # start off with a single built object as we have that as a ledge for the player to stand on
 var built_objects : int = 1
@@ -73,10 +75,10 @@ func activate():
 		building_piece = null
 	
 func deactivate():
+	reload()
 	play = false
 	set_process(true)
 	set_process_unhandled_input(true)
-	reload()
 
 func check_build_type():
 	if selected_tool > 3:
@@ -149,12 +151,7 @@ func build_current_piece() -> void:
 		return
 		
 	building_piece.boot()
-	if building_piece.is_in_group('small'):
-		building_piece.set_collision_layer_bit(2,true)
-		building_piece.get_node("build_check").set_collision_layer_bit(10, true)
-		building_piece.get_node("build_check").add_to_group("delete")
-		building_piece.modulate.a = 1
-		building_piece.add_to_group("delete")
+	building_piece.set_owner(content)
 	
 	#	set up collision based on what the item is
 	#	1 - static
@@ -179,7 +176,7 @@ func reload(clean : bool = false) -> void:
 
 	new.visible = false
 	new.modulate.a = 0.5
-	$Content.add_child(new)
+	content.add_child(new)
 	building_piece = new
 
 	if selected_tool < 4:

@@ -71,10 +71,11 @@ func activate():
 	original_rotation = int(current_rotation)
 	
 func deactivate():
-	set_physics_process(false)
-	position = original_position
-	$Shape/Eye.look_at(to_global(original_direction * -1))
-	current_rotation = original_rotation
+	pass
+#	set_physics_process(false)
+#	position = original_position
+#	$Shape/Eye.look_at(to_global(original_direction * -1))
+#	current_rotation = original_rotation
 
 	
 func logic_set(new : int):

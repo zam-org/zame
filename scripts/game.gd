@@ -84,7 +84,7 @@ func _on_Play_pressed():
 func _on_pop_up_yes_pressed() -> void:
 	play_click()
 	if death_zone_confirm:
-		death_zone_confirm = false		
+		death_zone_confirm = false
 		$DeathZone.position.y = $crosshair.position.y
 
 	if exit_confirm:
@@ -127,12 +127,41 @@ func move_death_area() -> void:
 func play_set(new):
 	play = new
 	if new:
+		# save the current level node
+		save_map()
+		
 		get_tree().call_group_flags(1, "play", "activate")
+		
+		#hide the crosshair
 		$crosshair.visible = false
-	else:
-		get_tree().call_group_flags(1, "play", "deactivate")
+		#move the character to starting position
 		$character.position = $level/SpawnPos.global_position
-		$crosshair.visible = true	
+	else:
+		# delete current level and wait a frame for it to get deleted
+		$level/Content.queue_free()
+		yield(get_tree(), "idle_frame")
+		# load the temporarily saved level
+		load_map()
+
+		# Call deactivate function for nodes and move character back into position.
+		get_tree().call_group_flags(1, "play", "deactivate")
+		$crosshair.visible = true
+	
+func save_map() -> void:
+	var packed_scene = PackedScene.new()
+	var err = packed_scene.pack($level/Content)
+	print(err)
+	ResourceSaver.save("user://temp.tscn", packed_scene)	
+		
+func load_map() -> void:
+	var packed_scene = load("user://temp.tscn")
+	# Instance the scene
+	var my_scene = packed_scene.instance()
+	$level.add_child(my_scene)
+	my_scene.name = "Content"
+	
+	#set the new content folder
+	$level.content = my_scene
 	
 func play_get():
 	return play

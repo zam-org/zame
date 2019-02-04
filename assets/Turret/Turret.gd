@@ -9,6 +9,9 @@ var progress : = 2
 var rotating : int = 0
 var rotate_speed : float = 2.0
 
+# for restarting the rotation
+var original_rotation : float
+
 # rate of fire
 # 3 - slow
 # 1 - medium
@@ -53,6 +56,7 @@ func shoot():
 
 	
 func activate():
+	original_rotation = rotation
 	set_process(true)
 	$RateOfFire.wait_time = rate_of_fire
 	$RateOfFire.start()

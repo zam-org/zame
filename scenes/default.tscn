@@ -159,7 +159,6 @@ texture = ExtResource( 8 )
 [node name="level" type="Node2D" parent="." groups=[
 "play",
 ]]
-editor/display_folded = true
 script = ExtResource( 9 )
 
 [node name="Audio" type="Node" parent="level"]
@@ -214,6 +213,7 @@ shape = SubResource( 1 )
 
 [node name="Finish" type="StaticBody2D" parent="." groups=[
 "finish",
+"play",
 ]]
 editor/display_folded = true
 position = Vector2( 120, 40 )
@@ -1007,8 +1007,8 @@ bus = "Music"
 [connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="Camera" method="_on_character_death"]
-[connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
+[connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/JumpPad" to="level" method="_on_JumpPad_pressed"]

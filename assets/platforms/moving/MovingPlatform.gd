@@ -24,19 +24,22 @@ var current_rotation : int = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-
 	set_physics_process(false)
+	
 	
 # call this function upon having it placed in the world
 func boot() -> void:
 	modulate.a = 1
 	set_collision_layer_bit(0,true)
 	set_collision_layer_bit(1,true)
-	add_to_group("delete")	
+	set_collision_mask_bit(0,true)
+	add_to_group("delete")
+	
 	
 func _physics_process(delta):
 	move(delta)
-
+	
+	
 func move(delta):
 	var velocity = direction * SPEED * delta
 
@@ -45,6 +48,7 @@ func move(delta):
 		if !soft and collision.collider.name == "character":
 			return
 		change()
+		
 		
 func change():
 	position = position.snapped(Vector2(20,20))
@@ -68,17 +72,21 @@ func activate():
 	original_direction = direction
 	original_rotation = int(current_rotation)	
 	
+	
 func deactivate():
 	set_physics_process(false)
-	position = original_position
-	$Shape/Eye.look_at(to_global(original_direction * -1))
-	current_rotation = original_rotation
+#	position = original_position
+#	$Shape/Eye.look_at(to_global(original_direction * -1))
+#	current_rotation = original_rotation
+	
 	
 func logic_set(new : int):
 	logic = new
 	
+	
 func logic_get():
 	return logic
+	
 	
 func desired_direction_set(new : Vector2):
 	print("setting direction")
@@ -87,6 +95,7 @@ func desired_direction_set(new : Vector2):
 #	print("Current rotation is: ", rad2deg(new.angle()))
 	
 	desired_direction = new
+	
 	
 func desired_direction_get():
 	return direction
