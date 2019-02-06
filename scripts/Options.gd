@@ -24,6 +24,7 @@ func _ready():
 	OS.window_resizable = load_setting("settings", "resizable", true)
 	OS.vsync_enabled = load_setting("settings", "vsync", true)
 	VisualServer.viewport_set_msaa(get_viewport().get_viewport_rid(), load_setting("settings", "MSAA", 3))
+	get_viewport().msaa = load_setting("settings", "MSAA", 3)
 	ProjectSettings.set("rendering/quality/filters/anisotropic_filter_level", load_setting("settings", "anisotropic_level", 4))
 	
 	update_values()

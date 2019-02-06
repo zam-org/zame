@@ -106,7 +106,7 @@ func send_tilt_info(delta) -> void:
 ###	in order to be picked up the item needs to be on the third mask
 func _on_check_body_entered(body) -> void:
 
-	if body.is_in_group("coin"):
+	if body.is_in_group("coin") and play:
 		body.queue_free()
 		$audio/coin.play()
 		emit_signal("coin")

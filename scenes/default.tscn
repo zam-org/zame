@@ -763,7 +763,6 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 8.47, 0 )
 
 [node name="CenterContainer" type="CenterContainer" parent="editor_UI/Details/MarginContainer/HBoxContainer/Soft"]
-editor/display_folded = true
 margin_left = 48.0
 margin_right = 68.0
 margin_bottom = 50.0
@@ -1004,8 +1003,8 @@ bus = "Music"
 [connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
-[connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
+[connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
@@ -1029,7 +1028,7 @@ bus = "Music"
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Rotation/Rotation" to="editor_UI/Details" method="_on_Rotation_item_selected"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/RotSpeed/RotSpeed" to="editor_UI/Details" method="_on_RotSpeed_item_selected"]
 [connection signal="gui_input" from="editor_UI/ConfirmPopUp/Black" to="editor_UI/ConfirmPopUp" method="_on_Black_gui_input"]
-[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="." method="_on_No_pressed"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="editor_UI/ConfirmPopUp" method="_on_No_pressed"]
-[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
+[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="." method="_on_No_pressed"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="editor_UI/ConfirmPopUp" method="_on_Yes_pressed"]
+[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]

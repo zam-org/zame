@@ -16,10 +16,6 @@ var logic : int = true setget logic_set, logic_get
 #var dangerous_color : Color = Color(0.96875, 0.476215, 0.041626)
 const SPEED = 30
 
-var original_position : Vector2 = Vector2()
-var original_direction : Vector2 = Vector2()
-
-var original_rotation : int = 0
 var current_rotation : int = 0
 
 # Called when the node enters the scene tree for the first time.
@@ -66,18 +62,12 @@ func change():
 	$Tween.start()
 	
 func activate():
-	direction = desired_direction
+#	direction = desired_direction
 	set_physics_process(true)
-	original_position = position
-	original_direction = direction
-	original_rotation = int(current_rotation)	
 	
 	
 func deactivate():
 	set_physics_process(false)
-#	position = original_position
-#	$Shape/Eye.look_at(to_global(original_direction * -1))
-#	current_rotation = original_rotation
 	
 	
 func logic_set(new : int):
@@ -95,7 +85,29 @@ func desired_direction_set(new : Vector2):
 #	print("Current rotation is: ", rad2deg(new.angle()))
 	
 	desired_direction = new
+	direction = new
 	
 	
 func desired_direction_get():
 	return direction
+	
+# SAVING N LOADING
+func save() -> Dictionary:
+	var save_vars : Dictionary = {
+		"name": self.name,
+		"direction_x": direction.x,
+		"direction_y": direction.y,
+		"logic": logic,
+		"soft": soft
+		}
+	
+	return save_vars
+	
+	
+func setup(vars : Dictionary) -> void:
+	desired_direction_set(Vector2(float(vars["direction_x"]), float(vars["direction_y"])))
+	boot()
+	logic = int(vars["logic"])
+	soft = bool(vars["soft"])
+
+	print("Object with the name: ", self.name, " has been set up")

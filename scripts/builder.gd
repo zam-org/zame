@@ -44,6 +44,10 @@ func _ready():
 	toolkit.append(turret)
 	selected_tool = 0
 	reload()
+	
+	if $Content.has_node("StartingBlockOne"):
+		$Content/StartingBlockOne.set_owner($Content)
+		print("set owner of the first node")
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton:

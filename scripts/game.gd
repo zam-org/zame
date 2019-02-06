@@ -9,6 +9,7 @@ var exit_confirm : bool = false
 
 func _ready():
 	VisualServer.viewport_set_msaa(get_viewport().get_viewport_rid(), globals.MSAA)
+	get_viewport().set_msaa(globals.MSAA)
 	$crosshair.position = Vector2()
 
 
@@ -148,8 +149,22 @@ func play_set(new):
 		$crosshair.visible = true
 	
 func save_map() -> void:
+	var content = $level/Content
+	
+	# First we save the node options, should there be any to be saved
+	var temp_settings : File = File.new()
+	temp_settings.open("user://temp_settings.save", File.WRITE)
+	
+	for i in content.get_children():
+		if i.has_method("save"):
+			var vars = i.save()
+			temp_settings.store_line(to_json(vars))
+			
+	temp_settings.close()
+	
+	# Finally we pack the scene and save it as a temp file
 	var packed_scene = PackedScene.new()
-	var err = packed_scene.pack($level/Content)
+	var err = packed_scene.pack(content)
 	print(err)
 	ResourceSaver.save("user://temp.tscn", packed_scene)	
 		
@@ -162,6 +177,19 @@ func load_map() -> void:
 	
 	#set the new content folder
 	$level.content = my_scene
+	
+	# load the settings of the objects within the scene
+	var temp_settings = File.new()
+	temp_settings.open("user://temp_settings.save", File.READ)
+	while not temp_settings.eof_reached():
+		var current_line = parse_json(temp_settings.get_line())
+		if current_line is Dictionary:
+			var path : String = "level/Content/" + current_line["name"]
+			var object = get_node(path)
+			if object != null:
+				object.setup(current_line)
+		
+	temp_settings.close()
 	
 func play_get():
 	return play

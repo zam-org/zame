@@ -159,4 +159,4 @@ func set_enemy_style():
 
 func _on_SoftToggle_pressed():
 	if block.type == "Moving":
-		block.soft = $MarginContainer/HBoxContainer/SoftContainer/CenterContainer/SoftToggle.pressed
+		block.soft = $MarginContainer/HBoxContainer/Soft/CenterContainer/SoftToggle.pressed

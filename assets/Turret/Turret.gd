@@ -19,7 +19,7 @@ var original_rotation : float
 
 var rate_of_fire : float = 0.3 setget set_rof, get_rof
 	
-var speed = 1
+var speed : float = 1.0
 	
 	
 func _ready():
@@ -88,3 +88,29 @@ func get_rof():
 	
 func _on_RateOfFire_timeout():
 	shoot()
+	
+	
+# SAVING N LOADING
+func save() -> Dictionary:
+	var save_vars : Dictionary = {
+		"name": self.name,
+		"direction_x": direction.x,
+		"direction_y": direction.y,
+		"rotating": rotating,
+		"rotate_speed": rotate_speed,
+		"rate_of_fire": rate_of_fire,
+		"speed": speed
+		}
+	
+	return save_vars
+	
+	
+func setup(vars : Dictionary) -> void:
+	direction = Vector2(float(vars["direction_x"]), float(vars["direction_y"]))
+	rotating = int(vars["rotating"])
+	rotate_speed = float(vars["rotate_speed"])
+	rate_of_fire = float(vars["rate_of_fire"])
+	speed = float(vars["speed"])
+	look_in_direction()
+	
+	print("Object with the name: ", self.name, " has been set up")
