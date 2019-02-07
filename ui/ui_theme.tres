@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=46 format=2]
+[gd_resource type="Theme" load_steps=47 format=2]
 
 [ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=1]
 [ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=2]
@@ -96,6 +96,12 @@ corner_detail = 1
 [sub_resource type="StyleBoxFlat" id=42]
 
 bg_color = Color( 0, 0, 0, 0.341176 )
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
+
+[sub_resource type="StyleBoxFlat" id=44]
+
+bg_color = Color( 0, 0, 0, 0.137255 )
 expand_margin_top = 6.0
 expand_margin_bottom = 6.0
 
@@ -349,7 +355,7 @@ LineEdit/fonts/font = null
 LineEdit/icons/clear = null
 LineEdit/styles/focus = SubResource( 43 )
 LineEdit/styles/normal = SubResource( 42 )
-LineEdit/styles/read_only = null
+LineEdit/styles/read_only = SubResource( 44 )
 LinkButton/colors/font_color = Color( 0, 0, 0, 1 )
 LinkButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
 LinkButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )

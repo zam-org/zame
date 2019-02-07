@@ -265,3 +265,13 @@ func _on_Save_pressed():
 	$editor_UI/ConfirmPopUp.pop_up("Map name:", "", "", true)
 	
 	
+
+
+func _on_Yes_Publish_To_ZeroNet_pressed():
+	var version : String = ProjectSettings.get("application/config/version")
+	var map_name : String = $editor_UI/PublishLevelPopUp/Window/Horizontal/TextContainer/MapName.text
+	var description : String = $editor_UI/PublishLevelPopUp/Window/Horizontal/TextContainer/Description.text
+	
+	print(version, map_name, description)
+	# Send the map to zeronet below
+	# Check save_map function above for inspiration

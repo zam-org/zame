@@ -37,3 +37,7 @@ func deactivate():
 
 func _on_Save_pressed():
 	pass # Replace with function body.
+
+
+func _on_Upload_pressed():
+	$PublishLevelPopUp.visible = true
