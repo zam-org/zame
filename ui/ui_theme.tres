@@ -90,11 +90,14 @@ corner_detail = 1
 [sub_resource type="StyleBoxEmpty" id=22]
 
 
-[sub_resource type="StyleBoxEmpty" id=23]
+[sub_resource type="StyleBoxEmpty" id=43]
 
 
-[sub_resource type="StyleBoxEmpty" id=24]
+[sub_resource type="StyleBoxFlat" id=42]
 
+bg_color = Color( 0, 0, 0, 0.341176 )
+expand_margin_top = 6.0
+expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id=25]
 
@@ -116,7 +119,7 @@ content_margin_left = 10.0
 
 [sub_resource type="StyleBoxFlat" id=29]
 
-bg_color = Color( 1, 1, 1, 0.368627 )
+bg_color = Color( 1, 1, 1, 0.290196 )
 
 [sub_resource type="StyleBoxFlat" id=30]
 
@@ -335,17 +338,17 @@ Label/constants/shadow_offset_x = 1
 Label/constants/shadow_offset_y = 1
 Label/fonts/font = null
 Label/styles/normal = null
-LineEdit/colors/clear_button_color = Color( 0, 0, 0, 1 )
-LineEdit/colors/clear_button_color_pressed = Color( 0, 0, 0, 1 )
+LineEdit/colors/clear_button_color = Color( 1, 1, 1, 0.486275 )
+LineEdit/colors/clear_button_color_pressed = Color( 1, 1, 1, 1 )
 LineEdit/colors/cursor_color = Color( 1, 1, 1, 1 )
 LineEdit/colors/font_color = Color( 1, 1, 1, 0.52549 )
 LineEdit/colors/font_color_selected = Color( 0.996078, 0.639216, 0.0117647, 1 )
-LineEdit/colors/selection_color = Color( 1, 1, 1, 0.407843 )
+LineEdit/colors/selection_color = Color( 1, 0.592157, 0.0117647, 0.211765 )
 LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
 LineEdit/icons/clear = null
-LineEdit/styles/focus = SubResource( 23 )
-LineEdit/styles/normal = SubResource( 24 )
+LineEdit/styles/focus = SubResource( 43 )
+LineEdit/styles/normal = SubResource( 42 )
 LineEdit/styles/read_only = null
 LinkButton/colors/font_color = Color( 0, 0, 0, 1 )
 LinkButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
@@ -357,7 +360,7 @@ MarginContainer/constants/margin_bottom = 0
 MarginContainer/constants/margin_left = 0
 MarginContainer/constants/margin_right = 0
 MarginContainer/constants/margin_top = 0
-MenuButton/colors/font_color = Color( 0, 0, 0, 1 )
+MenuButton/colors/font_color = Color( 1, 1, 1, 1 )
 MenuButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 MenuButton/colors/font_color_hover = Color( 0, 0, 0, 1 )
 MenuButton/colors/font_color_pressed = Color( 0, 0, 0, 1 )
@@ -386,9 +389,9 @@ Panel/styles/panelf = null
 Panel/styles/panelnc = null
 PanelContainer/styles/panel = null
 PopupMenu/colors/font_color = Color( 1, 1, 1, 0.721569 )
-PopupMenu/colors/font_color_accel = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_accel = Color( 1, 0.631373, 0, 1 )
 PopupMenu/colors/font_color_disabled = Color( 0, 0, 0, 1 )
-PopupMenu/colors/font_color_hover = Color( 0, 0, 0, 1 )
+PopupMenu/colors/font_color_hover = Color( 1, 1, 1, 1 )
 PopupMenu/constants/hseparation = 10
 PopupMenu/constants/vseparation = 10
 PopupMenu/fonts/font = null

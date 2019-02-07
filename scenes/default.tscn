@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=2]
+[gd_scene load_steps=50 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=2]
@@ -12,35 +12,36 @@
 [ext_resource path="res://audio/effects/place_block.wav" type="AudioStream" id=10]
 [ext_resource path="res://audio/effects/remove.wav" type="AudioStream" id=11]
 [ext_resource path="res://ui/editor/player_spawn.png" type="Texture" id=12]
-[ext_resource path="res://assets/finish/finish.gd" type="Script" id=13]
-[ext_resource path="res://audio/effects/explosion.wav" type="AudioStream" id=14]
-[ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=15]
-[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=16]
-[ext_resource path="res://scripts/bloom.gd" type="Script" id=17]
-[ext_resource path="res://scripts/UI.gd" type="Script" id=18]
-[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=20]
-[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=21]
-[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=22]
-[ext_resource path="res://ui/buttons/build_tools/jump_pad_idle.png" type="Texture" id=23]
-[ext_resource path="res://ui/buttons/build_tools/jump_pad_hover.png" type="Texture" id=24]
-[ext_resource path="res://ui/buttons/build_tools/moving_platform_idle.png" type="Texture" id=25]
-[ext_resource path="res://ui/buttons/build_tools/moving_platform_hover.png" type="Texture" id=26]
-[ext_resource path="res://ui/buttons/build_tools/skull_idle.png" type="Texture" id=27]
-[ext_resource path="res://ui/buttons/build_tools/skull_hover.png" type="Texture" id=28]
-[ext_resource path="res://ui/buttons/build_tools/mine_idle.png" type="Texture" id=29]
-[ext_resource path="res://ui/buttons/build_tools/mine_hover.png" type="Texture" id=30]
-[ext_resource path="res://ui/buttons/build_tools/turret_idle.png" type="Texture" id=31]
-[ext_resource path="res://ui/buttons/build_tools/turret_hover.png" type="Texture" id=32]
-[ext_resource path="res://ui/buttons/build_tools/p_respawn_idle.png" type="Texture" id=33]
-[ext_resource path="res://ui/buttons/build_tools/p_respawn_hover.png" type="Texture" id=34]
-[ext_resource path="res://ui/buttons/build_tools/death_line_idle.png" type="Texture" id=35]
-[ext_resource path="res://ui/buttons/build_tools/death_line_hover.png" type="Texture" id=36]
-[ext_resource path="res://ui/buttons/build_tools/flag_idle.png" type="Texture" id=37]
-[ext_resource path="res://ui/buttons/build_tools/flag_hover.png" type="Texture" id=38]
-[ext_resource path="res://scripts/Details.gd" type="Script" id=39]
-[ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=40]
-[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=41]
+[ext_resource path="res://assets/platforms/two/Two.gd" type="Script" id=13]
+[ext_resource path="res://assets/finish/finish.gd" type="Script" id=14]
+[ext_resource path="res://audio/effects/explosion.wav" type="AudioStream" id=15]
+[ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=16]
+[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=17]
+[ext_resource path="res://scripts/bloom.gd" type="Script" id=18]
+[ext_resource path="res://scripts/UI.gd" type="Script" id=19]
+[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=21]
+[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=22]
+[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=23]
+[ext_resource path="res://ui/buttons/build_tools/jump_pad_idle.png" type="Texture" id=24]
+[ext_resource path="res://ui/buttons/build_tools/jump_pad_hover.png" type="Texture" id=25]
+[ext_resource path="res://ui/buttons/build_tools/moving_platform_idle.png" type="Texture" id=26]
+[ext_resource path="res://ui/buttons/build_tools/moving_platform_hover.png" type="Texture" id=27]
+[ext_resource path="res://ui/buttons/build_tools/skull_idle.png" type="Texture" id=28]
+[ext_resource path="res://ui/buttons/build_tools/skull_hover.png" type="Texture" id=29]
+[ext_resource path="res://ui/buttons/build_tools/mine_idle.png" type="Texture" id=30]
+[ext_resource path="res://ui/buttons/build_tools/mine_hover.png" type="Texture" id=31]
+[ext_resource path="res://ui/buttons/build_tools/turret_idle.png" type="Texture" id=32]
+[ext_resource path="res://ui/buttons/build_tools/turret_hover.png" type="Texture" id=33]
+[ext_resource path="res://ui/buttons/build_tools/p_respawn_idle.png" type="Texture" id=34]
+[ext_resource path="res://ui/buttons/build_tools/p_respawn_hover.png" type="Texture" id=35]
+[ext_resource path="res://ui/buttons/build_tools/death_line_idle.png" type="Texture" id=36]
+[ext_resource path="res://ui/buttons/build_tools/death_line_hover.png" type="Texture" id=37]
+[ext_resource path="res://ui/buttons/build_tools/flag_idle.png" type="Texture" id=38]
+[ext_resource path="res://ui/buttons/build_tools/flag_hover.png" type="Texture" id=39]
+[ext_resource path="res://scripts/Details.gd" type="Script" id=40]
+[ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=41]
+[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=42]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -74,7 +75,7 @@ color_ramp = SubResource( 3 )
 
 [sub_resource type="ShaderMaterial" id=5]
 
-shader = ExtResource( 16 )
+shader = ExtResource( 17 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
@@ -82,12 +83,12 @@ shader_param/bloom = 5.06
 
 size = 12
 use_filter = true
-font_data = ExtResource( 19 )
+font_data = ExtResource( 20 )
 
 [sub_resource type="DynamicFont" id=7]
 
 size = 36
-font_data = ExtResource( 22 )
+font_data = ExtResource( 23 )
 
 [node name="game" type="Node2D" groups=[
 "play",
@@ -202,6 +203,7 @@ collision_mask = 1039
 editor/display_folded = true
 position = Vector2( -0.0419922, 60 )
 collision_layer = 3
+script = ExtResource( 13 )
 
 [node name="shape" type="Polygon2D" parent="level/Content/StartingBlockOne"]
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
@@ -219,7 +221,7 @@ editor/display_folded = true
 position = Vector2( 120, 40 )
 collision_layer = 4
 collision_mask = 0
-script = ExtResource( 13 )
+script = ExtResource( 14 )
 
 [node name="Particles2" type="Particles2D" parent="Finish"]
 position = Vector2( 0, -9.72745 )
@@ -249,14 +251,14 @@ polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 [node name="Tween" type="Tween" parent="Finish"]
 
 [node name="Sound" type="AudioStreamPlayer" parent="Finish"]
-stream = ExtResource( 14 )
+stream = ExtResource( 15 )
 bus = "Effects"
 
 [node name="Start" type="AudioStreamPlayer" parent="Finish"]
-stream = ExtResource( 14 )
+stream = ExtResource( 15 )
 bus = "Effects"
 
-[node name="character" parent="." instance=ExtResource( 15 )]
+[node name="character" parent="." instance=ExtResource( 16 )]
 
 [node name="bloom" type="ColorRect" parent="."]
 editor/display_folded = true
@@ -275,14 +277,14 @@ rect_min_size = Vector2( 2500, 2000 )
 rect_scale = Vector2( 1.50069, 1.58875 )
 rect_pivot_offset = Vector2( 1250, 1000 )
 mouse_filter = 2
-script = ExtResource( 17 )
+script = ExtResource( 18 )
 
 [node name="tween" type="Tween" parent="bloom"]
 
 [node name="editor_UI" type="CanvasLayer" parent="." groups=[
 "play",
 ]]
-script = ExtResource( 18 )
+script = ExtResource( 19 )
 
 [node name="ItemList" type="ColorRect" parent="editor_UI"]
 anchor_bottom = 1.0
@@ -344,8 +346,8 @@ hint_tooltip = "Base block"
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 20 )
-texture_hover = ExtResource( 21 )
+texture_normal = ExtResource( 21 )
+texture_hover = ExtResource( 22 )
 expand = true
 stretch_mode = 5
 
@@ -375,8 +377,8 @@ hint_tooltip = "Jump pad"
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 23 )
-texture_hover = ExtResource( 24 )
+texture_normal = ExtResource( 24 )
+texture_hover = ExtResource( 25 )
 expand = true
 stretch_mode = 5
 
@@ -395,8 +397,8 @@ hint_tooltip = "Mine"
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 25 )
-texture_hover = ExtResource( 26 )
+texture_normal = ExtResource( 26 )
+texture_hover = ExtResource( 27 )
 expand = true
 stretch_mode = 5
 
@@ -415,8 +417,8 @@ hint_tooltip = "Mine"
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 27 )
-texture_hover = ExtResource( 28 )
+texture_normal = ExtResource( 28 )
+texture_hover = ExtResource( 29 )
 expand = true
 stretch_mode = 5
 
@@ -435,8 +437,8 @@ hint_tooltip = "Mine"
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 29 )
-texture_hover = ExtResource( 30 )
+texture_normal = ExtResource( 30 )
+texture_hover = ExtResource( 31 )
 expand = true
 stretch_mode = 5
 
@@ -453,8 +455,8 @@ margin_bottom = 315.0
 rect_min_size = Vector2( 0, 27 )
 hint_tooltip = "Turret"
 theme = ExtResource( 6 )
-texture_normal = ExtResource( 31 )
-texture_hover = ExtResource( 32 )
+texture_normal = ExtResource( 32 )
+texture_hover = ExtResource( 33 )
 expand = true
 stretch_mode = 5
 
@@ -492,8 +494,8 @@ hint_tooltip = "Player spawn point"
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 33 )
-texture_hover = ExtResource( 34 )
+texture_normal = ExtResource( 34 )
+texture_hover = ExtResource( 35 )
 expand = true
 stretch_mode = 5
 
@@ -512,8 +514,8 @@ hint_tooltip = "Death zone"
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 35 )
-texture_hover = ExtResource( 36 )
+texture_normal = ExtResource( 36 )
+texture_hover = ExtResource( 37 )
 expand = true
 stretch_mode = 5
 
@@ -532,8 +534,8 @@ hint_tooltip = "Goal"
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 37 )
-texture_hover = ExtResource( 38 )
+texture_normal = ExtResource( 38 )
+texture_hover = ExtResource( 39 )
 expand = true
 stretch_mode = 5
 
@@ -660,10 +662,10 @@ text = "4"
 [node name="Details" type="ColorRect" parent="editor_UI"]
 margin_left = 86.0
 margin_top = 18.0
-margin_right = 1054.0
+margin_right = 612.0
 margin_bottom = 88.0
 color = Color( 0.211765, 0.137255, 0.301961, 0.894118 )
-script = ExtResource( 39 )
+script = ExtResource( 40 )
 
 [node name="MarginContainer" type="MarginContainer" parent="editor_UI/Details"]
 anchor_right = 1.0
@@ -677,7 +679,7 @@ custom_constants/margin_bottom = 10
 [node name="HBoxContainer" type="HBoxContainer" parent="editor_UI/Details/MarginContainer"]
 margin_left = 22.0
 margin_top = 10.0
-margin_right = 1232.0
+margin_right = 755.0
 margin_bottom = 60.0
 
 [node name="Logic" type="HBoxContainer" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
@@ -812,73 +814,13 @@ margin_right = 229.77
 margin_bottom = 50.0
 rect_min_size = Vector2( 19.77, 0 )
 
-[node name="Rotation" type="HBoxContainer" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
-margin_left = 737.0
-margin_right = 946.0
-margin_bottom = 50.0
-
-[node name="Type2" type="Label" parent="editor_UI/Details/MarginContainer/HBoxContainer/Rotation"]
-margin_top = 14.0
-margin_right = 62.0
-margin_bottom = 36.0
-theme = ExtResource( 6 )
-text = "Rotation"
-
-[node name="Rotation" type="OptionButton" parent="editor_UI/Details/MarginContainer/HBoxContainer/Rotation"]
-margin_left = 66.0
-margin_right = 186.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 120, 0 )
-hint_tooltip = "When OFF the turret will remain stationary and forever shoot in the designated direction.
-
-Left or Right make the turret turn in that direction."
-focus_mode = 0
-theme = ExtResource( 6 )
-enabled_focus_mode = 0
-text = "Off"
-
-[node name="Control2" type="Control" parent="editor_UI/Details/MarginContainer/HBoxContainer/Rotation"]
-margin_left = 190.0
-margin_right = 209.77
-margin_bottom = 50.0
-rect_min_size = Vector2( 19.77, 0 )
-
-[node name="RotSpeed" type="HBoxContainer" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
-margin_left = 950.0
-margin_right = 1210.0
-margin_bottom = 50.0
-
-[node name="Type2" type="Label" parent="editor_UI/Details/MarginContainer/HBoxContainer/RotSpeed"]
-margin_top = 14.0
-margin_right = 113.0
-margin_bottom = 36.0
-theme = ExtResource( 6 )
-text = "Rotation Speed"
-
-[node name="RotSpeed" type="OptionButton" parent="editor_UI/Details/MarginContainer/HBoxContainer/RotSpeed"]
-margin_left = 117.0
-margin_right = 237.0
-margin_bottom = 50.0
-rect_min_size = Vector2( 120, 0 )
-hint_tooltip = "The speed at which the turret will rotate."
-focus_mode = 0
-theme = ExtResource( 6 )
-enabled_focus_mode = 0
-
-[node name="Control2" type="Control" parent="editor_UI/Details/MarginContainer/HBoxContainer/RotSpeed"]
-margin_left = 241.0
-margin_right = 260.77
-margin_bottom = 50.0
-rect_min_size = Vector2( 19.77, 0 )
-
 [node name="Tween" type="Tween" parent="editor_UI/Details"]
 
 [node name="ConfirmPopUp" type="Control" parent="editor_UI"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
-script = ExtResource( 40 )
+script = ExtResource( 41 )
 
 [node name="Black" type="ColorRect" parent="editor_UI/ConfirmPopUp"]
 anchor_right = 1.0
@@ -905,15 +847,15 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="Control2" type="Control" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
-margin_top = 35.0
+margin_top = 22.0
 margin_right = 500.0
-margin_bottom = 59.17
+margin_bottom = 46.17
 rect_min_size = Vector2( 0, 24.17 )
 
 [node name="Text" type="Label" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
-margin_top = 63.0
+margin_top = 50.0
 margin_right = 500.0
-margin_bottom = 160.0
+margin_bottom = 147.0
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
 text = "Placing the Death Zone above the player will cause an endless respawn. A headache is likely to follow.
@@ -923,10 +865,22 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Control" type="Control" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
-margin_top = 164.0
+[node name="Input" type="LineEdit" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
+margin_top = 151.0
 margin_right = 500.0
-margin_bottom = 214.0
+margin_bottom = 173.0
+align = 1
+secret_character = "-"
+clear_button_enabled = true
+placeholder_text = "Type your map name"
+placeholder_alpha = 0.719
+caret_blink = true
+caret_blink_speed = 0.2
+
+[node name="Control" type="Control" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
+margin_top = 177.0
+margin_right = 500.0
+margin_bottom = 227.0
 rect_min_size = Vector2( 0, 50 )
 
 [node name="Buttons" type="VBoxContainer" parent="editor_UI/ConfirmPopUp/Window"]
@@ -955,7 +909,7 @@ rect_min_size = Vector2( 80, 22 )
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-text = "NUH-UH"
+text = "NEVER"
 
 [node name="Spacer" type="Control" parent="editor_UI/ConfirmPopUp/Window/Buttons/Menu"]
 margin_left = 220.0
@@ -971,7 +925,7 @@ rect_min_size = Vector2( 80, 0 )
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
-text = "YA MAN"
+text = "CONFIRM"
 
 [node name="Control" type="Control" parent="editor_UI/ConfirmPopUp/Window/Buttons"]
 margin_top = 34.0
@@ -994,7 +948,7 @@ theme = ExtResource( 6 )
 text = "Press \"SPACE\" to leave play mode."
 align = 1
 
-[node name="ZeroNet" parent="editor_UI" instance=ExtResource( 41 )]
+[node name="ZeroNet" parent="editor_UI" instance=ExtResource( 42 )]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 bus = "Music"
@@ -1014,19 +968,19 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/MovingPlatform" to="level" method="_on_MovingPlatform_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Enemy" to="level" method="_on_Enemy_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Mine" to="level" method="_on_Mine_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Turret" to="level" method="_on_Turret_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Spawn" to="." method="_on_Spawn_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/DeathArea" to="." method="_on_DeathArea_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Finish" to="." method="_on_Finish_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Logic/Left" to="editor_UI/Details" method="_on_Left_item_selected"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Direction/Direction" to="editor_UI/Details" method="_on_Direction_item_selected"]
 [connection signal="pressed" from="editor_UI/Details/MarginContainer/HBoxContainer/Soft/CenterContainer/SoftToggle" to="editor_UI/Details" method="_on_SoftToggle_pressed"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/ROF/RateOfFire" to="editor_UI/Details" method="_on_RateOfFire_item_selected"]
-[connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/Rotation/Rotation" to="editor_UI/Details" method="_on_Rotation_item_selected"]
-[connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/RotSpeed/RotSpeed" to="editor_UI/Details" method="_on_RotSpeed_item_selected"]
 [connection signal="gui_input" from="editor_UI/ConfirmPopUp/Black" to="editor_UI/ConfirmPopUp" method="_on_Black_gui_input"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="editor_UI/ConfirmPopUp" method="_on_No_pressed"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="." method="_on_No_pressed"]

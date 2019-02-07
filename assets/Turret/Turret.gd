@@ -6,11 +6,6 @@ var type : String = "Turret"
 var desired_direction : Vector2 setget set_direction, get_direction
 var direction : Vector2 = Vector2.LEFT
 var progress : = 2
-var rotating : int = 0
-var rotate_speed : float = 2.0
-
-# for restarting the rotation
-var original_rotation : float
 
 # rate of fire
 # 3 - slow
@@ -23,8 +18,8 @@ var speed : float = 1.0
 	
 	
 func _ready():
-	set_process(false)
 	look_in_direction()
+	
 	
 # call this function upon having it placed in the world
 func boot() -> void:
@@ -33,19 +28,6 @@ func boot() -> void:
 	set_collision_layer_bit(1,true)
 	add_to_group("delete")	
 	
-func _process(delta):
-	print(rotating)
-	match rotating:
-		0:
-			speed = 0
-		1:
-			speed = 1 * rotate_speed
-		2:
-			speed = -1 * rotate_speed
-			
-	direction = direction.rotated(speed * delta)
-	$Shape.rotation = direction.angle()
-	
 	
 func shoot():
 	var new_bullet = bullet.instance()
@@ -53,16 +35,14 @@ func shoot():
 	new_bullet.direction = direction
 	add_child(new_bullet)
 	new_bullet.shoot()
-
+	
 	
 func activate():
-	original_rotation = rotation
 	set_process(true)
 	$RateOfFire.wait_time = rate_of_fire
 	$RateOfFire.start()
 
 func deactivate():
-	set_process(false)	
 	$RateOfFire.stop()
 	
 func look_in_direction() -> void:
@@ -96,8 +76,6 @@ func save() -> Dictionary:
 		"name": self.name,
 		"direction_x": direction.x,
 		"direction_y": direction.y,
-		"rotating": rotating,
-		"rotate_speed": rotate_speed,
 		"rate_of_fire": rate_of_fire,
 		"speed": speed
 		}
@@ -107,8 +85,6 @@ func save() -> Dictionary:
 	
 func setup(vars : Dictionary) -> void:
 	direction = Vector2(float(vars["direction_x"]), float(vars["direction_y"]))
-	rotating = int(vars["rotating"])
-	rotate_speed = float(vars["rotate_speed"])
 	rate_of_fire = float(vars["rate_of_fire"])
 	speed = float(vars["speed"])
 	look_in_direction()

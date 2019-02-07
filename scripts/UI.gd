@@ -34,3 +34,6 @@ func deactivate():
 	if details_on:
 		$Details.visible = true
 		details_on = false
+
+func _on_Save_pressed():
+	pass # Replace with function body.

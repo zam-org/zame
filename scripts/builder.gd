@@ -34,6 +34,7 @@ var removed_objects : int = 0
 signal on_enemy_selected(yes, enemy)
 
 func _ready():
+	set_process(false)
 	toolkit.clear()
 	toolkit.append(two)
 	toolkit.append(coin)
@@ -43,7 +44,6 @@ func _ready():
 	toolkit.append(moving_platform)
 	toolkit.append(turret)
 	selected_tool = 0
-	reload()
 	
 	if $Content.has_node("StartingBlockOne"):
 		$Content/StartingBlockOne.set_owner($Content)
@@ -79,6 +79,7 @@ func activate():
 		building_piece = null
 	
 func deactivate():
+	yield(get_tree(), "idle_frame")
 	reload()
 	play = false
 	set_process(true)
@@ -212,6 +213,9 @@ func _on_Enemy_pressed():
 
 func _on_MovingPlatform_pressed():
 	select_tool(5)
+
+func _on_Turret_pressed():
+	select_tool(6)
 
 func _on_Reset_pressed() -> void:
 	play_click()

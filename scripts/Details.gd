@@ -29,27 +29,19 @@ func _ready():
 	$MarginContainer/HBoxContainer/ROF/RateOfFire.add_item("Medium")
 	$MarginContainer/HBoxContainer/ROF/RateOfFire.add_item("Fast")
 	
-	$MarginContainer/HBoxContainer/Rotation/Rotation.clear()
-	$MarginContainer/HBoxContainer/Rotation/Rotation.add_item("None")
-	$MarginContainer/HBoxContainer/Rotation/Rotation.add_item("Right")
-	$MarginContainer/HBoxContainer/Rotation/Rotation.add_item("Left")
-	
-	$MarginContainer/HBoxContainer/RotSpeed/RotSpeed.clear()
-	$MarginContainer/HBoxContainer/RotSpeed/RotSpeed.add_item("Slow")
-	$MarginContainer/HBoxContainer/RotSpeed/RotSpeed.add_item("Medium")
-	$MarginContainer/HBoxContainer/RotSpeed/RotSpeed.add_item("Fast")
-	
 	
 func activate():
 	active = true
 	self.visible = true
-	$Tween.interpolate_property(self, "modulate", modulate, Color(1,1,1,1), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property(self, "modulate", modulate, Color(1,1,1,1), 0.2, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property(self, "rect_position", Vector2(86,0), Vector2(86,18), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
 	$Tween.start()
 	set_enemy_style()
 
 func deactivate():
 	active = false
-	$Tween.interpolate_property(self, "modulate", modulate, Color(1,1,1,0), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property(self, "modulate", modulate, Color(1,1,1,0), 0.2, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property(self, "rect_position", Vector2(86,18), Vector2(86,0), 0.4, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
 	$Tween.start()
 	yield($Tween, 'tween_completed')
 	if active == false:
@@ -70,9 +62,7 @@ func _on_level_on_enemy_selected(yes, node):
 				
 			elif block.type == "Turret":
 				$MarginContainer/HBoxContainer/ROF.visible = true
-				$MarginContainer/HBoxContainer/Rotation.visible = true
-				$MarginContainer/HBoxContainer/RotSpeed.visible = true
-				$MarginContainer/HBoxContainer/Direction.visible = true												
+				$MarginContainer/HBoxContainer/Direction.visible = true
 
 			else:
 				$MarginContainer/HBoxContainer/Logic.visible = true
@@ -98,12 +88,6 @@ func _on_Left_item_selected(ID):
 	logic = ID
 
 
-func _on_Rotation_item_selected(ID):
-	print("Block rotating is set to: ", ID)
-	block.rotating = ID
-	rotation = ID
-
-
 func _on_RateOfFire_item_selected(ID):
 	var rof : float
 	match ID:
@@ -116,18 +100,6 @@ func _on_RateOfFire_item_selected(ID):
 			
 	block.rate_of_fire = rof
 	rate_of_fire = rof
-
-func _on_RotSpeed_item_selected(ID):
-	var speed : float
-	match ID:
-		0:
-			speed = 0.5
-		1:
-			speed = 1.0
-		2:
-			speed = 2.0
-	block.rotate_speed = speed
-	rot_speed = speed
 
 # Directions
 # 0 - UP
@@ -151,9 +123,7 @@ func _on_Direction_item_selected(ID):
 func set_enemy_style():
 	block.desired_direction = direction
 	if block.type == "Turret":
-		block.rotate_speed = rot_speed
 		block.rate_of_fire = rate_of_fire
-		block.rotating = rotation
 		return
 	block.logic = logic
 

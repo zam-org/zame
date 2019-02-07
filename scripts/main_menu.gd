@@ -14,6 +14,8 @@ func _ready():
 	
 	if map_list.rect_min_size.y > OS.window_size.y / 2.2:
 		map_list.rect_min_size.y = MIN_MAP_LIST_SIZE
+		
+	$SidePanelSpace/SidePanel/MapList.update_maps()
 
 func _input(event):
 	if event is InputEventMouseButton:

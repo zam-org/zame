@@ -6,11 +6,23 @@ var play : bool = false setget play_set, play_get
 # waiting for a confirmation on these. Prevent players from messing things up.
 var death_zone_confirm : bool = false
 var exit_confirm : bool = false
+var save_confirm : bool = false
+
+var MAP_DIRECTORY : String = "res://maps/"
 
 func _ready():
 	VisualServer.viewport_set_msaa(get_viewport().get_viewport_rid(), globals.MSAA)
 	get_viewport().set_msaa(globals.MSAA)
 	$crosshair.position = Vector2()
+	
+	if globals.map != "":
+		load_map(globals.map)
+		yield(get_tree(), "idle_frame")
+		$level.set_process(true)
+		$level.reload()
+	else:
+		$level.set_process(true)
+		$level.reload()
 
 
 # Runs every frame
@@ -33,12 +45,12 @@ func _process(delta):
 	if Input.is_action_just_pressed("ui_select"):
 		$Audio/Click.play()
 		play_set(!play)
-	if Input.is_action_just_pressed("ui_cancel") and !play:
+	if Input.is_action_just_pressed("ui_cancel"):
 		$Audio/Click.play()
 		exit_confirm_popup()		
-	if Input.is_action_just_pressed("ui_cancel") and play:
-		$Audio/Click.play()
-		play_set(false)
+#	if Input.is_action_just_pressed("ui_cancel") and play:
+#		$Audio/Click.play()
+#		play_set(!play)
 	
 	if Input.is_action_just_pressed("8") and !play:
 		move_spawn()
@@ -88,14 +100,19 @@ func _on_pop_up_yes_pressed() -> void:
 		death_zone_confirm = false
 		$DeathZone.position.y = $crosshair.position.y
 
-	if exit_confirm:
+	elif exit_confirm:
 		exit_confirm = false
 		get_tree().change_scene("res://scenes/main_menu.tscn")
+		
+	elif save_confirm:
+		save_confirm = false
+		save_map($editor_UI/ConfirmPopUp.get_input())
 
 func _on_No_pressed():
 	$Audio/Click.play()
 	death_zone_confirm = false
 	exit_confirm = false
+	save_confirm = false	
 
 # Moving functions	
 func reset_character_pos() -> void:
@@ -130,7 +147,7 @@ func play_set(new):
 	if new:
 		# save the current level node
 		save_map()
-		
+		yield(get_tree(), 'idle_frame')
 		get_tree().call_group_flags(1, "play", "activate")
 		
 		#hide the crosshair
@@ -138,9 +155,6 @@ func play_set(new):
 		#move the character to starting position
 		$character.position = $level/SpawnPos.global_position
 	else:
-		# delete current level and wait a frame for it to get deleted
-		$level/Content.queue_free()
-		yield(get_tree(), "idle_frame")
 		# load the temporarily saved level
 		load_map()
 
@@ -148,28 +162,44 @@ func play_set(new):
 		get_tree().call_group_flags(1, "play", "deactivate")
 		$crosshair.visible = true
 	
-func save_map() -> void:
+func save_map(map_name : String = "temp") -> void:
+	var map_vars : Dictionary = {
+		"finish_x" : $Finish.position.x,
+		"finish_y" : $Finish.position.y,
+		"death_zone_y" : $DeathZone.position.y,
+		"player_spawn_y" : $level/SpawnPos.position.y,
+		"player_spawn_x" : $level/SpawnPos.position.x
+		}
+	
 	var content = $level/Content
 	
 	# First we save the node options, should there be any to be saved
-	var temp_settings : File = File.new()
-	temp_settings.open("user://temp_settings.save", File.WRITE)
+	var map_settings : File = File.new()
+	map_settings.open(MAP_DIRECTORY + map_name + "settings.save", File.WRITE)
 	
 	for i in content.get_children():
 		if i.has_method("save"):
 			var vars = i.save()
-			temp_settings.store_line(to_json(vars))
-			
-	temp_settings.close()
+			map_settings.store_line(to_json(vars))
+	
+	map_settings.store_line(to_json(map_vars))
+	map_settings.close()
 	
 	# Finally we pack the scene and save it as a temp file
 	var packed_scene = PackedScene.new()
 	var err = packed_scene.pack(content)
 	print(err)
-	ResourceSaver.save("user://temp.tscn", packed_scene)	
+	ResourceSaver.save(MAP_DIRECTORY + map_name + ".tscn", packed_scene)	
 		
-func load_map() -> void:
-	var packed_scene = load("user://temp.tscn")
+func load_map(map_name : String = "temp") -> void:
+	var packed_scene = load(MAP_DIRECTORY + map_name + ".tscn")
+	
+	#break the process should we not be able to load a map
+	if packed_scene == null:
+		return
+	# delete current level and wait a frame for it to get deleted	
+	$level/Content.queue_free()
+	yield(get_tree(), 'idle_frame')
 	# Instance the scene
 	var my_scene = packed_scene.instance()
 	$level.add_child(my_scene)
@@ -179,32 +209,59 @@ func load_map() -> void:
 	$level.content = my_scene
 	
 	# load the settings of the objects within the scene
-	var temp_settings = File.new()
-	temp_settings.open("user://temp_settings.save", File.READ)
-	while not temp_settings.eof_reached():
-		var current_line = parse_json(temp_settings.get_line())
-		if current_line is Dictionary:
+	var map_settings = File.new()
+	map_settings.open(MAP_DIRECTORY + map_name + "settings.save", File.READ)
+	while not map_settings.eof_reached():
+		var current_line = parse_json(map_settings.get_line())
+		if current_line is Dictionary and !current_line.has("death_zone_y"):
 			var path : String = "level/Content/" + current_line["name"]
 			var object = get_node(path)
 			if object != null:
 				object.setup(current_line)
+				
+		elif current_line is Dictionary and current_line.has("death_zone_y"):
+			$Finish.position.x = float(current_line["finish_x"])
+			$Finish.position.y = float(current_line["finish_y"])
+			$DeathZone.position.y = float(current_line["death_zone_y"])
+			$level/SpawnPos.position.x = float(current_line["player_spawn_x"])
+			$level/SpawnPos.position.y = float(current_line["player_spawn_y"])
+			$character.position = $level/SpawnPos.position
 		
-	temp_settings.close()
+	map_settings.close()
+	
+	# last step of loading is calling the boot function in every object,
+	# this gives them correct collision masks
+	# and adds to correct groups.
+	# Each buildable object has this function
+	
+	for i in $level/Content.get_children():
+#		print(i.name)
+		i.boot()
+	
 	
 func play_get():
 	return play
+	
 
 # Each node in the group play must have the functions activate and deactivate called when these buttons are pressed
 func activate():
 	$crosshair.visible = false
 	Input.set_mouse_mode(2)	
 	
+	
 func deactivate():
 	$character.position = $level/SpawnPos.global_position
 	$crosshair.visible = true
 	Input.set_mouse_mode(0)	
 	
+	
 func exit_confirm_popup() -> void:
 	exit_confirm = true
 	$editor_UI/ConfirmPopUp.pop_up("Quit to main menu? \n (All unsaved progress will be lost)")
+	
 
+func _on_Save_pressed():
+	save_confirm = true
+	$editor_UI/ConfirmPopUp.pop_up("Map name:", "", "", true)
+	
+	

@@ -1,10 +1,5 @@
 extends Control
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	set_process_input(false)	
 	visible = false
@@ -22,7 +17,7 @@ func _input(event):
 			visible = false
 			$Window/Buttons/Menu/Yes.emit_signal("pressed")
 
-func pop_up(message : String = "", no : String = "", yes : String = "") -> void:
+func pop_up(message : String = "", no : String = "", yes : String = "", saving : bool = false) -> void:
 	set_process_input(true)
 	if message != "":
 		$Window/TextContainer/Text.text = message
@@ -30,6 +25,9 @@ func pop_up(message : String = "", no : String = "", yes : String = "") -> void:
 		$Window/Buttons/Menu/No.text = no
 	if yes != "":
 		$Window/Buttons/Menu/Yes.text = yes
+
+	$Window/TextContainer/Text.visible = false if saving else true
+	$Window/TextContainer/Input.visible = true if saving else false
 	
 	self.visible = true
 
@@ -37,9 +35,11 @@ func _on_No_pressed() -> void:
 	set_process_input(false)
 	visible = false
 
+
 func _on_Yes_pressed() -> void:
 	set_process_input(false)
 	visible = false
+
 
 func _on_Black_gui_input(event):
 	if event is InputEventMouseButton:
@@ -47,3 +47,7 @@ func _on_Black_gui_input(event):
 		$Window/Buttons/Menu/No.emit_signal("pressed")
 		set_process_input(false)
 		
+		
+func get_input() -> String:
+	var map_name = $Window/TextContainer/Input.text
+	return map_name
