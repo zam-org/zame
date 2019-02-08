@@ -63,14 +63,32 @@ shader_param/bloom = 1.5
 size = 32
 font_data = ExtResource( 11 )
 
-[sub_resource type="Shader" id=7]
+[sub_resource type="Shader" id=9]
 
+code = "shader_type canvas_item;
 
-[sub_resource type="ShaderMaterial" id=8]
+uniform float amount : hint_range(0,5);
+uniform float transparent : hint_range(0,1);
+uniform float mix_amount : hint_range(0,1);
+uniform vec4 tint : hint_color;
 
-shader = SubResource( 7 )
+void fragment(){
+	vec4 blur = textureLod(SCREEN_TEXTURE, SCREEN_UV, amount);
+	blur.rgb = mix(blur.rgb, tint.rgb, mix_amount);
+	blur.a = transparent;
+//	COLOR = mix(tint, blur, mix_amount);
+	COLOR = blur;
+}"
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="ShaderMaterial" id=10]
+
+shader = SubResource( 9 )
+shader_param/amount = 3.236
+shader_param/transparent = 1.0
+shader_param/mix_amount = 0.667
+shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
+
+[sub_resource type="DynamicFont" id=11]
 
 size = 30
 use_filter = true
@@ -112,6 +130,7 @@ expand = true
 stretch_mode = 6
 
 [node name="SidePanelSpace" type="HBoxContainer" parent="."]
+editor/display_folded = true
 anchor_bottom = 1.0
 margin_right = 427.0
 
@@ -684,8 +703,6 @@ bus = "Music"
 [node name="ZeroNet" parent="." instance=ExtResource( 15 )]
 
 [node name="Options" type="Control" parent="."]
-editor/display_folded = true
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -694,9 +711,10 @@ rect_min_size = Vector2( 480, 480 )
 script = ExtResource( 16 )
 
 [node name="BackDrop" type="ColorRect" parent="Options"]
+material = SubResource( 10 )
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.388235 )
+color = Color( 0, 0, 0, 0.447059 )
 
 [node name="Shadow" type="ColorRect" parent="Options"]
 anchor_left = 0.5
@@ -708,7 +726,6 @@ rect_min_size = Vector2( 500, 0 )
 color = Color( 0, 0, 0, 0.12549 )
 
 [node name="OptionsColor" type="ColorRect" parent="Options"]
-material = SubResource( 8 )
 use_parent_material = true
 anchor_left = 0.5
 anchor_right = 0.5
@@ -1199,7 +1216,7 @@ margin_top = -61.0
 margin_right = 240.0
 margin_bottom = -20.0
 theme = ExtResource( 7 )
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0.996078, 0.639216, 0.0117647, 1 )
 text = "SAVED"
 align = 1

@@ -1,0 +1,15 @@
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"MovingPlatform","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@145","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@146","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@147","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@148","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@149","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@150","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@151","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@152","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@153","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@154","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@155","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@156","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@157","soft":false}
+{"death_zone_y":380,"finish_x":520,"finish_y":-1080,"player_spawn_x":60,"player_spawn_y":-160}

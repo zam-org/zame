@@ -10,6 +10,8 @@ var save_confirm : bool = false
 
 var MAP_DIRECTORY : String = "res://maps/"
 
+signal show_notification(what)
+
 func _ready():
 	VisualServer.viewport_set_msaa(get_viewport().get_viewport_rid(), globals.MSAA)
 	get_viewport().set_msaa(globals.MSAA)
@@ -99,6 +101,7 @@ func _on_pop_up_yes_pressed() -> void:
 	if death_zone_confirm:
 		death_zone_confirm = false
 		$DeathZone.position.y = $crosshair.position.y
+		emit_signal("show_notification", "DEATH ZONE MOVED DANGEROUSLY")
 
 	elif exit_confirm:
 		exit_confirm = false
@@ -112,26 +115,30 @@ func _on_No_pressed():
 	$Audio/Click.play()
 	death_zone_confirm = false
 	exit_confirm = false
-	save_confirm = false	
+	save_confirm = false
 
 # Moving functions	
 func reset_character_pos() -> void:
 	$Camera.shake(25.0, 1.5)
 	$character.motion = Vector2()
 	$character.position = $level/SpawnPos.global_position
+	emit_signal("show_notification", "PLAYER RESPAWNED")
 
 func center_player() -> void:
 	play_click()
 	$character.motion = Vector2()
-	$character.position = $crosshair.position	
+	$character.position = $crosshair.position
+	emit_signal("show_notification", "PLAYER CENTERED")	
 
 func move_spawn() -> void:
 	play_click()
 	$level/SpawnPos.position = $crosshair.position
+	emit_signal("show_notification", "MOVED PLAYER SPAWN")	
 
 func move_finish():
 	play_click()
 	$Finish.position = $crosshair.position
+	emit_signal("show_notification", "MOVED FINISH")	
 	
 func move_death_area() -> void:
 	play_click()
@@ -154,6 +161,7 @@ func play_set(new):
 		$crosshair.visible = false
 		#move the character to starting position
 		$character.position = $level/SpawnPos.global_position
+		emit_signal("show_notification", "GAME ON!")
 	else:
 		# load the temporarily saved level
 		load_map()
@@ -189,7 +197,9 @@ func save_map(map_name : String = "temp") -> void:
 	var packed_scene = PackedScene.new()
 	var err = packed_scene.pack(content)
 	print(err)
-	ResourceSaver.save(MAP_DIRECTORY + map_name + ".tscn", packed_scene)	
+	ResourceSaver.save(MAP_DIRECTORY + map_name + ".tscn", packed_scene)
+	
+	emit_signal("show_notification", "MAP SAVED")
 		
 func load_map(map_name : String = "temp") -> void:
 	var packed_scene = load(MAP_DIRECTORY + map_name + ".tscn")
@@ -238,6 +248,7 @@ func load_map(map_name : String = "temp") -> void:
 #		print(i.name)
 		i.boot()
 	
+	emit_signal("show_notification", "MAP LOADED")
 	
 func play_get():
 	return play
@@ -246,13 +257,13 @@ func play_get():
 # Each node in the group play must have the functions activate and deactivate called when these buttons are pressed
 func activate():
 	$crosshair.visible = false
-	Input.set_mouse_mode(2)	
+	Input.set_mouse_mode(2)
 	
 	
 func deactivate():
 	$character.position = $level/SpawnPos.global_position
 	$crosshair.visible = true
-	Input.set_mouse_mode(0)	
+	Input.set_mouse_mode(0)
 	
 	
 func exit_confirm_popup() -> void:
@@ -262,7 +273,7 @@ func exit_confirm_popup() -> void:
 
 func _on_Save_pressed():
 	save_confirm = true
-	$editor_UI/ConfirmPopUp.pop_up("Map name:", "", "", true)
+	$editor_UI/ConfirmPopUp.pop_up("Save map to disk", "", "", true)
 	
 	
 
@@ -275,3 +286,5 @@ func _on_Yes_Publish_To_ZeroNet_pressed():
 	print(version, map_name, description)
 	# Send the map to zeronet below
 	# Check save_map function above for inspiration
+	
+	emit_signal("show_notification", "PUBLISHED TO ZERONET")

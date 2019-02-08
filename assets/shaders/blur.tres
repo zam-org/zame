@@ -1,0 +1,27 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+
+[sub_resource type="Shader" id=9]
+
+code = "shader_type canvas_item;
+
+uniform float amount : hint_range(0,5);
+uniform float transparent : hint_range(0,1);
+uniform float mix_amount : hint_range(0,1);
+uniform vec4 tint : hint_color;
+
+void fragment(){
+	vec4 blur = textureLod(SCREEN_TEXTURE, SCREEN_UV, amount);
+	blur.rgb = mix(blur.rgb, tint.rgb, mix_amount);
+	blur.a = transparent;
+//	COLOR = mix(tint, blur, mix_amount);
+	COLOR = blur;
+}"
+
+[resource]
+
+shader = SubResource( 9 )
+shader_param/amount = 2.267
+shader_param/transparent = 1.0
+shader_param/mix_amount = 0.0
+shader_param/tint = Color( 1, 0, 0.937255, 0.894118 )
+

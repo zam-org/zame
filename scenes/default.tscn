@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=57 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=2]
@@ -43,6 +43,7 @@
 [ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=41]
 [ext_resource path="res://scripts/PublishLevelPopUp.gd" type="Script" id=42]
 [ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=43]
+[ext_resource path="res://scripts/Messages.gd" type="Script" id=44]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -91,9 +92,48 @@ font_data = ExtResource( 20 )
 size = 36
 font_data = ExtResource( 23 )
 
+[sub_resource type="Shader" id=9]
+
+code = "shader_type canvas_item;
+
+uniform float amount : hint_range(0,5);
+uniform float transparent : hint_range(0,1);
+uniform float mix_amount : hint_range(0,1);
+uniform vec4 tint : hint_color;
+
+void fragment(){
+	vec4 blur = textureLod(SCREEN_TEXTURE, SCREEN_UV, amount);
+	blur.rgb = mix(blur.rgb, tint.rgb, mix_amount);
+	blur.a = transparent;
+//	COLOR = mix(tint, blur, mix_amount);
+	COLOR = blur;
+}"
+
+[sub_resource type="ShaderMaterial" id=11]
+
+shader = SubResource( 9 )
+shader_param/amount = 2.326
+shader_param/transparent = 1.0
+shader_param/mix_amount = 0.419
+shader_param/tint = Color( 0.176471, 0.0901961, 0.152941, 1 )
+
+[sub_resource type="ShaderMaterial" id=10]
+
+shader = SubResource( 9 )
+shader_param/amount = 3.236
+shader_param/transparent = 1.0
+shader_param/mix_amount = 0.667
+shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
+
 [sub_resource type="DynamicFont" id=8]
 
 size = 32
+use_filter = true
+font_data = ExtResource( 20 )
+
+[sub_resource type="DynamicFont" id=12]
+
+size = 18
 use_filter = true
 font_data = ExtResource( 20 )
 
@@ -296,6 +336,7 @@ script = ExtResource( 18 )
 script = ExtResource( 19 )
 
 [node name="ItemList" type="ColorRect" parent="editor_UI"]
+editor/display_folded = true
 anchor_bottom = 1.0
 margin_right = 70.0
 rect_min_size = Vector2( 70, 0 )
@@ -671,7 +712,7 @@ enabled_focus_mode = 0
 text = "4"
 
 [node name="Details" type="ColorRect" parent="editor_UI"]
-editor/display_folded = true
+material = SubResource( 11 )
 margin_left = 86.0
 margin_top = 18.0
 margin_right = 612.0
@@ -695,7 +736,6 @@ margin_right = 755.0
 margin_bottom = 60.0
 
 [node name="Logic" type="HBoxContainer" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
-editor/display_folded = true
 margin_right = 186.0
 margin_bottom = 50.0
 
@@ -837,6 +877,7 @@ theme = ExtResource( 6 )
 script = ExtResource( 41 )
 
 [node name="Black" type="ColorRect" parent="editor_UI/ConfirmPopUp"]
+material = SubResource( 10 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.380392 )
@@ -861,15 +902,16 @@ anchor_bottom = 1.0
 alignment = 1
 
 [node name="Control2" type="Control" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
-margin_top = 22.0
+visible = false
+margin_top = 36.0
 margin_right = 500.0
-margin_bottom = 46.17
-rect_min_size = Vector2( 0, 24.17 )
+margin_bottom = 70.58
+rect_min_size = Vector2( 0, 34.58 )
 
 [node name="Text" type="Label" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
-margin_top = 50.0
+margin_top = 55.0
 margin_right = 500.0
-margin_bottom = 147.0
+margin_bottom = 152.0
 theme = ExtResource( 6 )
 custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
 text = "Placing the Death Zone above the player will cause an endless respawn. A headache is likely to follow.
@@ -879,10 +921,22 @@ align = 1
 valign = 1
 autowrap = true
 
-[node name="Input" type="LineEdit" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
-margin_top = 151.0
+[node name="Control" type="Control" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
+margin_top = 156.0
 margin_right = 500.0
-margin_bottom = 173.0
+margin_bottom = 168.43
+rect_min_size = Vector2( 0, 12.43 )
+
+[node name="Margin" type="CenterContainer" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
+margin_top = 172.0
+margin_right = 500.0
+margin_bottom = 194.0
+
+[node name="Input" type="LineEdit" parent="editor_UI/ConfirmPopUp/Window/TextContainer/Margin"]
+margin_left = 23.0
+margin_right = 475.95
+margin_bottom = 22.0
+rect_min_size = Vector2( 452.95, 0 )
 align = 1
 secret_character = "-"
 clear_button_enabled = true
@@ -890,12 +944,6 @@ placeholder_text = "Type your map name"
 placeholder_alpha = 0.719
 caret_blink = true
 caret_blink_speed = 0.2
-
-[node name="Control" type="Control" parent="editor_UI/ConfirmPopUp/Window/TextContainer"]
-margin_top = 177.0
-margin_right = 500.0
-margin_bottom = 227.0
-rect_min_size = Vector2( 0, 50 )
 
 [node name="Buttons" type="VBoxContainer" parent="editor_UI/ConfirmPopUp/Window"]
 anchor_top = 1.0
@@ -915,31 +963,31 @@ margin_right = 500.0
 margin_bottom = 30.0
 alignment = 1
 
-[node name="No" type="Button" parent="editor_UI/ConfirmPopUp/Window/Buttons/Menu"]
-margin_left = 136.0
-margin_right = 216.0
-margin_bottom = 22.0
-rect_min_size = Vector2( 80, 22 )
-focus_mode = 0
-theme = ExtResource( 6 )
-enabled_focus_mode = 0
-text = "NEVER"
-
-[node name="Spacer" type="Control" parent="editor_UI/ConfirmPopUp/Window/Buttons/Menu"]
-margin_left = 220.0
-margin_right = 280.74
-margin_bottom = 22.0
-rect_min_size = Vector2( 60.74, 0 )
-
 [node name="Yes" type="Button" parent="editor_UI/ConfirmPopUp/Window/Buttons/Menu"]
-margin_left = 284.0
-margin_right = 364.0
+margin_left = 38.0
+margin_right = 118.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 80, 0 )
 focus_mode = 0
 theme = ExtResource( 6 )
 enabled_focus_mode = 0
 text = "CONFIRM"
+
+[node name="Spacer" type="Control" parent="editor_UI/ConfirmPopUp/Window/Buttons/Menu"]
+margin_left = 122.0
+margin_right = 378.97
+margin_bottom = 22.0
+rect_min_size = Vector2( 256.97, 0 )
+
+[node name="No" type="Button" parent="editor_UI/ConfirmPopUp/Window/Buttons/Menu"]
+margin_left = 382.0
+margin_right = 462.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 80, 22 )
+focus_mode = 0
+theme = ExtResource( 6 )
+enabled_focus_mode = 0
+text = "CANCEL"
 
 [node name="Control" type="Control" parent="editor_UI/ConfirmPopUp/Window/Buttons"]
 margin_top = 34.0
@@ -948,6 +996,7 @@ margin_bottom = 40.58
 rect_min_size = Vector2( 0, 6.58 )
 
 [node name="PublishLevelPopUp" type="Control" parent="editor_UI"]
+editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -955,6 +1004,7 @@ theme = ExtResource( 6 )
 script = ExtResource( 42 )
 
 [node name="Black" type="ColorRect" parent="editor_UI/PublishLevelPopUp"]
+material = SubResource( 10 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.380392 )
@@ -1149,10 +1199,39 @@ align = 1
 
 [node name="ZeroNet" parent="editor_UI" instance=ExtResource( 43 )]
 
+[node name="Messages" type="Control" parent="editor_UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 6 )
+script = ExtResource( 44 )
+
+[node name="Message" type="Label" parent="editor_UI/Messages"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -404.73
+margin_top = -80.0
+margin_right = 404.73
+margin_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 809.46, 60 )
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "MAP SAVED"
+align = 1
+valign = 1
+
+[node name="Tween" type="Tween" parent="editor_UI/Messages"]
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 bus = "Music"
 
+[connection signal="show_notification" from="." to="editor_UI/Messages" method="_on_game_show_notification"]
 [connection signal="on_enemy_selected" from="level" to="editor_UI/Details" method="_on_level_on_enemy_selected"]
+[connection signal="show_notification" from="level" to="editor_UI/Messages" method="_on_level_show_notification"]
 [connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
@@ -1182,10 +1261,10 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/Details/MarginContainer/HBoxContainer/Soft/CenterContainer/SoftToggle" to="editor_UI/Details" method="_on_SoftToggle_pressed"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/ROF/RateOfFire" to="editor_UI/Details" method="_on_RateOfFire_item_selected"]
 [connection signal="gui_input" from="editor_UI/ConfirmPopUp/Black" to="editor_UI/ConfirmPopUp" method="_on_Black_gui_input"]
-[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="editor_UI/ConfirmPopUp" method="_on_No_pressed"]
-[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="." method="_on_No_pressed"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="editor_UI/ConfirmPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
+[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="editor_UI/ConfirmPopUp" method="_on_No_pressed"]
+[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="." method="_on_No_pressed"]
 [connection signal="gui_input" from="editor_UI/PublishLevelPopUp/Black" to="editor_UI/PublishLevelPopUp" method="_on_Black_gui_input"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="editor_UI/PublishLevelPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="." method="_on_Yes_Publish_To_ZeroNet_pressed"]

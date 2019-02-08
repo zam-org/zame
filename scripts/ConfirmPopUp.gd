@@ -26,8 +26,8 @@ func pop_up(message : String = "", no : String = "", yes : String = "", saving :
 	if yes != "":
 		$Window/Buttons/Menu/Yes.text = yes
 
-	$Window/TextContainer/Text.visible = false if saving else true
-	$Window/TextContainer/Input.visible = true if saving else false
+#	$Window/TextContainer/Text.visible = false if saving else true
+	$Window/TextContainer/Margin/Input.visible = true if saving else false
 	
 	self.visible = true
 
@@ -49,5 +49,5 @@ func _on_Black_gui_input(event):
 		
 		
 func get_input() -> String:
-	var map_name = $Window/TextContainer/Input.text
+	var map_name = $Window/TextContainer/Margin/Input.text
 	return map_name

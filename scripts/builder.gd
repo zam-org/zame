@@ -32,6 +32,7 @@ var removed_objects : int = 0
 
 # Signals
 signal on_enemy_selected(yes, enemy)
+signal show_notification(what)
 
 func _ready():
 	set_process(false)
@@ -116,7 +117,7 @@ func _process(delta):
 	if Input.is_action_just_pressed("7"):
 		select_tool(6)
 
-
+	# removing blocks
 	if Input.is_mouse_button_pressed(2):
 		if $delete/RayCast.is_colliding():
 			var overlapping = $delete/RayCast.get_collider()
@@ -128,12 +129,12 @@ func _process(delta):
 					overlapping.get_parent().queue_free()
 					built_objects -= 1
 					removed_objects += 1
-					print("deleted build_check")
 				else:
 					$Audio/BlockDeleted.play()
 					overlapping.queue_free()
 					built_objects -= 1
 					removed_objects += 1
+				emit_signal("show_notification", "REMOVED PIECE")
 
 	if can_build:
 		building_piece.position = mouse_grid_pos
@@ -181,6 +182,9 @@ func reload(clean : bool = false) -> void:
 
 	new.visible = false
 	new.modulate.a = 0.5
+	
+	var piece_name : String = new.name
+	
 	content.add_child(new)
 	building_piece = new
 
@@ -191,6 +195,7 @@ func reload(clean : bool = false) -> void:
 	
 	yield(get_tree(), 'idle_frame')
 	building_piece.visible = true
+	emit_signal("show_notification", piece_name)
 
 func play_click() -> void:
 	$Audio/Click.play()

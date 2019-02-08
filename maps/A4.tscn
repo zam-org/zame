@@ -1,0 +1,722 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://assets/platforms/two/two.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/platforms/two/Two.gd" type="Script" id=2]
+[ext_resource path="res://assets/platforms/moving/MovingPlatform.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/platforms/moving/MovingPlatform.gd" type="Script" id=4]
+[ext_resource path="res://assets/coin/coin.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/coin/Coin.gd" type="Script" id=6]
+
+[node name="Content" type="Node2D"]
+editor/display_folded = true
+
+[node name="2x2" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, 60 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@138" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 120, 60 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@139" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 100, 60 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@140" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 80, 60 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@141" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 60, 60 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@142" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 40, 60 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@143" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 20, 60 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="MovingPlatform" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 0, 40 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@145" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 20, 40 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@146" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 40, 40 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@147" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 60, 40 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@148" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 80, 40 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@149" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 100, 40 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@150" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 120, 40 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@151" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 0, 20 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@152" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 20, 20 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@153" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 40, 20 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@154" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 80, 20 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@155" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 100, 20 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@156" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 120, 20 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@MovingPlatform@157" type="KinematicBody2D" parent="." groups=[
+"play",
+] instance=ExtResource( 3 )]
+position = Vector2( 60, 20 )
+collision_layer = 3
+script = ExtResource( 4 )
+
+[node name="@2x2@160" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 140, 20 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@161" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 140, 40 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@162" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 140, 60 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@163" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -20, 20 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@164" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -20, 40 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@165" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( -20, 60 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@166" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 140, -1000 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@167" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 140, -1020 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@168" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 140, -1040 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@169" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 140, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@170" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@171" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 180, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@172" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 200, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@173" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 220, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@174" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@175" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 260, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@176" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 280, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@177" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 300, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@178" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@179" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 340, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@180" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 360, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@181" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 380, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@182" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 400, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@183" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 420, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@184" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 440, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@185" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 460, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@186" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@187" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 500, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@188" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 520, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="coin" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 140, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@190" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 160, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@191" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 180, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@192" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 200, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@193" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 220, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@194" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 260, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@195" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 280, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@196" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 300, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@197" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 320, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@198" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 340, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@199" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 360, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@200" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 380, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@201" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 400, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@202" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 420, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@203" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 440, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@204" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 460, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@205" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 480, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@coin@206" type="StaticBody2D" parent="." groups=[
+"coin",
+"small",
+] instance=ExtResource( 5 )]
+position = Vector2( 240, -1080 )
+collision_layer = 4
+collision_mask = 0
+script = ExtResource( 6 )
+
+[node name="@2x2@209" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 120, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@210" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 100, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@211" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 80, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@212" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 40, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@213" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 40, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@214" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 20, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@215" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 0, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@217" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 60, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@218" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 540, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@219" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 560, -1060 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@220" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 560, -1080 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@221" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 560, -1100 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@222" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 560, -1120 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@223" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 560, -1140 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@224" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 560, -1160 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@225" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 560, -1180 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@226" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 560, -1200 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@227" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 560, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@228" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 540, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@229" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 520, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@230" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 500, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@231" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 480, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@232" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 460, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@233" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 440, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@234" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 420, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@235" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 400, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@236" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 380, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@237" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 360, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@238" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 340, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@239" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 320, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@240" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 300, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@241" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 280, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@242" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 260, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@243" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 240, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@244" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 200, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@245" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 160, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@246" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 140, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@247" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 180, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
+[node name="@2x2@248" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
+position = Vector2( 220, -1220 )
+collision_layer = 3
+collision_mask = 0
+script = ExtResource( 2 )
+
