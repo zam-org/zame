@@ -32,7 +32,9 @@ func notify(what : String = "WELL DONE") -> void:
 
 func _on_game_show_notification(what : String):
 	notify(what)
-
-
+	
+	
 func _on_level_show_notification(what : String):
 	notify(what.to_upper())
+	
+	

@@ -1,0 +1,9 @@
+{"direction_x":1,"direction_y":0,"logic":0,"name":"Enemy"}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"MovingPlatform","soft":false}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@148","soft":false}
+{"direction_x":-1,"direction_y":0,"logic":2,"name":"@MovingPlatform@203","soft":false}
+{"direction_x":-1,"direction_y":0,"name":"Turret","rate_of_fire":0,"speed":1}
+{"direction_x":0,"direction_y":1,"name":"@Turret@322","rate_of_fire":1,"speed":1}
+{"direction_x":0,"direction_y":1,"name":"@Turret@323","rate_of_fire":1,"speed":1}
+{"direction_x":0,"direction_y":-1,"logic":2,"name":"@MovingPlatform@469","soft":false}
+{"death_zone_y":680,"finish_x":-400,"finish_y":-460,"player_spawn_x":-140,"player_spawn_y":-40}
