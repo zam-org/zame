@@ -10,10 +10,21 @@ func _ready():
 	$UnlockedLabel.modulate = Color(1,1,1,0)
 	orig_position = rect_position
 
+	# Achievement showing function, all the vars are self explanatory
 func achievement_show(image_path : String = "", achievement_name : String = "", achievement_info : String = "", length : float = 2.0) -> void:
-	$UnlockedLabel.modulate = Color(1,1,1,0)	
+	$UnlockedLabel.modulate = Color(1,1,1,0)
 	$Tween.stop_all()
 	achievement_length = length
+
+	# set the new texture for the achievement
+	# load a default one when unspecified
+	var new_texture
+	if image_path != "":
+		new_texture = load(image_path)
+	else:
+		new_texture = load("res://ui/buttons/question_mark_hover.png")
+
+	$HBoxContainer/AchievementTexture.texture = new_texture
 	
 	# set text
 	$HBoxContainer/VBoxContainer/AchievementInfo.text = achievement_info
@@ -40,7 +51,7 @@ func achievement_show(image_path : String = "", achievement_name : String = "", 
 # testing the achievements
 func _process(delta):
 	if Input.is_action_just_pressed("achievement"):
-		achievement_show("", "BUILDER - lvl 5", "Built over 5000 pieces", 4.0)
+		achievement_show("res://ui/buttons/build_tools/death_line_hover.png", "BUILDER - lvl 5", "Built over 5000 pieces", 4.0)
 		
 	elif Input.is_action_just_pressed("achievement_2"):
-		achievement_show("", "DESTROYER - lvl 1", "Removed over 500 pieces", 4.0)
+		achievement_show("res://ui/buttons/build_tools/jump_pad_hover.png", "DESTROYER - lvl 1", "Removed over 500 pieces", 4.0)
