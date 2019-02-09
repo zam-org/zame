@@ -98,8 +98,8 @@ vertex_colors = PoolColorArray( 0, 0, 0.745098, 1, 0, 1, 1, 1, 1, 1, 0, 1, 0.745
 
 [node name="face" type="Sprite" parent="shape"]
 visible = false
-position = Vector2( 4.01412, -25.8872 )
-scale = Vector2( 0.171683, 0.171209 )
+position = Vector2( 0, -19.9448 )
+scale = Vector2( 0.299866, 0.299038 )
 texture = ExtResource( 3 )
 
 [node name="audio" type="Node" parent="."]

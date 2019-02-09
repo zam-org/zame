@@ -33,6 +33,7 @@ var removed_objects : int = 0
 # Signals
 signal on_enemy_selected(yes, enemy)
 signal show_notification(what)
+signal block_built
 
 func _ready():
 	set_process(false)
@@ -167,7 +168,7 @@ func build_current_piece() -> void:
 	reload()
 	$Audio/BlockPlaced.play()
 	built_objects += 1
-	print(built_objects)
+	emit_signal("block_built")
 
 # called to put a new item under the mouse's grid posiiton aka. the item to be built
 func reload(clean : bool = false) -> void:

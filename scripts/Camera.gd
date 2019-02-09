@@ -15,7 +15,10 @@ var shake_amount : float = 0
 
 var target_pos : Vector2 = Vector2()
 
+signal cam_pos(pos, mouse_pos)
+
 func _process(delta):
+	emit_signal("cam_pos", position, get_global_mouse_position())
 	smooth_mouse = smooth_mouse.linear_interpolate(mouse_speed, 50 * delta)
 	
 	if Input.is_mouse_button_pressed(3):

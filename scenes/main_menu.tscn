@@ -63,7 +63,7 @@ shader_param/bloom = 1.5
 size = 32
 font_data = ExtResource( 11 )
 
-[sub_resource type="Shader" id=9]
+[sub_resource type="Shader" id=7]
 
 code = "shader_type canvas_item;
 
@@ -80,15 +80,15 @@ void fragment(){
 	COLOR = blur;
 }"
 
-[sub_resource type="ShaderMaterial" id=10]
+[sub_resource type="ShaderMaterial" id=8]
 
-shader = SubResource( 9 )
+shader = SubResource( 7 )
 shader_param/amount = 3.236
 shader_param/transparent = 1.0
 shader_param/mix_amount = 0.667
 shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=9]
 
 size = 30
 use_filter = true
@@ -711,7 +711,7 @@ rect_min_size = Vector2( 480, 480 )
 script = ExtResource( 16 )
 
 [node name="BackDrop" type="ColorRect" parent="Options"]
-material = SubResource( 10 )
+material = SubResource( 8 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.447059 )
@@ -1216,7 +1216,7 @@ margin_top = -61.0
 margin_right = 240.0
 margin_bottom = -20.0
 theme = ExtResource( 7 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.996078, 0.639216, 0.0117647, 1 )
 text = "SAVED"
 align = 1
