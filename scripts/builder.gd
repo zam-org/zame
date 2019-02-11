@@ -18,6 +18,7 @@ var can_build : bool = true
 var building : bool = false
 var build_pause : bool = false
 const build_pause_duration : float = 0.05
+var removing : bool = false
 
 var mouse_grid_pos : Vector2
 
@@ -54,11 +55,12 @@ func _ready():
 func _unhandled_input(event):
 	if event is InputEventMouseButton:
 #		if the LMB has been clicked the building mode is set on to toggle PAINT building in _process
-		if event.button_index == 1 and event.pressed and !play:
+		if event.button_index == 1 and event.pressed and !play and !removing:
 			building = true
-#			build_current_piece()
+
 		elif event.button_index == 1 and !event.pressed:
 			building = false
+
 			
 		#switch tools
 		if event.button_index == 4 and event.pressed and !play:
@@ -71,7 +73,7 @@ func _unhandled_input(event):
 				selected_tool += 1
 				reload(true)
 				check_build_type()
-
+				
 func activate():
 	play = true
 	set_process(false)
@@ -118,8 +120,17 @@ func _process(delta):
 	if Input.is_action_just_pressed("7"):
 		select_tool(6)
 
+	if Input.is_action_just_pressed("modifier"):
+		building = false
+		removing = true
+		
+	if Input.is_action_just_released("modifier"):
+		removing = false
+		
+	if Input.is_action_just_released("modifier") and Input.is_mouse_button_pressed(1):
+		building = true
 	# removing blocks
-	if Input.is_mouse_button_pressed(2):
+	if Input.is_mouse_button_pressed(1) and Input.is_action_pressed("modifier"):
 		if $delete/RayCast.is_colliding():
 			var overlapping = $delete/RayCast.get_collider()
 			if overlapping == null:

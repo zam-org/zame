@@ -82,6 +82,99 @@ shader = ExtResource( 17 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
+[sub_resource type="Shader" id=6]
+
+code = "shader_type canvas_item;
+
+uniform float amount : hint_range(0,5);
+uniform float transparent : hint_range(0,1);
+uniform float mix_amount : hint_range(0,1);
+uniform vec4 tint : hint_color;
+
+void fragment(){
+	vec4 blur = textureLod(SCREEN_TEXTURE, SCREEN_UV, amount);
+	blur.rgb = mix(blur.rgb, tint.rgb, mix_amount);
+	blur.a = transparent;
+//	COLOR = mix(tint, blur, mix_amount);
+	COLOR = blur;
+}"
+
+[sub_resource type="ShaderMaterial" id=7]
+
+shader = SubResource( 6 )
+shader_param/amount = 2.267
+shader_param/transparent = 1.0
+shader_param/mix_amount = 0.31
+shader_param/tint = Color( 0.254902, 0.0823529, 0.290196, 0.894118 )
+
+[sub_resource type="DynamicFont" id=8]
+
+size = 12
+use_filter = true
+font_data = ExtResource( 20 )
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 36
+font_data = ExtResource( 23 )
+
+[sub_resource type="DynamicFont" id=10]
+
+size = 24
+use_filter = true
+font_data = ExtResource( 23 )
+
+[sub_resource type="Shader" id=11]
+
+code = "shader_type canvas_item;
+
+uniform float amount : hint_range(0,5);
+uniform float transparent : hint_range(0,1);
+uniform float mix_amount : hint_range(0,1);
+uniform vec4 tint : hint_color;
+
+void fragment(){
+	vec4 blur = textureLod(SCREEN_TEXTURE, SCREEN_UV, amount);
+	blur.rgb = mix(blur.rgb, tint.rgb, mix_amount);
+	blur.a = transparent;
+//	COLOR = mix(tint, blur, mix_amount);
+	COLOR = blur;
+}"
+
+[sub_resource type="ShaderMaterial" id=12]
+
+shader = SubResource( 11 )
+shader_param/amount = 2.326
+shader_param/transparent = 1.0
+shader_param/mix_amount = 0.419
+shader_param/tint = Color( 0.176471, 0.0901961, 0.152941, 1 )
+
+[sub_resource type="ShaderMaterial" id=13]
+
+shader = SubResource( 11 )
+shader_param/amount = 3.236
+shader_param/transparent = 1.0
+shader_param/mix_amount = 0.667
+shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
+
+[sub_resource type="DynamicFont" id=14]
+
+size = 32
+use_filter = true
+font_data = ExtResource( 20 )
+
+[sub_resource type="DynamicFont" id=15]
+
+size = 18
+use_filter = true
+font_data = ExtResource( 20 )
+
+[sub_resource type="DynamicFont" id=16]
+
+size = 12
+use_filter = true
+font_data = ExtResource( 20 )
+
 [sub_resource type="Shader" id=17]
 
 code = "shader_type canvas_item;
@@ -102,105 +195,12 @@ void fragment(){
 [sub_resource type="ShaderMaterial" id=18]
 
 shader = SubResource( 17 )
-shader_param/amount = 2.267
-shader_param/transparent = 1.0
-shader_param/mix_amount = 0.31
-shader_param/tint = Color( 0.254902, 0.0823529, 0.290196, 0.894118 )
-
-[sub_resource type="DynamicFont" id=6]
-
-size = 12
-use_filter = true
-font_data = ExtResource( 20 )
-
-[sub_resource type="DynamicFont" id=7]
-
-size = 36
-font_data = ExtResource( 23 )
-
-[sub_resource type="DynamicFont" id=19]
-
-size = 24
-use_filter = true
-font_data = ExtResource( 23 )
-
-[sub_resource type="Shader" id=8]
-
-code = "shader_type canvas_item;
-
-uniform float amount : hint_range(0,5);
-uniform float transparent : hint_range(0,1);
-uniform float mix_amount : hint_range(0,1);
-uniform vec4 tint : hint_color;
-
-void fragment(){
-	vec4 blur = textureLod(SCREEN_TEXTURE, SCREEN_UV, amount);
-	blur.rgb = mix(blur.rgb, tint.rgb, mix_amount);
-	blur.a = transparent;
-//	COLOR = mix(tint, blur, mix_amount);
-	COLOR = blur;
-}"
-
-[sub_resource type="ShaderMaterial" id=9]
-
-shader = SubResource( 8 )
-shader_param/amount = 2.326
-shader_param/transparent = 1.0
-shader_param/mix_amount = 0.419
-shader_param/tint = Color( 0.176471, 0.0901961, 0.152941, 1 )
-
-[sub_resource type="ShaderMaterial" id=10]
-
-shader = SubResource( 8 )
-shader_param/amount = 3.236
-shader_param/transparent = 1.0
-shader_param/mix_amount = 0.667
-shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
-
-[sub_resource type="DynamicFont" id=11]
-
-size = 32
-use_filter = true
-font_data = ExtResource( 20 )
-
-[sub_resource type="DynamicFont" id=12]
-
-size = 18
-use_filter = true
-font_data = ExtResource( 20 )
-
-[sub_resource type="DynamicFont" id=13]
-
-size = 12
-use_filter = true
-font_data = ExtResource( 20 )
-
-[sub_resource type="Shader" id=14]
-
-code = "shader_type canvas_item;
-
-uniform float amount : hint_range(0,5);
-uniform float transparent : hint_range(0,1);
-uniform float mix_amount : hint_range(0,1);
-uniform vec4 tint : hint_color;
-
-void fragment(){
-	vec4 blur = textureLod(SCREEN_TEXTURE, SCREEN_UV, amount);
-	blur.rgb = mix(blur.rgb, tint.rgb, mix_amount);
-	blur.a = transparent;
-//	COLOR = mix(tint, blur, mix_amount);
-	COLOR = blur;
-}"
-
-[sub_resource type="ShaderMaterial" id=15]
-
-shader = SubResource( 14 )
 shader_param/amount = 2.81
 shader_param/transparent = 1.0
 shader_param/mix_amount = 0.604
 shader_param/tint = Color( 0.152941, 0, 0.207843, 0.894118 )
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=19]
 
 size = 18
 use_filter = true
@@ -272,6 +272,12 @@ text = "DEATH ZONE"
 
 [node name="crosshair" type="Sprite" parent="."]
 texture = ExtResource( 8 )
+
+[node name="RayCast" type="RayCast2D" parent="crosshair"]
+enabled = true
+exclude_parent = false
+cast_to = Vector2( 0, -20 )
+collision_mask = 3
 
 [node name="level" type="Node2D" parent="." groups=[
 "play",
@@ -402,6 +408,7 @@ script = ExtResource( 18 )
 [node name="editor_UI" type="CanvasLayer" parent="." groups=[
 "play",
 ]]
+editor/display_folded = true
 script = ExtResource( 19 )
 
 [node name="Lines" type="Control" parent="editor_UI"]
@@ -452,7 +459,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "X : 0.000"
 
 [node name="ItemList" type="ColorRect" parent="editor_UI"]
-material = SubResource( 18 )
+material = SubResource( 7 )
 anchor_bottom = 1.0
 margin_right = 70.0
 rect_min_size = Vector2( 70, 0 )
@@ -493,7 +500,7 @@ margin_top = 16.0
 margin_right = 65.0
 margin_bottom = 33.0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "BUILD"
 align = 1
 uppercase = true
@@ -531,7 +538,7 @@ margin_bottom = 124.0
 hint_tooltip = "Coin"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "$"
 
@@ -721,7 +728,7 @@ margin_top = 13.0
 margin_right = 67.0
 margin_bottom = 30.0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 8 )
 text = "GAME"
 align = 1
 uppercase = true
@@ -732,7 +739,7 @@ margin_right = 67.0
 margin_bottom = 70.0
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = ">"
 
@@ -743,7 +750,7 @@ margin_bottom = 110.0
 hint_tooltip = "Center Player"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "u"
 
@@ -754,7 +761,7 @@ margin_bottom = 150.0
 hint_tooltip = "Save"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "D"
 
@@ -765,7 +772,7 @@ margin_bottom = 190.0
 hint_tooltip = "Upload to ZeroNet"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "]"
 
@@ -777,7 +784,7 @@ margin_bottom = 230.0
 hint_tooltip = "Share"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "o"
 
@@ -789,7 +796,7 @@ margin_bottom = 230.0
 hint_tooltip = "Reset level"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "R"
 
@@ -800,7 +807,7 @@ margin_bottom = 230.0
 hint_tooltip = "Delete from disk"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "X"
 
@@ -824,12 +831,12 @@ margin_bottom = 276.0
 hint_tooltip = "Map list"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "4"
 
 [node name="HideShow" type="ColorRect" parent="editor_UI/ItemList"]
-material = SubResource( 18 )
+material = SubResource( 7 )
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 70.0
@@ -847,13 +854,13 @@ margin_left = -10.0
 margin_top = -16.0
 margin_right = 10.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 10 )
 text = "<"
 
 [node name="Details" type="ColorRect" parent="editor_UI"]
 editor/display_folded = true
 visible = false
-material = SubResource( 9 )
+material = SubResource( 12 )
 margin_left = 86.0
 margin_top = 18.0
 margin_right = 612.0
@@ -1018,7 +1025,7 @@ theme = ExtResource( 6 )
 script = ExtResource( 41 )
 
 [node name="Black" type="ColorRect" parent="editor_UI/ConfirmPopUp"]
-material = SubResource( 10 )
+material = SubResource( 13 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.380392 )
@@ -1145,7 +1152,7 @@ theme = ExtResource( 6 )
 script = ExtResource( 42 )
 
 [node name="Black" type="ColorRect" parent="editor_UI/PublishLevelPopUp"]
-material = SubResource( 10 )
+material = SubResource( 13 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.380392 )
@@ -1189,7 +1196,7 @@ margin_top = 19.0
 margin_right = 449.0
 margin_bottom = 62.0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
 text = "Publish to ZeroNet"
 align = 1
@@ -1360,7 +1367,7 @@ margin_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 809.46, 60 )
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "MAP SAVED"
 align = 1
@@ -1385,12 +1392,12 @@ margin_left = 72.0
 margin_top = -20.0
 margin_right = 364.0
 margin_bottom = -5.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Achievement Unlocked!"
 
 [node name="Blur" type="ColorRect" parent="editor_UI/Achievements"]
-material = SubResource( 15 )
+material = SubResource( 18 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -1433,7 +1440,7 @@ alignment = 1
 margin_top = 8.0
 margin_right = 350.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "BUILDER - lvl 1"
 
@@ -1448,7 +1455,7 @@ mouse_filter = 2
 margin_top = 44.0
 margin_right = 350.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 16 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Built over 250 blocks."
 
@@ -1468,8 +1475,8 @@ bus = "Music"
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
-[connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
+[connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/JumpPad" to="level" method="_on_JumpPad_pressed"]

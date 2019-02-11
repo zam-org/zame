@@ -64,6 +64,12 @@ func _process(delta):
 		$character.motion = Vector2()
 		$character.position = $level/SpawnPos.global_position
 
+func check_when_moving() -> bool:
+	var can : bool
+	$crosshair/RayCast.enabled = true
+	can = false if $crosshair/RayCast.is_colliding() else true
+	return can
+
 # play a little audible click. NOW!
 func play_click() -> void:
 	$Audio/Click.play()
@@ -97,6 +103,7 @@ func _on_Play_pressed():
 
 #	POP UP SIGNALS
 func _on_pop_up_yes_pressed() -> void:
+	$character.enable_controls()	
 	play_click()
 	if death_zone_confirm:
 		death_zone_confirm = false
@@ -110,8 +117,10 @@ func _on_pop_up_yes_pressed() -> void:
 	elif save_confirm:
 		save_confirm = false
 		save_map($editor_UI/ConfirmPopUp.get_input())
+		
 
 func _on_No_pressed():
+	$character.enable_controls()	
 	$Audio/Click.play()
 	death_zone_confirm = false
 	exit_confirm = false
@@ -132,18 +141,27 @@ func center_player() -> void:
 
 func move_spawn() -> void:
 	play_click()
-	$level/SpawnPos.position = $crosshair.position
-	emit_signal("show_notification", "MOVED PLAYER SPAWN")	
+	var can_move = check_when_moving()
+	yield(get_tree(), 'idle_frame')
+	if can_move:
+		$level/SpawnPos.position = $crosshair.position
+		emit_signal("show_notification", "MOVED PLAYER SPAWN")	
+	else:
+		emit_signal("show_notification", "ERROR: CANNOT MOVE PLAYER SPAWN THERE. TOO MUCH STUFF TOO LITTLE SPACE")
 
 func move_finish():
-	play_click()
-	$Finish.position = $crosshair.position
-	emit_signal("show_notification", "MOVED FINISH")	
-	
+	var can_move = check_when_moving()
+	if can_move:
+		$Finish.position = $crosshair.position
+		emit_signal("show_notification", "MOVED FINISH")
+	else:
+		emit_signal("show_notification", "ERROR: CANNOT MOVE FINISH THERE. TOO MUCH STUFF TOO LITTLE SPACE")
+		
 func move_death_area() -> void:
 	play_click()
 	if $crosshair.position.y < $character.position.y:
 		$editor_UI/ConfirmPopUp.pop_up("Placing the Death Zone above the player will cause an endless respawn. A headache is likely to follow. \n\n Are you sure buds? Justsayin")
+		$character.disable_controls()
 		death_zone_confirm = true
 		return
 	$DeathZone.position.y = $crosshair.position.y
@@ -257,23 +275,28 @@ func play_get():
 # Each node in the group play must have the functions activate and deactivate called when these buttons are pressed
 func activate():
 	$crosshair.visible = false
+	$DeathZone.visible = false
+	$Camera.BOTTOM_LIMIT = $DeathZone.position.y
 	Input.set_mouse_mode(2)
 	
 	
 func deactivate():
 	$character.position = $level/SpawnPos.global_position
 	$crosshair.visible = true
+	$DeathZone.visible = true
 	Input.set_mouse_mode(0)
 	
 	
 func exit_confirm_popup() -> void:
 	exit_confirm = true
 	$editor_UI/ConfirmPopUp.pop_up("Quit to main menu? \n (All unsaved progress will be lost)")
+	$character.disable_controls()	
 	
 
 func _on_Save_pressed():
 	save_confirm = true
 	$editor_UI/ConfirmPopUp.pop_up("Save map to disk", "", "", true)
+	$character.disable_controls()	
 	
 	
 

@@ -15,13 +15,15 @@ var shake_amount : float = 0
 
 var target_pos : Vector2 = Vector2()
 
+var BOTTOM_LIMIT : float
+
 signal cam_pos(pos, mouse_pos)
 
 func _process(delta):
 	emit_signal("cam_pos", position, get_global_mouse_position())
 	smooth_mouse = smooth_mouse.linear_interpolate(mouse_speed, 50 * delta)
 	
-	if Input.is_mouse_button_pressed(3):
+	if Input.is_mouse_button_pressed(2):
 		self.position -= smooth_mouse
 	
 	mouse_speed = Vector2()
@@ -30,8 +32,10 @@ func _process(delta):
 		self.offset = Vector2(rand_range(-shake_amount, shake_amount), rand_range(-shake_amount, shake_amount))
 		
 	if play:
-		smooth_pos = smooth_pos.linear_interpolate(target_pos, 5 * delta)
-		position = smooth_pos
+		smooth_pos = smooth_pos.linear_interpolate(Vector2(target_pos.x, target_pos.y), 5 * delta)
+		position.x = smooth_pos.x
+		if smooth_pos.y + (OS.get_real_window_size().y / 2) < BOTTOM_LIMIT:
+			position.y = smooth_pos.y
 		
 func _input(event):
 	if event is InputEventMouseMotion:
@@ -51,6 +55,9 @@ func shake(strength : float = 5.0, duration : float = 2.0):
 
 func activate():
 	play = true
+	yield(get_tree(), "idle_frame")
+	if position.y + (OS.get_real_window_size().y / 2) > BOTTOM_LIMIT:
+		position.y = BOTTOM_LIMIT - OS.get_real_window_size().y / 2
 
 func deactivate():
 	play = false

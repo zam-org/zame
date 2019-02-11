@@ -141,3 +141,9 @@ func activate():
 	
 func deactivate():
 	play = false
+	
+func enable_controls() -> void:
+	set_physics_process(true)
+	
+func disable_controls() -> void:
+	set_physics_process(false)

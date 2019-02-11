@@ -775,7 +775,6 @@ margin_bottom = 468.0
 alignment = 1
 
 [node name="Labels" type="VBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame"]
-editor/display_folded = true
 margin_left = 122.0
 margin_right = 248.0
 margin_bottom = 227.0
@@ -784,6 +783,7 @@ margin_bottom = 227.0
 margin_right = 126.0
 margin_bottom = 22.0
 theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Fullscreen"
 align = 2
 
@@ -798,6 +798,7 @@ margin_top = 39.0
 margin_right = 126.0
 margin_bottom = 61.0
 theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Vsync"
 align = 2
 
@@ -812,6 +813,7 @@ margin_top = 78.0
 margin_right = 126.0
 margin_bottom = 100.0
 theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Borderless"
 align = 2
 
@@ -826,6 +828,7 @@ margin_top = 120.0
 margin_right = 126.0
 margin_bottom = 142.0
 theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Resizable"
 align = 2
 
@@ -840,6 +843,7 @@ margin_top = 165.0
 margin_right = 126.0
 margin_bottom = 187.0
 theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Anti-aliasing"
 align = 2
 
@@ -854,6 +858,7 @@ margin_top = 205.0
 margin_right = 126.0
 margin_bottom = 227.0
 theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Anisotropic Level"
 align = 2
 
@@ -966,7 +971,7 @@ margin_bottom = 227.0
 margin_right = 64.0
 margin_bottom = 22.0
 theme = ExtResource( 7 )
-max_value = 32.0
+max_value = 16.0
 value = 4.0
 align = 1
 
@@ -1221,8 +1226,14 @@ custom_colors/font_color = Color( 0.996078, 0.639216, 0.0117647, 1 )
 text = "SAVED"
 align = 1
 
-[node name="ColorRect" type="ColorRect" parent="Options/OptionsColor"]
-visible = false
+[node name="LeftHighlight" type="ColorRect" parent="Options/OptionsColor"]
+anchor_bottom = 1.0
+rect_min_size = Vector2( 3.35, 0 )
+color = Color( 1, 1, 1, 0.156863 )
+
+[node name="RightHIghlight" type="ColorRect" parent="Options/OptionsColor"]
+anchor_left = 1.0
+anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 3.35, 0 )
 color = Color( 1, 1, 1, 0.156863 )
@@ -1231,8 +1242,8 @@ color = Color( 1, 1, 1, 0.156863 )
 
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
-[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_selected"]
+[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]

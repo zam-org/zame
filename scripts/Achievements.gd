@@ -38,12 +38,12 @@ func achievement_show(image_path : String = "", achievement_name : String = "", 
 	# fade in
 	$Tween.interpolate_property(self, 'rect_position', fade_in_pos, orig_position, 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
 	$Tween.interpolate_property(self, 'modulate', Color(1,1,1,0), Color(1,1,1,1), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
-	$Tween.interpolate_property($UnlockedLabel, 'modulate', Color(1,1,1,0), Color(1,1,1,1), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.15)
+	$Tween.interpolate_property($UnlockedLabel, 'modulate', Color(1,1,1,0), Color(1,1,1,1), 2, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0.15)
 	
 	# fade out
 	$Tween.interpolate_property(self, 'rect_position', orig_position, fade_in_pos, 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, achievement_length)
 	$Tween.interpolate_property(self, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, achievement_length)
-	$Tween.interpolate_property($UnlockedLabel, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, achievement_length / 2)
+	$Tween.interpolate_property($UnlockedLabel, 'modulate', Color(1,1,1,1), Color(1,1,1,0), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, achievement_length / 1.5)
 	
 	# start the tween
 	$Tween.start()

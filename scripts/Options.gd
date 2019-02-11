@@ -2,7 +2,10 @@ extends Control
 
 const config_file_path : = "user://config.cfg"
 
+var orig_pos_saved : Vector2
+
 func _ready():
+	orig_pos_saved = $OptionsColor/saved.rect_position
 	self.visible = false
 	
 	#if the config file ccanot be loaded, we put in all the default settings
@@ -23,7 +26,6 @@ func _ready():
 	OS.window_fullscreen = load_setting("settings", "fullscreen", false)
 	OS.window_resizable = load_setting("settings", "resizable", true)
 	OS.vsync_enabled = load_setting("settings", "vsync", true)
-	VisualServer.viewport_set_msaa(get_viewport().get_viewport_rid(), load_setting("settings", "MSAA", 3))
 	get_viewport().msaa = load_setting("settings", "MSAA", 3)
 	ProjectSettings.set("rendering/quality/filters/anisotropic_filter_level", load_setting("settings", "anisotropic_level", 4))
 	
@@ -36,7 +38,6 @@ func update_values() -> void:
 	$OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer/MSAA.select(load_setting("settings", "MSAA", 3))
 	$OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer2/Anisotropic_level.value = load_setting("settings", "anisotropic_level", 4)
 	$OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3/Borderless.pressed = load_setting("settings", "borderless", true)
-#	$OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3/Borderless.disabled = OS.window_fullscreen
 	$OptionsColor/Window/OptionsFrame/Buttons/CenterContainer4/Resizable.pressed = load_setting("settings", "resizable", true)	
 	
 func _process(delta):
@@ -105,7 +106,15 @@ func _on_ColorRect_gui_input(event):
 		
 		
 func show_saved() -> void:
-	$Tween.interpolate_property($OptionsColor/saved, "modulate", Color(1,1,1,1), Color(1,1,1,0), 2, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	var saved_pos = Vector2(0,65)
+	$OptionsColor/saved.visible_characters = 0
+	
+	$Tween.interpolate_property($OptionsColor/saved, "rect_position", Vector2(0, saved_pos.y - 40), saved_pos, 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property($OptionsColor/saved, "modulate", Color(1,1,1,0), Color(1,1,1,1), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property($OptionsColor/saved, "visible_characters", 0, 5, 0.3, Tween.TRANS_LINEAR, Tween.EASE_OUT, 0.1)
+
+	$Tween.interpolate_property($OptionsColor/saved, "modulate", Color(1,1,1,1), Color(1,1,1,0), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, 1)	
+	$Tween.interpolate_property($OptionsColor/saved, "rect_position", saved_pos, Vector2(0, saved_pos.y + 40), 1, Tween.TRANS_CUBIC, Tween.EASE_OUT, 1)
 	$Tween.start()
 	
 	
@@ -137,6 +146,7 @@ func _on_Close_pressed():
 func _on_Defaults_pressed():
 	reset_settings()
 	
+	
 func reset_settings() -> void:
 	#	reset settings
 	save_setting("settings", "vsync", true)
@@ -155,10 +165,3 @@ func reset_settings() -> void:
 	OS.window_resizable = load_setting("settings", "resizable", true)
 	
 	update_values()
-	#	update ui with the restarted settings
-#	$OptionsColor/Window/OptionsFrame/Buttons/CenterContainer2/Vsync.pressed = load_setting("settings", "vsync", true)
-#	$OptionsColor/Window/OptionsFrame/Buttons/CenterContainer/Fullscreen.pressed = load_setting("settings", "fullscreen", false)
-#	$OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer/MSAA.select(load_setting("settings", "MSAA", 3))
-#	$OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer2/Anisotropic_level.value = load_setting("settings", "anisotropic_level", 4)
-#	$OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3/Borderless.pressed = load_setting("settings", "borderless", false)
-#	$OptionsColor/Window/OptionsFrame/Buttons/CenterContainer4/Resizable.pressed = load_setting("settings", "resizable", true)
