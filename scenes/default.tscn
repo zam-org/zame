@@ -408,7 +408,6 @@ script = ExtResource( 18 )
 [node name="editor_UI" type="CanvasLayer" parent="." groups=[
 "play",
 ]]
-editor/display_folded = true
 script = ExtResource( 19 )
 
 [node name="Lines" type="Control" parent="editor_UI"]
@@ -1343,6 +1342,27 @@ margin_right = 126.5
 margin_bottom = -14.5974
 theme = ExtResource( 6 )
 text = "Press \"SPACE\" to leave play mode."
+align = 1
+
+[node name="Esc2" type="HBoxContainer" parent="editor_UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -0.0419922
+margin_top = -36.5974
+margin_right = -0.0419922
+margin_bottom = -14.5974
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource( 6 )
+alignment = 1
+
+[node name="Label" type="Label" parent="editor_UI/Esc2"]
+margin_left = 262.0
+margin_right = 1018.0
+margin_bottom = 22.0
+text = "LMB - build || LMB + SHIFT - remove || SPACE - toggle play || MOUSE WHEEL - cycle through tools"
 align = 1
 
 [node name="ZeroNet" parent="editor_UI" instance=ExtResource( 43 )]
