@@ -1,86 +1,15 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://assets/platforms/two/two.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/platforms/two/Two.gd" type="Script" id=2]
+[ext_resource path="res://assets/platforms/two/Two.gd" type="Script" id=1]
 
 [node name="Content" type="Node2D"]
 editor/display_folded = true
 
-[node name="2x2" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( 0, 60 )
+[node name="StartingBlockOne" type="StaticBody2D" parent="." groups=[
+"delete",
+]]
+editor/display_folded = true
+position = Vector2( -0.0419922, 60 )
 collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@20" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -20, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@21" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -40, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@22" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -60, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@23" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -80, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@24" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -100, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@25" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -120, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@26" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -140, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@27" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -160, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@28" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -180, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@29" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -200, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@30" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -220, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
-
-[node name="@2x2@31" type="StaticBody2D" parent="." instance=ExtResource( 1 )]
-position = Vector2( -240, 60 )
-collision_layer = 3
-collision_mask = 0
-script = ExtResource( 2 )
+script = ExtResource( 1 )
 

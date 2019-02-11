@@ -92,3 +92,11 @@ func _on_HideShowButton_pressed():
 		hidden_tools = false
 		
 	$Tween.start()
+
+
+func _on_MagnifyingGlassPlus_pressed():
+	$ZoomContainer/CenterContainer/MagnifyAmount.value += $ZoomContainer/CenterContainer/MagnifyAmount.step
+
+
+func _on_MagnifyingGlassMinus_pressed():
+	$ZoomContainer/CenterContainer/MagnifyAmount.value -= $ZoomContainer/CenterContainer/MagnifyAmount.step

@@ -20,11 +20,18 @@ var BOTTOM_LIMIT : float
 signal cam_pos(pos, mouse_pos)
 
 func _process(delta):
+#	if Input.is_action_pressed("zoom_in"):
+#		zoom = Vector2(0.5,0.5)
+#	elif Input.is_action_pressed("zoom_out"):
+#		zoom = Vector2(1.5,1.5)
+#	else:
+#		zoom = Vector2(1,1)
+	
 	emit_signal("cam_pos", position, get_global_mouse_position())
 	smooth_mouse = smooth_mouse.linear_interpolate(mouse_speed, 50 * delta)
 	
 	if Input.is_mouse_button_pressed(2):
-		self.position -= smooth_mouse
+		self.position -= smooth_mouse * zoom.x
 	
 	mouse_speed = Vector2()
 	
@@ -70,3 +77,7 @@ func _on_character_death():
 
 func _on_character_pos(pos):
 	target_pos = pos
+
+
+func _on_MagnifyAmount_value_changed(value):
+	zoom = Vector2(2 - value, 2 - value)

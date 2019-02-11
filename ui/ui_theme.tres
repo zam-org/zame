@@ -1,9 +1,11 @@
-[gd_resource type="Theme" load_steps=47 format=2]
+[gd_resource type="Theme" load_steps=51 format=2]
 
-[ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=1]
-[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=3]
-[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=4]
+[ext_resource path="res://ui/buttons/white_dot.png" type="Texture" id=1]
+[ext_resource path="res://ui/buttons/orange_dot.png" type="Texture" id=2]
+[ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=3]
+[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=5]
+[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=6]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
@@ -172,23 +174,35 @@ content_margin_right = 5.0
 
 bg_color = Color( 0.858824, 0.152941, 0.152941, 1 )
 
-[sub_resource type="DynamicFont" id=40]
+[sub_resource type="StyleBoxEmpty" id=40]
 
-use_filter = true
-font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxFlat" id=41]
+[sub_resource type="StyleBoxLine" id=41]
 
-bg_color = Color( 0.262745, 0.184314, 0.360784, 1 )
+content_margin_right = 0.0
+color = Color( 1, 1, 1, 0.223529 )
+grow_begin = 2.0
+grow_end = 2.0
+thickness = 5
+vertical = true
 
 [sub_resource type="DynamicFont" id=42]
 
 use_filter = true
-font_data = ExtResource( 2 )
+font_data = ExtResource( 4 )
+
+[sub_resource type="StyleBoxFlat" id=43]
+
+bg_color = Color( 0.262745, 0.184314, 0.360784, 1 )
+
+[sub_resource type="DynamicFont" id=44]
+
+use_filter = true
+font_data = ExtResource( 4 )
 
 [resource]
 
-default_font = SubResource( 42 )
+default_font = SubResource( 44 )
 Button/colors/font_color = Color( 1, 1, 1, 0.47451 )
 Button/colors/font_color_disabled = Color( 1, 1, 1, 0.392157 )
 Button/colors/font_color_hover = Color( 1, 1, 1, 1 )
@@ -576,26 +590,26 @@ VScrollBar/styles/scroll = SubResource( 37 )
 VScrollBar/styles/scroll_focus = SubResource( 38 )
 VSeparator/constants/separation = 10
 VSeparator/styles/separator = SubResource( 39 )
-VSlider/icons/grabber = null
+VSlider/icons/grabber = ExtResource( 1 )
 VSlider/icons/grabber_disabled = null
-VSlider/icons/grabber_highlight = null
+VSlider/icons/grabber_highlight = ExtResource( 2 )
 VSlider/icons/tick = null
 VSlider/styles/focus = null
-VSlider/styles/grabber_area = null
+VSlider/styles/grabber_area = SubResource( 40 )
 VSlider/styles/grabber_disabled = null
 VSlider/styles/grabber_highlight = null
-VSlider/styles/slider = null
+VSlider/styles/slider = SubResource( 41 )
 VSplitContainer/constants/autohide = 1
 VSplitContainer/constants/separation = 12
-VSplitContainer/icons/grabber = ExtResource( 1 )
+VSplitContainer/icons/grabber = ExtResource( 3 )
 VSplitContainer/styles/bg = null
 WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
 WindowDialog/constants/close_h_ofs = 18
 WindowDialog/constants/close_v_ofs = 18
 WindowDialog/constants/scaleborder_size = 4
 WindowDialog/constants/title_height = 20
-WindowDialog/fonts/title_font = SubResource( 40 )
-WindowDialog/icons/close = ExtResource( 3 )
-WindowDialog/icons/close_highlight = ExtResource( 4 )
-WindowDialog/styles/panel = SubResource( 41 )
+WindowDialog/fonts/title_font = SubResource( 42 )
+WindowDialog/icons/close = ExtResource( 5 )
+WindowDialog/icons/close_highlight = ExtResource( 6 )
+WindowDialog/styles/panel = SubResource( 43 )
 

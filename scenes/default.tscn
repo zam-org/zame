@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=2]
+[gd_scene load_steps=66 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=2]
@@ -206,6 +206,12 @@ size = 18
 use_filter = true
 font_data = ExtResource( 20 )
 
+[sub_resource type="DynamicFont" id=20]
+
+size = 24
+use_filter = true
+font_data = ExtResource( 23 )
+
 [node name="game" type="Node2D" groups=[
 "play",
 ]]
@@ -411,6 +417,7 @@ script = ExtResource( 18 )
 script = ExtResource( 19 )
 
 [node name="Lines" type="Control" parent="editor_UI"]
+editor/display_folded = true
 modulate = Color( 1, 1, 1, 0.4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -458,6 +465,7 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "X : 0.000"
 
 [node name="ItemList" type="ColorRect" parent="editor_UI"]
+editor/display_folded = true
 material = SubResource( 7 )
 anchor_bottom = 1.0
 margin_right = 70.0
@@ -1481,6 +1489,64 @@ text = "Built over 250 blocks."
 
 [node name="Tween" type="Tween" parent="editor_UI/Achievements"]
 
+[node name="ZoomContainer" type="VBoxContainer" parent="editor_UI"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -60.0
+margin_top = -203.0
+margin_right = -20.0
+margin_bottom = 203.0
+theme = ExtResource( 6 )
+
+[node name="MagnifyingGlassPlus" type="Button" parent="editor_UI/ZoomContainer"]
+margin_right = 40.0
+margin_bottom = 24.0
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 1, 1, 1, 0.564706 )
+text = "y"
+
+[node name="Control" type="Control" parent="editor_UI/ZoomContainer"]
+margin_top = 28.0
+margin_right = 40.0
+margin_bottom = 33.59
+rect_min_size = Vector2( 0, 5.59 )
+
+[node name="CenterContainer" type="CenterContainer" parent="editor_UI/ZoomContainer"]
+margin_top = 37.0
+margin_right = 40.0
+margin_bottom = 387.0
+
+[node name="MagnifyAmount" type="VSlider" parent="editor_UI/ZoomContainer/CenterContainer"]
+margin_left = 17.0
+margin_right = 22.0
+margin_bottom = 350.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 0, 350 )
+focus_mode = 0
+theme = ExtResource( 6 )
+min_value = 0.3
+max_value = 1.7
+step = 0.1
+value = 1.0
+focus_mode = 0
+
+[node name="Control2" type="Control" parent="editor_UI/ZoomContainer"]
+margin_top = 391.0
+margin_right = 40.0
+margin_bottom = 396.59
+rect_min_size = Vector2( 0, 5.59 )
+
+[node name="MagnifyingGlassMinus" type="Button" parent="editor_UI/ZoomContainer"]
+margin_top = 400.0
+margin_right = 40.0
+margin_bottom = 424.0
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 1, 1, 1, 0.564706 )
+text = "z"
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 bus = "Music"
 
@@ -1489,11 +1555,11 @@ bus = "Music"
 [connection signal="block_built" from="level" to="editor_UI" method="_on_level_block_built"]
 [connection signal="on_enemy_selected" from="level" to="editor_UI/Details" method="_on_level_on_enemy_selected"]
 [connection signal="show_notification" from="level" to="editor_UI/Messages" method="_on_level_show_notification"]
-[connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
+[connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
-[connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="Camera" method="_on_character_death"]
+[connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
@@ -1527,3 +1593,6 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="editor_UI/PublishLevelPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="." method="_on_Yes_Publish_To_ZeroNet_pressed"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/No" to="editor_UI/PublishLevelPopUp" method="_on_No_pressed"]
+[connection signal="pressed" from="editor_UI/ZoomContainer/MagnifyingGlassPlus" to="editor_UI" method="_on_MagnifyingGlassPlus_pressed"]
+[connection signal="value_changed" from="editor_UI/ZoomContainer/CenterContainer/MagnifyAmount" to="Camera" method="_on_MagnifyAmount_value_changed"]
+[connection signal="pressed" from="editor_UI/ZoomContainer/MagnifyingGlassMinus" to="editor_UI" method="_on_MagnifyingGlassMinus_pressed"]
