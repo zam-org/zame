@@ -17,6 +17,8 @@ var target_pos : Vector2 = Vector2()
 
 var BOTTOM_LIMIT : float
 
+var character_velocity : Vector2
+
 signal cam_pos(pos, mouse_pos)
 
 func _process(delta):
@@ -81,3 +83,8 @@ func _on_character_pos(pos):
 
 func _on_MagnifyAmount_value_changed(value):
 	zoom = Vector2(2 - value, 2 - value)
+
+
+func _on_character_vel(vel):
+	character_velocity = vel
+	print(character_velocity.length())

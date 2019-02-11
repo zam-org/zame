@@ -23,12 +23,13 @@ const JUMP_POWER = 10000
 signal coin
 signal death
 signal pos(pos)
+signal vel(vel)
 
 func _process(delta):
 	send_tilt_info(delta)
 	if play:
 		emit_signal("pos", position)
-	
+		emit_signal("vel", motion)	
 	#	raycast to check for ground as "_is_on_floor()" was acting up
 	if $floor_check.is_colliding():
 		in_air = false

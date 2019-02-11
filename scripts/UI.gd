@@ -27,6 +27,7 @@ func activate():
 	$ItemList.visible = false
 	$Esc.visible = true
 	$Lines.visible = false
+	$ZoomContainer.visible = false
 	
 	if $Details.visible:
 		details_on = true
@@ -38,6 +39,7 @@ func deactivate():
 	$ItemList.visible = true
 	$Esc.visible = false
 	$Lines.visible = true
+	$ZoomContainer.visible = true
 	
 	if details_on:
 		$Details.visible = true

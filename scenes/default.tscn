@@ -1563,6 +1563,7 @@ bus = "Music"
 [connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
+[connection signal="vel" from="character" to="Camera" method="_on_character_vel"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/JumpPad" to="level" method="_on_JumpPad_pressed"]
