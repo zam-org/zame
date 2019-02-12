@@ -87,4 +87,3 @@ func _on_MagnifyAmount_value_changed(value):
 
 func _on_character_vel(vel):
 	character_velocity = vel
-	print(character_velocity.length())
