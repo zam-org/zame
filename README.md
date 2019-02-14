@@ -9,9 +9,15 @@
 As we speak, right now, there is a network out there, a place where rules do not exist. A place where many gather without anyone noticing. You, who goes by the name Zame, are a young network adventurer who's decided to explore it. The road is right ahead and you dare take it!
 
 ## Features
-* Upload/download maps through ZeroNet
+* Decentralized server (ZeroNet)
 * Level editor
-* Play mode(platformer)
+* Play mode (platformer)
+* Saving levels
+
+## Features being worked on
+* Publishing levels
+* Custom level descriptions and images
+* Achievements (can be tested by pressing C or V)
 
 ## Controls
 * **WASD / ARROWS** - *move and jump (character)*
