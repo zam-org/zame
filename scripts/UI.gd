@@ -9,14 +9,18 @@ var play : bool = false
 var details_on : bool = false
 var hidden_tools : bool = false
 
+var center_label_offset : Vector2 = Vector2(10,40)
+
 func _ready():
 	toolbar_orig_pos = $ItemList.rect_position
 	$Esc.visible = false
 	set_process_input(false)	
 
 func _input(event):
-	if event.as_text() == "Escape":
-		get_tree().call_group("play", "deactivate")
+	if event is InputEventKey:
+		match event.as_text():
+			"Escape":
+				get_tree().call_group("play", "deactivate")
 		
 func opacity(on : bool = false):
 	$ItemList.visible = on
@@ -51,25 +55,30 @@ func _on_Upload_pressed():
 
 func _process(delta):
 	var mouse_pos : Vector2 = get_viewport().get_mouse_position()
-	# move the lines according to the mouse's X and Y
-	# this happens in the local coordinate system of the 
-	# viewport
-	$Lines/X.rect_position.x = mouse_pos.x
-	$Lines/Y.rect_position.y = mouse_pos.y
+
+	lines(mouse_pos)
 	
 	# move the hide toggle button and it's background with the mouse
 	# only the the Y axis though
 	$ItemList/HideShow.rect_position.y = mouse_pos.y - $ItemList/HideShow.rect_size.y / 2
+
+# move the lines according to the mouse's X and Y
+# this happens in the local coordinate system of the 
+# viewport
+func lines(MousePos : Vector2 = Vector2()):
+	$Lines/X.rect_position.x = MousePos.x
+	$Lines/Y.rect_position.y = MousePos.y	
 	
-	# a snapped global mouse pos, worked fine but I am not sure whether it's better
-	# cos' you see it's kinda cool to see the values go up and down like crazy
-	
-#	var snapped_mouse_pos = global_mouse_pos.snapped(Vector2(20,20))
+	# move labels so that they're around the center
+	if globals.coordinates_centered:
+		
+		$Lines/Y/YAmount.rect_position.x = $Lines/X.rect_position.x + center_label_offset.x
+		$Lines/Y/YAmount.rect_position.y = $Lines/Y.rect_position.y + center_label_offset.y
+		$Lines/X/XAmount.rect_position.y = $Lines/Y.rect_position.y + center_label_offset.y
 	
 	# update the labels' text ofr X and Y
 	$Lines/Y/YAmount.text = "Y: " + str(ceil(global_mouse_pos.y * -1))
-	$Lines/X/XAmount.text = "X: " + str(ceil(global_mouse_pos.x))
-
+	$Lines/X/XAmount.text = "X: " + str(ceil(global_mouse_pos.x))	
 
 func _on_level_block_built():
 	$Tween.interpolate_property($Lines, "modulate", Color(1,0.64,0.1,0.9), Color(1,1,1,0.4), 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)
@@ -102,3 +111,4 @@ func _on_MagnifyingGlassPlus_pressed():
 
 func _on_MagnifyingGlassMinus_pressed():
 	$ZoomContainer/CenterContainer/MagnifyAmount.value -= $ZoomContainer/CenterContainer/MagnifyAmount.step
+

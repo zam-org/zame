@@ -64,6 +64,13 @@ func _process(delta):
 		$character.motion = Vector2()
 		$character.position = $level/SpawnPos.global_position
 
+func _input(event):
+	if event is InputEventKey:
+		if event.as_text() == "Kp Add" and event.pressed:
+			$editor_UI/ZoomContainer/MagnifyingGlassPlus.emit_signal("pressed")
+		elif event.as_text() == "Kp Subtract" and event.pressed:
+			$editor_UI/ZoomContainer/MagnifyingGlassMinus.emit_signal("pressed")
+
 func check_when_moving() -> bool:
 	var can : bool
 	$crosshair/RayCast.enabled = true

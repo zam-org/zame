@@ -8,6 +8,8 @@ onready var map_list : ItemList = $SidePanelSpace/SidePanel/MapList
 const MIN_MAP_LIST_SIZE = 95
 
 func _ready():
+	globals.os = OS.get_name()
+	
 	set_process_input(false)
 	map_list.rect_min_size.y = load_setting("main_menu", "map_list_length", 139)
 	map_list.select(load_setting("main_menu", "selected_map", 0))
