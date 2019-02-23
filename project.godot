@@ -33,10 +33,10 @@ window/size/height=720
 window/size/resizable=false
 window/size/borderless=true
 window/dpi/allow_hidpi=true
+mouse_cursor/custom_image="res://ui/textures/mouse_cursor.png"
 window/allow_per_pixel_transparency=true
 window/per_pixel_transparency=true
 window/per_pixel_transparency_splash=true
-mouse_cursor/custom_image="res://ui/textures/mouse_cursor.png"
 
 [editor_plugins]
 

@@ -7,3 +7,7 @@ func boot() -> void:
 	$build_check.add_to_group("delete")
 	modulate.a = 1
 	add_to_group("delete")
+	
+func anim() -> void:
+	$Anim.play("jump")
+	$JumpParticles.emitting = true

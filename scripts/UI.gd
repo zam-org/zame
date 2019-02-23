@@ -9,12 +9,21 @@ var play : bool = false
 var details_on : bool = false
 var hidden_tools : bool = false
 
-var center_label_offset : Vector2 = Vector2(10,40)
+var center_label_offset : Vector2 = Vector2(20,20)
+
+var coordinates_centered : bool = false setget set_coordinates_centered
+var axis_lines : bool = false setget set_axis_lines
+
+var config_file_path : String = "user://config.cfg"
 
 func _ready():
+	#load editor settings
+	set_axis_lines(globals.axis_lines)
+	set_coordinates_centered(globals.coordinates_centered)
+	
 	toolbar_orig_pos = $ItemList.rect_position
 	$Esc.visible = false
-	set_process_input(false)	
+	set_process_input(false)
 
 func _input(event):
 	if event is InputEventKey:
@@ -67,18 +76,55 @@ func _process(delta):
 # viewport
 func lines(MousePos : Vector2 = Vector2()):
 	$Lines/X.rect_position.x = MousePos.x
-	$Lines/Y.rect_position.y = MousePos.y	
+	$Lines/Y.rect_position.y = MousePos.y
 	
-	# move labels so that they're around the center
-	if globals.coordinates_centered:
-		
-		$Lines/Y/YAmount.rect_position.x = $Lines/X.rect_position.x + center_label_offset.x
-		$Lines/Y/YAmount.rect_position.y = $Lines/Y.rect_position.y + center_label_offset.y
-		$Lines/X/XAmount.rect_position.y = $Lines/Y.rect_position.y + center_label_offset.y
-	
-	# update the labels' text ofr X and Y
-	$Lines/Y/YAmount.text = "Y: " + str(ceil(global_mouse_pos.y * -1))
-	$Lines/X/XAmount.text = "X: " + str(ceil(global_mouse_pos.x))	
+	match globals.coordinates_centered:
+		true:
+			$Lines/Centered.rect_position = MousePos + center_label_offset
+			$Lines/Centered/V/YAmount.text = "Y: " + str(ceil(global_mouse_pos.y * -1))
+			$Lines/Centered/V/XAmount.text = "X: " + str(ceil(global_mouse_pos.x))			
+		false:
+			# update the labels' text for X and Y if we're showing them
+			$Lines/Y/YAmount.text = "Y: " + str(ceil(global_mouse_pos.y * -1))
+			$Lines/X/XAmount.text = "X: " + str(ceil(global_mouse_pos.x))
+
+func set_coordinates_centered(new):
+	coordinates_centered = new
+	save_setting("editor", "coordinates_centered", new)
+	if new:
+		$Lines/X/XAmount.visible = false
+		$Lines/Y/YAmount.visible = false
+		$Lines/Centered.visible = true
+	else:
+		$Lines/X/XAmount.visible = true
+		$Lines/Y/YAmount.visible = true
+		$Lines/Centered.visible = false
+
+func set_axis_lines(new):
+	axis_lines = new
+	save_setting("editor", "axis_lines", new)
+	if !new:
+		$Lines/X.visible = false
+		$Lines/Y.visible = false
+	else:
+		$Lines/X.visible = true
+		$Lines/Y.visible = true
+
+func save_setting(section, key, value) -> void:
+	var conf = ConfigFile.new()
+	var err = conf.load(config_file_path)
+	conf.set_value(section, key, value)
+	conf.save(config_file_path)
+
+func load_setting(section, key, default_value):
+	var conf = ConfigFile.new()
+	var err = conf.load(config_file_path)
+	if err == OK:
+		var value = conf.get_value(section, key, default_value)
+		return value
+	# return the default value should the config file not yet exist
+	else:
+		return default_value
 
 func _on_level_block_built():
 	$Tween.interpolate_property($Lines, "modulate", Color(1,0.64,0.1,0.9), Color(1,1,1,0.4), 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)

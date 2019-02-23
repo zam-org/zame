@@ -18,24 +18,20 @@
 [ext_resource path="res://scripts/Options.gd" type="Script" id=16]
 
 [sub_resource type="DynamicFont" id=1]
-
 size = 120
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
-
 size = 15
 use_filter = true
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=3]
-
 size = 50
 use_filter = true
 font_data = ExtResource( 11 )
 
 [sub_resource type="Animation" id=4]
-
 resource_name = "logo_idle"
 length = 3.0
 loop = true
@@ -53,18 +49,15 @@ tracks/0/keys = {
 }
 
 [sub_resource type="ShaderMaterial" id=5]
-
 shader = ExtResource( 13 )
 shader_param/hdr_threshold = 0.01
 shader_param/bloom = 1.5
 
 [sub_resource type="DynamicFont" id=6]
-
 size = 32
 font_data = ExtResource( 11 )
 
 [sub_resource type="Shader" id=7]
-
 code = "shader_type canvas_item;
 
 uniform float amount : hint_range(0,5);
@@ -81,7 +74,6 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id=8]
-
 shader = SubResource( 7 )
 shader_param/amount = 3.236
 shader_param/transparent = 1.0
@@ -89,7 +81,6 @@ shader_param/mix_amount = 0.667
 shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
 
 [sub_resource type="DynamicFont" id=9]
-
 size = 30
 use_filter = true
 font_data = ExtResource( 6 )
@@ -703,6 +694,8 @@ bus = "Music"
 [node name="ZeroNet" parent="." instance=ExtResource( 15 )]
 
 [node name="Options" type="Control" parent="."]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -1242,8 +1235,8 @@ color = Color( 1, 1, 1, 0.156863 )
 
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
-[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_selected"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
+[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_selected"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]

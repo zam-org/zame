@@ -12,4 +12,5 @@ var map : String = ""
 var os : String
 
 # EDITOR SETTINGS
-var coordinates_centered : bool = true
+var coordinates_centered : bool = false
+var axis_lines : bool = true

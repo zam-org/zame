@@ -8,17 +8,14 @@
 [ext_resource path="res://audio/effects/jump_pad.wav" type="AudioStream" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-
 extents = Vector2( 10.6978, 21.0886 )
 
 [sub_resource type="ShaderMaterial" id=2]
-
 shader = ExtResource( 2 )
 shader_param/disp = Vector2( 0, 0 )
 shader_param/limit = 0.9
 
 [sub_resource type="Animation" id=3]
-
 length = 0.25
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("shape:scale:y")
@@ -44,7 +41,6 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id=4]
-
 length = 0.25
 tracks/0/type = "bezier"
 tracks/0/path = NodePath("shape:scale:y")
@@ -58,18 +54,16 @@ tracks/0/keys = {
 }
 
 [sub_resource type="ParticlesMaterial" id=5]
-
 emission_shape = 2
 emission_box_extents = Vector3( 1, 11.04, 1 )
 flag_disable_z = true
 spread = 39.85
 gravity = Vector3( 0, 0, 0 )
 initial_velocity = 143.84
-angular_velocity = 0.0
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 damping = 500.0
-scale = 2.0
+scale = 4.0
 scale_random = 0.58
 
 [node name="character" type="KinematicBody2D" groups=[

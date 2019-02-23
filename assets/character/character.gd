@@ -73,6 +73,7 @@ func _physics_process(delta):
 		motion.y -= JUMP_POWER * delta
 
 	if jump_pad:
+		motion.y = 0
 		motion.y -= JUMP_POWER * 2 * delta
 		jump_pad = false
 
@@ -121,6 +122,7 @@ func _on_check_body_entered(body) -> void:
 	elif body.is_in_group("jump_pad"):
 		jump_pad = true
 		$audio/JumpPad.play()
+		body.anim()
 		print("JUMP PAD")
 
 	elif body.is_in_group("finish"):

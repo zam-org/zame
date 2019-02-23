@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=2]
+[gd_scene load_steps=68 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=2]
@@ -45,28 +45,25 @@
 [ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=43]
 [ext_resource path="res://scripts/Messages.gd" type="Script" id=44]
 [ext_resource path="res://scripts/Achievements.gd" type="Script" id=45]
+[ext_resource path="res://scripts/EditorSettings.gd" type="Script" id=46]
 
 [sub_resource type="RectangleShape2D" id=1]
 
-
 [sub_resource type="Gradient" id=2]
-
 offsets = PoolRealArray( 0, 0.168, 0.656 )
 colors = PoolColorArray( 1, 1, 1, 0.465116, 1, 1, 1, 0.193529, 1, 1, 1, 0 )
 
 [sub_resource type="GradientTexture" id=3]
-
 gradient = SubResource( 2 )
 
 [sub_resource type="ParticlesMaterial" id=4]
-
 emission_shape = 2
 emission_box_extents = Vector3( 5, 10, 1 )
 flag_disable_z = true
 spread = 0.0
 flatness = 1.0
 gravity = Vector3( 0, 0, 0 )
-angular_velocity = 7.70714e-44
+angular_velocity = 7.70714e-044
 orbit_velocity = 0.0
 orbit_velocity_random = 0.0
 linear_accel = 70.0
@@ -77,13 +74,11 @@ scale_random = 0.74
 color_ramp = SubResource( 3 )
 
 [sub_resource type="ShaderMaterial" id=5]
-
 shader = ExtResource( 17 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
 [sub_resource type="Shader" id=6]
-
 code = "shader_type canvas_item;
 
 uniform float amount : hint_range(0,5);
@@ -100,7 +95,6 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id=7]
-
 shader = SubResource( 6 )
 shader_param/amount = 2.267
 shader_param/transparent = 1.0
@@ -108,24 +102,20 @@ shader_param/mix_amount = 0.31
 shader_param/tint = Color( 0.254902, 0.0823529, 0.290196, 0.894118 )
 
 [sub_resource type="DynamicFont" id=8]
-
 size = 12
 use_filter = true
 font_data = ExtResource( 20 )
 
 [sub_resource type="DynamicFont" id=9]
-
 size = 36
 font_data = ExtResource( 23 )
 
 [sub_resource type="DynamicFont" id=10]
-
 size = 24
 use_filter = true
 font_data = ExtResource( 23 )
 
 [sub_resource type="Shader" id=11]
-
 code = "shader_type canvas_item;
 
 uniform float amount : hint_range(0,5);
@@ -142,7 +132,6 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id=12]
-
 shader = SubResource( 11 )
 shader_param/amount = 2.326
 shader_param/transparent = 1.0
@@ -150,7 +139,6 @@ shader_param/mix_amount = 0.419
 shader_param/tint = Color( 0.176471, 0.0901961, 0.152941, 1 )
 
 [sub_resource type="ShaderMaterial" id=13]
-
 shader = SubResource( 11 )
 shader_param/amount = 3.236
 shader_param/transparent = 1.0
@@ -158,25 +146,21 @@ shader_param/mix_amount = 0.667
 shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
 
 [sub_resource type="DynamicFont" id=14]
-
 size = 32
 use_filter = true
 font_data = ExtResource( 20 )
 
 [sub_resource type="DynamicFont" id=15]
-
 size = 18
 use_filter = true
 font_data = ExtResource( 20 )
 
 [sub_resource type="DynamicFont" id=16]
-
 size = 12
 use_filter = true
 font_data = ExtResource( 20 )
 
 [sub_resource type="Shader" id=17]
-
 code = "shader_type canvas_item;
 
 uniform float amount : hint_range(0,5);
@@ -193,7 +177,6 @@ void fragment(){
 }"
 
 [sub_resource type="ShaderMaterial" id=18]
-
 shader = SubResource( 17 )
 shader_param/amount = 2.81
 shader_param/transparent = 1.0
@@ -201,13 +184,16 @@ shader_param/mix_amount = 0.604
 shader_param/tint = Color( 0.152941, 0, 0.207843, 0.894118 )
 
 [sub_resource type="DynamicFont" id=19]
-
 size = 18
 use_filter = true
 font_data = ExtResource( 20 )
 
 [sub_resource type="DynamicFont" id=20]
+size = 24
+use_filter = true
+font_data = ExtResource( 23 )
 
+[sub_resource type="DynamicFont" id=21]
 size = 24
 use_filter = true
 font_data = ExtResource( 23 )
@@ -417,7 +403,6 @@ script = ExtResource( 18 )
 script = ExtResource( 19 )
 
 [node name="Lines" type="Control" parent="editor_UI"]
-editor/display_folded = true
 modulate = Color( 1, 1, 1, 0.4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -464,8 +449,31 @@ margin_bottom = 33.0
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "X : 0.000"
 
+[node name="Centered" type="Control" parent="editor_UI/Lines"]
+visible = false
+margin_left = 1306.85
+margin_top = 734.266
+margin_right = 1399.85
+margin_bottom = 834.266
+
+[node name="V" type="VBoxContainer" parent="editor_UI/Lines/Centered"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="XAmount" type="Label" parent="editor_UI/Lines/Centered/V"]
+margin_right = 67.0
+margin_bottom = 22.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "X : 0.000"
+
+[node name="YAmount" type="Label" parent="editor_UI/Lines/Centered/V"]
+margin_top = 26.0
+margin_right = 67.0
+margin_bottom = 48.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "X : 0.000"
+
 [node name="ItemList" type="ColorRect" parent="editor_UI"]
-editor/display_folded = true
 material = SubResource( 7 )
 anchor_bottom = 1.0
 margin_right = 70.0
@@ -474,18 +482,20 @@ theme = ExtResource( 6 )
 color = Color( 0.211765, 0.137255, 0.301961, 0.847059 )
 
 [node name="VBoxContainer" type="VSplitContainer" parent="editor_UI/ItemList"]
-editor/display_folded = true
 anchor_bottom = 1.0
-margin_right = 36.0
+margin_right = 68.0
 rect_min_size = Vector2( 67.54, 0 )
+split_offset = 23
 
 [node name="ShadowTop" type="ColorRect" parent="editor_UI/ItemList/VBoxContainer"]
-margin_right = 67.54
-margin_bottom = 332.74
-rect_min_size = Vector2( 0, 332.74 )
+editor/display_folded = true
+margin_right = 68.0
+margin_bottom = 343.0
+rect_min_size = Vector2( 0, 320.83 )
 color = Color( 0.168627, 0.113725, 0.231373, 0.364706 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="editor_UI/ItemList/VBoxContainer/ShadowTop"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 0, 341.87 )
@@ -721,18 +731,19 @@ expand = true
 stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 352.0
-margin_right = 67.54
+editor/display_folded = true
+margin_top = 363.0
+margin_right = 68.0
 margin_bottom = 720.0
 
 [node name="Control" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_right = 67.0
+margin_right = 68.0
 margin_bottom = 9.17
 rect_min_size = Vector2( 0, 9.17 )
 
 [node name="Label2" type="Label" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 margin_top = 13.0
-margin_right = 67.0
+margin_right = 68.0
 margin_bottom = 30.0
 theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 8 )
@@ -742,7 +753,7 @@ uppercase = true
 
 [node name="Play" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 margin_top = 34.0
-margin_right = 67.0
+margin_right = 68.0
 margin_bottom = 70.0
 focus_mode = 0
 theme = ExtResource( 6 )
@@ -752,7 +763,7 @@ text = ">"
 
 [node name="CenterPlayer6" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 margin_top = 74.0
-margin_right = 67.0
+margin_right = 68.0
 margin_bottom = 110.0
 hint_tooltip = "Center Player"
 focus_mode = 0
@@ -763,7 +774,7 @@ text = "u"
 
 [node name="Save" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 margin_top = 114.0
-margin_right = 67.0
+margin_right = 68.0
 margin_bottom = 150.0
 hint_tooltip = "Save"
 focus_mode = 0
@@ -774,7 +785,7 @@ text = "D"
 
 [node name="Upload" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 margin_top = 154.0
-margin_right = 67.0
+margin_right = 68.0
 margin_bottom = 190.0
 hint_tooltip = "Upload to ZeroNet"
 focus_mode = 0
@@ -782,6 +793,17 @@ theme = ExtResource( 6 )
 custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "]"
+
+[node name="Settings" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 194.0
+margin_right = 68.0
+margin_bottom = 230.0
+hint_tooltip = "Upload to ZeroNet"
+focus_mode = 0
+theme = ExtResource( 6 )
+custom_fonts/font = SubResource( 9 )
+enabled_focus_mode = 0
+text = ":"
 
 [node name="Share" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 visible = false
@@ -808,9 +830,9 @@ enabled_focus_mode = 0
 text = "R"
 
 [node name="Exit" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 194.0
-margin_right = 67.0
-margin_bottom = 230.0
+margin_top = 234.0
+margin_right = 68.0
+margin_bottom = 270.0
 hint_tooltip = "Delete from disk"
 focus_mode = 0
 theme = ExtResource( 6 )
@@ -820,21 +842,21 @@ text = "X"
 
 [node name="CenterContainer" type="CenterContainer" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 editor/display_folded = true
-margin_top = 234.0
-margin_right = 67.0
-margin_bottom = 236.58
+margin_top = 274.0
+margin_right = 68.0
+margin_bottom = 276.58
 
 [node name="ColorRect" type="ColorRect" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer/CenterContainer"]
-margin_left = 17.0
-margin_right = 48.9
+margin_left = 18.0
+margin_right = 49.9
 margin_bottom = 2.58
 rect_min_size = Vector2( 31.9, 2.58 )
 color = Color( 1, 1, 1, 0.152941 )
 
 [node name="MapList" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 240.0
-margin_right = 67.0
-margin_bottom = 276.0
+margin_top = 280.0
+margin_right = 68.0
+margin_bottom = 316.0
 hint_tooltip = "Map list"
 focus_mode = 0
 theme = ExtResource( 6 )
@@ -1353,6 +1375,7 @@ text = "Press \"SPACE\" to leave play mode."
 align = 1
 
 [node name="Esc2" type="HBoxContainer" parent="editor_UI"]
+editor/display_folded = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -1490,6 +1513,7 @@ text = "Built over 250 blocks."
 [node name="Tween" type="Tween" parent="editor_UI/Achievements"]
 
 [node name="ZoomContainer" type="VBoxContainer" parent="editor_UI"]
+editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -1547,6 +1571,187 @@ custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 0.564706 )
 text = "z"
 
+[node name="EditorSettings" type="Control" parent="editor_UI"]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 46 )
+
+[node name="EditorSettingsBackground" type="ColorRect" parent="editor_UI/EditorSettings"]
+material = SubResource( 18 )
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -221.0
+margin_top = -577.0
+margin_right = 220.0
+rect_min_size = Vector2( 441, 577 )
+theme = ExtResource( 6 )
+
+[node name="Editor_Settings" type="VBoxContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control2" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+margin_right = 441.0
+margin_bottom = 13.02
+rect_min_size = Vector2( 0, 13.02 )
+
+[node name="Label" type="Label" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+margin_top = 17.0
+margin_right = 441.0
+margin_bottom = 39.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "EDITOR SETTINGS"
+align = 1
+
+[node name="Control" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+margin_top = 43.0
+margin_right = 441.0
+margin_bottom = 56.02
+rect_min_size = Vector2( 0, 13.02 )
+
+[node name="Axis" type="CenterContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+margin_top = 60.0
+margin_right = 441.0
+margin_bottom = 88.82
+
+[node name="ColorRect" type="ColorRect" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis"]
+margin_left = 10.0
+margin_right = 430.59
+margin_bottom = 28.82
+rect_min_size = Vector2( 420.59, 28.82 )
+color = Color( 0, 0, 0, 0.145098 )
+
+[node name="Left" type="HBoxContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control3" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect/Left"]
+margin_right = 5.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="Label" type="Label" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect/Left"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 38.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 1, 1, 1, 0.517647 )
+text = "Axis"
+
+[node name="Right" type="HBoxContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+
+[node name="Control" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect/Right"]
+margin_left = 372.0
+margin_right = 393.99
+margin_bottom = 28.0
+rect_min_size = Vector2( 21.99, 0 )
+
+[node name="Centered" type="CenterContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect/Right"]
+margin_left = 395.0
+margin_right = 417.64
+margin_bottom = 28.0
+
+[node name="AxisCheck" type="CheckBox" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect/Right/Centered"]
+margin_top = 3.0
+margin_right = 22.64
+margin_bottom = 25.0
+rect_min_size = Vector2( 22.64, 0 )
+
+[node name="Control2" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect/Right"]
+margin_left = 419.0
+margin_right = 420.32
+margin_bottom = 28.0
+rect_min_size = Vector2( 1.32, 0 )
+
+[node name="CenteredCoordinates" type="CenterContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+editor/display_folded = true
+margin_top = 92.0
+margin_right = 441.0
+margin_bottom = 120.82
+
+[node name="ColorRect" type="ColorRect" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates"]
+margin_left = 10.0
+margin_right = 430.59
+margin_bottom = 28.82
+rect_min_size = Vector2( 420.59, 28.82 )
+color = Color( 0, 0, 0, 0.145098 )
+
+[node name="Left" type="HBoxContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control3" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect/Left"]
+margin_right = 5.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="Label" type="Label" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect/Left"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 164.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 1, 1, 1, 0.517647 )
+text = "Centered coordinates"
+
+[node name="Right" type="HBoxContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+
+[node name="Control" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect/Right"]
+margin_left = 372.0
+margin_right = 393.99
+margin_bottom = 28.0
+rect_min_size = Vector2( 21.99, 0 )
+
+[node name="Centered" type="CenterContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect/Right"]
+margin_left = 395.0
+margin_right = 417.64
+margin_bottom = 28.0
+
+[node name="CheckBox" type="CheckBox" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect/Right/Centered"]
+margin_top = 3.0
+margin_right = 22.64
+margin_bottom = 25.0
+rect_min_size = Vector2( 22.64, 0 )
+
+[node name="Control2" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect/Right"]
+margin_left = 419.0
+margin_right = 420.32
+margin_bottom = 28.0
+rect_min_size = Vector2( 1.32, 0 )
+
+[node name="Control4" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+margin_top = 124.0
+margin_right = 441.0
+margin_bottom = 125.0
+rect_min_size = Vector2( 0, 1 )
+
+[node name="Control3" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+margin_top = 129.0
+margin_right = 441.0
+margin_bottom = 134.97
+rect_min_size = Vector2( 0, 5.97 )
+
+[node name="Button" type="Button" parent="editor_UI/EditorSettings/EditorSettingsBackground"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -32.4464
+margin_top = 18.9734
+margin_right = -18.4464
+margin_bottom = 42.9734
+custom_fonts/font = SubResource( 21 )
+text = "["
+
+[node name="Tween" type="Tween" parent="editor_UI/EditorSettings"]
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 bus = "Music"
 
@@ -1555,14 +1760,14 @@ bus = "Music"
 [connection signal="block_built" from="level" to="editor_UI" method="_on_level_block_built"]
 [connection signal="on_enemy_selected" from="level" to="editor_UI/Details" method="_on_level_on_enemy_selected"]
 [connection signal="show_notification" from="level" to="editor_UI/Messages" method="_on_level_show_notification"]
-[connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
+[connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
-[connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
+[connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
-[connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
+[connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="vel" from="character" to="Camera" method="_on_character_vel"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Block" to="level" method="_on_Block_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/coin" to="level" method="_on_coin_pressed"]
@@ -1578,6 +1783,7 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Upload" to="editor_UI" method="_on_Upload_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Settings" to="editor_UI/EditorSettings" method="_on_Settings_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Reset" to="level" method="_on_Reset_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Exit" to="." method="_on_Exit_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/HideShow/HideShowButton" to="editor_UI" method="_on_HideShowButton_pressed"]
@@ -1597,3 +1803,7 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/ZoomContainer/MagnifyingGlassPlus" to="editor_UI" method="_on_MagnifyingGlassPlus_pressed"]
 [connection signal="value_changed" from="editor_UI/ZoomContainer/CenterContainer/MagnifyAmount" to="Camera" method="_on_MagnifyAmount_value_changed"]
 [connection signal="pressed" from="editor_UI/ZoomContainer/MagnifyingGlassMinus" to="editor_UI" method="_on_MagnifyingGlassMinus_pressed"]
+[connection signal="gui_input" from="editor_UI/EditorSettings" to="editor_UI/EditorSettings" method="_on_EditorSettings_gui_input"]
+[connection signal="toggled" from="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect/Right/Centered/AxisCheck" to="editor_UI/EditorSettings" method="_on_AxisCheck_toggled"]
+[connection signal="toggled" from="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect/Right/Centered/CheckBox" to="editor_UI/EditorSettings" method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="editor_UI/EditorSettings/EditorSettingsBackground/Button" to="editor_UI/EditorSettings" method="_on_Button_pressed"]

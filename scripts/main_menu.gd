@@ -8,6 +8,9 @@ onready var map_list : ItemList = $SidePanelSpace/SidePanel/MapList
 const MIN_MAP_LIST_SIZE = 95
 
 func _ready():
+	#load editor settings
+	globals.coordinates_centered = load_setting("editor", "coordinates_centered", false)
+	globals.axis_lines = load_setting("editor", "axis_lines", true)
 	globals.os = OS.get_name()
 	
 	set_process_input(false)
