@@ -51,6 +51,10 @@ The editor allows you to fully build a level from ground up, from walking blocks
 * finish
 * death zone **So that you don't go** ***AAARGHRGHRRG!*** **right off the bat.**
 
+## Contributing
+
+Please read the [contributors guide](CONTRIBUTING.md) for information on contributing to ZAME.
+
 ## ZeroNet // and why you might want to use it
 > *Open, free and uncensorable websites, using Bitcoin cryptography and BitTorrent network.*
 <img src="ui/logos/zn_purple.png" alt="ZN logo" width="100"/>
