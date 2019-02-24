@@ -1,0 +1,3 @@
+[submodule "addons/ZeroFrame"]
+	path = addons/ZeroFrame
+	url = https://github.com/anoadragon453/godot-zeroframe-plugin
