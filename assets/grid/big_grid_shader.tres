@@ -3,7 +3,6 @@
 [ext_resource path="res://assets/textures/radial_medium.png" type="Texture" id=1]
 
 [sub_resource type="Shader" id=1]
-
 code = "shader_type canvas_item;
 
 uniform sampler2D alpha_texture : hint_black;
@@ -21,7 +20,6 @@ void fragment(){
 }"
 
 [resource]
-
 shader = SubResource( 1 )
 shader_param/alpha_multiplier = 0.2
 shader_param/location = Vector2( -0.44781, -0.241407 )

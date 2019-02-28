@@ -383,10 +383,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -1180.0
-margin_top = -910.0
-margin_right = 1320.0
-margin_bottom = 1090.0
+margin_left = -571.39
+margin_top = -660.035
+margin_right = 1928.61
+margin_bottom = 1339.96
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 2500, 2000 )
@@ -1763,9 +1763,9 @@ bus = "Music"
 [connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
+[connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="Camera" method="_on_character_death"]
-[connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="vel" from="character" to="Camera" method="_on_character_vel"]
@@ -1792,13 +1792,13 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/Details/MarginContainer/HBoxContainer/Soft/CenterContainer/SoftToggle" to="editor_UI/Details" method="_on_SoftToggle_pressed"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/ROF/RateOfFire" to="editor_UI/Details" method="_on_RateOfFire_item_selected"]
 [connection signal="gui_input" from="editor_UI/ConfirmPopUp/Black" to="editor_UI/ConfirmPopUp" method="_on_Black_gui_input"]
-[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="editor_UI/ConfirmPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
-[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="editor_UI/ConfirmPopUp" method="_on_No_pressed"]
+[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="editor_UI/ConfirmPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="." method="_on_No_pressed"]
+[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="editor_UI/ConfirmPopUp" method="_on_No_pressed"]
 [connection signal="gui_input" from="editor_UI/PublishLevelPopUp/Black" to="editor_UI/PublishLevelPopUp" method="_on_Black_gui_input"]
-[connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="editor_UI/PublishLevelPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="." method="_on_Yes_Publish_To_ZeroNet_pressed"]
+[connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="editor_UI/PublishLevelPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/No" to="editor_UI/PublishLevelPopUp" method="_on_No_pressed"]
 [connection signal="pressed" from="editor_UI/ZoomContainer/MagnifyingGlassPlus" to="editor_UI" method="_on_MagnifyingGlassPlus_pressed"]
 [connection signal="value_changed" from="editor_UI/ZoomContainer/CenterContainer/MagnifyAmount" to="Camera" method="_on_MagnifyAmount_value_changed"]

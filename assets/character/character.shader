@@ -1,6 +1,6 @@
 shader_type canvas_item;
 
-uniform vec2 disp = vec2(0,0);
+uniform vec2 disp = vec2(0.0,0.0);
 uniform float limit = 0.9;
 
 void vertex(){
@@ -17,11 +17,11 @@ void vertex(){
 	}
 	
 	if(VERTEX.y == 0.0){
-		VERTEX.y = VERTEX.y + 1.0	
+		VERTEX.y = VERTEX.y + 1.0;
 	}
 	
 }
 
 void fragment(){
-	COLOR = vec4(1,1,1,1);
+	COLOR = vec4(1.0,1.0,1.0,1.0);
 }
