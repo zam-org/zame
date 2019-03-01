@@ -1,86 +1,66 @@
-[gd_resource type="Theme" load_steps=51 format=2]
+[gd_resource type="Theme" load_steps=53 format=2]
 
-[ext_resource path="res://ui/buttons/white_dot.png" type="Texture" id=1]
-[ext_resource path="res://ui/buttons/orange_dot.png" type="Texture" id=2]
-[ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=3]
-[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=4]
-[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=5]
-[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=6]
+[ext_resource path="res://ui/icons/x-square.svg" type="Texture" id=1]
+[ext_resource path="res://ui/icons/arrows.png" type="Texture" id=2]
+[ext_resource path="res://ui/buttons/white_dot.png" type="Texture" id=3]
+[ext_resource path="res://ui/buttons/orange_dot.png" type="Texture" id=4]
+[ext_resource path="res://ui/buttons/grab/grab_idle.png" type="Texture" id=5]
+[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=6]
+[ext_resource path="res://ui/buttons/build_tools/block_idle.png" type="Texture" id=7]
+[ext_resource path="res://ui/buttons/build_tools/block_hover.png" type="Texture" id=8]
 
 [sub_resource type="StyleBoxEmpty" id=1]
 
-
 [sub_resource type="StyleBoxEmpty" id=2]
-
 
 [sub_resource type="StyleBoxEmpty" id=3]
 
-
 [sub_resource type="StyleBoxEmpty" id=4]
-
 
 [sub_resource type="StyleBoxEmpty" id=5]
 
-
 [sub_resource type="AtlasTexture" id=6]
-
 
 [sub_resource type="AtlasTexture" id=7]
 
-
 [sub_resource type="AtlasTexture" id=8]
-
 
 [sub_resource type="AtlasTexture" id=9]
 
-
 [sub_resource type="StyleBoxFlat" id=10]
-
 bg_color = Color( 0, 0, 0, 0.117647 )
 
 [sub_resource type="StyleBoxFlat" id=11]
-
 bg_color = Color( 1, 1, 1, 0.407843 )
 
 [sub_resource type="StyleBoxFlat" id=12]
-
 bg_color = Color( 0.996078, 0.639216, 0.0117647, 1 )
 
 [sub_resource type="StyleBoxFlat" id=13]
-
 bg_color = Color( 1, 1, 1, 0.0901961 )
 
 [sub_resource type="StyleBoxFlat" id=14]
-
 bg_color = Color( 1, 1, 1, 1 )
 
 [sub_resource type="AtlasTexture" id=15]
 
-
 [sub_resource type="AtlasTexture" id=16]
-
 
 [sub_resource type="AtlasTexture" id=17]
 
-
 [sub_resource type="AtlasTexture" id=18]
 
-
 [sub_resource type="StyleBoxFlat" id=19]
+bg_color = Color( 1, 1, 1, 1 )
 
-bg_color = Color( 1, 1, 1, 0.309804 )
-expand_margin_top = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id=20]
-
-bg_color = Color( 1, 1, 1, 0.25098 )
-border_color = Color( 0, 0, 0, 1 )
-expand_margin_top = 2.0
-expand_margin_bottom = 2.0
+[sub_resource type="StyleBoxLine" id=20]
+content_margin_top = 1.0
+color = Color( 1, 1, 1, 0.223529 )
+grow_begin = 2.0
+grow_end = 2.0
+thickness = 4
 
 [sub_resource type="StyleBoxFlat" id=21]
-
 content_margin_left = 5.0
 content_margin_right = 5.0
 content_margin_top = 5.0
@@ -91,12 +71,9 @@ corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id=22]
 
-
 [sub_resource type="StyleBoxEmpty" id=23]
 
-
 [sub_resource type="StyleBoxFlat" id=24]
-
 bg_color = Color( 0, 0, 0, 0.341176 )
 expand_margin_left = 6.0
 expand_margin_right = 6.0
@@ -104,13 +81,11 @@ expand_margin_top = 6.0
 expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id=25]
-
 bg_color = Color( 0, 0, 0, 0.137255 )
 expand_margin_top = 6.0
 expand_margin_bottom = 6.0
 
 [sub_resource type="StyleBoxFlat" id=26]
-
 content_margin_left = 10.0
 content_margin_right = 0.0
 content_margin_top = 0.0
@@ -119,20 +94,14 @@ bg_color = Color( 0.168627, 0.117647, 0.231373, 0.352941 )
 
 [sub_resource type="StyleBoxEmpty" id=27]
 
-content_margin_left = 10.0
-
 [sub_resource type="AtlasTexture" id=28]
-
 
 [sub_resource type="AtlasTexture" id=29]
 
-
 [sub_resource type="StyleBoxFlat" id=30]
-
 bg_color = Color( 1, 1, 1, 0.290196 )
 
 [sub_resource type="StyleBoxFlat" id=31]
-
 content_margin_left = 20.0
 content_margin_right = 20.0
 content_margin_top = 20.0
@@ -143,42 +112,32 @@ expand_margin_bottom = 10.0
 
 [sub_resource type="StyleBoxFlat" id=32]
 
-
 [sub_resource type="StyleBoxEmpty" id=33]
 
-
 [sub_resource type="StyleBoxFlat" id=34]
-
 bg_color = Color( 1, 1, 1, 0.0980392 )
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id=35]
-
 bg_color = Color( 1, 1, 1, 0.223529 )
 corner_detail = 1
 
 [sub_resource type="StyleBoxFlat" id=36]
-
 bg_color = Color( 1, 1, 1, 0.294118 )
 corner_detail = 1
 
 [sub_resource type="StyleBoxEmpty" id=37]
-
 content_margin_left = 1.0
 content_margin_right = 5.0
 
 [sub_resource type="StyleBoxEmpty" id=38]
 
-
 [sub_resource type="StyleBoxFlat" id=39]
-
 bg_color = Color( 0.858824, 0.152941, 0.152941, 1 )
 
 [sub_resource type="StyleBoxEmpty" id=40]
 
-
 [sub_resource type="StyleBoxLine" id=41]
-
 content_margin_right = 0.0
 color = Color( 1, 1, 1, 0.223529 )
 grow_begin = 2.0
@@ -187,21 +146,17 @@ thickness = 5
 vertical = true
 
 [sub_resource type="DynamicFont" id=42]
-
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 
 [sub_resource type="StyleBoxFlat" id=43]
-
 bg_color = Color( 0.262745, 0.184314, 0.360784, 1 )
 
 [sub_resource type="DynamicFont" id=44]
-
 use_filter = true
-font_data = ExtResource( 4 )
+font_data = ExtResource( 6 )
 
 [resource]
-
 default_font = SubResource( 44 )
 Button/colors/font_color = Color( 1, 1, 1, 0.47451 )
 Button/colors/font_color_disabled = Color( 1, 1, 1, 0.392157 )
@@ -368,7 +323,7 @@ LineEdit/colors/font_color_selected = Color( 0.996078, 0.639216, 0.0117647, 1 )
 LineEdit/colors/selection_color = Color( 1, 0.592157, 0.0117647, 0.211765 )
 LineEdit/constants/minimum_spaces = 12
 LineEdit/fonts/font = null
-LineEdit/icons/clear = null
+LineEdit/icons/clear = ExtResource( 1 )
 LineEdit/styles/focus = SubResource( 23 )
 LineEdit/styles/normal = SubResource( 24 )
 LineEdit/styles/read_only = SubResource( 25 )
@@ -397,10 +352,10 @@ OptionButton/colors/font_color = Color( 1, 1, 1, 0.529412 )
 OptionButton/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 OptionButton/colors/font_color_hover = Color( 1, 1, 1, 0.694118 )
 OptionButton/colors/font_color_pressed = Color( 1, 1, 1, 0.419608 )
-OptionButton/constants/arrow_margin = 2
+OptionButton/constants/arrow_margin = 4
 OptionButton/constants/hseparation = 2
 OptionButton/fonts/font = null
-OptionButton/icons/arrow = null
+OptionButton/icons/arrow = ExtResource( 2 )
 OptionButton/styles/disabled = null
 OptionButton/styles/focus = null
 OptionButton/styles/hover = SubResource( 26 )
@@ -452,7 +407,7 @@ RichTextLabel/fonts/normal_font = null
 RichTextLabel/styles/focus = null
 RichTextLabel/styles/normal = null
 ScrollContainer/styles/bg = null
-SpinBox/icons/updown = null
+SpinBox/icons/updown = ExtResource( 2 )
 TabContainer/colors/font_color_bg = Color( 0, 0, 0, 1 )
 TabContainer/colors/font_color_disabled = Color( 0, 0, 0, 1 )
 TabContainer/colors/font_color_fg = Color( 0, 0, 0, 1 )
@@ -590,9 +545,9 @@ VScrollBar/styles/scroll = SubResource( 37 )
 VScrollBar/styles/scroll_focus = SubResource( 38 )
 VSeparator/constants/separation = 10
 VSeparator/styles/separator = SubResource( 39 )
-VSlider/icons/grabber = ExtResource( 1 )
+VSlider/icons/grabber = ExtResource( 3 )
 VSlider/icons/grabber_disabled = null
-VSlider/icons/grabber_highlight = ExtResource( 2 )
+VSlider/icons/grabber_highlight = ExtResource( 4 )
 VSlider/icons/tick = null
 VSlider/styles/focus = null
 VSlider/styles/grabber_area = SubResource( 40 )
@@ -601,7 +556,7 @@ VSlider/styles/grabber_highlight = null
 VSlider/styles/slider = SubResource( 41 )
 VSplitContainer/constants/autohide = 1
 VSplitContainer/constants/separation = 12
-VSplitContainer/icons/grabber = ExtResource( 3 )
+VSplitContainer/icons/grabber = ExtResource( 5 )
 VSplitContainer/styles/bg = null
 WindowDialog/colors/title_color = Color( 1, 1, 1, 1 )
 WindowDialog/constants/close_h_ofs = 18
@@ -609,7 +564,7 @@ WindowDialog/constants/close_v_ofs = 18
 WindowDialog/constants/scaleborder_size = 4
 WindowDialog/constants/title_height = 20
 WindowDialog/fonts/title_font = SubResource( 42 )
-WindowDialog/icons/close = ExtResource( 5 )
-WindowDialog/icons/close_highlight = ExtResource( 6 )
+WindowDialog/icons/close = ExtResource( 7 )
+WindowDialog/icons/close_highlight = ExtResource( 8 )
 WindowDialog/styles/panel = SubResource( 43 )
 

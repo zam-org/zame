@@ -3,6 +3,8 @@ extends ItemList
 var MAP_DIR : = "res://maps/"
 var maps : = []
 
+signal double_clicked_map
+
 func update_maps():
 	clear()
 	add_item("New Map")
@@ -31,3 +33,7 @@ func update_maps():
 func _on_MapList_item_selected(index):
 	globals.map = get_item_text(index)
 	print(globals.map)
+
+
+func _on_MapList_item_activated(index):
+	emit_signal("double_clicked_map")

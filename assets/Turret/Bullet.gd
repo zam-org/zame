@@ -22,6 +22,7 @@ func _physics_process(delta):
 		$CollisionShape2D.queue_free()
 		$Line2D.visible = false
 		$Particles.emitting = true
+		direction = Vector2()
 		yield(get_tree().create_timer(1), 'timeout')
 		queue_free()
 #	CURVED SHOTS		

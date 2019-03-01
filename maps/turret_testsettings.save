@@ -1,0 +1,4 @@
+{"direction_x":0,"direction_y":-1,"name":"@Turret@42","rate_of_fire":0.6,"speed":1}
+{"direction_x":0,"direction_y":-1,"name":"Turret","rate_of_fire":0.6,"speed":1}
+{"direction_x":0,"direction_y":-1,"name":"@Turret@43","rate_of_fire":0.6,"speed":1}
+{"death_zone_y":380,"finish_x":120,"finish_y":40,"player_spawn_x":1.22668,"player_spawn_y":-45.100201}

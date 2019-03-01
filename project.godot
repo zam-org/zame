@@ -40,7 +40,7 @@ window/per_pixel_transparency_splash=true
 
 [editor_plugins]
 
-enabled=PoolStringArray( "ZeroFrame" )
+enabled=PoolStringArray( "UltimateButton", "ZeroFrame" )
 
 [input]
 

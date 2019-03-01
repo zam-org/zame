@@ -15,7 +15,8 @@ func _ready():
 	
 	set_process_input(false)
 	map_list.rect_min_size.y = load_setting("main_menu", "map_list_length", 139)
-	map_list.select(load_setting("main_menu", "selected_map", 0))
+	if map_list.get_item_count() > 0:
+		map_list.select(load_setting("main_menu", "selected_map", 0))
 	
 	if map_list.rect_min_size.y > OS.window_size.y / 2.2:
 		map_list.rect_min_size.y = MIN_MAP_LIST_SIZE
@@ -81,6 +82,9 @@ func _on_zn_button_pressed():
 func _on_play_pressed():
 	get_tree().change_scene("res://scenes/default.tscn")
 
+func _on_MapList_double_clicked_map():
+	get_tree().change_scene("res://scenes/default.tscn")
+
 func _on_config_pressed():
 	$Options.set_process(true)
 	$Options.visible = true
@@ -99,3 +103,12 @@ func _on_Exit_pressed():
 
 func _on_Update_pressed():
 	_connect_to_zame()
+
+
+
+func _on_Options_saved():
+	$Tween.stop_all()
+	$Tween.interpolate_property($SaveIcon, "rect_scale", Vector2(0.1,0.1), Vector2(1,1), 0.5, Tween.TRANS_ELASTIC, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property($SaveIcon, "modulate", Color(1,1,1,0), Color(1,1,1,1), 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)
+	$Tween.interpolate_property($SaveIcon, "modulate", Color(1,1,1,1), Color(1,1,1,0), 0.5, Tween.TRANS_EXPO, Tween.EASE_OUT, 1)
+	$Tween.start()

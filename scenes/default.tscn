@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=2]
@@ -39,13 +39,31 @@
 [ext_resource path="res://ui/buttons/build_tools/death_line_hover.png" type="Texture" id=37]
 [ext_resource path="res://ui/buttons/build_tools/flag_idle.png" type="Texture" id=38]
 [ext_resource path="res://ui/buttons/build_tools/flag_hover.png" type="Texture" id=39]
-[ext_resource path="res://scripts/Details.gd" type="Script" id=40]
-[ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=41]
-[ext_resource path="res://scripts/PublishLevelPopUp.gd" type="Script" id=42]
-[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=43]
-[ext_resource path="res://scripts/Messages.gd" type="Script" id=44]
-[ext_resource path="res://scripts/Achievements.gd" type="Script" id=45]
-[ext_resource path="res://scripts/EditorSettings.gd" type="Script" id=46]
+[ext_resource path="res://ui/icons/play.svg" type="Texture" id=40]
+[ext_resource path="res://addons/UltimateButton/UltimateButton.gd" type="Script" id=41]
+[ext_resource path="res://addons/UltimateButton/Icon.png" type="Texture" id=42]
+[ext_resource path="res://ui/icons/disc.svg" type="Texture" id=43]
+[ext_resource path="res://ui/icons/save.svg" type="Texture" id=44]
+[ext_resource path="res://ui/icons/upload-cloud.svg" type="Texture" id=45]
+[ext_resource path="res://ui/icons/sliders.svg" type="Texture" id=46]
+[ext_resource path="res://ui/icons/power.svg" type="Texture" id=47]
+[ext_resource path="res://ui/icons/grid.svg" type="Texture" id=48]
+[ext_resource path="res://scripts/Details.gd" type="Script" id=49]
+[ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=50]
+[ext_resource path="res://scripts/PublishLevelPopUp.gd" type="Script" id=51]
+[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=52]
+[ext_resource path="res://scripts/Messages.gd" type="Script" id=53]
+[ext_resource path="res://scripts/Achievements.gd" type="Script" id=54]
+[ext_resource path="res://scripts/EditorSettings.gd" type="Script" id=55]
+[ext_resource path="res://ui/icons/rotate-left.svg" type="Texture" id=56]
+[ext_resource path="res://assets/MusicPlayer/MusicPlayer.gd" type="Script" id=57]
+[ext_resource path="res://assets/SimpleTextureButton/SimpleTextureButton.tscn" type="PackedScene" id=58]
+[ext_resource path="res://ui/icons/music.svg" type="Texture" id=59]
+[ext_resource path="res://ui/icons/rewind.svg" type="Texture" id=60]
+[ext_resource path="res://ui/icons/play-circle.svg" type="Texture" id=61]
+[ext_resource path="res://ui/icons/fast-forward.svg" type="Texture" id=62]
+[ext_resource path="res://audio/music/IdeaOne.ogg" type="AudioStream" id=63]
+[ext_resource path="res://audio/music/IdeaOneUnurbanised.ogg" type="AudioStream" id=64]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -426,6 +444,7 @@ margin_left = 9.5
 margin_top = -30.0
 margin_right = 76.5
 margin_bottom = -8.0
+rect_pivot_offset = Vector2( 0, 22 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "X : 0.000"
 
@@ -446,10 +465,12 @@ margin_left = -80.0
 margin_top = 11.0
 margin_right = -13.0
 margin_bottom = 33.0
+rect_pivot_offset = Vector2( 50, 0 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "X : 0.000"
 
 [node name="Centered" type="Control" parent="editor_UI/Lines"]
+editor/display_folded = true
 visible = false
 margin_left = 1306.85
 margin_top = 734.266
@@ -731,12 +752,12 @@ expand = true
 stretch_mode = 5
 
 [node name="VBoxContainer" type="VBoxContainer" parent="editor_UI/ItemList/VBoxContainer"]
-editor/display_folded = true
 margin_top = 363.0
 margin_right = 68.0
 margin_bottom = 720.0
 
 [node name="Control" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
 margin_right = 68.0
 margin_bottom = 9.17
 rect_min_size = Vector2( 0, 9.17 )
@@ -751,62 +772,141 @@ text = "GAME"
 align = 1
 uppercase = true
 
-[node name="Play" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+[node name="Control9" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 34.0
 margin_right = 68.0
-margin_bottom = 70.0
+margin_bottom = 43.17
+rect_min_size = Vector2( 0, 9.17 )
+
+[node name="Play" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 47.0
+margin_right = 68.0
+margin_bottom = 72.0
+rect_min_size = Vector2( 0, 25 )
+hint_tooltip = "Play the level."
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
-text = ">"
+texture_normal = ExtResource( 40 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 41 )
+__meta__ = {
+"_editor_icon": ExtResource( 42 )
+}
 
-[node name="CenterPlayer6" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 74.0
+[node name="Control2" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 76.0
 margin_right = 68.0
-margin_bottom = 110.0
+margin_bottom = 85.17
+rect_min_size = Vector2( 0, 9.17 )
+
+[node name="CenterPlayer6" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 89.0
+margin_right = 68.0
+margin_bottom = 114.0
+rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Center Player"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
-text = "u"
+texture_normal = ExtResource( 43 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 41 )
+__meta__ = {
+"_editor_icon": ExtResource( 42 )
+}
 
-[node name="Save" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 114.0
+[node name="Control3" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 118.0
 margin_right = 68.0
-margin_bottom = 150.0
+margin_bottom = 127.17
+rect_min_size = Vector2( 0, 9.17 )
+
+[node name="Save" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 131.0
+margin_right = 68.0
+margin_bottom = 156.0
+rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Save"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
-text = "D"
+texture_normal = ExtResource( 44 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 41 )
+__meta__ = {
+"_editor_icon": ExtResource( 42 )
+}
 
-[node name="Upload" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 154.0
+[node name="Control4" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 160.0
 margin_right = 68.0
-margin_bottom = 190.0
+margin_bottom = 169.17
+rect_min_size = Vector2( 0, 9.17 )
+
+[node name="Upload" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 173.0
+margin_right = 68.0
+margin_bottom = 198.0
+rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Upload to ZeroNet"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
-text = "]"
+texture_normal = ExtResource( 45 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 41 )
+__meta__ = {
+"_editor_icon": ExtResource( 42 )
+}
 
-[node name="Settings" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 194.0
+[node name="Control5" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 202.0
 margin_right = 68.0
-margin_bottom = 230.0
+margin_bottom = 211.17
+rect_min_size = Vector2( 0, 9.17 )
+
+[node name="Settings" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 215.0
+margin_right = 68.0
+margin_bottom = 240.0
+rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Upload to ZeroNet"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
-text = ":"
+texture_normal = ExtResource( 46 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 41 )
+__meta__ = {
+"_editor_icon": ExtResource( 42 )
+}
+
+[node name="Control6" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 244.0
+margin_right = 68.0
+margin_bottom = 253.17
+rect_min_size = Vector2( 0, 9.17 )
 
 [node name="Share" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 visible = false
+modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 194.0
 margin_right = 67.0
 margin_bottom = 230.0
@@ -819,6 +919,7 @@ text = "o"
 
 [node name="Reset" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 visible = false
+modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 194.0
 margin_right = 67.0
 margin_bottom = 230.0
@@ -829,22 +930,34 @@ custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
 text = "R"
 
-[node name="Exit" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 234.0
+[node name="Exit" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 257.0
 margin_right = 68.0
-margin_bottom = 270.0
+margin_bottom = 282.0
+rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Delete from disk"
-focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 9 )
-enabled_focus_mode = 0
-text = "X"
+texture_normal = ExtResource( 47 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 41 )
+__meta__ = {
+"_editor_icon": ExtResource( 42 )
+}
+idle_transparency = 0.174
+
+[node name="Control10" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 286.0
+margin_right = 68.0
+margin_bottom = 295.17
+rect_min_size = Vector2( 0, 9.17 )
 
 [node name="CenterContainer" type="CenterContainer" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 editor/display_folded = true
-margin_top = 274.0
+margin_top = 299.0
 margin_right = 68.0
-margin_bottom = 276.58
+margin_bottom = 301.58
 
 [node name="ColorRect" type="ColorRect" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer/CenterContainer"]
 margin_left = 18.0
@@ -853,16 +966,29 @@ margin_bottom = 2.58
 rect_min_size = Vector2( 31.9, 2.58 )
 color = Color( 1, 1, 1, 0.152941 )
 
-[node name="MapList" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 280.0
+[node name="Control8" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+margin_top = 305.0
 margin_right = 68.0
-margin_bottom = 316.0
+margin_bottom = 314.17
+rect_min_size = Vector2( 0, 9.17 )
+
+[node name="MapList" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 318.0
+margin_right = 68.0
+margin_bottom = 343.0
+rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Map list"
 focus_mode = 0
 theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 9 )
 enabled_focus_mode = 0
-text = "4"
+texture_normal = ExtResource( 48 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 41 )
+__meta__ = {
+"_editor_icon": ExtResource( 42 )
+}
 
 [node name="HideShow" type="ColorRect" parent="editor_UI/ItemList"]
 material = SubResource( 7 )
@@ -895,7 +1021,7 @@ margin_top = 18.0
 margin_right = 612.0
 margin_bottom = 88.0
 color = Color( 0.211765, 0.137255, 0.301961, 0.894118 )
-script = ExtResource( 40 )
+script = ExtResource( 49 )
 
 [node name="MarginContainer" type="MarginContainer" parent="editor_UI/Details"]
 anchor_right = 1.0
@@ -1051,7 +1177,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
-script = ExtResource( 41 )
+script = ExtResource( 50 )
 
 [node name="Black" type="ColorRect" parent="editor_UI/ConfirmPopUp"]
 material = SubResource( 13 )
@@ -1178,7 +1304,7 @@ visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
-script = ExtResource( 42 )
+script = ExtResource( 51 )
 
 [node name="Black" type="ColorRect" parent="editor_UI/PublishLevelPopUp"]
 material = SubResource( 13 )
@@ -1396,7 +1522,7 @@ margin_bottom = 22.0
 text = "LMB - build || LMB + SHIFT - remove || SPACE - toggle play || MOUSE WHEEL - cycle through tools"
 align = 1
 
-[node name="ZeroNet" parent="editor_UI" instance=ExtResource( 43 )]
+[node name="ZeroNet" parent="editor_UI" instance=ExtResource( 52 )]
 
 [node name="Messages" type="Control" parent="editor_UI"]
 editor/display_folded = true
@@ -1404,7 +1530,7 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme = ExtResource( 6 )
-script = ExtResource( 44 )
+script = ExtResource( 53 )
 
 [node name="Message" type="Label" parent="editor_UI/Messages"]
 anchor_left = 0.5
@@ -1434,9 +1560,10 @@ margin_left = -220.0
 margin_top = 40.0
 margin_right = 220.0
 margin_bottom = 110.0
+rect_pivot_offset = Vector2( 220, 0 )
 mouse_filter = 2
 theme = ExtResource( 6 )
-script = ExtResource( 45 )
+script = ExtResource( 54 )
 
 [node name="UnlockedLabel" type="Label" parent="editor_UI/Achievements"]
 margin_left = 72.0
@@ -1513,7 +1640,6 @@ text = "Built over 250 blocks."
 [node name="Tween" type="Tween" parent="editor_UI/Achievements"]
 
 [node name="ZoomContainer" type="VBoxContainer" parent="editor_UI"]
-editor/display_folded = true
 anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
@@ -1572,11 +1698,10 @@ custom_colors/font_color = Color( 1, 1, 1, 0.564706 )
 text = "z"
 
 [node name="EditorSettings" type="Control" parent="editor_UI"]
-editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 46 )
+script = ExtResource( 55 )
 
 [node name="EditorSettingsBackground" type="ColorRect" parent="editor_UI/EditorSettings"]
 material = SubResource( 18 )
@@ -1584,10 +1709,11 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-margin_left = -221.0
-margin_top = -577.0
-margin_right = 220.0
-rect_min_size = Vector2( 441, 577 )
+margin_left = -220.5
+margin_top = -300.0
+margin_right = 220.5
+rect_min_size = Vector2( 441, 300 )
+rect_pivot_offset = Vector2( 220, 300 )
 theme = ExtResource( 6 )
 
 [node name="Editor_Settings" type="VBoxContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground"]
@@ -1614,6 +1740,7 @@ margin_bottom = 56.02
 rect_min_size = Vector2( 0, 13.02 )
 
 [node name="Axis" type="CenterContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+editor/display_folded = true
 margin_top = 60.0
 margin_right = 441.0
 margin_bottom = 88.82
@@ -1728,16 +1855,88 @@ margin_right = 420.32
 margin_bottom = 28.0
 rect_min_size = Vector2( 1.32, 0 )
 
-[node name="Control4" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+[node name="UIScale" type="CenterContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
 margin_top = 124.0
 margin_right = 441.0
-margin_bottom = 125.0
+margin_bottom = 152.82
+
+[node name="ColorRect" type="ColorRect" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale"]
+margin_left = 10.0
+margin_right = 430.59
+margin_bottom = 28.82
+rect_min_size = Vector2( 420.59, 28.82 )
+color = Color( 0, 0, 0, 0.145098 )
+
+[node name="Left" type="HBoxContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Control3" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Left"]
+margin_right = 5.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 5, 0 )
+
+[node name="Label" type="Label" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Left"]
+margin_left = 7.0
+margin_top = 3.0
+margin_right = 66.0
+margin_bottom = 25.0
+custom_colors/font_color = Color( 1, 1, 1, 0.517647 )
+text = "UI scale"
+
+[node name="Right" type="HBoxContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+alignment = 2
+
+[node name="ResetUIScale" type="TextureButton" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right"]
+modulate = Color( 1, 1, 1, 0.5 )
+margin_left = 165.0
+margin_right = 181.0
+margin_bottom = 28.0
+rect_min_size = Vector2( 16, 28 )
+texture_normal = ExtResource( 56 )
+expand = true
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right"]
+margin_left = 183.0
+margin_right = 204.99
+margin_bottom = 28.0
+rect_min_size = Vector2( 21.99, 0 )
+
+[node name="Centered" type="CenterContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right"]
+margin_left = 206.0
+margin_right = 406.0
+margin_bottom = 28.0
+
+[node name="ScaleAmount" type="HSlider" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right/Centered"]
+margin_top = 11.0
+margin_right = 200.0
+margin_bottom = 16.0
+rect_min_size = Vector2( 200, 0 )
+min_value = 0.5
+max_value = 4.0
+step = 0.01
+value = 1.0
+exp_edit = true
+
+[node name="Control2" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right"]
+margin_left = 408.0
+margin_right = 420.28
+margin_bottom = 28.0
+rect_min_size = Vector2( 12.28, 0 )
+
+[node name="Control4" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
+margin_top = 156.0
+margin_right = 441.0
+margin_bottom = 157.0
 rect_min_size = Vector2( 0, 1 )
 
 [node name="Control3" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings"]
-margin_top = 129.0
+margin_top = 161.0
 margin_right = 441.0
-margin_bottom = 134.97
+margin_bottom = 166.97
 rect_min_size = Vector2( 0, 5.97 )
 
 [node name="Button" type="Button" parent="editor_UI/EditorSettings/EditorSettingsBackground"]
@@ -1752,6 +1951,126 @@ text = "["
 
 [node name="Tween" type="Tween" parent="editor_UI/EditorSettings"]
 
+[node name="MusicPlayer" type="ColorRect" parent="editor_UI"]
+material = SubResource( 18 )
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -70.0
+margin_top = -108.0
+margin_right = 380.0
+margin_bottom = -38.0
+rect_min_size = Vector2( 450, 70 )
+rect_pivot_offset = Vector2( 70, 35 )
+theme = ExtResource( 6 )
+script = ExtResource( 57 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="editor_UI/MusicPlayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Centered" type="CenterContainer" parent="editor_UI/MusicPlayer/HBoxContainer"]
+margin_right = 70.0
+margin_bottom = 70.0
+rect_min_size = Vector2( 70, 70 )
+mouse_filter = 2
+
+[node name="MusicPlayerButton" parent="editor_UI/MusicPlayer/HBoxContainer/Centered" instance=ExtResource( 58 )]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 50.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 30, 30 )
+texture_normal = ExtResource( 59 )
+expand = true
+stretch_mode = 5
+
+[node name="Vertical" type="VBoxContainer" parent="editor_UI/MusicPlayer/HBoxContainer"]
+margin_left = 72.0
+margin_right = 449.2
+margin_bottom = 70.0
+rect_min_size = Vector2( 377.2, 0 )
+mouse_filter = 2
+alignment = 1
+
+[node name="SongInfo" type="Label" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical"]
+margin_top = 7.0
+margin_right = 377.0
+margin_bottom = 29.0
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "SONG TITLE - ARTIST NAME"
+align = 1
+
+[node name="Horizontal" type="HBoxContainer" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical"]
+margin_top = 33.0
+margin_right = 377.0
+margin_bottom = 63.0
+alignment = 1
+
+[node name="Rewind" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal" instance=ExtResource( 58 )]
+margin_left = 139.0
+margin_right = 159.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 60 )
+expand = true
+stretch_mode = 5
+
+[node name="Control" type="Control" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal"]
+margin_left = 161.0
+margin_right = 171.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Play" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal" instance=ExtResource( 58 )]
+margin_left = 173.0
+margin_right = 203.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 30, 30 )
+texture_normal = ExtResource( 61 )
+expand = true
+stretch_mode = 5
+
+[node name="Control2" type="Control" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal"]
+margin_left = 205.0
+margin_right = 215.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="FastForward" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal" instance=ExtResource( 58 )]
+margin_left = 217.0
+margin_right = 237.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 20, 20 )
+texture_normal = ExtResource( 62 )
+expand = true
+stretch_mode = 5
+
+[node name="Songs" type="Node" parent="editor_UI/MusicPlayer"]
+
+[node name="IdeaOne" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs"]
+stream = ExtResource( 63 )
+bus = "Music"
+
+[node name="IdeaOne2" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs"]
+stream = ExtResource( 64 )
+bus = "Music"
+
+[node name="IdeaOne3" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs"]
+stream = ExtResource( 63 )
+bus = "Music"
+
+[node name="IdeaOne4" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs"]
+stream = ExtResource( 64 )
+bus = "Music"
+
+[node name="Tween" type="Tween" parent="editor_UI/MusicPlayer"]
+
+[node name="IdleTime" type="Timer" parent="editor_UI/MusicPlayer"]
+wait_time = 3.0
+one_shot = true
+
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 bus = "Music"
 
@@ -1760,12 +2079,12 @@ bus = "Music"
 [connection signal="block_built" from="level" to="editor_UI" method="_on_level_block_built"]
 [connection signal="on_enemy_selected" from="level" to="editor_UI/Details" method="_on_level_on_enemy_selected"]
 [connection signal="show_notification" from="level" to="editor_UI/Messages" method="_on_level_show_notification"]
-[connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
+[connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
+[connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
 [connection signal="death" from="character" to="bloom" method="_on_character_death"]
-[connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="vel" from="character" to="Camera" method="_on_character_vel"]
@@ -1804,6 +2123,16 @@ bus = "Music"
 [connection signal="value_changed" from="editor_UI/ZoomContainer/CenterContainer/MagnifyAmount" to="Camera" method="_on_MagnifyAmount_value_changed"]
 [connection signal="pressed" from="editor_UI/ZoomContainer/MagnifyingGlassMinus" to="editor_UI" method="_on_MagnifyingGlassMinus_pressed"]
 [connection signal="gui_input" from="editor_UI/EditorSettings" to="editor_UI/EditorSettings" method="_on_EditorSettings_gui_input"]
+[connection signal="new_ui_scale" from="editor_UI/EditorSettings" to="editor_UI" method="_on_EditorSettings_new_ui_scale"]
 [connection signal="toggled" from="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/Axis/ColorRect/Right/Centered/AxisCheck" to="editor_UI/EditorSettings" method="_on_AxisCheck_toggled"]
 [connection signal="toggled" from="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect/Right/Centered/CheckBox" to="editor_UI/EditorSettings" method="_on_CheckBox_toggled"]
+[connection signal="pressed" from="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right/ResetUIScale" to="editor_UI/EditorSettings" method="_on_ResetUIScale_pressed"]
+[connection signal="value_changed" from="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right/Centered/ScaleAmount" to="editor_UI/EditorSettings" method="_on_ScaleAmount_value_changed"]
 [connection signal="pressed" from="editor_UI/EditorSettings/EditorSettingsBackground/Button" to="editor_UI/EditorSettings" method="_on_Button_pressed"]
+[connection signal="mouse_entered" from="editor_UI/MusicPlayer/HBoxContainer" to="editor_UI/MusicPlayer" method="_on_HBoxContainer_mouse_entered"]
+[connection signal="mouse_exited" from="editor_UI/MusicPlayer/HBoxContainer" to="editor_UI/MusicPlayer" method="_on_HBoxContainer_mouse_exited"]
+[connection signal="pressed" from="editor_UI/MusicPlayer/HBoxContainer/Centered/MusicPlayerButton" to="editor_UI/MusicPlayer" method="_on_MusicPlayerButton_pressed"]
+[connection signal="pressed" from="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal/Rewind" to="editor_UI/MusicPlayer" method="_on_Rewind_pressed"]
+[connection signal="pressed" from="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal/Play" to="editor_UI/MusicPlayer" method="_on_Play_pressed"]
+[connection signal="pressed" from="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal/FastForward" to="editor_UI/MusicPlayer" method="_on_FastForward_pressed"]
+[connection signal="timeout" from="editor_UI/MusicPlayer/IdleTime" to="editor_UI/MusicPlayer" method="_on_IdleTime_timeout"]

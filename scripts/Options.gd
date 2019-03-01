@@ -2,10 +2,9 @@ extends Control
 
 const config_file_path : = "user://config.cfg"
 
-var orig_pos_saved : Vector2
+signal saved
 
 func _ready():
-	orig_pos_saved = $OptionsColor/saved.rect_position
 	self.visible = false
 	
 	#if the config file ccanot be loaded, we put in all the default settings
@@ -134,7 +133,7 @@ func save_setting(section, key, value) -> void:
 	var err = conf.load(config_file_path)
 	conf.set_value(section, key, value)
 	conf.save(config_file_path)
-	show_saved()
+	emit_signal("saved")
 	
 	
 func _on_Close_pressed():

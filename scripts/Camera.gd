@@ -32,7 +32,7 @@ func _process(delta):
 	emit_signal("cam_pos", position, get_global_mouse_position())
 	smooth_mouse = smooth_mouse.linear_interpolate(mouse_speed, 50 * delta)
 	
-	if Input.is_mouse_button_pressed(2):
+	if Input.is_mouse_button_pressed(2) and !play:
 		self.position -= smooth_mouse * zoom.x
 	
 	mouse_speed = Vector2()

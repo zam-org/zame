@@ -16,6 +16,7 @@
 [ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=14]
 [ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=15]
 [ext_resource path="res://scripts/Options.gd" type="Script" id=16]
+[ext_resource path="res://ui/icons/save.svg" type="Texture" id=17]
 
 [sub_resource type="DynamicFont" id=1]
 size = 120
@@ -80,11 +81,6 @@ shader_param/transparent = 1.0
 shader_param/mix_amount = 0.667
 shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
 
-[sub_resource type="DynamicFont" id=9]
-size = 30
-use_filter = true
-font_data = ExtResource( 6 )
-
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -121,7 +117,6 @@ expand = true
 stretch_mode = 6
 
 [node name="SidePanelSpace" type="HBoxContainer" parent="."]
-editor/display_folded = true
 anchor_bottom = 1.0
 margin_right = 427.0
 
@@ -204,6 +199,10 @@ rect_min_size = Vector2( 433, 139.08 )
 rect_pivot_offset = Vector2( 619.686, 73.718 )
 theme = ExtResource( 7 )
 script = ExtResource( 8 )
+
+[node name="Timer" type="Timer" parent="SidePanelSpace/SidePanel/MapList"]
+wait_time = 0.5
+one_shot = true
 
 [node name="grab_container" type="CenterContainer" parent="SidePanelSpace/SidePanel"]
 margin_top = 477.0
@@ -694,8 +693,6 @@ bus = "Music"
 [node name="ZeroNet" parent="." instance=ExtResource( 15 )]
 
 [node name="Options" type="Control" parent="."]
-editor/display_folded = true
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -761,7 +758,6 @@ margin_bottom = 237.89
 rect_min_size = Vector2( 0, 23.89 )
 
 [node name="OptionsFrame" type="HBoxContainer" parent="Options/OptionsColor/Window"]
-editor/display_folded = true
 margin_top = 241.0
 margin_right = 480.0
 margin_bottom = 468.0
@@ -863,11 +859,11 @@ rect_min_size = Vector2( 30.2, 0 )
 
 [node name="Buttons" type="VBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame"]
 margin_left = 286.0
-margin_right = 357.0
+margin_right = 358.0
 margin_bottom = 227.0
 
 [node name="CenterContainer" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 22.0
 
 [node name="Fullscreen" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer"]
@@ -879,13 +875,13 @@ align = 1
 
 [node name="Control6" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 26.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 36.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="CenterContainer2" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 40.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 62.0
 
 [node name="Vsync" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer2"]
@@ -897,13 +893,13 @@ align = 1
 
 [node name="Control2" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 66.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 76.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="CenterContainer3" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 80.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 102.0
 
 [node name="Borderless" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer3"]
@@ -915,13 +911,13 @@ align = 1
 
 [node name="Control9" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 106.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 116.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="CenterContainer4" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 120.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 142.0
 
 [node name="Resizable" type="CheckBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer4"]
@@ -933,13 +929,13 @@ align = 1
 
 [node name="Control7" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 146.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 156.0
 rect_min_size = Vector2( 28.66, 10 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 160.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 190.0
 
 [node name="MSAA" type="OptionButton" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer"]
@@ -951,17 +947,17 @@ text = "9x"
 
 [node name="Control3" type="Control" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 194.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 201.78
 rect_min_size = Vector2( 28.66, 7.78 )
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Options/OptionsColor/Window/OptionsFrame/Buttons"]
 margin_top = 205.0
-margin_right = 71.0
+margin_right = 72.0
 margin_bottom = 227.0
 
 [node name="Anisotropic_level" type="SpinBox" parent="Options/OptionsColor/Window/OptionsFrame/Buttons/HBoxContainer2"]
-margin_right = 64.0
+margin_right = 72.0
 margin_bottom = 22.0
 theme = ExtResource( 7 )
 max_value = 16.0
@@ -1203,22 +1199,6 @@ margin_bottom = 22.0
 theme = ExtResource( 7 )
 text = "CLOSE"
 
-[node name="saved" type="Label" parent="Options/OptionsColor"]
-modulate = Color( 1, 1, 1, 0 )
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-margin_left = -240.0
-margin_top = -61.0
-margin_right = 240.0
-margin_bottom = -20.0
-theme = ExtResource( 7 )
-custom_fonts/font = SubResource( 9 )
-custom_colors/font_color = Color( 0.996078, 0.639216, 0.0117647, 1 )
-text = "SAVED"
-align = 1
-
 [node name="LeftHighlight" type="ColorRect" parent="Options/OptionsColor"]
 anchor_bottom = 1.0
 rect_min_size = Vector2( 3.35, 0 )
@@ -1233,19 +1213,45 @@ color = Color( 1, 1, 1, 0.156863 )
 
 [node name="Tween" type="Tween" parent="Options"]
 
+[node name="SaveIcon" type="CenterContainer" parent="."]
+modulate = Color( 1, 1, 1, 0 )
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -80.0
+margin_bottom = 80.0
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 40, 40 )
+
+[node name="TextureRect2" type="TextureRect" parent="SaveIcon"]
+margin_left = 25.0
+margin_top = 25.0
+margin_right = 55.0
+margin_bottom = 55.0
+rect_min_size = Vector2( 30, 30 )
+rect_pivot_offset = Vector2( 15, 15 )
+texture = ExtResource( 17 )
+expand = true
+stretch_mode = 6
+
+[node name="Tween" type="Tween" parent="."]
+
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
+[connection signal="double_clicked_map" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_double_clicked_map"]
+[connection signal="item_activated" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_activated"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_selected"]
+[connection signal="timeout" from="SidePanelSpace/SidePanel/MapList/Timer" to="SidePanelSpace/SidePanel/MapList" method="_on_Timer_timeout"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="zn_button" to="." method="play_click"]
+[connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
-[connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
+[connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
+[connection signal="saved" from="Options" to="." method="_on_Options_saved"]
 [connection signal="gui_input" from="Options/BackDrop" to="Options" method="_on_ColorRect_gui_input"]
 [connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer/Fullscreen" to="Options" method="_on_Fullscreen_toggled"]
 [connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer2/Vsync" to="Options" method="_on_Vsync_toggled"]
