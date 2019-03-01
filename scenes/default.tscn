@@ -945,7 +945,6 @@ script = ExtResource( 41 )
 __meta__ = {
 "_editor_icon": ExtResource( 42 )
 }
-idle_transparency = 0.174
 
 [node name="Control10" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 margin_top = 286.0
