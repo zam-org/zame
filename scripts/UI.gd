@@ -16,14 +16,20 @@ var axis_lines : bool = false setget set_axis_lines
 
 var config_file_path : String = "user://config.cfg"
 
+const gap = 30
+
 func _ready():
 	#load editor settings
 	set_axis_lines(globals.axis_lines)
-	set_coordinates_centered(globals.coordinates_centered)
+	var coordinates_centered = load_setting("editor", "coordinates_centered", false)
+	$EditorSettings/EditorSettingsBackground/Editor_Settings/CenteredCoordinates/ColorRect/Right/Centered/CheckBox.pressed = coordinates_centered
+	set_coordinates_centered(coordinates_centered)
 	
 	toolbar_orig_pos = $ItemList.rect_position
 	$Esc.visible = false
-	scale_ui(load_setting("editor", "ui_scale", 1), false)
+
+	#load the ui scale as saved in the config file
+	$EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right/ScaleAMountNumber.value = load_setting("editor", "ui_scale", 1)
 	
 func _input(event):
 	if event is InputEventKey and play:
@@ -101,9 +107,11 @@ func lines(MousePos : Vector2 = Vector2()):
 			
 			
 func set_coordinates_centered(new):
+	print("set the coordinates ", new)
 	coordinates_centered = new
+	globals.coordinates_centered = new
 	save_setting("editor", "coordinates_centered", new)
-	if new:
+	if new == true:
 		$Lines/X/XAmount.visible = false
 		$Lines/Y/YAmount.visible = false
 		$Lines/Centered.visible = true
@@ -198,3 +206,9 @@ func scale_ui(amount, save : bool = false):
 	$Achievements.rect_scale = new_scale
 	$EditorSettings/EditorSettingsBackground.rect_scale = new_scale
 	$ZoomContainer.rect_scale = new_scale
+	
+	$Details.rect_scale = new_scale
+	$Details.rect_position.x = $ItemList.rect_size.x + gap * amount
+	
+	$MusicPlayer.update_orig_loc()
+	$MusicPlayer.rect_scale = new_scale

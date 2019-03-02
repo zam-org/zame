@@ -51,7 +51,7 @@ func achievement_show(image_path : String = "", achievement_name : String = "", 
 # testing the achievements
 func _process(delta):
 	if Input.is_action_just_pressed("achievement"):
-		achievement_show("res://ui/buttons/build_tools/death_line_hover.png", "BUILDER - lvl 5", "Built over 5000 pieces", 4.0)
+		achievement_show("res://ui/icons/heart.svg", "BUILDER - lvl 5", "Built over 5000 pieces", 4.0)
 		
 	elif Input.is_action_just_pressed("achievement_2"):
-		achievement_show("res://ui/buttons/build_tools/jump_pad_hover.png", "DESTROYER - lvl 1", "Removed over 500 pieces", 4.0)
+		achievement_show("res://ui/icons/hash.svg", "DESTROYER - lvl 1", "Removed over 500 pieces", 4.0)

@@ -9,6 +9,7 @@ signal new_ui_scale(amount)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right/ResetUIScale.visible = false if $EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right/Centered/ScaleAmount.value == 1 else true
 	visible = false
 	$EditorSettingsBackground.modulate = Color(1,1,1,0)
 	orig_position = $EditorSettingsBackground.rect_position
@@ -18,7 +19,6 @@ func _ready() -> void:
 	
 	
 func _on_CheckBox_toggled(button_pressed) -> void:
-	globals.coordinates_centered = button_pressed
 	parent.coordinates_centered = button_pressed
 	
 	
@@ -67,7 +67,11 @@ func _on_ResetUIScale_pressed():
 	
 	
 func _on_ScaleAmount_value_changed(value):
+	$EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right/ScaleAMountNumber.value = value
 	$EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right/ResetUIScale.visible = true if value != 1 else false
 	emit_signal("new_ui_scale", value)
 	
 	
+
+func _on_ScaleAMountNumber_value_changed(value):
+	$EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right/Centered/ScaleAmount.value = value

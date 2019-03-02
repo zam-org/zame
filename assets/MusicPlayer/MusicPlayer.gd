@@ -32,9 +32,12 @@ func _ready():
 		playing = false
 		$HBoxContainer/Vertical/Horizontal/Play.texture_normal = play_icon
 
+func update_orig_loc() -> void:
+	rect_position.x = OS.get_real_window_size().x - $HBoxContainer/Centered.rect_size.x
+	original_location = rect_position 
 
 func show():
-	var length = $HBoxContainer/Vertical.rect_size.x
+	var length = $HBoxContainer.rect_size.x
 	var final = Vector2(original_location.x - length, original_location.y)
 	$Tween.interpolate_property(self, 'rect_position', original_location, final, 1, Tween.TRANS_EXPO, Tween.EASE_OUT, 0)
 	$Tween.start()

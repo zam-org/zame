@@ -135,9 +135,11 @@ func _process(delta):
 	if Input.is_action_just_pressed("modifier"):
 		building = false
 		removing = true
+		$delete/DeleteShape.visible = true
 		
 	if Input.is_action_just_released("modifier"):
 		removing = false
+		$delete/DeleteShape.visible = false
 		
 	if Input.is_action_just_released("modifier") and Input.is_mouse_button_pressed(1):
 		building = true
