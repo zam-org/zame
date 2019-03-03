@@ -2,3 +2,5 @@
 \.import/
 
 *.import
+
+!ui/icons/*.import
