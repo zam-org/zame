@@ -2,7 +2,7 @@ extends ColorRect
 
 var original_location : Vector2
 var main_btn_size : Vector2
-var playing : = true
+var playing : bool
 
 var pause_icon : Texture = preload("res://ui/icons/pause-circle.svg")
 var play_icon : Texture = preload("res://ui/icons/play-circle.svg")
@@ -12,6 +12,7 @@ var hidden : = false
 var paused_at : float 
 
 var song_list : Array
+var artist_list : Array
 
 var current_song : int = 0
 
@@ -21,16 +22,28 @@ func _ready():
 	main_btn_size = $HBoxContainer/Centered.rect_size
 	
 	for i in $Songs.get_children():
-		song_list.append(i)
+		artist_list.append(i)
+		
+	yield(get_tree().create_timer(0.1), "timeout")
+		
+	for artist in artist_list:
+		for song in artist.get_children():
+			song_list.append(song)
 	
-	if song_list.size() > 0:
-		song_list.shuffle()
-		song_list[0].play()
-		playing = true
-	else:
-		print("Error! No songs found")
-		playing = false
-		$HBoxContainer/Vertical/Horizontal/Play.texture_normal = play_icon
+	for i in song_list:
+		if !i is AudioStreamPlayer:
+			song_list.remove(song_list.find(i))
+			
+	yield(get_tree().create_timer(0.1), "timeout")
+			
+	print(song_list)
+	song_list.shuffle()
+	play_song()
+
+func play_song() -> void:
+	playing = true
+	song_list[current_song].play()
+	$HBoxContainer/Vertical/SongInfo.text = song_list[current_song].name + " - " + song_list[current_song].get_parent().name
 
 func update_orig_loc() -> void:
 	rect_position.x = OS.get_real_window_size().x - $HBoxContainer/Centered.rect_size.x
@@ -104,7 +117,7 @@ func _on_Rewind_pressed():
 		current_song -= 1
 	else:
 		current_song = song_list.size() - 1
-	song_list[current_song].play()
+	play_song()
 	print(current_song)
 
 
@@ -114,5 +127,5 @@ func _on_FastForward_pressed():
 		current_song += 1
 	else:
 		current_song = 0
-	song_list[current_song].play()
+	play_song()
 	print(current_song)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=2]
+[gd_scene load_steps=80 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=2]
@@ -55,8 +55,9 @@
 [ext_resource path="res://ui/icons/rewind.svg" type="Texture" id=53]
 [ext_resource path="res://ui/icons/play-circle.svg" type="Texture" id=54]
 [ext_resource path="res://ui/icons/fast-forward.svg" type="Texture" id=55]
-[ext_resource path="res://audio/music/IdeaOne.ogg" type="AudioStream" id=56]
-[ext_resource path="res://audio/music/IdeaOneUnurbanised.ogg" type="AudioStream" id=57]
+[ext_resource path="res://audio/music/Bright and Bytesized - Isabella Lau.ogg" type="AudioStream" id=56]
+[ext_resource path="res://audio/music/Cosmic Sanctum - Isabella Lau.ogg" type="AudioStream" id=57]
+[ext_resource path="res://audio/music/Time_to_Byte_Back_-_Isabella_Lau.ogg" type="AudioStream" id=58]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -2014,7 +2015,6 @@ text = "["
 [node name="Tween" type="Tween" parent="editor_UI/EditorSettings"]
 
 [node name="MusicPlayer" type="ColorRect" parent="editor_UI"]
-editor/display_folded = true
 material = SubResource( 18 )
 anchor_left = 1.0
 anchor_top = 1.0
@@ -2116,20 +2116,18 @@ stretch_mode = 5
 
 [node name="Songs" type="Node" parent="editor_UI/MusicPlayer"]
 
-[node name="IdeaOne" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs"]
+[node name="Isabella Lau" type="Node" parent="editor_UI/MusicPlayer/Songs"]
+
+[node name="Bright and Bytesized" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs/Isabella Lau"]
 stream = ExtResource( 56 )
 bus = "Music"
 
-[node name="IdeaOne2" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs"]
+[node name="Cosmic Sanctum" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs/Isabella Lau"]
 stream = ExtResource( 57 )
 bus = "Music"
 
-[node name="IdeaOne3" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs"]
-stream = ExtResource( 56 )
-bus = "Music"
-
-[node name="IdeaOne4" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs"]
-stream = ExtResource( 57 )
+[node name="Time To Byte Back" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs/Isabella Lau"]
+stream = ExtResource( 58 )
 bus = "Music"
 
 [node name="Tween" type="Tween" parent="editor_UI/MusicPlayer"]
@@ -2138,20 +2136,17 @@ bus = "Music"
 wait_time = 3.0
 one_shot = true
 
-[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
-bus = "Music"
-
 [connection signal="show_notification" from="." to="editor_UI/Messages" method="_on_game_show_notification"]
 [connection signal="cam_pos" from="Camera" to="editor_UI" method="_on_Camera_cam_pos"]
 [connection signal="block_built" from="level" to="editor_UI" method="_on_level_block_built"]
 [connection signal="on_enemy_selected" from="level" to="editor_UI/Details" method="_on_level_on_enemy_selected"]
 [connection signal="show_notification" from="level" to="editor_UI/Messages" method="_on_level_show_notification"]
-[connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="activated" from="Finish" to="bloom" method="_on_Exit_activated"]
+[connection signal="activated" from="Finish" to="Camera" method="_on_Finish_activated"]
 [connection signal="coin" from="character" to="bloom" method="_on_character_coin"]
+[connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="death" from="character" to="Camera" method="_on_character_death"]
 [connection signal="death" from="character" to="." method="_on_character_death"]
-[connection signal="death" from="character" to="bloom" method="_on_character_death"]
 [connection signal="pos" from="character" to="big_grid" method="_on_character_pos"]
 [connection signal="pos" from="character" to="Camera" method="_on_character_pos"]
 [connection signal="vel" from="character" to="Camera" method="_on_character_vel"]
@@ -2178,13 +2173,13 @@ bus = "Music"
 [connection signal="pressed" from="editor_UI/Details/MarginContainer/HBoxContainer/Soft/CenterContainer/SoftToggle" to="editor_UI/Details" method="_on_SoftToggle_pressed"]
 [connection signal="item_selected" from="editor_UI/Details/MarginContainer/HBoxContainer/ROF/RateOfFire" to="editor_UI/Details" method="_on_RateOfFire_item_selected"]
 [connection signal="gui_input" from="editor_UI/ConfirmPopUp/Black" to="editor_UI/ConfirmPopUp" method="_on_Black_gui_input"]
-[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="editor_UI/ConfirmPopUp" method="_on_Yes_pressed"]
-[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="." method="_on_No_pressed"]
+[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/Yes" to="." method="_on_pop_up_yes_pressed"]
 [connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="editor_UI/ConfirmPopUp" method="_on_No_pressed"]
+[connection signal="pressed" from="editor_UI/ConfirmPopUp/Window/Buttons/Menu/No" to="." method="_on_No_pressed"]
 [connection signal="gui_input" from="editor_UI/PublishLevelPopUp/Black" to="editor_UI/PublishLevelPopUp" method="_on_Black_gui_input"]
-[connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="." method="_on_Yes_Publish_To_ZeroNet_pressed"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="editor_UI/PublishLevelPopUp" method="_on_Yes_pressed"]
+[connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="." method="_on_Yes_Publish_To_ZeroNet_pressed"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/No" to="editor_UI/PublishLevelPopUp" method="_on_No_pressed"]
 [connection signal="pressed" from="editor_UI/ZoomContainer/MagnifyingGlassPlus" to="editor_UI" method="_on_MagnifyingGlassPlus_pressed"]
 [connection signal="value_changed" from="editor_UI/ZoomContainer/CenterContainer/MagnifyAmount" to="Camera" method="_on_MagnifyAmount_value_changed"]

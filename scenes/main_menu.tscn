@@ -108,9 +108,9 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -460.0
-margin_top = -470.0
+margin_top = -468.64
 margin_right = 51.9998
-margin_bottom = 42.0
+margin_bottom = 43.3604
 rect_scale = Vector2( 1.15374, 1.15374 )
 texture = ExtResource( 4 )
 expand = true
@@ -710,6 +710,8 @@ color = Color( 0, 0, 0, 0.447059 )
 anchor_left = 0.5
 anchor_right = 0.5
 anchor_bottom = 1.0
+margin_left = -250.0
+margin_right = 250.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 500, 0 )
@@ -1235,22 +1237,22 @@ stretch_mode = 6
 
 [node name="Tween" type="Tween" parent="."]
 
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="double_clicked_map" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_double_clicked_map"]
 [connection signal="item_activated" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_activated"]
-[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_selected"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
+[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_selected"]
 [connection signal="timeout" from="SidePanelSpace/SidePanel/MapList/Timer" to="SidePanelSpace/SidePanel/MapList" method="_on_Timer_timeout"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="zn_button" to="." method="play_click"]
 [connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
+[connection signal="pressed" from="zn_button" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
-[connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
+[connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
 [connection signal="saved" from="Options" to="." method="_on_Options_saved"]
 [connection signal="gui_input" from="Options/BackDrop" to="Options" method="_on_ColorRect_gui_input"]
 [connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer/Fullscreen" to="Options" method="_on_Fullscreen_toggled"]
