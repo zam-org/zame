@@ -1,3 +1,6 @@
 [submodule "addons/ZeroFrame"]
 	path = addons/ZeroFrame
 	url = https://github.com/anoadragon453/godot-zeroframe-plugin
+[submodule "addons/ZeroNet"]
+	path = addons/ZeroNet
+	url = https://github.com/anoadragon453/godot-zeronet-plugin
