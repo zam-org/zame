@@ -169,25 +169,25 @@ margin_bottom = 150.95
 rect_min_size = Vector2( 0, 63.95 )
 
 [node name="name" type="Label" parent="SidePanelSpace/SidePanel"]
-margin_top = 143.0
+margin_top = 128.0
 margin_right = 573.0
-margin_bottom = 378.0
+margin_bottom = 363.0
 custom_fonts/font = SubResource( 1 )
 text = "zame"
 align = 1
 uppercase = true
 
 [node name="spacer" type="Control" parent="SidePanelSpace/SidePanel"]
-margin_top = 382.0
+margin_top = 367.0
 margin_right = 573.0
-margin_bottom = 384.0
+margin_bottom = 369.0
 rect_min_size = Vector2( 0, 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SidePanelSpace/SidePanel"]
 modulate = Color( 1, 1, 1, 0.643137 )
-margin_top = 388.0
+margin_top = 373.0
 margin_right = 573.0
-margin_bottom = 421.0
+margin_bottom = 406.0
 alignment = 1
 
 [node name="Label" type="Label" parent="SidePanelSpace/SidePanel/HBoxContainer"]
@@ -209,26 +209,26 @@ expand = true
 stretch_mode = 6
 
 [node name="spacer3" type="Control" parent="SidePanelSpace/SidePanel"]
-margin_top = 425.0
+margin_top = 410.0
 margin_right = 573.0
-margin_bottom = 450.0
+margin_bottom = 435.0
 rect_min_size = Vector2( 0, 25 )
 
 [node name="Play" type="Button" parent="SidePanelSpace/SidePanel"]
-margin_top = 454.0
+margin_top = 439.0
 margin_right = 573.0
-margin_bottom = 492.8
-rect_min_size = Vector2( 0, 38.8 )
+margin_bottom = 487.0
+rect_min_size = Vector2( 0, 48 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
 theme = ExtResource( 7 )
 custom_fonts/font = SubResource( 3 )
 text = "NEW LEVEL"
 
 [node name="Browser" type="Button" parent="SidePanelSpace/SidePanel"]
-margin_top = 496.0
+margin_top = 491.0
 margin_right = 573.0
-margin_bottom = 534.8
-rect_min_size = Vector2( 0, 38.8 )
+margin_bottom = 539.0
+rect_min_size = Vector2( 0, 48 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
 theme = ExtResource( 7 )
 custom_fonts/font = SubResource( 3 )
@@ -288,10 +288,10 @@ text = "Update"
 align = 0
 
 [node name="Exit" type="Button" parent="SidePanelSpace/SidePanel"]
-margin_top = 538.0
+margin_top = 543.0
 margin_right = 573.0
-margin_bottom = 576.8
-rect_min_size = Vector2( 0, 38.8 )
+margin_bottom = 591.0
+rect_min_size = Vector2( 0, 48 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
 theme = ExtResource( 7 )
 custom_fonts/font = SubResource( 3 )
@@ -1243,6 +1243,7 @@ stretch_mode = 6
 [node name="Tween" type="Tween" parent="."]
 
 [node name="ZeroNetMenu" type="Control" parent="."]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
@@ -1372,7 +1373,6 @@ placeholder_alpha = 0.451
 
 [node name="Menu" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List"]
 editor/display_folded = true
-visible = false
 margin_top = 164.0
 margin_right = 300.0
 margin_bottom = 439.0
@@ -1482,13 +1482,13 @@ margin_bottom = 439.0
 rect_min_size = Vector2( 0, 275 )
 
 [node name="Usernames" type="ItemList" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Choose"]
-margin_top = 37.0
 margin_right = 300.0
-margin_bottom = 237.0
+margin_bottom = 200.0
 rect_min_size = Vector2( 0, 200 )
 items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false ]
 
 [node name="Profile" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List"]
+visible = false
 margin_top = 164.0
 margin_right = 300.0
 margin_bottom = 439.0
