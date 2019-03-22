@@ -40,7 +40,8 @@ func shoot():
 func activate():
 	set_process(true)
 	$RateOfFire.wait_time = rate_of_fire
-	$RateOfFire.start()
+	if rate_of_fire > 0.01:
+		$RateOfFire.start()
 
 func deactivate():
 	$RateOfFire.stop()

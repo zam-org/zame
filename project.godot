@@ -33,10 +33,10 @@ window/size/height=720
 window/size/resizable=false
 window/size/borderless=true
 window/dpi/allow_hidpi=true
+mouse_cursor/custom_image="res://ui/textures/mouse_cursor.png"
 window/allow_per_pixel_transparency=true
 window/per_pixel_transparency=true
 window/per_pixel_transparency_splash=true
-mouse_cursor/custom_image="res://ui/textures/mouse_cursor.png"
 
 [editor_plugins]
 
@@ -141,6 +141,11 @@ zoom_in={
 zoom_out={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":45,"unicode":0,"echo":false,"script":null)
+ ]
+}
+cheat_01={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":80,"unicode":0,"echo":false,"script":null)
  ]
 }
 

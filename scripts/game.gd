@@ -8,8 +8,6 @@ var death_zone_confirm : bool = false
 var exit_confirm : bool = false
 var save_confirm : bool = false
 
-var MAP_DIRECTORY : String = "res://maps/"
-
 signal show_notification(what)
 
 func _ready():
@@ -49,10 +47,7 @@ func _process(delta):
 		play_set(!play)
 	if Input.is_action_just_pressed("ui_cancel"):
 		$Audio/Click.play()
-		exit_confirm_popup()		
-#	if Input.is_action_just_pressed("ui_cancel") and play:
-#		$Audio/Click.play()
-#		play_set(!play)
+		exit_confirm_popup()
 	
 	if Input.is_action_just_pressed("8") and !play:
 		move_spawn()
@@ -208,7 +203,7 @@ func save_map(map_name : String = "temp") -> void:
 	
 	# First we save the node options, should there be any to be saved
 	var map_settings : File = File.new()
-	map_settings.open(MAP_DIRECTORY + map_name + "settings.save", File.WRITE)
+	map_settings.open(globals.level_path + map_name + ".settings", File.WRITE)
 	
 	for i in content.get_children():
 		if i.has_method("save"):
@@ -222,12 +217,12 @@ func save_map(map_name : String = "temp") -> void:
 	var packed_scene = PackedScene.new()
 	var err = packed_scene.pack(content)
 	print(err)
-	ResourceSaver.save(MAP_DIRECTORY + map_name + ".tscn", packed_scene)
+	ResourceSaver.save(globals.level_path + map_name + ".tscn", packed_scene)
 	
 	emit_signal("show_notification", "MAP SAVED")
 		
 func load_map(map_name : String = "temp") -> void:
-	var packed_scene = load(MAP_DIRECTORY + map_name + ".tscn")
+	var packed_scene = load(globals.level_path + map_name + ".tscn")
 	
 	#break the process should we not be able to load a map
 	if packed_scene == null:
@@ -245,7 +240,7 @@ func load_map(map_name : String = "temp") -> void:
 	
 	# load the settings of the objects within the scene
 	var map_settings = File.new()
-	map_settings.open(MAP_DIRECTORY + map_name + "settings.save", File.READ)
+	map_settings.open(globals.level_path + map_name + ".settings", File.READ)
 	while not map_settings.eof_reached():
 		var current_line = parse_json(map_settings.get_line())
 		if current_line is Dictionary and !current_line.has("death_zone_y"):

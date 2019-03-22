@@ -1,1 +1,5 @@
-{"death_zone_y":380,"finish_x":120,"finish_y":40,"player_spawn_x":1.22668,"player_spawn_y":-45.100201}
+{"direction_x":1,"direction_y":0,"logic":2,"name":"MovingPlatform","soft":false}
+{"direction_x":-1,"direction_y":0,"name":"Turret","rate_of_fire":0,"speed":1}
+{"direction_x":0,"direction_y":1,"name":"@Turret@224","rate_of_fire":0,"speed":1}
+{"direction_x":1,"direction_y":0,"name":"@Turret@289","rate_of_fire":0,"speed":1}
+{"death_zone_y":60,"finish_x":340,"finish_y":-300,"player_spawn_x":120,"player_spawn_y":-20}

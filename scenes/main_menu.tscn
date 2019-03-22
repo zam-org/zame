@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=2]
@@ -13,13 +13,19 @@
 [ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=11]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=12]
 [ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=13]
-[ext_resource path="res://ui/logos/zn_purple.png" type="Texture" id=14]
-[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=15]
-[ext_resource path="res://scripts/Options.gd" type="Script" id=16]
-[ext_resource path="res://ui/icons/save.svg" type="Texture" id=17]
+[ext_resource path="res://assets/LevelBrowser/LevelBrowser.gd" type="Script" id=14]
+[ext_resource path="res://ui/icons/refresh-cw.svg" type="Texture" id=15]
+[ext_resource path="res://addons/UltimateButton/UltimateButton.gd" type="Script" id=16]
+[ext_resource path="res://addons/UltimateButton/Icon.png" type="Texture" id=17]
+[ext_resource path="res://ui/icons/maximize-2.svg" type="Texture" id=18]
+[ext_resource path="res://ui/icons/x-square.svg" type="Texture" id=19]
+[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=20]
+[ext_resource path="res://scripts/Options.gd" type="Script" id=21]
+[ext_resource path="res://ui/icons/save.svg" type="Texture" id=22]
+[ext_resource path="res://assets/ZeroNetMenu/ZeroNetMenu.gd" type="Script" id=23]
 
 [sub_resource type="DynamicFont" id=1]
-size = 120
+size = 300
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=2]
@@ -28,12 +34,16 @@ use_filter = true
 font_data = ExtResource( 6 )
 
 [sub_resource type="DynamicFont" id=3]
+size = 28
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=4]
 size = 50
 use_filter = true
 font_data = ExtResource( 11 )
 
-[sub_resource type="Animation" id=4]
-resource_name = "logo_idle"
+[sub_resource type="Animation" id=5]
 length = 3.0
 loop = true
 tracks/0/type = "value"
@@ -49,14 +59,10 @@ tracks/0/keys = {
 "values": [ Color( 1, 1, 1, 0.0627451 ), Color( 1, 1, 1, 0.137255 ), Color( 1, 1, 1, 0.0627451 ) ]
 }
 
-[sub_resource type="ShaderMaterial" id=5]
+[sub_resource type="ShaderMaterial" id=6]
 shader = ExtResource( 13 )
 shader_param/hdr_threshold = 0.01
 shader_param/bloom = 1.5
-
-[sub_resource type="DynamicFont" id=6]
-size = 32
-font_data = ExtResource( 11 )
 
 [sub_resource type="Shader" id=7]
 code = "shader_type canvas_item;
@@ -80,6 +86,24 @@ shader_param/amount = 3.236
 shader_param/transparent = 1.0
 shader_param/mix_amount = 0.667
 shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="DynamicFont" id=10]
+size = 12
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=11]
+size = 12
+use_filter = true
+font_data = ExtResource( 6 )
+
+[sub_resource type="DynamicFont" id=12]
+size = 24
+use_filter = true
+font_data = ExtResource( 6 )
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
@@ -117,8 +141,14 @@ expand = true
 stretch_mode = 6
 
 [node name="SidePanelSpace" type="HBoxContainer" parent="."]
-anchor_bottom = 1.0
-margin_right = 427.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -315.0
+margin_top = -360.0
+margin_right = 315.0
+margin_bottom = 360.0
 
 [node name="spacer" type="Control" parent="SidePanelSpace"]
 margin_right = 53.7
@@ -127,7 +157,7 @@ rect_min_size = Vector2( 53.7, 3.55 )
 
 [node name="SidePanel" type="VBoxContainer" parent="SidePanelSpace"]
 margin_left = 57.0
-margin_right = 490.0
+margin_right = 630.0
 margin_bottom = 720.0
 alignment = 1
 
@@ -139,36 +169,39 @@ margin_bottom = 150.95
 rect_min_size = Vector2( 0, 63.95 )
 
 [node name="name" type="Label" parent="SidePanelSpace/SidePanel"]
-margin_top = 121.0
-margin_right = 433.0
-margin_bottom = 216.0
+margin_top = 143.0
+margin_right = 573.0
+margin_bottom = 378.0
 custom_fonts/font = SubResource( 1 )
 text = "zame"
+align = 1
 uppercase = true
 
 [node name="spacer" type="Control" parent="SidePanelSpace/SidePanel"]
-margin_top = 220.0
-margin_right = 433.0
-margin_bottom = 222.0
+margin_top = 382.0
+margin_right = 573.0
+margin_bottom = 384.0
 rect_min_size = Vector2( 0, 2 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="SidePanelSpace/SidePanel"]
 modulate = Color( 1, 1, 1, 0.643137 )
-margin_top = 226.0
-margin_right = 433.0
-margin_bottom = 259.0
+margin_top = 388.0
+margin_right = 573.0
+margin_bottom = 421.0
+alignment = 1
 
 [node name="Label" type="Label" parent="SidePanelSpace/SidePanel/HBoxContainer"]
+margin_left = 177.0
 margin_top = 6.0
-margin_right = 394.0
+margin_right = 367.0
 margin_bottom = 27.0
 custom_fonts/font = SubResource( 2 )
-text = "A game showcasing the ZeroFrame Godot Engine addon"
+text = "Godot Engine and ZeroNet"
 
 [node name="TextureRect2" type="TextureRect" parent="SidePanelSpace/SidePanel/HBoxContainer"]
 modulate = Color( 1, 1, 1, 0.486275 )
-margin_left = 398.0
-margin_right = 423.52
+margin_left = 371.0
+margin_right = 396.52
 margin_bottom = 33.0
 rect_min_size = Vector2( 25.52, 33 )
 texture = ExtResource( 4 )
@@ -176,22 +209,33 @@ expand = true
 stretch_mode = 6
 
 [node name="spacer3" type="Control" parent="SidePanelSpace/SidePanel"]
-margin_top = 263.0
-margin_right = 433.0
-margin_bottom = 288.0
+margin_top = 425.0
+margin_right = 573.0
+margin_bottom = 450.0
 rect_min_size = Vector2( 0, 25 )
 
 [node name="Play" type="Button" parent="SidePanelSpace/SidePanel"]
-margin_top = 292.0
-margin_right = 433.0
-margin_bottom = 330.8
+margin_top = 454.0
+margin_right = 573.0
+margin_bottom = 492.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
 theme = ExtResource( 7 )
-text = "Start"
-align = 0
+custom_fonts/font = SubResource( 3 )
+text = "NEW LEVEL"
+
+[node name="Browser" type="Button" parent="SidePanelSpace/SidePanel"]
+margin_top = 496.0
+margin_right = 573.0
+margin_bottom = 534.8
+rect_min_size = Vector2( 0, 38.8 )
+rect_pivot_offset = Vector2( 666.688, 134.079 )
+theme = ExtResource( 7 )
+custom_fonts/font = SubResource( 3 )
+text = "BROWSER"
 
 [node name="MapList" type="ItemList" parent="SidePanelSpace/SidePanel"]
+visible = false
 margin_top = 334.0
 margin_right = 433.0
 margin_bottom = 473.08
@@ -205,13 +249,14 @@ wait_time = 0.5
 one_shot = true
 
 [node name="grab_container" type="CenterContainer" parent="SidePanelSpace/SidePanel"]
-margin_top = 477.0
-margin_right = 433.0
-margin_bottom = 497.0
+visible = false
+margin_top = 405.0
+margin_right = 423.0
+margin_bottom = 425.0
 
 [node name="GrabMe" type="TextureButton" parent="SidePanelSpace/SidePanel/grab_container"]
-margin_left = 201.0
-margin_right = 232.0
+margin_left = 196.0
+margin_right = 227.0
 margin_bottom = 20.0
 focus_mode = 0
 mouse_default_cursor_shape = 6
@@ -225,15 +270,17 @@ texture_focused = ExtResource( 10 )
 stretch_mode = 2
 
 [node name="spacer4" type="Control" parent="SidePanelSpace/SidePanel"]
-margin_top = 501.0
-margin_right = 433.0
-margin_bottom = 515.7
+visible = false
+margin_top = 417.0
+margin_right = 423.0
+margin_bottom = 431.7
 rect_min_size = Vector2( 0, 14.7 )
 
 [node name="Update" type="Button" parent="SidePanelSpace/SidePanel"]
-margin_top = 519.0
-margin_right = 433.0
-margin_bottom = 557.8
+visible = false
+margin_top = 447.0
+margin_right = 423.0
+margin_bottom = 485.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
 theme = ExtResource( 7 )
@@ -241,14 +288,14 @@ text = "Update"
 align = 0
 
 [node name="Exit" type="Button" parent="SidePanelSpace/SidePanel"]
-margin_top = 561.0
-margin_right = 433.0
-margin_bottom = 599.8
+margin_top = 538.0
+margin_right = 573.0
+margin_bottom = 576.8
 rect_min_size = Vector2( 0, 38.8 )
 rect_pivot_offset = Vector2( 666.688, 134.079 )
 theme = ExtResource( 7 )
-text = "Exit"
-align = 0
+custom_fonts/font = SubResource( 3 )
+text = "EXIT"
 
 [node name="zn_button" type="Button" parent="."]
 anchor_left = 1.0
@@ -275,7 +322,7 @@ margin_bottom = 74.5173
 margin_right = 39.0
 margin_bottom = 51.0
 theme = ExtResource( 7 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "?"
 
 [node name="Control2" type="Control" parent="HBoxContainer"]
@@ -289,12 +336,12 @@ margin_left = 64.0
 margin_right = 106.0
 margin_bottom = 51.0
 theme = ExtResource( 7 )
-custom_fonts/font = SubResource( 3 )
+custom_fonts/font = SubResource( 4 )
 text = "("
 
 [node name="logo_animation" type="AnimationPlayer" parent="."]
 autoplay = "logo_idle"
-anims/logo_idle = SubResource( 4 )
+anims/logo_idle = SubResource( 5 )
 
 [node name="audio" type="Node" parent="."]
 editor/display_folded = true
@@ -311,47 +358,109 @@ bus = "knob"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
-material = SubResource( 5 )
+material = SubResource( 6 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="MapBrowser" type="Control" parent="."]
+[node name="LevelBrowser" type="Control" parent="."]
 editor/display_folded = true
 visible = false
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-margin_left = -618.5
-margin_top = -340.5
-margin_right = 618.5
-margin_bottom = 340.5
-rect_min_size = Vector2( 1237, 681 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MapBrowser"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_right = -18.0
+rect_min_size = Vector2( 1237, 681 )
+theme = ExtResource( 7 )
+script = ExtResource( 14 )
 
-[node name="TopPanel" type="ColorRect" parent="MapBrowser/VBoxContainer"]
-margin_right = 1219.0
+[node name="Blur" type="ColorRect" parent="LevelBrowser"]
+material = SubResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.447059 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelBrowser"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -309.0
+margin_top = -664.0
+margin_right = 310.0
+grow_horizontal = 0
+grow_vertical = 0
+rect_min_size = Vector2( 0, 664 )
+custom_constants/separation = 0
+
+[node name="TopPanel" type="ColorRect" parent="LevelBrowser/VBoxContainer"]
+margin_right = 619.0
 margin_bottom = 47.17
 rect_min_size = Vector2( 0, 47.17 )
-color = Color( 0.294118, 0.0941176, 0.588235, 1 )
+color = Color( 0.388235, 0.160784, 0.835294, 1 )
 
-[node name="TopPanel2" type="ColorRect" parent="MapBrowser/VBoxContainer/TopPanel"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="LevelBrowser/VBoxContainer/TopPanel"]
+editor/display_folded = true
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -123.0
+margin_top = -23.585
+margin_bottom = 23.585
+grow_horizontal = 0
+grow_vertical = 0
+custom_constants/separation = 15
+alignment = 2
+
+[node name="Refresh" type="TextureButton" parent="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer2"]
 visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 764.0
-rect_min_size = Vector2( 0, 47.17 )
-color = Color( 0.407843, 0.117647, 0.831373, 1 )
+margin_left = 5.0
+margin_right = 28.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 23, 0 )
+texture_normal = ExtResource( 15 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 16 )
+__meta__ = {
+"_editor_icon": ExtResource( 17 )
+}
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MapBrowser/VBoxContainer/TopPanel"]
-anchor_right = 1.0
-anchor_bottom = 1.0
+[node name="Size" type="TextureButton" parent="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer2"]
+margin_left = 43.0
+margin_right = 68.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 25, 0 )
+texture_normal = ExtResource( 18 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 16 )
+__meta__ = {
+"_editor_icon": ExtResource( 17 )
+}
 
-[node name="Label" type="Label" parent="MapBrowser/VBoxContainer/TopPanel/HBoxContainer"]
+[node name="Close" type="TextureButton" parent="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer2"]
+margin_left = 83.0
+margin_right = 108.0
+margin_bottom = 47.0
+rect_min_size = Vector2( 25, 0 )
+texture_normal = ExtResource( 19 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 16 )
+__meta__ = {
+"_editor_icon": ExtResource( 17 )
+}
+
+[node name="Control" type="Control" parent="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer2"]
+margin_left = 123.0
+margin_right = 123.0
+margin_bottom = 47.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelBrowser/VBoxContainer/TopPanel"]
+anchor_bottom = 1.0
+margin_right = 477.0
+
+[node name="Label" type="Label" parent="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer"]
+visible = false
 margin_top = 12.0
 margin_right = 142.28
 margin_bottom = 34.0
@@ -360,194 +469,78 @@ theme = ExtResource( 7 )
 text = "MAP BROWSER"
 align = 2
 
-[node name="Label4" type="Button" parent="MapBrowser/VBoxContainer/TopPanel/HBoxContainer"]
-margin_left = 146.0
-margin_right = 192.13
-margin_bottom = 47.0
-rect_min_size = Vector2( 46.13, 0 )
-theme = ExtResource( 7 )
-custom_fonts/font = SubResource( 6 )
-text = "R"
-
-[node name="Control" type="Control" parent="MapBrowser/VBoxContainer/TopPanel/HBoxContainer"]
-margin_left = 196.0
-margin_right = 202.89
+[node name="Control" type="Control" parent="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer"]
+visible = false
+margin_right = 6.89
 margin_bottom = 47.0
 rect_min_size = Vector2( 6.89, 0 )
 
-[node name="Local" type="Button" parent="MapBrowser/VBoxContainer/TopPanel/HBoxContainer"]
-margin_left = 206.0
-margin_right = 261.64
+[node name="Local" type="Button" parent="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer"]
+margin_right = 90.18
 margin_bottom = 47.0
-rect_min_size = Vector2( 55.64, 0 )
+rect_min_size = Vector2( 90.18, 0 )
 theme = ExtResource( 7 )
-toggle_mode = true
 text = "LOCAL"
-align = 2
 
-[node name="ZeroNetBrowse" type="Button" parent="MapBrowser/VBoxContainer/TopPanel/HBoxContainer"]
-margin_left = 265.0
-margin_right = 407.28
+[node name="ZeroNetBrowse" type="Button" parent="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer"]
+margin_left = 92.0
+margin_right = 234.28
 margin_bottom = 47.0
 rect_min_size = Vector2( 142.28, 0 )
 theme = ExtResource( 7 )
-toggle_mode = true
 text = "ZERONET"
+align = 0
 
-[node name="ZeroNet" type="TextureButton" parent="MapBrowser/VBoxContainer/TopPanel/HBoxContainer"]
-visible = false
-margin_left = 411.0
-margin_right = 443.0
-margin_bottom = 47.0
-rect_min_size = Vector2( 32, 32 )
-texture_normal = ExtResource( 14 )
-texture_hover = ExtResource( 4 )
-expand = true
-stretch_mode = 5
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MapBrowser/VBoxContainer"]
-margin_top = 51.0
-margin_right = 1219.0
-margin_bottom = 668.28
+[node name="BotPanel" type="HBoxContainer" parent="LevelBrowser/VBoxContainer"]
+margin_top = 47.0
+margin_right = 619.0
+margin_bottom = 664.28
+grow_horizontal = 0
+grow_vertical = 0
 rect_min_size = Vector2( 0, 617.28 )
+rect_pivot_offset = Vector2( 0, 617.28 )
+custom_constants/separation = 0
+alignment = 1
 
-[node name="MapBrowse" type="ColorRect" parent="MapBrowser/VBoxContainer/HBoxContainer"]
-margin_right = 748.31
+[node name="MapBrowse" type="ColorRect" parent="LevelBrowser/VBoxContainer/BotPanel"]
+margin_left = 1.0
+margin_right = 151.0
 margin_bottom = 617.0
-rect_min_size = Vector2( 748.31, 0 )
-color = Color( 0.294118, 0.0941176, 0.588235, 1 )
+rect_min_size = Vector2( 150, 0 )
+color = Color( 0, 0, 0, 0 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse"]
+[node name="MarginContainer" type="MarginContainer" parent="LevelBrowser/VBoxContainer/BotPanel/MapBrowse"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer"]
-margin_right = 748.0
-margin_bottom = 35.66
-rect_min_size = Vector2( 0, 35.66 )
+[node name="Maps" type="ItemList" parent="LevelBrowser/VBoxContainer/BotPanel/MapBrowse/MarginContainer"]
+margin_right = 150.0
+margin_bottom = 617.0
+items = [ "Item 1", null, false, "Item 2", null, false, "Item 3", null, false, "Item 4", null, false, "Item 5", null, false, "Item 6", null, false, "Item 7", null, false, "Item 8", null, false, "Item 9", null, false, "Item 10", null, false, "Item 11", null, false, "Item 12", null, false, "Item 13", null, false, "Item 14", null, false, "Item 15", null, false, "Item 16", null, false, "Item 17", null, false, "Item 18", null, false, "Item 19", null, false, "Item 20", null, false, "Item 21", null, false, "Item 22", null, false, "Item 23", null, false, "Item 24", null, false, "Item 25", null, false, "Item 26", null, false, "Item 27", null, false, "Item 28", null, false, "Item 29", null, false, "Item 30", null, false, "Item 31", null, false ]
 
-[node name="Control6" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_right = 17.03
-margin_bottom = 35.0
-rect_min_size = Vector2( 17.03, 0 )
-
-[node name="Label" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 21.0
-margin_top = 6.0
-margin_right = 51.0
-margin_bottom = 28.0
-theme = ExtResource( 7 )
-text = "NO,"
-
-[node name="Control" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 55.0
-margin_right = 72.03
-margin_bottom = 35.0
-rect_min_size = Vector2( 17.03, 0 )
-
-[node name="Label2" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 76.0
-margin_top = 6.0
-margin_right = 125.0
-margin_bottom = 28.0
-theme = ExtResource( 7 )
-text = "NAME"
-
-[node name="Control2" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 129.0
-margin_right = 298.12
-margin_bottom = 35.0
-rect_min_size = Vector2( 169.12, 0 )
-
-[node name="Label6" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 302.0
-margin_top = 6.0
-margin_right = 377.0
-margin_bottom = 28.0
-theme = ExtResource( 7 )
-text = "VERSION"
-
-[node name="Control3" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 381.0
-margin_right = 411.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 30, 0 )
-
-[node name="Label3" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 415.0
-margin_top = 6.0
-margin_right = 482.0
-margin_bottom = 28.0
-theme = ExtResource( 7 )
-text = "SIZE(kb)"
-
-[node name="Control4" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 486.0
-margin_right = 516.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 30, 0 )
-
-[node name="Label5" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 520.0
-margin_top = 6.0
-margin_right = 563.0
-margin_bottom = 28.0
-theme = ExtResource( 7 )
-text = "DATE"
-
-[node name="Control5" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 567.0
-margin_right = 597.0
-margin_bottom = 35.0
-rect_min_size = Vector2( 30, 0 )
-
-[node name="Label4" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/HBoxContainer"]
-margin_left = 601.0
-margin_top = 6.0
-margin_right = 670.0
-margin_bottom = 28.0
-theme = ExtResource( 7 )
-text = "AUTHOR"
-
-[node name="MapScroll" type="ScrollContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer"]
-margin_top = 39.0
-margin_right = 748.0
-margin_bottom = 615.91
-rect_min_size = Vector2( 0, 576.91 )
-theme = ExtResource( 7 )
-scroll_horizontal_enabled = false
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/MapScroll"]
-
-[node name="ColorRect" type="ColorRect" parent="MapBrowser/VBoxContainer/HBoxContainer/MapBrowse/VBoxContainer/MapScroll/VBoxContainer"]
-visible = false
-margin_right = 771.75
-margin_bottom = 28.7
-rect_min_size = Vector2( 771.75, 28.7 )
-color = Color( 0.407843, 0.117647, 0.831373, 1 )
-
-[node name="RightPanel" type="ColorRect" parent="MapBrowser/VBoxContainer/HBoxContainer"]
-margin_left = 752.0
-margin_right = 1219.25
+[node name="RightPanel" type="ColorRect" parent="LevelBrowser/VBoxContainer/BotPanel"]
+margin_left = 151.0
+margin_right = 618.25
 margin_bottom = 617.0
 rect_min_size = Vector2( 467.25, 0 )
 color = Color( 0.407843, 0.117647, 0.831373, 1 )
 
-[node name="MapDetails" type="VBoxContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel"]
+[node name="MapDetails" type="VBoxContainer" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel"]
+editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="ImageSpace" type="ColorRect" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails"]
+[node name="ImageSpace" type="ColorRect" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails"]
 margin_right = 467.0
 margin_bottom = 262.68
 rect_min_size = Vector2( 0, 262.68 )
 color = Color( 0, 0, 0, 0.141176 )
 
-[node name="MapPicture" type="TextureRect" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/ImageSpace"]
+[node name="MapPicture" type="TextureRect" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails/ImageSpace"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="Label" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/ImageSpace"]
+[node name="Label" type="Label" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails/ImageSpace"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -556,32 +549,34 @@ margin_left = -54.5
 margin_top = -11.0
 margin_right = 54.5
 margin_bottom = 11.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource( 7 )
-text = "MAP PICTURE"
+text = "NO IMAGE"
 align = 1
 
-[node name="Control2" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails"]
+[node name="Control2" type="Control" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails"]
 margin_top = 266.0
 margin_right = 467.0
 margin_bottom = 296.0
 rect_min_size = Vector2( 30, 30 )
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails"]
 margin_top = 300.0
 margin_right = 467.0
 margin_bottom = 426.0
 
-[node name="Control" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer2"]
+[node name="Control" type="Control" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails/HBoxContainer2"]
 margin_right = 30.0
 margin_bottom = 126.0
 rect_min_size = Vector2( 30, 0 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer2"]
-margin_left = 34.0
-margin_right = 418.0
+[node name="VBoxContainer" type="VBoxContainer" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails/HBoxContainer2"]
+margin_left = 32.0
+margin_right = 416.0
 margin_bottom = 126.0
 
-[node name="Name" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
+[node name="Name" type="Label" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
 margin_right = 384.04
 margin_bottom = 22.0
 rect_min_size = Vector2( 384.04, 0 )
@@ -589,7 +584,7 @@ theme = ExtResource( 7 )
 text = "NAME:"
 autowrap = true
 
-[node name="Name3" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
+[node name="Name3" type="Label" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
 margin_top = 26.0
 margin_right = 384.04
 margin_bottom = 48.0
@@ -598,7 +593,7 @@ theme = ExtResource( 7 )
 text = "VERSION:"
 autowrap = true
 
-[node name="Name4" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
+[node name="Name4" type="Label" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
 margin_top = 52.0
 margin_right = 384.04
 margin_bottom = 74.0
@@ -607,7 +602,7 @@ theme = ExtResource( 7 )
 text = "SIZE:"
 autowrap = true
 
-[node name="Name5" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
+[node name="Name5" type="Label" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
 margin_top = 78.0
 margin_right = 384.04
 margin_bottom = 100.0
@@ -616,7 +611,7 @@ theme = ExtResource( 7 )
 text = "CREATED:"
 autowrap = true
 
-[node name="Name6" type="Label" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
+[node name="Name6" type="Label" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails/HBoxContainer2/VBoxContainer"]
 margin_top = 104.0
 margin_right = 384.04
 margin_bottom = 126.0
@@ -625,63 +620,69 @@ theme = ExtResource( 7 )
 text = "AUTHOR:"
 autowrap = true
 
-[node name="Control3" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails"]
+[node name="Control3" type="Control" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/MapDetails"]
 margin_top = 430.0
 margin_right = 467.0
 margin_bottom = 570.92
 rect_min_size = Vector2( 30, 140.92 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails"]
-margin_top = 574.0
-margin_right = 467.0
-margin_bottom = 596.0
+[node name="HBoxContainer" type="HBoxContainer" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel"]
+editor/display_folded = true
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -233.625
+margin_top = -50.0
+margin_right = 233.625
+rect_min_size = Vector2( 0, 50 )
 alignment = 1
 
-[node name="Name7" type="Button" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer"]
-margin_left = 71.0
-margin_right = 111.0
-margin_bottom = 22.0
+[node name="Name7" type="Button" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/HBoxContainer"]
+margin_left = 77.0
+margin_right = 117.0
+margin_bottom = 50.0
 theme = ExtResource( 7 )
 text = "PLAY"
 
-[node name="Control" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer"]
-margin_left = 115.0
-margin_right = 125.0
-margin_bottom = 22.0
+[node name="Control" type="Control" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/HBoxContainer"]
+margin_left = 119.0
+margin_right = 129.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 10, 0 )
 
-[node name="Name8" type="Button" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer"]
-margin_left = 129.0
-margin_right = 231.0
-margin_bottom = 22.0
+[node name="Name8" type="Button" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/HBoxContainer"]
+margin_left = 131.0
+margin_right = 233.0
+margin_bottom = 50.0
 theme = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.231373 )
 disabled = true
 text = "DOWNLOAD"
 
-[node name="Control2" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer"]
+[node name="Control2" type="Control" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/HBoxContainer"]
 margin_left = 235.0
 margin_right = 245.0
-margin_bottom = 22.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 10, 0 )
 
-[node name="Name9" type="Button" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer"]
-margin_left = 249.0
-margin_right = 317.0
-margin_bottom = 22.0
+[node name="Name9" type="Button" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/HBoxContainer"]
+margin_left = 247.0
+margin_right = 315.0
+margin_bottom = 50.0
 theme = ExtResource( 7 )
 text = "UPLOAD"
 
-[node name="Control3" type="Control" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer"]
-margin_left = 321.0
-margin_right = 331.0
-margin_bottom = 22.0
+[node name="Control3" type="Control" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/HBoxContainer"]
+margin_left = 317.0
+margin_right = 327.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 10, 0 )
 
-[node name="Name10" type="Button" parent="MapBrowser/VBoxContainer/HBoxContainer/RightPanel/MapDetails/HBoxContainer"]
-margin_left = 335.0
-margin_right = 396.0
-margin_bottom = 22.0
+[node name="Name10" type="Button" parent="LevelBrowser/VBoxContainer/BotPanel/RightPanel/HBoxContainer"]
+margin_left = 329.0
+margin_right = 390.0
+margin_bottom = 50.0
 theme = ExtResource( 7 )
 custom_colors/font_color_disabled = Color( 1, 1, 1, 0.231373 )
 disabled = true
@@ -690,15 +691,17 @@ text = "DELETE"
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 bus = "Music"
 
-[node name="ZeroNet" parent="." instance=ExtResource( 15 )]
+[node name="ZeroNet" parent="." instance=ExtResource( 20 )]
 
 [node name="Options" type="Control" parent="."]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 480, 480 )
-script = ExtResource( 16 )
+script = ExtResource( 21 )
 
 [node name="BackDrop" type="ColorRect" parent="Options"]
 material = SubResource( 8 )
@@ -1175,7 +1178,6 @@ margin_bottom = 532.0
 rect_min_size = Vector2( 0, 60 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Options/OptionsColor/Window"]
-editor/display_folded = true
 margin_top = 536.0
 margin_right = 480.0
 margin_bottom = 558.0
@@ -1216,6 +1218,7 @@ color = Color( 1, 1, 1, 0.156863 )
 [node name="Tween" type="Tween" parent="Options"]
 
 [node name="SaveIcon" type="CenterContainer" parent="."]
+editor/display_folded = true
 modulate = Color( 1, 1, 1, 0 )
 anchor_left = 1.0
 anchor_right = 1.0
@@ -1223,6 +1226,7 @@ margin_left = -80.0
 margin_bottom = 80.0
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 40, 40 )
+mouse_filter = 2
 
 [node name="TextureRect2" type="TextureRect" parent="SaveIcon"]
 margin_left = 25.0
@@ -1231,28 +1235,375 @@ margin_right = 55.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 30, 30 )
 rect_pivot_offset = Vector2( 15, 15 )
-texture = ExtResource( 17 )
+mouse_filter = 2
+texture = ExtResource( 22 )
 expand = true
 stretch_mode = 6
 
 [node name="Tween" type="Tween" parent="."]
 
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
+[node name="ZeroNetMenu" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 400, 500 )
+theme = ExtResource( 7 )
+script = ExtResource( 23 )
+
+[node name="BackDrop2" type="ColorRect" parent="ZeroNetMenu"]
+material = SubResource( 8 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.447059 )
+
+[node name="Tween" type="Tween" parent="ZeroNetMenu"]
+
+[node name="anchor" type="Control" parent="ZeroNetMenu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -200.0
+margin_top = -250.0
+margin_right = 200.0
+margin_bottom = 250.0
+rect_min_size = Vector2( 400, 500 )
+
+[node name="Shadow" type="ColorRect" parent="ZeroNetMenu/anchor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 13.0
+margin_top = 13.0
+margin_right = 13.0
+margin_bottom = 13.0
+color = Color( 0, 0, 0, 0.447059 )
+
+[node name="Background" type="ColorRect" parent="ZeroNetMenu/anchor"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.388235, 0.160784, 0.835294, 1 )
+
+[node name="MarginContainer" type="MarginContainer" parent="ZeroNetMenu/anchor/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 50.0
+margin_right = -50.0
+
+[node name="List" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer"]
+margin_right = 300.0
+margin_bottom = 500.0
+
+[node name="Top" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List"]
+editor/display_folded = true
+margin_right = 300.0
+margin_bottom = 160.0
+
+[node name="Control" type="Control" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top"]
+margin_right = 300.0
+margin_bottom = 23.26
+rect_min_size = Vector2( 0, 23.26 )
+
+[node name="ZNEmblem" type="TextureRect" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top"]
+margin_top = 27.0
+margin_right = 300.0
+margin_bottom = 76.16
+rect_min_size = Vector2( 0, 49.16 )
+hint_tooltip = "ZeroNet"
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Control3" type="Control" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top"]
+margin_top = 80.0
+margin_right = 300.0
+margin_bottom = 92.53
+rect_min_size = Vector2( 0, 12.53 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top"]
+editor/display_folded = true
+margin_top = 96.0
+margin_right = 300.0
+margin_bottom = 118.0
+alignment = 1
+
+[node name="Name" type="Label" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top/HBoxContainer"]
+margin_left = 43.0
+margin_right = 143.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 100, 0 )
+text = "anonymous"
+align = 1
+
+[node name="Control" type="Control" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top/HBoxContainer"]
+margin_left = 145.0
+margin_right = 155.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 10, 0 )
+
+[node name="Status" type="Label" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top/HBoxContainer"]
+margin_left = 157.0
+margin_right = 257.0
+margin_bottom = 22.0
+rect_min_size = Vector2( 100, 0 )
+text = "offline"
+align = 1
+
+[node name="Control2" type="Control" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top"]
+margin_top = 122.0
+margin_right = 300.0
+margin_bottom = 134.53
+rect_min_size = Vector2( 0, 12.53 )
+
+[node name="Label2" type="Label" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top"]
+margin_top = 138.0
+margin_right = 300.0
+margin_bottom = 160.0
+align = 1
+
+[node name="LineEdit" type="LineEdit" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Top"]
+visible = false
+margin_top = 148.0
+margin_right = 300.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 250, 0 )
+placeholder_text = "username"
+placeholder_alpha = 0.451
+
+[node name="Menu" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List"]
+editor/display_folded = true
+visible = false
+margin_top = 164.0
+margin_right = 300.0
+margin_bottom = 439.0
+rect_min_size = Vector2( 0, 275 )
+alignment = 1
+
+[node name="Profile" type="Button" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Menu"]
+margin_top = 58.0
+margin_right = 300.0
+margin_bottom = 108.0
+rect_min_size = Vector2( 100, 50 )
+theme = ExtResource( 7 )
+custom_styles/hover = SubResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.388235, 0.160784, 0.835294, 1 )
+text = "PROFILE"
+
+[node name="Login" type="Button" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Menu"]
+margin_top = 112.0
+margin_right = 300.0
+margin_bottom = 162.0
+rect_min_size = Vector2( 100, 50 )
+theme = ExtResource( 7 )
+custom_styles/hover = SubResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.388235, 0.160784, 0.835294, 1 )
+text = "LOG IN"
+
+[node name="Register" type="Button" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Menu"]
+margin_top = 166.0
+margin_right = 300.0
+margin_bottom = 216.0
+rect_min_size = Vector2( 100, 50 )
+theme = ExtResource( 7 )
+custom_styles/hover = SubResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.388235, 0.160784, 0.835294, 1 )
+text = "REGISTER"
+
+[node name="Register" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List"]
+editor/display_folded = true
+visible = false
+margin_top = 164.0
+margin_right = 300.0
+margin_bottom = 439.0
+rect_min_size = Vector2( 0, 275 )
+
+[node name="Username" type="LineEdit" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Register"]
+margin_top = 60.0
+margin_right = 300.0
+margin_bottom = 110.0
+rect_min_size = Vector2( 100, 50 )
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+clear_button_enabled = true
+placeholder_text = "NEW USERNAME"
+caret_blink = true
+
+[node name="Label" type="Label" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Register"]
+margin_top = 114.0
+margin_right = 300.0
+margin_bottom = 214.0
+rect_min_size = Vector2( 0, 100 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.717647, 0.717647, 0.717647, 1 )
+text = "*Once registered you will be presented will be presented with you master seed which you can use to log in at a different computer."
+valign = 1
+autowrap = true
+
+[node name="Login" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List"]
+visible = false
+margin_top = 443.0
+margin_right = 300.0
+margin_bottom = 718.0
+rect_min_size = Vector2( 0, 275 )
+
+[node name="Username" type="LineEdit" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Login"]
+margin_top = 35.0
+margin_right = 300.0
+margin_bottom = 85.0
+rect_min_size = Vector2( 100, 50 )
+theme = ExtResource( 7 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+align = 1
+clear_button_enabled = true
+placeholder_text = "MASTERSEED"
+caret_blink = true
+
+[node name="Label" type="Label" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Login"]
+margin_top = 89.0
+margin_right = 300.0
+margin_bottom = 239.0
+rect_min_size = Vector2( 0, 150 )
+custom_fonts/font = SubResource( 10 )
+custom_colors/font_color = Color( 0.717647, 0.717647, 0.717647, 1 )
+text = "*Your master seed is your generated password to your ZAME account. It is a unique 64 character key that looks like \"b4457037cd8281...\". You can find this if already logged in by clicking 'Profile' in the ZeroNet menu. If you don't yet have an account, click 'Register' to get one!"
+valign = 1
+autowrap = true
+
+[node name="Choose" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List"]
+editor/display_folded = true
+visible = false
+margin_top = 164.0
+margin_right = 300.0
+margin_bottom = 439.0
+rect_min_size = Vector2( 0, 275 )
+
+[node name="Usernames" type="ItemList" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Choose"]
+margin_top = 37.0
+margin_right = 300.0
+margin_bottom = 237.0
+rect_min_size = Vector2( 0, 200 )
+items = [ "Item 0", null, false, "Item 1", null, false, "Item 2", null, false ]
+
+[node name="Profile" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List"]
+margin_top = 164.0
+margin_right = 300.0
+margin_bottom = 439.0
+rect_min_size = Vector2( 0, 275 )
+
+[node name="Label2" type="Label" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Profile"]
+margin_right = 300.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.717647, 0.717647, 0.717647, 1 )
+text = "USERNAME"
+valign = 1
+autowrap = true
+
+[node name="username" type="Label" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Profile"]
+margin_top = 21.0
+margin_right = 300.0
+margin_bottom = 54.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "NAME"
+valign = 1
+autowrap = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Profile"]
+margin_top = 58.0
+margin_right = 300.0
+margin_bottom = 75.0
+
+[node name="MasterseedLabel" type="Label" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Profile/HBoxContainer"]
+margin_right = 86.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.717647, 0.717647, 0.717647, 1 )
+text = "MASTER SEED"
+valign = 1
+
+[node name="Control" type="Control" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Profile/HBoxContainer"]
+margin_left = 88.0
+margin_right = 108.0
+margin_bottom = 17.0
+rect_min_size = Vector2( 20, 0 )
+
+[node name="Copy" type="Button" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Profile/HBoxContainer"]
+margin_left = 110.0
+margin_right = 144.0
+margin_bottom = 17.0
+custom_fonts/font = SubResource( 11 )
+custom_colors/font_color = Color( 0.717647, 0.717647, 0.717647, 1 )
+text = "COPY"
+
+[node name="masterseed" type="Label" parent="ZeroNetMenu/anchor/Background/MarginContainer/List/Profile"]
+margin_top = 79.0
+margin_right = 300.0
+margin_bottom = 112.0
+custom_fonts/font = SubResource( 12 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+text = "MASTERSEED"
+valign = 1
+autowrap = true
+
+[node name="Bot" type="VBoxContainer" parent="ZeroNetMenu/anchor/Background"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+alignment = 2
+
+[node name="Button" type="Button" parent="ZeroNetMenu/anchor/Background/Bot"]
+margin_top = 396.0
+margin_right = 400.0
+margin_bottom = 446.0
+rect_min_size = Vector2( 0, 50 )
+theme = ExtResource( 7 )
+custom_styles/hover = SubResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.388235, 0.160784, 0.835294, 1 )
+text = "REGISTER"
+
+[node name="Close" type="Button" parent="ZeroNetMenu/anchor/Background/Bot"]
+margin_top = 450.0
+margin_right = 400.0
+margin_bottom = 500.0
+rect_min_size = Vector2( 0, 50 )
+theme = ExtResource( 7 )
+custom_styles/hover = SubResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 1 )
+custom_colors/font_color_hover = Color( 0.388235, 0.160784, 0.835294, 1 )
+text = "CLOSE"
+
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Browser" to="LevelBrowser" method="_on_Browser_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Browser" to="." method="play_click"]
 [connection signal="double_clicked_map" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_double_clicked_map"]
 [connection signal="item_activated" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_activated"]
-[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_selected"]
+[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
 [connection signal="timeout" from="SidePanelSpace/SidePanel/MapList/Timer" to="SidePanelSpace/SidePanel/MapList" method="_on_Timer_timeout"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="zn_button" to="." method="play_click"]
+[connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
-[connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
 [connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
+[connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
+[connection signal="gui_input" from="LevelBrowser/Blur" to="LevelBrowser" method="_on_Blur_gui_input"]
+[connection signal="button_down" from="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer2/Size" to="LevelBrowser" method="_on_Size_button_down"]
+[connection signal="pressed" from="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer2/Close" to="LevelBrowser" method="_on_Close_pressed"]
+[connection signal="pressed" from="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer/Local" to="LevelBrowser" method="_on_Local_pressed"]
+[connection signal="pressed" from="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer/ZeroNetBrowse" to="LevelBrowser" method="_on_ZeroNetBrowse_pressed"]
+[connection signal="item_activated" from="LevelBrowser/VBoxContainer/BotPanel/MapBrowse/MarginContainer/Maps" to="LevelBrowser" method="_on_Maps_item_activated"]
+[connection signal="item_selected" from="LevelBrowser/VBoxContainer/BotPanel/MapBrowse/MarginContainer/Maps" to="LevelBrowser" method="_on_Maps_item_selected"]
+[connection signal="clicked" from="ZeroNet" to="ZeroNetMenu" method="_on_ZeroNet_clicked"]
 [connection signal="saved" from="Options" to="." method="_on_Options_saved"]
 [connection signal="gui_input" from="Options/BackDrop" to="Options" method="_on_ColorRect_gui_input"]
 [connection signal="toggled" from="Options/OptionsColor/Window/OptionsFrame/Buttons/CenterContainer/Fullscreen" to="Options" method="_on_Fullscreen_toggled"]
@@ -1269,3 +1620,10 @@ stretch_mode = 6
 [connection signal="value_changed" from="Options/OptionsColor/Window/MusicOptions/Buttons/HBoxContainer2/Anisotropic_level" to="Options" method="_on_Anisotropic_level_value_changed"]
 [connection signal="pressed" from="Options/OptionsColor/Window/HBoxContainer/Defaults" to="Options" method="_on_Defaults_pressed"]
 [connection signal="pressed" from="Options/OptionsColor/Window/HBoxContainer/Close" to="Options" method="_on_Close_pressed"]
+[connection signal="gui_input" from="ZeroNetMenu/BackDrop2" to="ZeroNetMenu" method="_on_BackDrop2_gui_input"]
+[connection signal="pressed" from="ZeroNetMenu/anchor/Background/MarginContainer/List/Menu/Profile" to="ZeroNetMenu" method="_on_Profile_pressed"]
+[connection signal="pressed" from="ZeroNetMenu/anchor/Background/MarginContainer/List/Menu/Login" to="ZeroNetMenu" method="_on_Login_pressed"]
+[connection signal="pressed" from="ZeroNetMenu/anchor/Background/MarginContainer/List/Menu/Register" to="ZeroNetMenu" method="_on_Register_pressed"]
+[connection signal="pressed" from="ZeroNetMenu/anchor/Background/MarginContainer/List/Profile/HBoxContainer/Copy" to="ZeroNetMenu" method="_on_Copy_pressed"]
+[connection signal="pressed" from="ZeroNetMenu/anchor/Background/Bot/Button" to="ZeroNetMenu" method="_on_Button_pressed"]
+[connection signal="pressed" from="ZeroNetMenu/anchor/Background/Bot/Close" to="ZeroNetMenu" method="_on_Close_pressed"]

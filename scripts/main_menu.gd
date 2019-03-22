@@ -23,6 +23,21 @@ func _ready():
 		
 	$SidePanelSpace/SidePanel/MapList.update_maps()
 
+	check_level_folder()
+
+func check_level_folder() -> void:
+	var dir = Directory.new()
+	var err = dir.open(globals.level_path)
+	if err:
+		dir.make_dir(globals.level_path)
+		print("created the directory for levels")
+	else:
+		print("Level directory found")
+
+#func _process(delta):
+#	if Input.is_action_just_pressed("cheat_01"):
+		
+
 func _input(event):
 	if event is InputEventMouseButton:
 		# show mouse and stop listening to input when LMB is unclicked

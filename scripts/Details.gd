@@ -8,7 +8,7 @@ var logic = 0
 var direction : Vector2 = Vector2.UP
 var rot_speed : float
 var rotation : int
-var rate_of_fire : float
+var rate_of_fire : float = 3
 
 func _ready():
 	self.visible = false
