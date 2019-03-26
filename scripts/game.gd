@@ -301,7 +301,8 @@ func _on_Save_pressed():
 	$character.disable_controls()	
 	
 	
-
+func grid_visible(really : bool = true) -> void:
+	$big_grid.visible = really
 
 func _on_Yes_Publish_To_ZeroNet_pressed():
 	var version : String = ProjectSettings.get("application/config/version")

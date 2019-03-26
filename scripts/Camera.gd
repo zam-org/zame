@@ -46,6 +46,8 @@ func _process(delta):
 		if smooth_pos.y + (OS.get_real_window_size().y / 2) < BOTTOM_LIMIT:
 			position.y = smooth_pos.y
 		
+	$DigitalFog.material.set_shader_param("uv_offset", position / 2500)	
+		
 func _input(event):
 	if event is InputEventMouseMotion:
 		mouse_speed = event.relative
@@ -87,3 +89,18 @@ func _on_MagnifyAmount_value_changed(value):
 
 func _on_character_vel(vel):
 	character_velocity = vel
+
+func _on_Style_selected(style):
+	match style:
+		0:
+			$DigitalFog.visible = false
+			$Darkness.visible = false
+			get_parent().grid_visible(true)
+		1:
+			$DigitalFog.visible = true
+			$Darkness.visible = false
+			get_parent().grid_visible(false)
+		2:
+			$DigitalFog.visible = false
+			$Darkness.visible = true
+			get_parent().grid_visible(true)

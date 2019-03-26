@@ -60,19 +60,6 @@ func _unhandled_input(event):
 
 		elif event.button_index == 1 and !event.pressed:
 			building = false
-
-			
-		#switch tools
-#		if event.button_index == 4 and event.pressed and !play:
-#			if selected_tool > 0:
-#				selected_tool -= 1
-#				reload(true)
-#				check_build_type()
-#		elif event.button_index == 5 and event.pressed and !play:
-#			if selected_tool < toolkit.size() - 1 :
-#				selected_tool += 1
-#				reload(true)
-#				check_build_type()
 #
 		if event.button_index == 3 and event.pressed and !play:
 			if selected_tool < toolkit.size() - 1 :

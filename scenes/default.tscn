@@ -1,74 +1,162 @@
-[gd_scene load_steps=80 format=2]
+[gd_scene load_steps=92 format=2]
 
 [ext_resource path="res://scripts/game.gd" type="Script" id=1]
 [ext_resource path="res://audio/effects/knob_turn.wav" type="AudioStream" id=2]
 [ext_resource path="res://audio/effects/Hurt.wav" type="AudioStream" id=3]
 [ext_resource path="res://scripts/Camera.gd" type="Script" id=4]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=5]
-[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=6]
-[ext_resource path="res://assets/grid/big_grid.tscn" type="PackedScene" id=7]
-[ext_resource path="res://ui/crosshair.png" type="Texture" id=8]
-[ext_resource path="res://scripts/builder.gd" type="Script" id=9]
-[ext_resource path="res://audio/effects/bip.wav" type="AudioStream" id=10]
-[ext_resource path="res://audio/effects/cancel.wav" type="AudioStream" id=11]
-[ext_resource path="res://ui/editor/spawn.png" type="Texture" id=12]
-[ext_resource path="res://assets/platforms/two/Two.gd" type="Script" id=13]
-[ext_resource path="res://assets/finish/finish.gd" type="Script" id=14]
-[ext_resource path="res://audio/effects/explosion.wav" type="AudioStream" id=15]
-[ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=16]
-[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=17]
-[ext_resource path="res://scripts/bloom.gd" type="Script" id=18]
-[ext_resource path="res://scripts/UI.gd" type="Script" id=19]
-[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=20]
-[ext_resource path="res://ui/icons/square.svg" type="Texture" id=21]
-[ext_resource path="res://addons/UltimateButton/UltimateButton.gd" type="Script" id=22]
-[ext_resource path="res://addons/UltimateButton/Icon.png" type="Texture" id=23]
-[ext_resource path="res://ui/buttons/build_tools/moving_platform.png" type="Texture" id=24]
-[ext_resource path="res://ui/buttons/build_tools/Enemy.png" type="Texture" id=25]
-[ext_resource path="res://ui/icons/Coin.png" type="Texture" id=26]
-[ext_resource path="res://ui/buttons/build_tools/jump_pad.png" type="Texture" id=27]
-[ext_resource path="res://ui/buttons/build_tools/mine.png" type="Texture" id=28]
-[ext_resource path="res://ui/buttons/build_tools/Turret.png" type="Texture" id=29]
-[ext_resource path="res://ui/buttons/build_tools/SpawnIcon.png" type="Texture" id=30]
-[ext_resource path="res://ui/buttons/build_tools/DeathLine.png" type="Texture" id=31]
-[ext_resource path="res://ui/icons/flag.svg" type="Texture" id=32]
-[ext_resource path="res://ui/icons/play.svg" type="Texture" id=33]
-[ext_resource path="res://ui/icons/disc.svg" type="Texture" id=34]
-[ext_resource path="res://ui/icons/save.svg" type="Texture" id=35]
-[ext_resource path="res://ui/icons/upload-cloud.svg" type="Texture" id=36]
-[ext_resource path="res://ui/icons/sliders.svg" type="Texture" id=37]
-[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=38]
-[ext_resource path="res://ui/icons/power.svg" type="Texture" id=39]
-[ext_resource path="res://ui/icons/grid.svg" type="Texture" id=40]
-[ext_resource path="res://scripts/Details.gd" type="Script" id=41]
-[ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=42]
-[ext_resource path="res://scripts/PublishLevelPopUp.gd" type="Script" id=43]
-[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=44]
-[ext_resource path="res://scripts/Messages.gd" type="Script" id=45]
-[ext_resource path="res://scripts/Achievements.gd" type="Script" id=46]
-[ext_resource path="res://ui/icons/heart.svg" type="Texture" id=47]
-[ext_resource path="res://scripts/EditorSettings.gd" type="Script" id=48]
-[ext_resource path="res://ui/icons/rotate-left.svg" type="Texture" id=49]
-[ext_resource path="res://assets/MusicPlayer/MusicPlayer.gd" type="Script" id=50]
-[ext_resource path="res://assets/SimpleTextureButton/SimpleTextureButton.tscn" type="PackedScene" id=51]
-[ext_resource path="res://ui/icons/music.svg" type="Texture" id=52]
-[ext_resource path="res://ui/icons/rewind.svg" type="Texture" id=53]
-[ext_resource path="res://ui/icons/play-circle.svg" type="Texture" id=54]
-[ext_resource path="res://ui/icons/fast-forward.svg" type="Texture" id=55]
-[ext_resource path="res://audio/music/Bright and Bytesized - Isabella Lau.ogg" type="AudioStream" id=56]
-[ext_resource path="res://audio/music/Cosmic Sanctum - Isabella Lau.ogg" type="AudioStream" id=57]
-[ext_resource path="res://audio/music/Time_to_Byte_Back_-_Isabella_Lau.ogg" type="AudioStream" id=58]
+[ext_resource path="res://assets/textures/cross.png" type="Texture" id=6]
+[ext_resource path="res://assets/Atmosphere/Noise.tres" type="Texture" id=7]
+[ext_resource path="res://assets/Atmosphere/Noise2.tres" type="Texture" id=8]
+[ext_resource path="res://ui/ui_theme.tres" type="Theme" id=9]
+[ext_resource path="res://assets/grid/big_grid.tscn" type="PackedScene" id=10]
+[ext_resource path="res://ui/crosshair.png" type="Texture" id=11]
+[ext_resource path="res://scripts/builder.gd" type="Script" id=12]
+[ext_resource path="res://audio/effects/bip.wav" type="AudioStream" id=13]
+[ext_resource path="res://audio/effects/cancel.wav" type="AudioStream" id=14]
+[ext_resource path="res://ui/editor/spawn.png" type="Texture" id=15]
+[ext_resource path="res://assets/platforms/two/Two.gd" type="Script" id=16]
+[ext_resource path="res://assets/finish/finish.gd" type="Script" id=17]
+[ext_resource path="res://audio/effects/explosion.wav" type="AudioStream" id=18]
+[ext_resource path="res://assets/character/character.tscn" type="PackedScene" id=19]
+[ext_resource path="res://assets/shaders/SS_GLOW.shader" type="Shader" id=20]
+[ext_resource path="res://scripts/bloom.gd" type="Script" id=21]
+[ext_resource path="res://scripts/UI.gd" type="Script" id=22]
+[ext_resource path="res://ui/fonts/Cantarell-Regular.ttf" type="DynamicFontData" id=23]
+[ext_resource path="res://ui/icons/square.svg" type="Texture" id=24]
+[ext_resource path="res://addons/UltimateButton/UltimateButton.gd" type="Script" id=25]
+[ext_resource path="res://addons/UltimateButton/Icon.png" type="Texture" id=26]
+[ext_resource path="res://ui/buttons/build_tools/moving_platform.png" type="Texture" id=27]
+[ext_resource path="res://ui/buttons/build_tools/Enemy.png" type="Texture" id=28]
+[ext_resource path="res://ui/icons/Coin.png" type="Texture" id=29]
+[ext_resource path="res://ui/buttons/build_tools/jump_pad.png" type="Texture" id=30]
+[ext_resource path="res://ui/buttons/build_tools/mine.png" type="Texture" id=31]
+[ext_resource path="res://ui/buttons/build_tools/Turret.png" type="Texture" id=32]
+[ext_resource path="res://ui/buttons/build_tools/SpawnIcon.png" type="Texture" id=33]
+[ext_resource path="res://ui/buttons/build_tools/DeathLine.png" type="Texture" id=34]
+[ext_resource path="res://ui/icons/flag.svg" type="Texture" id=35]
+[ext_resource path="res://ui/icons/play.svg" type="Texture" id=36]
+[ext_resource path="res://ui/icons/loader.svg" type="Texture" id=37]
+[ext_resource path="res://ui/icons/disc.svg" type="Texture" id=38]
+[ext_resource path="res://ui/icons/save.svg" type="Texture" id=39]
+[ext_resource path="res://ui/icons/upload-cloud.svg" type="Texture" id=40]
+[ext_resource path="res://ui/icons/sliders.svg" type="Texture" id=41]
+[ext_resource path="res://ui/fonts/modernpics.otf" type="DynamicFontData" id=42]
+[ext_resource path="res://ui/icons/power.svg" type="Texture" id=43]
+[ext_resource path="res://ui/icons/grid.svg" type="Texture" id=44]
+[ext_resource path="res://scripts/Details.gd" type="Script" id=45]
+[ext_resource path="res://scripts/ConfirmPopUp.gd" type="Script" id=46]
+[ext_resource path="res://scripts/PublishLevelPopUp.gd" type="Script" id=47]
+[ext_resource path="res://assets/Atmosphere/Style.gd" type="Script" id=48]
+[ext_resource path="res://assets/Atmosphere/basic.png" type="Texture" id=49]
+[ext_resource path="res://assets/Atmosphere/digital_fog.png" type="Texture" id=50]
+[ext_resource path="res://assets/Atmosphere/darkness.png" type="Texture" id=51]
+[ext_resource path="res://scenes/ZeroNetCorner.tscn" type="PackedScene" id=52]
+[ext_resource path="res://scripts/Messages.gd" type="Script" id=53]
+[ext_resource path="res://scripts/Achievements.gd" type="Script" id=54]
+[ext_resource path="res://ui/icons/heart.svg" type="Texture" id=55]
+[ext_resource path="res://scripts/EditorSettings.gd" type="Script" id=56]
+[ext_resource path="res://ui/icons/rotate-left.svg" type="Texture" id=57]
+[ext_resource path="res://assets/MusicPlayer/MusicPlayer.gd" type="Script" id=58]
+[ext_resource path="res://assets/SimpleTextureButton/SimpleTextureButton.tscn" type="PackedScene" id=59]
+[ext_resource path="res://ui/icons/music.svg" type="Texture" id=60]
+[ext_resource path="res://ui/icons/rewind.svg" type="Texture" id=61]
+[ext_resource path="res://ui/icons/play-circle.svg" type="Texture" id=62]
+[ext_resource path="res://ui/icons/fast-forward.svg" type="Texture" id=63]
+[ext_resource path="res://audio/music/Bright and Bytesized - Isabella Lau.ogg" type="AudioStream" id=64]
+[ext_resource path="res://audio/music/Cosmic Sanctum - Isabella Lau.ogg" type="AudioStream" id=65]
+[ext_resource path="res://audio/music/Time to Byte Back - Isabella Lau.ogg" type="AudioStream" id=66]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Shader" id=1]
+code = "shader_type canvas_item;
 
-[sub_resource type="Gradient" id=2]
+uniform sampler2D noise;
+uniform sampler2D noise2;
+uniform sampler2D crosses;
+uniform vec4 overlay : hint_color;
+uniform float mix_amount = 0.5;
+uniform vec2 uv_multiplier;
+uniform vec2 uv_offset;
+uniform float time_multiplier = 0.1;
+uniform float cross_scale : hint_range(0.0,175.0) = 0.5;
+uniform vec2 cross_slide;
+//uniform TIME time;
+
+void fragment(){
+	vec2 new_uv = (UV * uv_multiplier) + uv_offset;
+	vec4 noise_tex = texture(noise, vec2(new_uv.x + TIME * time_multiplier, new_uv.y + sin(TIME) * (time_multiplier * 0.5)));
+	vec4 noise_tex2 = texture(noise2, vec2((new_uv.x * 0.6) + (uv_offset.x * 0.4 ) + (TIME * time_multiplier), (new_uv.y * 0.3) + (uv_offset.y * 0.2) + (cos(TIME) * (time_multiplier * 0.5))));
+	vec4 crossed = texture(crosses, vec2((new_uv.x * cross_scale) + (uv_offset.x * 0.2 ) + cross_slide.x, (new_uv.y * cross_scale) + (uv_offset.y * 0.2) + cross_slide.y));
+	
+//	noise_tex = mix(noise_tex, overlay, 0.5);
+//	noise_tex2 = mix(noise_tex2, overlay, 0.5);
+	
+	vec4 final = mix(noise_tex + noise_tex2, overlay, mix_amount);
+	
+	COLOR = final;
+//	float line_t = -texture(grid, vec2(new_uv.x * 1.5, new_uv.y * 1.5)).r;
+	COLOR.a = (noise_tex.r) * 0.7 + (noise_tex2.r * 0.5) * (crossed.a * noise_tex.r);
+//	COLOR.a = mix(noise_tex2.r * 2.0),(crossed.r * 0.2),0.5);
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = SubResource( 1 )
+shader_param/overlay = Color( 0.835294, 0.717647, 0.94902, 1 )
+shader_param/mix_amount = 0.94
+shader_param/uv_multiplier = Vector2( 1, 1 )
+shader_param/uv_offset = Vector2( 0, 0 )
+shader_param/time_multiplier = 0.05
+shader_param/cross_scale = 154.848
+shader_param/cross_slide = Vector2( -0.68, 0.02 )
+shader_param/noise = ExtResource( 7 )
+shader_param/noise2 = ExtResource( 8 )
+shader_param/crosses = ExtResource( 6 )
+
+[sub_resource type="Shader" id=28]
+code = "shader_type canvas_item;
+
+uniform vec2 resolution;
+uniform vec2 player_pos;
+uniform vec4 fog_col : hint_color;
+uniform sampler2D grid : hint_black;
+uniform vec2 uv_offset;
+uniform vec2 scale;
+
+void fragment(){
+//	vec2 new_uv = vec2((SCREEN_UV.x * scale.x) + uv_offset.x, (SCREEN_UV.y * scale.y) + uv_offset.y);
+	vec2 st = step(vec2(0.1), SCREEN_UV);
+	float st_edit = st.x * st.y;
+	vec2 st2 = step(vec2(0.1), 1.0 - SCREEN_UV);
+	st_edit *= st2.x * st2.y; 
+	
+	float pct = 0.0;
+	
+	pct = distance(SCREEN_UV,player_pos);
+
+	vec3 color = vec3(fog_col.rgb);
+	COLOR = vec4(color,pct * 2.0);
+}"
+
+[sub_resource type="ShaderMaterial" id=29]
+shader = SubResource( 28 )
+shader_param/resolution = Vector2( 1, 1 )
+shader_param/player_pos = Vector2( 0.5, 0.5 )
+shader_param/fog_col = Color( 0, 0, 0, 1 )
+shader_param/uv_offset = Vector2( 0, 2.47 )
+shader_param/scale = Vector2( 30, 12.03 )
+shader_param/grid = ExtResource( 6 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+[sub_resource type="Gradient" id=8]
 offsets = PoolRealArray( 0, 0.168, 0.656 )
 colors = PoolColorArray( 1, 1, 1, 0.465116, 1, 1, 1, 0.193529, 1, 1, 1, 0 )
 
-[sub_resource type="GradientTexture" id=3]
-gradient = SubResource( 2 )
+[sub_resource type="GradientTexture" id=9]
+gradient = SubResource( 8 )
 
-[sub_resource type="ParticlesMaterial" id=4]
+[sub_resource type="ParticlesMaterial" id=10]
 emission_shape = 2
 emission_box_extents = Vector3( 5, 10, 1 )
 flag_disable_z = true
@@ -83,14 +171,14 @@ radial_accel = 100.0
 tangential_accel = 26.03
 scale = 12.0
 scale_random = 0.74
-color_ramp = SubResource( 3 )
+color_ramp = SubResource( 9 )
 
-[sub_resource type="ShaderMaterial" id=5]
-shader = ExtResource( 17 )
+[sub_resource type="ShaderMaterial" id=11]
+shader = ExtResource( 20 )
 shader_param/hdr_threshold = 1.5
 shader_param/bloom = 5.06
 
-[sub_resource type="Shader" id=6]
+[sub_resource type="Shader" id=12]
 code = "shader_type canvas_item;
 
 uniform float amount : hint_range(0,5);
@@ -106,71 +194,26 @@ void fragment(){
 	COLOR = blur;
 }"
 
-[sub_resource type="ShaderMaterial" id=7]
-shader = SubResource( 6 )
+[sub_resource type="ShaderMaterial" id=13]
+shader = SubResource( 12 )
 shader_param/amount = 2.267
 shader_param/transparent = 1.0
 shader_param/mix_amount = 0.31
 shader_param/tint = Color( 0.254902, 0.0823529, 0.290196, 0.894118 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=14]
 size = 12
 use_filter = true
-font_data = ExtResource( 20 )
-
-[sub_resource type="DynamicFont" id=9]
-size = 36
-font_data = ExtResource( 38 )
-
-[sub_resource type="DynamicFont" id=10]
-size = 24
-use_filter = true
-font_data = ExtResource( 38 )
-
-[sub_resource type="Shader" id=11]
-code = "shader_type canvas_item;
-
-uniform float amount : hint_range(0,5);
-uniform float transparent : hint_range(0,1);
-uniform float mix_amount : hint_range(0,1);
-uniform vec4 tint : hint_color;
-
-void fragment(){
-	vec4 blur = textureLod(SCREEN_TEXTURE, SCREEN_UV, amount);
-	blur.rgb = mix(blur.rgb, tint.rgb, mix_amount);
-	blur.a = transparent;
-//	COLOR = mix(tint, blur, mix_amount);
-	COLOR = blur;
-}"
-
-[sub_resource type="ShaderMaterial" id=12]
-shader = SubResource( 11 )
-shader_param/amount = 2.326
-shader_param/transparent = 1.0
-shader_param/mix_amount = 0.419
-shader_param/tint = Color( 0.176471, 0.0901961, 0.152941, 1 )
-
-[sub_resource type="ShaderMaterial" id=13]
-shader = SubResource( 11 )
-shader_param/amount = 3.236
-shader_param/transparent = 1.0
-shader_param/mix_amount = 0.667
-shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
-
-[sub_resource type="DynamicFont" id=14]
-size = 32
-use_filter = true
-font_data = ExtResource( 20 )
+font_data = ExtResource( 23 )
 
 [sub_resource type="DynamicFont" id=15]
-size = 18
-use_filter = true
-font_data = ExtResource( 20 )
+size = 36
+font_data = ExtResource( 42 )
 
 [sub_resource type="DynamicFont" id=16]
-size = 12
+size = 24
 use_filter = true
-font_data = ExtResource( 20 )
+font_data = ExtResource( 42 )
 
 [sub_resource type="Shader" id=17]
 code = "shader_type canvas_item;
@@ -190,25 +233,70 @@ void fragment(){
 
 [sub_resource type="ShaderMaterial" id=18]
 shader = SubResource( 17 )
+shader_param/amount = 2.326
+shader_param/transparent = 1.0
+shader_param/mix_amount = 0.419
+shader_param/tint = Color( 0.176471, 0.0901961, 0.152941, 1 )
+
+[sub_resource type="ShaderMaterial" id=19]
+shader = SubResource( 17 )
+shader_param/amount = 3.236
+shader_param/transparent = 1.0
+shader_param/mix_amount = 0.667
+shader_param/tint = Color( 0.180392, 0, 0.403922, 1 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 32
+use_filter = true
+font_data = ExtResource( 23 )
+
+[sub_resource type="DynamicFont" id=21]
+size = 18
+use_filter = true
+font_data = ExtResource( 23 )
+
+[sub_resource type="DynamicFont" id=22]
+size = 12
+use_filter = true
+font_data = ExtResource( 23 )
+
+[sub_resource type="Shader" id=23]
+code = "shader_type canvas_item;
+
+uniform float amount : hint_range(0,5);
+uniform float transparent : hint_range(0,1);
+uniform float mix_amount : hint_range(0,1);
+uniform vec4 tint : hint_color;
+
+void fragment(){
+	vec4 blur = textureLod(SCREEN_TEXTURE, SCREEN_UV, amount);
+	blur.rgb = mix(blur.rgb, tint.rgb, mix_amount);
+	blur.a = transparent;
+//	COLOR = mix(tint, blur, mix_amount);
+	COLOR = blur;
+}"
+
+[sub_resource type="ShaderMaterial" id=24]
+shader = SubResource( 23 )
 shader_param/amount = 2.81
 shader_param/transparent = 1.0
 shader_param/mix_amount = 0.604
 shader_param/tint = Color( 0.152941, 0, 0.207843, 0.894118 )
 
-[sub_resource type="DynamicFont" id=19]
+[sub_resource type="DynamicFont" id=25]
 size = 18
 use_filter = true
-font_data = ExtResource( 20 )
+font_data = ExtResource( 23 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=26]
 size = 24
 use_filter = true
-font_data = ExtResource( 38 )
+font_data = ExtResource( 42 )
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=27]
 size = 24
 use_filter = true
-font_data = ExtResource( 38 )
+font_data = ExtResource( 42 )
 
 [node name="game" type="Node2D" groups=[
 "play",
@@ -231,7 +319,6 @@ bus = "Effects"
 [node name="Camera" type="Camera2D" parent="." groups=[
 "play",
 ]]
-editor/display_folded = true
 current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
@@ -255,6 +342,28 @@ expand = true
 
 [node name="Tween" type="Tween" parent="Camera"]
 
+[node name="DigitalFog" type="ColorRect" parent="Camera"]
+visible = false
+material = SubResource( 2 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1236.99
+margin_top = -1317.81
+margin_right = 1263.01
+margin_bottom = 1182.19
+mouse_filter = 2
+
+[node name="Darkness" type="ColorRect" parent="Camera"]
+visible = false
+material = SubResource( 29 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1127.72
+margin_top = -872.257
+margin_right = 1153.28
+margin_bottom = 908.743
+mouse_filter = 2
+
 [node name="DeathZone" type="Line2D" parent="."]
 editor/display_folded = true
 position = Vector2( 9.95801, 380 )
@@ -267,15 +376,17 @@ texture_mode = 1873099216
 margin_top = -30.0
 margin_right = 107.0
 margin_bottom = -8.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 text = "DEATH ZONE"
 
 [node name="big_grid" parent="." groups=[
 "play",
-] instance=ExtResource( 7 )]
+] instance=ExtResource( 10 )]
+position = Vector2( -1159.98, -38.8228 )
 
 [node name="crosshair" type="Sprite" parent="."]
-texture = ExtResource( 8 )
+editor/display_folded = true
+texture = ExtResource( 11 )
 
 [node name="RayCast" type="RayCast2D" parent="crosshair"]
 enabled = true
@@ -286,7 +397,8 @@ collision_mask = 3
 [node name="level" type="Node2D" parent="." groups=[
 "play",
 ]]
-script = ExtResource( 9 )
+editor/display_folded = true
+script = ExtResource( 12 )
 
 [node name="Audio" type="Node" parent="level"]
 
@@ -296,11 +408,11 @@ volume_db = -4.0
 bus = "Effects"
 
 [node name="BlockPlaced" type="AudioStreamPlayer" parent="level/Audio"]
-stream = ExtResource( 10 )
+stream = ExtResource( 13 )
 bus = "Effects"
 
 [node name="BlockDeleted" type="AudioStreamPlayer" parent="level/Audio"]
-stream = ExtResource( 11 )
+stream = ExtResource( 14 )
 volume_db = -10.0
 bus = "Effects"
 
@@ -311,10 +423,9 @@ position = Vector2( 1.22668, -45.1002 )
 [node name="player_spawn" type="Sprite" parent="level/SpawnPos"]
 modulate = Color( 1, 1, 1, 0.254902 )
 position = Vector2( 13.4052, -20.5337 )
-texture = ExtResource( 12 )
+texture = ExtResource( 15 )
 
 [node name="Content" type="Node2D" parent="level"]
-editor/display_folded = true
 
 [node name="StartingBlockOne" type="StaticBody2D" parent="level/Content" groups=[
 "delete",
@@ -322,13 +433,13 @@ editor/display_folded = true
 editor/display_folded = true
 position = Vector2( -0.0419922, 60 )
 collision_layer = 3
-script = ExtResource( 13 )
+script = ExtResource( 16 )
 
 [node name="shape" type="Polygon2D" parent="level/Content/StartingBlockOne"]
 polygon = PoolVector2Array( -10, -10, 10, -10, 10, 10, -10, 10 )
 
 [node name="col" type="CollisionShape2D" parent="level/Content/StartingBlockOne"]
-shape = SubResource( 1 )
+shape = SubResource( 7 )
 
 [node name="Node" type="Node" parent="level/Content"]
 
@@ -353,7 +464,7 @@ editor/display_folded = true
 position = Vector2( 120, 40 )
 collision_layer = 4
 collision_mask = 0
-script = ExtResource( 14 )
+script = ExtResource( 17 )
 
 [node name="Particles2" type="Particles2D" parent="Finish"]
 position = Vector2( 0, -9.72745 )
@@ -362,7 +473,7 @@ emitting = false
 amount = 200
 lifetime = 2.0
 speed_scale = 0.5
-process_material = SubResource( 4 )
+process_material = SubResource( 10 )
 
 [node name="DoorCol" type="CollisionPolygon2D" parent="Finish"]
 position = Vector2( 0, 10.2726 )
@@ -383,18 +494,18 @@ polygon = PoolVector2Array( -10, 0, -10, -40, 10, -40, 10, 0 )
 [node name="Tween" type="Tween" parent="Finish"]
 
 [node name="Sound" type="AudioStreamPlayer" parent="Finish"]
-stream = ExtResource( 15 )
+stream = ExtResource( 18 )
 bus = "Effects"
 
 [node name="Start" type="AudioStreamPlayer" parent="Finish"]
-stream = ExtResource( 15 )
+stream = ExtResource( 18 )
 bus = "Effects"
 
-[node name="character" parent="." instance=ExtResource( 16 )]
+[node name="character" parent="." instance=ExtResource( 19 )]
 
 [node name="bloom" type="ColorRect" parent="."]
 editor/display_folded = true
-material = SubResource( 5 )
+material = SubResource( 11 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -409,21 +520,21 @@ rect_min_size = Vector2( 2500, 2000 )
 rect_scale = Vector2( 1.50069, 1.58875 )
 rect_pivot_offset = Vector2( 1250, 1000 )
 mouse_filter = 2
-script = ExtResource( 18 )
+script = ExtResource( 21 )
 
 [node name="tween" type="Tween" parent="bloom"]
 
 [node name="editor_UI" type="CanvasLayer" parent="." groups=[
 "play",
 ]]
-script = ExtResource( 19 )
+script = ExtResource( 22 )
 
 [node name="Lines" type="Control" parent="editor_UI"]
 modulate = Color( 1, 1, 1, 0.4 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 
 [node name="X" type="ColorRect" parent="editor_UI/Lines"]
 self_modulate = Color( 1, 1, 1, 0.478431 )
@@ -493,11 +604,12 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "X : 0.000"
 
 [node name="ItemList" type="ColorRect" parent="editor_UI"]
-material = SubResource( 7 )
+editor/display_folded = true
+material = SubResource( 13 )
 anchor_bottom = 1.0
 margin_right = 70.0
 rect_min_size = Vector2( 70, 0 )
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 color = Color( 0.211765, 0.137255, 0.301961, 0.847059 )
 
 [node name="VBoxContainer" type="VSplitContainer" parent="editor_UI/ItemList"]
@@ -508,7 +620,7 @@ split_offset = 23
 
 [node name="ShadowTop" type="ColorRect" parent="editor_UI/ItemList/VBoxContainer"]
 margin_right = 68.0
-margin_bottom = 343.0
+margin_bottom = 320.83
 rect_min_size = Vector2( 0, 320.83 )
 color = Color( 0.168627, 0.113725, 0.231373, 0.364706 )
 
@@ -533,8 +645,8 @@ rect_min_size = Vector2( 5.7, 12.47 )
 margin_top = 16.0
 margin_right = 65.0
 margin_bottom = 33.0
-theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 14 )
 text = "BUILD"
 align = 1
 uppercase = true
@@ -553,14 +665,14 @@ margin_bottom = 75.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Base block"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 21 )
+texture_normal = ExtResource( 24 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control4" type="Control" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
@@ -577,14 +689,14 @@ margin_bottom = 115.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Mine"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 24 )
+texture_normal = ExtResource( 27 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control7" type="Control" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
@@ -601,14 +713,14 @@ margin_bottom = 155.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Mine"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 25 )
+texture_normal = ExtResource( 28 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control11" type="Control" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
@@ -625,14 +737,14 @@ margin_bottom = 193.0
 rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Coin"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 26 )
+texture_normal = ExtResource( 29 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control5" type="Control" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
@@ -649,14 +761,14 @@ margin_bottom = 233.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Jump pad"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 27 )
+texture_normal = ExtResource( 30 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control6" type="Control" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
@@ -673,14 +785,14 @@ margin_bottom = 273.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Mine"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 28 )
+texture_normal = ExtResource( 31 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control13" type="Control" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
@@ -696,13 +808,13 @@ margin_right = 65.0
 margin_bottom = 313.0
 rect_min_size = Vector2( 0, 27 )
 hint_tooltip = "Turret"
-theme = ExtResource( 6 )
-texture_normal = ExtResource( 29 )
+theme = ExtResource( 9 )
+texture_normal = ExtResource( 32 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control14" type="Control" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
@@ -737,14 +849,14 @@ margin_bottom = 368.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Player spawn point"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 30 )
+texture_normal = ExtResource( 33 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control12" type="Control" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
@@ -761,14 +873,14 @@ margin_bottom = 408.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Death zone"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 31 )
+texture_normal = ExtResource( 34 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control8" type="Control" parent="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer"]
@@ -785,20 +897,20 @@ margin_bottom = 448.68
 rect_min_size = Vector2( 0, 27.68 )
 hint_tooltip = "Goal"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 32 )
+texture_normal = ExtResource( 35 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="VBoxContainer" type="VBoxContainer" parent="editor_UI/ItemList/VBoxContainer"]
-margin_top = 363.0
+margin_top = 340.0
 margin_right = 68.0
-margin_bottom = 720.0
+margin_bottom = 725.0
 
 [node name="Control" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
@@ -810,8 +922,8 @@ rect_min_size = Vector2( 0, 9.17 )
 margin_top = 13.0
 margin_right = 68.0
 margin_bottom = 30.0
-theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 8 )
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 14 )
 text = "GAME"
 align = 1
 uppercase = true
@@ -831,14 +943,14 @@ margin_bottom = 72.0
 rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Play."
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 33 )
+texture_normal = ExtResource( 36 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control2" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
@@ -848,7 +960,7 @@ margin_right = 68.0
 margin_bottom = 85.17
 rect_min_size = Vector2( 0, 9.17 )
 
-[node name="CenterPlayer6" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+[node name="Style" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 89.0
 margin_right = 68.0
@@ -856,96 +968,121 @@ margin_bottom = 114.0
 rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Center Player"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 34 )
+texture_normal = ExtResource( 37 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
-[node name="Control3" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+[node name="Control7" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 118.0
 margin_right = 68.0
 margin_bottom = 127.17
 rect_min_size = Vector2( 0, 9.17 )
 
-[node name="Save" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+[node name="CenterPlayer6" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 131.0
 margin_right = 68.0
 margin_bottom = 156.0
 rect_min_size = Vector2( 0, 25 )
-hint_tooltip = "Save"
+hint_tooltip = "Center Player"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 35 )
+texture_normal = ExtResource( 38 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
-[node name="Control4" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+[node name="Control3" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 160.0
 margin_right = 68.0
 margin_bottom = 169.17
 rect_min_size = Vector2( 0, 9.17 )
 
-[node name="Upload" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+[node name="Save" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 173.0
 margin_right = 68.0
 margin_bottom = 198.0
 rect_min_size = Vector2( 0, 25 )
-hint_tooltip = "Upload to ZeroNet"
+hint_tooltip = "Save"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 36 )
+texture_normal = ExtResource( 39 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
-[node name="Control5" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+[node name="Control4" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 202.0
 margin_right = 68.0
 margin_bottom = 211.17
 rect_min_size = Vector2( 0, 9.17 )
 
-[node name="Settings" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+[node name="Upload" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 215.0
 margin_right = 68.0
 margin_bottom = 240.0
 rect_min_size = Vector2( 0, 25 )
-hint_tooltip = "Editor Options"
+hint_tooltip = "Upload to ZeroNet"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 37 )
+texture_normal = ExtResource( 40 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
-[node name="Control6" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+[node name="Control5" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
 margin_top = 244.0
 margin_right = 68.0
 margin_bottom = 253.17
+rect_min_size = Vector2( 0, 9.17 )
+
+[node name="Settings" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 257.0
+margin_right = 68.0
+margin_bottom = 282.0
+rect_min_size = Vector2( 0, 25 )
+hint_tooltip = "Editor Options"
+focus_mode = 0
+theme = ExtResource( 9 )
+enabled_focus_mode = 0
+texture_normal = ExtResource( 41 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 25 )
+__meta__ = {
+"_editor_icon": ExtResource( 26 )
+}
+
+[node name="Control6" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
+modulate = Color( 1, 1, 1, 0.3 )
+margin_top = 286.0
+margin_right = 68.0
+margin_bottom = 295.17
 rect_min_size = Vector2( 0, 9.17 )
 
 [node name="Share" type="Button" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
@@ -956,8 +1093,8 @@ margin_right = 67.0
 margin_bottom = 230.0
 hint_tooltip = "Share"
 focus_mode = 0
-theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 9 )
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 15 )
 enabled_focus_mode = 0
 text = "o"
 
@@ -969,38 +1106,38 @@ margin_right = 67.0
 margin_bottom = 230.0
 hint_tooltip = "Reset level"
 focus_mode = 0
-theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 9 )
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 15 )
 enabled_focus_mode = 0
 text = "R"
 
 [node name="Exit" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
-margin_top = 257.0
+margin_top = 299.0
 margin_right = 68.0
-margin_bottom = 282.0
+margin_bottom = 324.0
 rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Quit to main menu"
-theme = ExtResource( 6 )
-texture_normal = ExtResource( 39 )
+theme = ExtResource( 9 )
+texture_normal = ExtResource( 43 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="Control10" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 286.0
+margin_top = 328.0
 margin_right = 68.0
-margin_bottom = 295.17
+margin_bottom = 337.17
 rect_min_size = Vector2( 0, 9.17 )
 
 [node name="CenterContainer" type="CenterContainer" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 editor/display_folded = true
-margin_top = 299.0
+margin_top = 341.0
 margin_right = 68.0
-margin_bottom = 301.58
+margin_bottom = 343.58
 
 [node name="ColorRect" type="ColorRect" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer/CenterContainer"]
 margin_left = 18.0
@@ -1010,38 +1147,38 @@ rect_min_size = Vector2( 31.9, 2.58 )
 color = Color( 1, 1, 1, 0.152941 )
 
 [node name="Control8" type="Control" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
-margin_top = 305.0
+margin_top = 347.0
 margin_right = 68.0
-margin_bottom = 314.17
+margin_bottom = 356.17
 rect_min_size = Vector2( 0, 9.17 )
 
 [node name="MapList" type="TextureButton" parent="editor_UI/ItemList/VBoxContainer/VBoxContainer"]
 modulate = Color( 1, 1, 1, 0.3 )
-margin_top = 318.0
+margin_top = 360.0
 margin_right = 68.0
-margin_bottom = 343.0
+margin_bottom = 385.0
 rect_min_size = Vector2( 0, 25 )
 hint_tooltip = "Map list"
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
-texture_normal = ExtResource( 40 )
+texture_normal = ExtResource( 44 )
 expand = true
 stretch_mode = 5
-script = ExtResource( 22 )
+script = ExtResource( 25 )
 __meta__ = {
-"_editor_icon": ExtResource( 23 )
+"_editor_icon": ExtResource( 26 )
 }
 
 [node name="HideShow" type="ColorRect" parent="editor_UI/ItemList"]
-material = SubResource( 7 )
+material = SubResource( 13 )
 anchor_top = 0.5
 anchor_bottom = 0.5
 margin_left = 70.0
 margin_top = -20.0
 margin_right = 100.0
 margin_bottom = 20.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 
 [node name="HideShowButton" type="Button" parent="editor_UI/ItemList/HideShow"]
 anchor_left = 0.5
@@ -1052,19 +1189,19 @@ margin_left = -10.0
 margin_top = -16.0
 margin_right = 10.0
 margin_bottom = 16.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 16 )
 text = "<"
 
 [node name="Details" type="ColorRect" parent="editor_UI"]
 editor/display_folded = true
 visible = false
-material = SubResource( 12 )
+material = SubResource( 18 )
 margin_left = 86.0
 margin_top = 18.0
 margin_right = 612.0
 margin_bottom = 88.0
 color = Color( 0.211765, 0.137255, 0.301961, 0.894118 )
-script = ExtResource( 41 )
+script = ExtResource( 45 )
 
 [node name="MarginContainer" type="MarginContainer" parent="editor_UI/Details"]
 anchor_right = 1.0
@@ -1089,7 +1226,7 @@ margin_bottom = 50.0
 margin_top = 14.0
 margin_right = 39.0
 margin_bottom = 36.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 text = "Logic"
 
 [node name="Left" type="OptionButton" parent="editor_UI/Details/MarginContainer/HBoxContainer/Logic"]
@@ -1102,7 +1239,7 @@ If you want it to turn left everytime select left,
 same for right. Bounce makes it turn around
 and go back in the same direction from which it came."
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
 text = "Left"
 
@@ -1122,7 +1259,7 @@ margin_bottom = 50.0
 margin_top = 14.0
 margin_right = 68.0
 margin_bottom = 36.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 text = "Direction"
 
 [node name="Direction" type="OptionButton" parent="editor_UI/Details/MarginContainer/HBoxContainer/Direction"]
@@ -1132,7 +1269,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 120, 0 )
 hint_tooltip = "Direction indicates the starting direction of the entity."
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
 text = "STRAIGHT"
 
@@ -1144,27 +1281,27 @@ rect_min_size = Vector2( 19.77, 0 )
 
 [node name="Soft" type="HBoxContainer" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
 margin_left = 409.0
-margin_right = 500.0
+margin_right = 494.0
 margin_bottom = 50.0
 hint_tooltip = "A soft platform changes direction when the player rams into it."
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 
 [node name="Soft" type="Label" parent="editor_UI/Details/MarginContainer/HBoxContainer/Soft"]
 margin_top = 14.0
 margin_right = 32.0
 margin_bottom = 36.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 text = "Soft"
 
 [node name="Control4" type="Control" parent="editor_UI/Details/MarginContainer/HBoxContainer/Soft"]
-margin_left = 36.0
-margin_right = 44.47
+margin_left = 34.0
+margin_right = 42.47
 margin_bottom = 50.0
 rect_min_size = Vector2( 8.47, 0 )
 
 [node name="CenterContainer" type="CenterContainer" parent="editor_UI/Details/MarginContainer/HBoxContainer/Soft"]
-margin_left = 48.0
-margin_right = 68.0
+margin_left = 44.0
+margin_right = 64.0
 margin_bottom = 50.0
 
 [node name="SoftToggle" type="CheckBox" parent="editor_UI/Details/MarginContainer/HBoxContainer/Soft/CenterContainer"]
@@ -1174,25 +1311,25 @@ margin_bottom = 36.0
 rect_min_size = Vector2( 20, 20 )
 hint_tooltip = "A soft platform changes direction when the player rams into it."
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
 
 [node name="Control5" type="Control" parent="editor_UI/Details/MarginContainer/HBoxContainer/Soft"]
-margin_left = 72.0
-margin_right = 91.77
+margin_left = 66.0
+margin_right = 85.77
 margin_bottom = 50.0
 rect_min_size = Vector2( 19.77, 0 )
 
 [node name="ROF" type="HBoxContainer" parent="editor_UI/Details/MarginContainer/HBoxContainer"]
-margin_left = 504.0
-margin_right = 733.0
+margin_left = 498.0
+margin_right = 727.0
 margin_bottom = 50.0
 
 [node name="Type2" type="Label" parent="editor_UI/Details/MarginContainer/HBoxContainer/ROF"]
 margin_top = 14.0
 margin_right = 82.0
 margin_bottom = 36.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 text = "Rate of fire"
 
 [node name="RateOfFire" type="OptionButton" parent="editor_UI/Details/MarginContainer/HBoxContainer/ROF"]
@@ -1202,7 +1339,7 @@ margin_bottom = 50.0
 rect_min_size = Vector2( 120, 0 )
 hint_tooltip = "The speed at which the turret will shoot."
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
 text = "Medium"
 
@@ -1219,11 +1356,11 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 6 )
-script = ExtResource( 42 )
+theme = ExtResource( 9 )
+script = ExtResource( 46 )
 
 [node name="Black" type="ColorRect" parent="editor_UI/ConfirmPopUp"]
-material = SubResource( 13 )
+material = SubResource( 19 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.380392 )
@@ -1258,7 +1395,7 @@ rect_min_size = Vector2( 0, 34.58 )
 margin_top = 55.0
 margin_right = 500.0
 margin_bottom = 152.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
 text = "Placing the Death Zone above the player will cause an endless respawn. A headache is likely to follow.
 
@@ -1310,12 +1447,12 @@ margin_bottom = 30.0
 alignment = 1
 
 [node name="Yes" type="Button" parent="editor_UI/ConfirmPopUp/Window/Buttons/Menu"]
-margin_left = 38.0
-margin_right = 118.0
+margin_left = 40.0
+margin_right = 120.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 80, 0 )
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
 text = "CONFIRM"
 
@@ -1326,12 +1463,12 @@ margin_bottom = 22.0
 rect_min_size = Vector2( 256.97, 0 )
 
 [node name="No" type="Button" parent="editor_UI/ConfirmPopUp/Window/Buttons/Menu"]
-margin_left = 382.0
-margin_right = 462.0
+margin_left = 380.0
+margin_right = 460.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 80, 22 )
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
 text = "CANCEL"
 
@@ -1346,11 +1483,11 @@ editor/display_folded = true
 visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 6 )
-script = ExtResource( 43 )
+theme = ExtResource( 9 )
+script = ExtResource( 47 )
 
 [node name="Black" type="ColorRect" parent="editor_UI/PublishLevelPopUp"]
-material = SubResource( 13 )
+material = SubResource( 19 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color( 0, 0, 0, 0.380392 )
@@ -1379,8 +1516,8 @@ margin_bottom = 315.0
 rect_min_size = Vector2( 22.37, 0 )
 
 [node name="TextContainer" type="VBoxContainer" parent="editor_UI/PublishLevelPopUp/Window/Horizontal"]
-margin_left = 26.0
-margin_right = 475.94
+margin_left = 24.0
+margin_right = 473.94
 margin_bottom = 315.0
 rect_min_size = Vector2( 449.94, 0 )
 
@@ -1393,8 +1530,8 @@ rect_min_size = Vector2( 0, 15.43 )
 margin_top = 19.0
 margin_right = 449.0
 margin_bottom = 62.0
-theme = ExtResource( 6 )
-custom_fonts/font = SubResource( 14 )
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
 text = "Publish to ZeroNet"
 align = 1
@@ -1405,7 +1542,7 @@ autowrap = true
 margin_top = 66.0
 margin_right = 449.0
 margin_bottom = 88.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
 text = "Version"
 valign = 1
@@ -1433,7 +1570,7 @@ rect_min_size = Vector2( 0, 10 )
 margin_top = 132.0
 margin_right = 449.0
 margin_bottom = 154.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
 text = "Name"
 valign = 1
@@ -1460,7 +1597,7 @@ rect_min_size = Vector2( 0, 10 )
 margin_top = 198.0
 margin_right = 449.0
 margin_bottom = 220.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
 text = "Description"
 valign = 1
@@ -1496,12 +1633,12 @@ margin_bottom = 30.0
 alignment = 1
 
 [node name="Yes" type="Button" parent="editor_UI/PublishLevelPopUp/Window/Buttons/Menu"]
-margin_left = 24.0
-margin_right = 104.0
+margin_left = 26.0
+margin_right = 106.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 80, 0 )
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
 text = "CONFIRM"
 
@@ -1512,12 +1649,12 @@ margin_bottom = 22.0
 rect_min_size = Vector2( 283.12, 0 )
 
 [node name="No" type="Button" parent="editor_UI/PublishLevelPopUp/Window/Buttons/Menu"]
-margin_left = 395.0
-margin_right = 475.0
+margin_left = 393.0
+margin_right = 473.0
 margin_bottom = 22.0
 rect_min_size = Vector2( 80, 22 )
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 enabled_focus_mode = 0
 text = "CANCEL"
 align = 2
@@ -1527,6 +1664,170 @@ margin_top = 34.0
 margin_right = 500.0
 margin_bottom = 40.58
 rect_min_size = Vector2( 0, 6.58 )
+
+[node name="Style" type="Control" parent="editor_UI"]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 9 )
+script = ExtResource( 48 )
+
+[node name="Black" type="ColorRect" parent="editor_UI/Style"]
+material = SubResource( 19 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.380392 )
+
+[node name="Window" type="ColorRect" parent="editor_UI/Style"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -250.0
+margin_top = -160.0
+margin_right = 250.0
+margin_bottom = 102.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 500, 250 )
+color = Color( 0.219608, 0.137255, 0.45098, 0.937255 )
+
+[node name="TextContainer" type="VBoxContainer" parent="editor_UI/Style/Window"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+rect_min_size = Vector2( 449.94, 0 )
+
+[node name="Control2" type="Control" parent="editor_UI/Style/Window/TextContainer"]
+margin_right = 500.0
+margin_bottom = 18.84
+rect_min_size = Vector2( 0, 18.84 )
+
+[node name="Text" type="Label" parent="editor_UI/Style/Window/TextContainer"]
+margin_top = 22.0
+margin_right = 500.0
+margin_bottom = 65.0
+theme = ExtResource( 9 )
+custom_fonts/font = SubResource( 20 )
+custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
+text = "LEVEL STYLE"
+align = 1
+valign = 1
+autowrap = true
+
+[node name="Control3" type="Control" parent="editor_UI/Style/Window/TextContainer"]
+margin_top = 69.0
+margin_right = 500.0
+margin_bottom = 87.27
+rect_min_size = Vector2( 0, 18.27 )
+
+[node name="Window2" type="ColorRect" parent="editor_UI/Style/Window/TextContainer"]
+margin_top = 91.0
+margin_right = 500.0
+margin_bottom = 263.24
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 500, 172.24 )
+color = Color( 0, 0, 0, 0.317647 )
+
+[node name="HBoxContainer" type="HBoxContainer" parent="editor_UI/Style/Window/TextContainer/Window2"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_constants/separation = 14
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer"]
+margin_left = 26.0
+margin_right = 166.0
+margin_bottom = 172.0
+alignment = 1
+
+[node name="Text4" type="Label" parent="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer/VBoxContainer"]
+margin_top = 34.0
+margin_right = 140.0
+margin_bottom = 56.0
+theme = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
+text = "Normal"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="Normal" type="TextureButton" parent="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer/VBoxContainer"]
+margin_top = 60.0
+margin_right = 140.81
+margin_bottom = 138.74
+rect_min_size = Vector2( 140.81, 78.74 )
+texture_normal = ExtResource( 49 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 25 )
+__meta__ = {
+"_editor_icon": ExtResource( 26 )
+}
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer"]
+margin_left = 180.0
+margin_right = 320.0
+margin_bottom = 172.0
+alignment = 1
+
+[node name="Text4" type="Label" parent="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer/VBoxContainer2"]
+margin_top = 34.0
+margin_right = 140.0
+margin_bottom = 56.0
+theme = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
+text = "Digital Fog"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="DigitalFog" type="TextureButton" parent="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer/VBoxContainer2"]
+margin_top = 60.0
+margin_right = 140.81
+margin_bottom = 138.74
+rect_min_size = Vector2( 140.81, 78.74 )
+texture_normal = ExtResource( 50 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 25 )
+__meta__ = {
+"_editor_icon": ExtResource( 26 )
+}
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer"]
+margin_left = 334.0
+margin_right = 474.0
+margin_bottom = 172.0
+alignment = 1
+
+[node name="Text4" type="Label" parent="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer/VBoxContainer3"]
+margin_top = 34.0
+margin_right = 140.0
+margin_bottom = 56.0
+theme = ExtResource( 9 )
+custom_colors/font_color = Color( 1, 1, 1, 0.670588 )
+text = "Darkness"
+align = 1
+valign = 1
+autowrap = true
+uppercase = true
+
+[node name="Darkness" type="TextureButton" parent="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer/VBoxContainer3"]
+margin_top = 60.0
+margin_right = 140.81
+margin_bottom = 138.74
+rect_min_size = Vector2( 140.81, 78.74 )
+texture_normal = ExtResource( 51 )
+expand = true
+stretch_mode = 5
+script = ExtResource( 25 )
+__meta__ = {
+"_editor_icon": ExtResource( 26 )
+}
 
 [node name="Tween" type="Tween" parent="editor_UI"]
 
@@ -1539,7 +1840,7 @@ margin_left = -126.5
 margin_top = -36.5974
 margin_right = 126.5
 margin_bottom = -14.5974
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 text = "Press \"SPACE\" to leave play mode."
 align = 1
 
@@ -1555,7 +1856,7 @@ margin_bottom = -14.5974
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 alignment = 1
 
 [node name="Label" type="Label" parent="editor_UI/Esc2"]
@@ -1565,15 +1866,15 @@ margin_bottom = 22.0
 text = "LMB - build || LMB + SHIFT - remove || SPACE - toggle play || MOUSE WHEEL - cycle through tools"
 align = 1
 
-[node name="ZeroNet" parent="editor_UI" instance=ExtResource( 44 )]
+[node name="ZeroNet" parent="editor_UI" instance=ExtResource( 52 )]
 
 [node name="Messages" type="Control" parent="editor_UI"]
 editor/display_folded = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 6 )
-script = ExtResource( 45 )
+theme = ExtResource( 9 )
+script = ExtResource( 53 )
 
 [node name="Message" type="Label" parent="editor_UI/Messages"]
 anchor_left = 0.5
@@ -1587,7 +1888,7 @@ margin_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 809.46, 60 )
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 21 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "MAP SAVED"
 align = 1
@@ -1596,6 +1897,7 @@ valign = 1
 [node name="Tween" type="Tween" parent="editor_UI/Messages"]
 
 [node name="Achievements" type="Control" parent="editor_UI"]
+editor/display_folded = true
 anchor_left = 0.5
 anchor_right = 0.5
 margin_left = -220.0
@@ -1604,20 +1906,20 @@ margin_right = 220.0
 margin_bottom = 110.0
 rect_pivot_offset = Vector2( 220, 0 )
 mouse_filter = 2
-theme = ExtResource( 6 )
-script = ExtResource( 46 )
+theme = ExtResource( 9 )
+script = ExtResource( 54 )
 
 [node name="UnlockedLabel" type="Label" parent="editor_UI/Achievements"]
 margin_left = 72.0
 margin_top = -20.0
 margin_right = 364.0
 margin_bottom = -5.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Achievement Unlocked!"
 
 [node name="Blur" type="ColorRect" parent="editor_UI/Achievements"]
-material = SubResource( 18 )
+material = SubResource( 24 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
@@ -1638,7 +1940,7 @@ margin_right = 70.0
 margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 mouse_filter = 2
-texture = ExtResource( 47 )
+texture = ExtResource( 55 )
 stretch_mode = 4
 
 [node name="Control" type="Control" parent="editor_UI/Achievements/HBoxContainer"]
@@ -1660,7 +1962,7 @@ alignment = 1
 margin_top = 8.0
 margin_right = 350.0
 margin_bottom = 32.0
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 25 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "BUILDER - lvl 1"
 
@@ -1675,7 +1977,7 @@ mouse_filter = 2
 margin_top = 44.0
 margin_right = 350.0
 margin_bottom = 61.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 22 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 text = "Built over 250 blocks."
 
@@ -1691,12 +1993,12 @@ margin_left = -60.0
 margin_top = -203.0
 margin_right = -20.0
 margin_bottom = 203.0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 
 [node name="MagnifyingGlassPlus" type="Button" parent="editor_UI/ZoomContainer"]
 margin_right = 40.0
 margin_bottom = 24.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 26 )
 custom_colors/font_color = Color( 1, 1, 1, 0.564706 )
 text = "y"
 
@@ -1719,7 +2021,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rect_min_size = Vector2( 0, 350 )
 focus_mode = 0
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 min_value = 0.3
 max_value = 1.7
 step = 0.1
@@ -1736,17 +2038,19 @@ rect_min_size = Vector2( 0, 5.59 )
 margin_top = 400.0
 margin_right = 40.0
 margin_bottom = 424.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 26 )
 custom_colors/font_color = Color( 1, 1, 1, 0.564706 )
 text = "z"
 
 [node name="EditorSettings" type="Control" parent="editor_UI"]
+editor/display_folded = true
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
-script = ExtResource( 48 )
+script = ExtResource( 56 )
 
 [node name="EditorSettingsBackground" type="ColorRect" parent="editor_UI/EditorSettings"]
-material = SubResource( 18 )
+material = SubResource( 24 )
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -1756,7 +2060,7 @@ margin_top = -300.0
 margin_right = 220.5
 rect_min_size = Vector2( 441, 300 )
 rect_pivot_offset = Vector2( 220, 300 )
-theme = ExtResource( 6 )
+theme = ExtResource( 9 )
 
 [node name="Editor_Settings" type="VBoxContainer" parent="editor_UI/EditorSettings/EditorSettingsBackground"]
 anchor_right = 1.0
@@ -1943,7 +2247,7 @@ margin_left = 77.0
 margin_right = 93.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 16, 28 )
-texture_normal = ExtResource( 49 )
+texture_normal = ExtResource( 57 )
 expand = true
 stretch_mode = 5
 
@@ -1968,6 +2272,7 @@ max_value = 4.0
 step = 0.01
 value = 1.0
 exp_edit = true
+ticks_on_borders = true
 
 [node name="Control2" type="Control" parent="editor_UI/EditorSettings/EditorSettingsBackground/Editor_Settings/UIScale/ColorRect/Right"]
 margin_left = 320.0
@@ -2009,13 +2314,14 @@ margin_left = -32.4464
 margin_top = 18.9734
 margin_right = -18.4464
 margin_bottom = 42.9734
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 27 )
 text = "["
 
 [node name="Tween" type="Tween" parent="editor_UI/EditorSettings"]
 
 [node name="MusicPlayer" type="ColorRect" parent="editor_UI"]
-material = SubResource( 18 )
+editor/display_folded = true
+material = SubResource( 24 )
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -2026,8 +2332,8 @@ margin_right = 380.0
 margin_bottom = -38.0
 rect_min_size = Vector2( 450, 70 )
 rect_pivot_offset = Vector2( 70, 35 )
-theme = ExtResource( 6 )
-script = ExtResource( 50 )
+theme = ExtResource( 9 )
+script = ExtResource( 58 )
 
 [node name="HBoxContainer" type="HBoxContainer" parent="editor_UI/MusicPlayer"]
 anchor_right = 1.0
@@ -2039,14 +2345,14 @@ margin_bottom = 70.0
 rect_min_size = Vector2( 70, 70 )
 mouse_filter = 2
 
-[node name="MusicPlayerButton" parent="editor_UI/MusicPlayer/HBoxContainer/Centered" instance=ExtResource( 51 )]
+[node name="MusicPlayerButton" parent="editor_UI/MusicPlayer/HBoxContainer/Centered" instance=ExtResource( 59 )]
 margin_left = 20.0
 margin_top = 20.0
 margin_right = 50.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 30, 30 )
 mouse_filter = 1
-texture_normal = ExtResource( 52 )
+texture_normal = ExtResource( 60 )
 expand = true
 stretch_mode = 5
 
@@ -2072,13 +2378,13 @@ margin_right = 377.0
 margin_bottom = 63.0
 alignment = 1
 
-[node name="Rewind" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal" instance=ExtResource( 51 )]
+[node name="Rewind" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal" instance=ExtResource( 59 )]
 margin_left = 139.0
 margin_right = 159.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 20, 20 )
 mouse_filter = 1
-texture_normal = ExtResource( 53 )
+texture_normal = ExtResource( 61 )
 expand = true
 stretch_mode = 5
 
@@ -2088,13 +2394,13 @@ margin_right = 171.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 10, 0 )
 
-[node name="Play" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal" instance=ExtResource( 51 )]
+[node name="Play" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal" instance=ExtResource( 59 )]
 margin_left = 173.0
 margin_right = 203.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
 mouse_filter = 1
-texture_normal = ExtResource( 54 )
+texture_normal = ExtResource( 62 )
 expand = true
 stretch_mode = 5
 
@@ -2104,13 +2410,13 @@ margin_right = 215.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 10, 0 )
 
-[node name="FastForward" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal" instance=ExtResource( 51 )]
+[node name="FastForward" parent="editor_UI/MusicPlayer/HBoxContainer/Vertical/Horizontal" instance=ExtResource( 59 )]
 margin_left = 217.0
 margin_right = 237.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 20, 20 )
 mouse_filter = 1
-texture_normal = ExtResource( 55 )
+texture_normal = ExtResource( 63 )
 expand = true
 stretch_mode = 5
 
@@ -2119,15 +2425,15 @@ stretch_mode = 5
 [node name="Isabella Lau" type="Node" parent="editor_UI/MusicPlayer/Songs"]
 
 [node name="Bright and Bytesized" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs/Isabella Lau"]
-stream = ExtResource( 56 )
+stream = ExtResource( 64 )
 bus = "Music"
 
 [node name="Cosmic Sanctum" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs/Isabella Lau"]
-stream = ExtResource( 57 )
+stream = ExtResource( 65 )
 bus = "Music"
 
 [node name="Time To Byte Back" type="AudioStreamPlayer" parent="editor_UI/MusicPlayer/Songs/Isabella Lau"]
-stream = ExtResource( 58 )
+stream = ExtResource( 66 )
 bus = "Music"
 
 [node name="Tween" type="Tween" parent="editor_UI/MusicPlayer"]
@@ -2135,6 +2441,20 @@ bus = "Music"
 [node name="IdleTime" type="Timer" parent="editor_UI/MusicPlayer"]
 wait_time = 3.0
 one_shot = true
+
+[node name="Styles" type="Control" parent="."]
+editor/display_folded = true
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -1373.95
+margin_top = -926.052
+margin_right = 1956.05
+margin_bottom = 1330.95
+
+[node name="ColorRect" type="ColorRect" parent="Styles"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 
 [connection signal="show_notification" from="." to="editor_UI/Messages" method="_on_game_show_notification"]
 [connection signal="cam_pos" from="Camera" to="editor_UI" method="_on_Camera_cam_pos"]
@@ -2161,6 +2481,7 @@ one_shot = true
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/DeathArea" to="." method="_on_DeathArea_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/ShadowTop/ScrollContainer/VBoxContainer/Finish" to="." method="_on_Finish_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Play" to="." method="_on_Play_pressed"]
+[connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Style" to="editor_UI" method="_on_Style_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/CenterPlayer6" to="." method="_on_CenterPlayer6_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Save" to="." method="_on_Save_pressed"]
 [connection signal="pressed" from="editor_UI/ItemList/VBoxContainer/VBoxContainer/Upload" to="editor_UI" method="_on_Upload_pressed"]
@@ -2181,6 +2502,11 @@ one_shot = true
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="editor_UI/PublishLevelPopUp" method="_on_Yes_pressed"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/Yes" to="." method="_on_Yes_Publish_To_ZeroNet_pressed"]
 [connection signal="pressed" from="editor_UI/PublishLevelPopUp/Window/Buttons/Menu/No" to="editor_UI/PublishLevelPopUp" method="_on_No_pressed"]
+[connection signal="selected" from="editor_UI/Style" to="Camera" method="_on_Style_selected"]
+[connection signal="gui_input" from="editor_UI/Style/Black" to="editor_UI/Style" method="_on_Black_gui_input"]
+[connection signal="pressed" from="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer/VBoxContainer/Normal" to="editor_UI/Style" method="_on_Normal_pressed"]
+[connection signal="pressed" from="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer/VBoxContainer2/DigitalFog" to="editor_UI/Style" method="_on_DigitalFog_pressed"]
+[connection signal="pressed" from="editor_UI/Style/Window/TextContainer/Window2/HBoxContainer/VBoxContainer3/Darkness" to="editor_UI/Style" method="_on_Darkness_pressed"]
 [connection signal="pressed" from="editor_UI/ZoomContainer/MagnifyingGlassPlus" to="editor_UI" method="_on_MagnifyingGlassPlus_pressed"]
 [connection signal="value_changed" from="editor_UI/ZoomContainer/CenterContainer/MagnifyAmount" to="Camera" method="_on_MagnifyAmount_value_changed"]
 [connection signal="pressed" from="editor_UI/ZoomContainer/MagnifyingGlassMinus" to="editor_UI" method="_on_MagnifyingGlassMinus_pressed"]

@@ -212,3 +212,6 @@ func scale_ui(amount, save : bool = false):
 	
 	$MusicPlayer.update_orig_loc()
 	$MusicPlayer.rect_scale = new_scale
+
+func _on_Style_pressed() -> void:
+	$Style.appear()

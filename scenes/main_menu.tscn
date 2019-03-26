@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://scripts/main_menu.gd" type="Script" id=1]
 [ext_resource path="res://assets/gradients/zeronet_gradient_texture.tres" type="Texture" id=2]
@@ -23,6 +23,7 @@
 [ext_resource path="res://scripts/Options.gd" type="Script" id=21]
 [ext_resource path="res://ui/icons/save.svg" type="Texture" id=22]
 [ext_resource path="res://assets/ZeroNetMenu/ZeroNetMenu.gd" type="Script" id=23]
+[ext_resource path="res://audio/music/Welcome to Zame - Isabella Lau.ogg" type="AudioStream" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 300
@@ -1578,24 +1579,29 @@ custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_hover = Color( 0.388235, 0.160784, 0.835294, 1 )
 text = "CLOSE"
 
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
+[node name="MenuMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+autoplay = true
+bus = "Music"
+
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Browser" to="LevelBrowser" method="_on_Browser_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Play" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Browser" to="." method="play_click"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Browser" to="LevelBrowser" method="_on_Browser_pressed"]
 [connection signal="double_clicked_map" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_double_clicked_map"]
 [connection signal="item_activated" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_activated"]
-[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_selected"]
 [connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="." method="_on_MapList_item_selected"]
+[connection signal="item_selected" from="SidePanelSpace/SidePanel/MapList" to="SidePanelSpace/SidePanel/MapList" method="_on_MapList_item_selected"]
 [connection signal="timeout" from="SidePanelSpace/SidePanel/MapList/Timer" to="SidePanelSpace/SidePanel/MapList" method="_on_Timer_timeout"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/grab_container/GrabMe" to="." method="_on_grab_me_pressed"]
-[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="_on_Update_pressed"]
+[connection signal="pressed" from="SidePanelSpace/SidePanel/Update" to="." method="play_click"]
 [connection signal="pressed" from="SidePanelSpace/SidePanel/Exit" to="." method="_on_Exit_pressed"]
-[connection signal="pressed" from="zn_button" to="." method="play_click"]
 [connection signal="pressed" from="zn_button" to="." method="_on_zn_button_pressed"]
+[connection signal="pressed" from="zn_button" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/question" to="." method="play_click"]
-[connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
 [connection signal="pressed" from="HBoxContainer/config" to="." method="_on_config_pressed"]
+[connection signal="pressed" from="HBoxContainer/config" to="." method="play_click"]
 [connection signal="gui_input" from="LevelBrowser/Blur" to="LevelBrowser" method="_on_Blur_gui_input"]
 [connection signal="button_down" from="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer2/Size" to="LevelBrowser" method="_on_Size_button_down"]
 [connection signal="pressed" from="LevelBrowser/VBoxContainer/TopPanel/HBoxContainer2/Close" to="LevelBrowser" method="_on_Close_pressed"]

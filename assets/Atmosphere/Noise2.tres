@@ -1,0 +1,14 @@
+[gd_resource type="NoiseTexture" load_steps=2 format=2]
+
+[sub_resource type="OpenSimplexNoise" id=1]
+seed = 125
+octaves = 2
+period = 176.2
+persistence = 0.0
+
+[resource]
+width = 2048
+height = 2048
+seamless = true
+noise = SubResource( 1 )
+
